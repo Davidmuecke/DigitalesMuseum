@@ -41,7 +41,7 @@
             var ready = req.readyState;
             if (ready == READY_STATE_COMPLETE) {
                 if (req.responseText) {
-                    var refZiel = document.getElementById("dasDrumHerum");
+                    var refZiel = document.getElementById("startseite_button");
                     refZiel.innerHTML = req.responseText;
                 }
             }
@@ -50,17 +50,38 @@
     </script>
 </div>
 
-<div id="dasDrumHerum">
+<div id="startseite_button">
     <div class="container">
         <?php
         date_default_timezone_set('Europe/Berlin');
         $current_date = date('d/m/Y == H:i:s');
-        echo $current_date;
         ?>
+        <div class="row vertical-offset-100">
+            <div class="col-md-4 col-md-offset-4">
+                <div class="panel panel-default">
+                    <div class="panel-body" onclick="#">
+                        Kategorie
+                    </div>
+                </div>
+
+                <div class="panel panel-default" onclick="#">
+                    <div class="panel-body">
+                        Persönlichkeit
+                    </div>
+                </div>
+
+                <div class="panel panel-default" onclick="#">
+                    <div class="panel-body">
+                        Epoche
+                    </div>
+                </div>
+
+            </div>
+        </div>
     </div>
 </div>
 <?php
-require("done/kontaktzeile_unten.php");
+require("kontaktzeile_unten.php");
 ?>
 </body>
 </html>
