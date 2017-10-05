@@ -50,7 +50,9 @@ else {
     <meta charset="UTF-8">
     <title>Digitales Museum Startseite</title>
     <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="rahels_css.css">
+
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
     <script language="javascript" type="text/javascript" src="js/kachelnLaden.js"></script>
 </head>
@@ -69,7 +71,6 @@ else {
             <li class="active"><a href="startseite.php">Persönlichkeiten</a></li>
             <li class="active"><a href="startseite.php">Epochen</a></li>
         </ul>
-        <button id="testbutton" class="btn" onclick="showKacheln('teste','test','','test','test');">tester</button>
         <ul class="nav navbar-nav navbar-right">
                     <form class="navbar-form navbar-left">
                         <div class="form-group">
@@ -81,7 +82,7 @@ else {
         </ul>
     </div>
 </nav>
-
+<div class="clear"></div>
 
 
 

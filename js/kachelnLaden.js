@@ -1,51 +1,3 @@
-//Mail-Adresse ausgeben
-var prefix = "mailto:";
-var firstName = "jonathan";
-var lastName = "weyl";
-var provider = "gmail";
-var topLevelDomain = "com";
-
-//Statusmodell für XML-Request
-var req = null;
-var READY_STATE_UNINITIALIZED = 0;
-var READY_STATE_LOADING = 1;
-var READY_STATE_LOADED = 2;
-var READY_STATE_INTERACTIVE = 3;
-var READY_STATE_COMPLETE = 4;
-
-
-function sendRequest(url,params,HTTPMethod) {
-    if (window.XMLHttpRequest) {
-        req = new XMLHttpRequest();
-    } else if (window.ActiveXObject) {
-        req = new ActiveXObject("Microsoft.XMLHTTP");
-    }
-    if (req) {
-        req.onreadystatechange = onReadyState;
-        req.open(HTTPMethod,url,true);
-        req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        req.send(params);
-    }
-}
-
-
-function onReadyState() {
-    var ready = req.readyState;
-    //alert("readyState: " + req.readyState);
-    if (ready == READY_STATE_COMPLETE) {
-        if( req.responseText ) {
-            var refZiel = document.getElementById( "spielfeld" );
-            var plan = document.createElement("div");
-            plan.setAttribute("id",plan);
-            if(refZiel.lastElementChild.getAttribute("id")=="plan") {
-                refZiel.removeChild(refZiel.lastChild);
-            }
-            refZiel.innerHTML = req.responseText;
-            refZiel.appendChild(plan);
-        }
-    }
-}
-
 
 function showKacheln(ID, username1,username2, user, scheme) {
     //alert("showGamesBlock()");
@@ -53,7 +5,7 @@ function showKacheln(ID, username1,username2, user, scheme) {
     if(username2 != "") {
         header.appendChild(document.createTextNode("Offenes Spiel"));
     } else {
-        header.appendChild(document.createTextNode("Neues Spiel"));
+        header.appendChild(document.createTextNode("Kategorie"));
     }
     game = document.createElement("div");
     if(username2 != "") {
@@ -67,7 +19,7 @@ function showKacheln(ID, username1,username2, user, scheme) {
     if(username2 != "") {
         text.appendChild(document.createTextNode(username2));
     } else {
-        text.appendChild(document.createTextNode("Gegner wird gesucht"));
+        text.appendChild(document.createTextNode("Zeitalter: 1750"));
     }
     //text.appendChild(username1);
 
@@ -110,7 +62,7 @@ function showKacheln(ID, username1,username2, user, scheme) {
             game.appendChild(form);
         }
 
-        document.getElementById("body").appendChild(game);
+        document.getElementById("startseite_button").appendChild(game);
     }
 }
 

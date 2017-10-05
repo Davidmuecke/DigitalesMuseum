@@ -1,0 +1,48 @@
+/*Divs die die Spiele darstellen*/
+.kachel{
+    background-color: white;
+    color: black;
+    border-color: red;
+    boder-width: 3px;
+    border-style: solid;
+    float: left;
+    width: 20%;
+    height: 155px;
+    box-sizing: border-box;
+    margin: 10px;
+    border-radius: 5%;
+    box-shadow: 5px 5px 20px rgba(5,5,5,0.3);
+}
+
+.kachel2{
+    background-color: white;
+    color: black;
+    border-color: red;
+    boder-width: 3px;
+    border-style: solid;
+    float: left;
+    width: 70%;
+    height: 155px;
+    box-sizing: border-box;
+    margin: 10px;
+    border-radius: 5%;
+    box-shadow: 5px 5px 20px rgba(5,5,5,0.3);
+}
+
+
+
+.kachelHeading {
+    color: black;
+    font-weight: bold;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.containerKacheln {
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.clear {
+    clear: both;
+}

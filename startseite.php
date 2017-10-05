@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Digitales Museum Startseite</title>
-    <link rel="stylesheet" href="/bootstrap-3.3.7-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="rahels_css.css">
+    <link rel="stylesheet" href="/bootstrap-3.3.7-dist/css/bootstrap.min.css">
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
     <script language="javascript" type="text/javascript" src="js/main.js"></script>
 </head>
@@ -14,6 +14,7 @@
 <div class="container">
 
     <div class="jumbotron">
+        <div class="clear"></div>
         <h1>Digitales Museum</h1>
     </div>
 
@@ -21,36 +22,7 @@
     require("kopfzeile_Uberpruefung.php");
     ?>
 
-    <script language="javascript">
-        <!--
-        var zug = -1;
-        var req = null;
-        var READY_STATE_COMPLETE = 4;
-        function sendRequest(url, params, HTTPMethod) {
-            if (!HTTPMethod) {
-                HTTPMethod = "GET";
-            }
-            if (window.XMLHttpRequest) {
-                req = new XMLHttpRequest();
-            }
-            if (req) {
-                req.onreadystatechange = onReadyState;
-                req.open(HTTPMethod, url, true);
-                req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-                req.send(params);
-            }
-        }
-        function onReadyState() {
-            var ready = req.readyState;
-            if (ready == READY_STATE_COMPLETE) {
-                if (req.responseText) {
-                    var refZiel = document.getElementById("startseite_button");
-                    refZiel.innerHTML = req.responseText;
-                }
-            }
-        }
-        -->
-    </script>
+
 </div>
 
 <div id="startseite_button">
@@ -79,9 +51,40 @@
                     </div>
                 </div>
 
+
             </div>
         </div>
     </div>
+
+    <div class="containerKacheln">
+        <div class="clear"></div>
+        <?php
+        $i = 0;
+        for($i = 0; $i < 4; $i++) {
+            ?>
+            <div class="kachel">
+                <h2 class="kachelHeading">Kategorie</h2>
+            </div>
+            <?php
+        }
+        ?>
+
+        <?php
+        $i = 0;
+        for($i = 0; $i < 4; $i++) {
+            ?>
+            <div class="kachel2">
+                <h2 class="kachelHeading">Persöhnlichkeit</h2>
+            </div>
+            <?php
+        }
+        ?>
+
+        <div class="clear"></div>
+    </div>
+
+
+
 </div>
 <?php
 require("kontaktzeile_unten.php");
