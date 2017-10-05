@@ -63,9 +63,9 @@ else {
         </div>
         <ul class="nav navbar-nav">
             <li class="active"><a href="html_startseite_test1.php">Home</a></li>
-            <li class="active"><a href="html_startseite_test1.php">Kategorien</a></li>
-            <li class="active"><a href="html_startseite_test1.php">Persönlichkeiten</a></li>
-            <li class="active"><a href="html_startseite_test1.php">Epochen</a></li>
+            <li class="active"><a href=#">Kategorien</a></li>
+            <li class="active"><a href="html_uebersicht_persoenlichkeiten_test1.php">Persönlichkeiten</a></li>
+            <li class="active"><a href="#">Epochen</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
                     <form class="navbar-form navbar-left">

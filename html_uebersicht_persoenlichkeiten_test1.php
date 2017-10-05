@@ -41,70 +41,39 @@
             var ready = req.readyState;
             if (ready == READY_STATE_COMPLETE) {
                 if (req.responseText) {
-                    var refZiel = document.getElementById("dasDrumHerum");
+                    var refZiel = document.getElementById("persoenlichkeiten_felder");
                     refZiel.innerHTML = req.responseText;
                 }
             }
-        }
-        function getGame(id) {
-            var strURL = "spielfeld.php";
-            params = "game=" + id;
-            if (zug != -1) {
-                params += "&column=" + zug;
-                zug = -1;
-            }
-            sendRequest(strURL, params, "POST");
-            window.setTimeout("getGame(" + id + ")", 500);
-        }
-        function getListNeuesSpiel() {
-            var strURL = "listOfGames.php";
-            params = "neu=game";
-            sendRequest(strURL, params, "POST");
-            window.setTimeout("getList()", 1500);
-        }
-        function getListBeitreten(id) {
-            var strURL = "listOfGames.php";
-            params = "beitreten=" + id;
-            sendRequest(strURL, params, "POST");
-            window.setTimeout("getList()", 1500);
-        }
-        function getList(params) {
-            var strURL = "listOfGames.php";
-            sendRequest(strURL, params, "POST");
-            window.setTimeout("getList()", 1500);
         }
         -->
     </script>
 </div>
 
-<div id="dasDrumHerum">
+<div id="persoenlichkeiten_felder">
     <div class="container">
         <?php
         date_default_timezone_set('Europe/Berlin');
         $current_date = date('d/m/Y == H:i:s');
-        echo $current_date;
-        if (isset($_REQUEST['game'])) {
-            $id = mysqli_real_escape_string($my_db, htmlentities($_REQUEST['game']));
-            echo "<script>getGame(" . $id . ");</script>";
-        }
-        else {
-            if (isset($_REQUEST['neu'])) {
-                $neu = mysqli_real_escape_string($my_db, htmlentities($_REQUEST['neu']));
-                echo "<script>getListNeuesSpiel();</script>";
-            }
-            elseif (isset($_REQUEST['beitreten'])) {
-                $beitreten = mysqli_real_escape_string($my_db, htmlentities($_REQUEST['beitreten']));
-                echo "<script>getListBeitreten(" . $beitreten . ");</script>";
-            }
-            else {
-                echo "<script>getList();</script>";
-            }
-        }
         ?>
+        <div class="row vertical-offset-100">
+            <div class="col-md-7 col-md-offset-2">
+                <div class="panel">
+                    <a href="#">
+                        <div class="panel-heading">
+                            Vorname Nachname
+                        </div>
+                    </a>
+                    <div class="panel-body">
+                        Geburtsdatum
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 <?php
-require("done/kontaktzeile_unten.php");
+require("kontaktzeile_unten.php");
 ?>
 </body>
 </html>
