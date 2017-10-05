@@ -3,9 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Digitales Museum Startseite</title>
-    <link rel="stylesheet" href="../../../../Users/illi/OneDrive%20-%20Hewlett%20Packard%20Enterprise/DHBW/3.%20Semester/Grundlagen_der_Datenbanken/Projekt_DB/GitHub_Projekt_Datenbanken/DigitalesMuseum/bootstrap-3.3.7-dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../../../Users/illi/OneDrive%20-%20Hewlett%20Packard%20Enterprise/DHBW/3.%20Semester/Grundlagen_der_Datenbanken/Projekt_DB/GitHub_Projekt_Datenbanken/DigitalesMuseum/rahels_css.css">
+    <link rel="stylesheet" href="/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="rahels_css.css">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+    <script language="javascript" type="text/javascript" src="js/main.js"></script>
 </head>
+
 
 <body>
 <div class="container">
@@ -60,7 +63,7 @@
     </div>
 </div>
 <?php
-require("done/kontaktzeile_unten.php");
+require("kontaktzeile_unten.php");
 ?>
 </body>
 </html>
