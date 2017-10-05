@@ -59,13 +59,16 @@
         <div class="row vertical-offset-100">
             <div class="col-md-7 col-md-offset-2">
                 <div class="panel">
-                    <a href="#">
-                        <div class="panel-heading">
-                            Vorname Nachname
-                        </div>
-                    </a>
+                    <div class="panel-heading">
+                        <a id="link_persoenlichkeit" href="#">
+                            <label id="name_persoenlichkeit">Vorname Nachname</label>
+                        </a>
+                        <label id="geburtsdatum"><span class="glyphicon glyphicon-asterisk"></span> Geburtsdatum</label>
+                        <label id="todestag"><span class="glyphicon glyphicon-plus"></span> Todestag</label>
+                    </div>
                     <div class="panel-body">
-                        Geburtsdatum
+
+                        <label id="kurzbeschreibung_persoenlichkeit">Kurzbeschreibung</label>
                     </div>
                 </div>
             </div>

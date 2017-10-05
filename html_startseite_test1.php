@@ -82,7 +82,6 @@
                             <div class="face-button">
                                 Epochen
                             </div>
-                        </div>
                     </div>
                 </a>
             </div>
@@ -93,4 +92,4 @@
 require("kontaktzeile_unten.php");
 ?>
 </body>
-</html>
+</html>>

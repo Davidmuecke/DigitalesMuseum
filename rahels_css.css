@@ -76,40 +76,57 @@ h1{
 
 
 h2{
-    color: #CC3300;
+    color: white;
     font-weight: bold;
 }
 
-#spiel_infos{
-    color: #663333;
-    text-align: center;
-}
 
-#user_info{
-    color: #CC3300;
-}
+
 
 h4{
     color: black;
     font-weight: bold;
 }
 
+
+
+
 .panel{
+    background-color: #663333;
+    color: white;
+    font-size: 30px;
+    align-content: center;
     border-color: black;
     border-width: 4px;
+
 }
 
 .panel-body{
     background-color: #663333;
     color: white;
-    font-size: 30px;
+    font-size: 20px;
     align-content: center;
 }
 
 
 .panel-heading{
-    background-color: #663333;
+    background-color: #be5959;
+    color: #FFCC99;
+    text-shadow: -1px 0 #663333, 0 1px #663333, 1px 0 #663333, 0 -1px #663333;
+    font-weight: bold;
+}
+
+#todestag,#geburtsdatum{
+    color: #FFCC99;
+    text-shadow: none;
+    font-weight: bold;
     color: white;
+    font-size: 14px;
+    align-content: center;
+}
+
+.face-button{
+    font-size: 30px;
 }
 
 
@@ -149,4 +166,9 @@ footer{
     color: black;
     border-color: black;
 }
+
+#link_persoenlichkeit{
+    color: #FFCC99;
+}
+
 

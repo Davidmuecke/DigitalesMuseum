@@ -1,6 +1,6 @@
 <?php
 session_start();
-require("done/datenbank.php");
+require("datenbank.php");
 
 //Ueberpruefung der Login-Daten
 if(!isset($_SESSION['login'])){
@@ -37,7 +37,7 @@ if(!isset($_SESSION['login'])){
 
 }
 else {
-        //der Benutzer war schon angemeldet
+    //der Benutzer war schon angemeldet
 }
 
 
@@ -68,13 +68,13 @@ else {
             <li class="active"><a href="#">Epochen</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-                    <form class="navbar-form navbar-left">
-                        <div class="form-group">
-                            <input type="text" id="suchen_feld" class="form-control" placeholder="Search">
-                        </div>
-                        <button id="suchen_button" type="submit" class="btn"><span class="glyphicon glyphicon-search"></span></button>
-                    </form>
-            <li class="active"><a href="done/logout.php"><span class="glyphicon glyphicon-log-out"></span>Abmelden</a></li>
+            <form class="navbar-form navbar-left">
+                <div class="form-group">
+                    <input type="text" id="suchen_feld" class="form-control" placeholder="Search">
+                </div>
+                <button id="suchen_button" type="submit" class="btn"><span class="glyphicon glyphicon-search"></span></button>
+            </form>
+            <li class="active"><a href="logout.php"><span class="glyphicon glyphicon-log-out"></span>Abmelden</a></li>
         </ul>
     </div>
 </nav>
