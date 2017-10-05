@@ -58,24 +58,27 @@
         ?>
         <div class="row vertical-offset-100">
             <div class="col-md-4 col-md-offset-4">
-                <div class="panel panel-default">
-                    <div class="panel-body" onclick="#">
-                        Kategorie
+                <a href="#">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            Kategorie
+                        </div>
                     </div>
-                </div>
-
-                <div class="panel panel-default" onclick="#">
-                    <div class="panel-body">
-                        Persönlichkeit
+                </a>
+                <a href="html_uebersicht_persoenlichkeiten_test1.php">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            Persönlichkeit
+                        </div>
                     </div>
-                </div>
-
-                <div class="panel panel-default" onclick="#">
-                    <div class="panel-body">
-                        Epoche
+                </a>
+                <a href="#">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            Epoche
+                        </div>
                     </div>
-                </div>
-
+                </a>
             </div>
         </div>
     </div>
