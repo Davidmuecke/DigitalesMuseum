@@ -13,7 +13,7 @@ if(!isset($_SESSION['login'])){
         $res = mysqli_query($my_db,$sql);
 
         if($res == false){
-            header("Location: done/login_fehler.php");
+            header("Location: login_fehler.php");
             die();
         }
         else{
@@ -30,7 +30,7 @@ if(!isset($_SESSION['login'])){
             session_regenerate_id();
             //--> Login erfolgreich
         } else {
-            header("Location: done/login_fehler.php");
+            header("Location: login_fehler.php");
             die();
         }
     }
@@ -51,7 +51,7 @@ else {
     <title>Digitales Museum Startseite</title>
     <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="rahels_css.css">
+    <link rel="stylesheet" href="css/style.css">
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
     <script language="javascript" type="text/javascript" src="js/kachelnLaden.js"></script>
@@ -78,7 +78,7 @@ else {
                         </div>
                         <button id="suchen_button" type="submit" class="btn"><span class="glyphicon glyphicon-search"></span></button>
                     </form>
-            <li class="active"><a href="done/logout.php"><span class="glyphicon glyphicon-log-out"></span>Abmelden</a></li>
+            <li class="active"><a href="logout.php"><span class="glyphicon glyphicon-log-out"></span>Abmelden</a></li>
         </ul>
     </div>
 </nav>
