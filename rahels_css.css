@@ -18,7 +18,7 @@ nav{
     background-color: dimgray;
     color: #663333;
     font-weight: bold;
-    padding: 0px;
+    padding: 0%;
 }
 
 .navbar-inverse{
@@ -169,6 +169,10 @@ footer{
 
 #link_persoenlichkeit{
     color: #FFCC99;
+}
+
+#link_persoenlichkeit:hover {
+    text-underline: none;
 }
 
 
