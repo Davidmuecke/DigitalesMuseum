@@ -1,4 +1,3 @@
-
 body{
     padding-top: 70px;
     padding-bottom: 100px;
@@ -167,11 +166,11 @@ footer{
     border-color: black;
 }
 
-#link_persoenlichkeit{
+#link_persoenlichkeit, #link_information {
     color: #FFCC99;
 }
 
-#link_persoenlichkeit:hover {
+#link_persoenlichkeit:hover, #link_information:hover {
     text-underline: none;
 }
 

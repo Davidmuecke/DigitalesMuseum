@@ -58,7 +58,7 @@
         $current_date = date('d/m/Y == H:i:s');
         ?>
         <div class="row vertical-offset-100">
-            <div class="col-md-6 col-md-offset-0">
+            <div class=" col-md-6 col-md-offset-0">
                 <div class="panel">
                     <div class="panel-heading">
                         <a id="link_persoenlichkeit" href="#">Vorname Nachname</a>
@@ -68,6 +68,21 @@
                     <div class="panel-body">
                         <div class="profile_image profile_image--1by1"
                              style="background-image:url(img_flower.jpg)"></div>
+                        <div class="characteristics">
+                            <label class="charac_label">Geboren am</label>
+                            <label class="charac_label">in</label>
+                            <label class="charac_label">Gestorben am</label>
+                            <label class="charac_label">in</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="information col-md-6 col-md-offset-0">
+                <div class="panel">
+                    <div class="panel-heading">
+                        <a id="link_information" href="#">Information Title</a>
+                    </div>
+                    <div class="panel-body">
                         <div class="characteristics">
                             <label class="charac_label">Geboren am</label>
                             <label class="charac_label">in</label>

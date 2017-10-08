@@ -54,5 +54,6 @@
     width: 100%;
 }
 
-.information {
+.panel {
+    min-height: 355px;
 }
