@@ -17,9 +17,7 @@ if(isset($_REQUEST['vorname'])&& isset($_REQUEST['nachname'])&&isset($_REQUEST['
     $nachname = mysqli_real_escape_string($my_db,htmlentities($_REQUEST['nachname']));
     $mail = mysqli_real_escape_string($my_db,htmlentities($_REQUEST['mail']));
     $userName = mysqli_real_escape_string($my_db,htmlentities($_REQUEST['userName']));
-    $userAlter = mysqli_real_escape_string($my_db,htmlentities($_REQUEST['userAlter']));
-    $geschlecht = mysqli_real_escape_string($my_db,htmlentities($_REQUEST['geschlecht']));
-    $challenge = password_hash($mail,PASSWORD_DEFAULT);
+
 
     //Abfrage, ob "userName" schon verhanden:
     /*$query = mysqli_query($my_db,"SELECT * FROM benutzer WHERE userName='".$userName."'");
@@ -43,28 +41,7 @@ if(isset($_REQUEST['vorname'])&& isset($_REQUEST['nachname'])&&isset($_REQUEST['
         $pas = password_hash($_REQUEST['password'],PASSWORD_DEFAULT);
 
 
-        /*if(isset($_FILES['bild_daten'])){
-            $bild_daten_tmpname = $_FILES['bild_daten']['tmp_name'];
-            $bild_daten_name = $_FILES['bild_daten']['name'];
-            $bild_daten_type = $_FILES['bild_daten']['type'];
-            $bild_daten_size = $_FILES['bild_daten']['size'];
-
-            if (!empty($bild_daten_tmpname)) {
-
-                if (( $bild_daten_type == "image/gif" ) || ($bild_daten_type == "image/pjpeg") || ($bild_daten_type == "image/jpeg") || ($bild_daten_type == "image/png")) {
-
-                    $dateihandle = fopen($bild_daten_tmpname, "r");
-                    $bild_daten = mysqli_real_escape_string($my_db, fread($dateihandle, filesize($bild_daten_tmpname)));
-                    $bild_name = mysqli_real_escape_string($my_db, $bild_daten_name);
-                    $bild_type = mysqli_real_escape_string($my_db, $bild_daten_type);
-                    $sql = "INSERT INTO bilder(bild_daten, bild_name, bild_typ, bild_size) VALUES('$bild_daten', '$bild_name', '$bild_type', $bild_daten_size)";
-                    $res = mysqli_query($my_db, $sql) or die(mysqli_error($my_db));
-
-                    $id = "SELECT ID FROM bilder WHERE bild_daten = '".$bild_daten."' AND bild_name = '".$bild_name."' AND bild_typ = '".$bild_type."' AND bild_size = '".$bild_daten_size."'";
-                    $res = mysqli_query($my_db, $id) or die (mysqli_error($my_db));
-                    $res = mysqli_fetch_assoc($res);
-                */
-        $sql= "INSERT INTO user (mail, password) VALUES('".$userName."','".$vorname."','".$nachname."','".$mail."','".$pas."','".$userAlter."','".$geschlecht."')";
+        $sql= "INSERT INTO user (mail, password, username, name, vorname) VALUES('".$mail."','".$pas."','".$userName."','".$nachname."','".$vorname."')";
 
         $res = mysqli_query($my_db, $sql) or die (mysqli_error($my_db));
         ?>
@@ -75,25 +52,7 @@ if(isset($_REQUEST['vorname'])&& isset($_REQUEST['nachname'])&&isset($_REQUEST['
                             </div>
         </div>;
         <?php
-        /*
-        }
-        else {
-            echo "<div class=\"alert alert-danger\">
-                    <strong>Ung&uumltiges Bildformat!</strong> Bitte gib ein g&uumltiges Bildfromat ein (gif, pjpeg, jpeg, png)!</a>.
-                  </div>";
-        }
-    }
-    else {
-        echo "<div class=\"alert alert-danger\">
-                <strong>Es wurde kein Bild &uumlbergeben</strong> Du musst ein Bild &uumlbergeben!</a>.
-              </div>";
-    }
-}
-else{
-    echo "<div class=\"alert alert-danger\">
-            <strong>Fehler!</strong> Bei deinem Bild ist ein Fehler aufgetreten!</a>.
-          </div>";
-}*/
+
     }
     else{
         echo "<div class=\"container\">    

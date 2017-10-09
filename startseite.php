@@ -69,6 +69,7 @@
             KachelCreationEngine::start("Kategorien", "kategorien_uebersicht");
             KachelCreationEngine::start("Persönlichkeiten", "persoenlichkeiten_uebersicht");
             KachelCreationEngine::start("Epochen", "epochen_uebersicht");
+
             ?>
         <div class="clear"></div>
     </div>

@@ -168,11 +168,11 @@ footer{
     border-color: black;
 }
 
-#link_persoenlichkeit, #link_information {
+#link_persoenlichkeit, #link_information, #link_kategorie, #link_epoche {
     color: #FFCC99;
 }
 
-#link_persoenlichkeit:hover, #link_information:hover {
+#link_persoenlichkeit:hover, #link_information:hover, #link_kategorie:hover, #link_epoche:hover {
     text-underline: none;
 }
 
@@ -252,7 +252,7 @@ footer{
 
 .kachel_persoenlichkeit{
     width: 48%;
-    height: 155px;
+    height: auto;
     border-color: black;
     background-color: #663333;
 }

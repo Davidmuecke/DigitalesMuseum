@@ -27,7 +27,7 @@ class DBController
         if (mysqli_connect_errno()) {
             echo "Failed to connect to MySQL: " . mysqli_connect_error();
         } else {
-            echo "DB success!";
+            //echo "DB success!";
         }
     }
 
@@ -44,6 +44,30 @@ class DBController
     }
 
     /**
+     * Gibt ein mehrdimendionales Array mit allen Persönlichkeiten zurück
+     * Zugriff nach dem Schema: $erg[0]["bezeichnung"]
+     * @return array|null
+     */
+    public function getPersoenlichkeiten()
+    {
+        $query = mysqli_query($this->DB, "SELECT * FROM persoenlichkeit");
+        $result = mysqli_fetch_all($query, MYSQLI_ASSOC);
+        return $result;
+    }
+
+    /**
+     * Gibt alle Persönlichkeiten einer Kategorie zurück
+     * @param katid ID der Kategorie
+     * @return array|null
+     */
+    public function getPersoenlichkeitenOfAKategorie($katid)
+    {
+        $query = mysqli_query($this->DB, "SELECT * FROM persoenlichkeit INNER JOIN persoenlichkeitkategorie ON (persoenlichkeit.persoenlichkeitID = persoenlichkeitkategorie.persoenlichkeitID) WHERE persoenlichkeitkategorie.kategorieID='" . $katid . "'");
+        $result = mysqli_fetch_all($query, MYSQLI_ASSOC);
+        return $result;
+    }
+
+    /**
      * Gibt ein mehrdimendionales Array mit allen Kategorien zurück
      * Zugriff nach dem Schema: $erg[0]["bezeichnung"]
      * @return array|null
@@ -54,6 +78,19 @@ class DBController
         $result = mysqli_fetch_all($query, MYSQLI_ASSOC);
         return $result;
     }
+
+    /**
+     * Gibt den Namen der Kategorie mit der übergeben ID zurück
+     * @param katid ID der Kategorie
+     * @return array|null
+     */
+    public function getKategorieByID($katid)
+    {
+        $query = mysqli_query($this->DB, "SELECT * FROM kategorie WHERE kategorieID='" . $katid . "'");
+        $result = mysqli_fetch_all($query, MYSQLI_ASSOC);
+        return $result;
+    }
+
 
     /**
      * Gibt die Kategorien sortiert nach der Anzahl der Verwendungen zurück
@@ -77,7 +114,7 @@ class DBController
     public function getKategorienByPersoenlichkeit($idPersoenlichkeit)
     {
         $idPersoenlichkeit = mysqli_escape_string($this->DB, $idPersoenlichkeit);
-        $query = mysqli_query($this->DB, "SELECT kategorie.kategorieID, bezeichnung FROM kategorie INNER JOIN persoenlichkeitkategorie ON (kategorie.kategorieID = persoenlichkeitkategorie.kategorieID) WHERE persoenlichkeitkategorie.persoenlichkeitID ='" . $idPersoenlichkeit . "' ");
+        $query = mysqli_query($this->DB, "SELECT * FROM kategorie INNER JOIN persoenlichkeitkategorie ON (kategorie.kategorieID = persoenlichkeitkategorie.kategorieID) WHERE persoenlichkeitkategorie.persoenlichkeitID ='" . $idPersoenlichkeit . "' ");
         $result = mysqli_fetch_all($query, MYSQLI_ASSOC);
         return $result;
     }
@@ -101,7 +138,7 @@ class DBController
     public function getLiteraturangabenByPersoenlichkeit($idPersoenlichkeit)
     {
         $idPersoenlichkeit = mysqli_escape_string($this->DB, $idPersoenlichkeit);
-        $query = mysqli_query($this->DB, "SELECT * FROM literaturangaben INNER JOIN persoenlichkeitliteraturangabe ON (literaturangaben.literaturangabenID = persoenlichkeitliteraturangaben.literaturangabenID) WHERE persoenlichkeitliteraturangaben.persoenlichkeitID ='" . $idPersoenlichkeit . "' ");
+        $query = mysqli_query($this->DB, "SELECT * FROM literaturangaben INNER JOIN persoenlichkeitliteraturangaben ON (literaturangaben.literaturangabenID = persoenlichkeitliteraturangaben.literaturangabenID) WHERE persoenlichkeitliteraturangaben.persoenlichkeitID ='" . $idPersoenlichkeit . "' ");
         $result = mysqli_fetch_all($query, MYSQLI_ASSOC);
         return $result;
     }
