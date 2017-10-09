@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Logout 4-Gewinnt</title>
-    <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="rahels_css.css">
+    <link rel="stylesheet" href="css/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body onload="mail();">
 <form>
@@ -14,13 +14,13 @@
     echo "<div class='container'>
          <div class='alert alert-info'>
         <strong>Info!</strong> Du wurdest abgemeldet! 
-                <a href='login_test2.php'>Wieder anmelden?</a>
+                <a href='login.php'>Wieder anmelden?</a>
               </div>
       </div>";
     ?>
 
     <?php
-    require("kontaktzeile_unten.php");
+    require("footer.php");
     ?>
 </form>
 </body>

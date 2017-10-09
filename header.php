@@ -49,8 +49,8 @@ else {
 <head>
     <meta charset="UTF-8">
     <title>Digitales Museum Startseite</title>
-    <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="rahels_css.css">
+    <link rel="stylesheet" href="css/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body onload="mail();">
@@ -62,9 +62,9 @@ else {
             <a class="navbar-brand" href="#" style="color: white">Digitales Museum</a>
         </div>
         <ul class="nav navbar-nav">
-            <li class="active"><a href="html_startseite_test1.php">Home</a></li>
+            <li class="active"><a href="startseite.php">Home</a></li>
             <li class="active"><a href=#">Kategorien</a></li>
-            <li class="active"><a href="html_uebersicht_persoenlichkeiten_test1.php">Persönlichkeiten</a></li>
+            <li class="active"><a href="persoenlichkeiten_uebersicht.php">Persönlichkeiten</a></li>
             <li class="active"><a href="#">Epochen</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">

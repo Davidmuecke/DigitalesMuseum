@@ -2,8 +2,8 @@
 
 $sqlhost = "localhost";
 $sqlhost = "127.0.0.1";
-$sqluser = "viergewinnt";
-$sqlpass = "viergewinnt";
+$sqluser = "david";
+$sqlpass = "david";
 $dbname  = "viergewinnt";
 
 $my_db = mysqli_connect($sqlhost, $sqluser, $sqlpass, $dbname) or die ("Datenbank-System nicht verfügbar");

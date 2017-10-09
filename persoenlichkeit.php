@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Digitales Museum Startseite</title>
-    <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="rahels_css.css">
-    <link rel="stylesheet" href="felix_css.css">
+    <link rel="stylesheet" href="css/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
@@ -16,7 +15,7 @@
          style="background-image:url(img_flower.jpg)"></div>
 
     <?php
-    require("kopfzeile_Uberpruefung.php");
+    require("header.php");
     ?>
 
     <script language="javascript">
@@ -61,7 +60,7 @@
             <div class=" col-md-6 col-md-offset-0">
                 <div class="panel">
                     <div class="panel-heading">
-                        <a id="link_persoenlichkeit" href="#">Vorname Nachname</a>
+                        <label id="link_persoenlichkeit">Vorname Nachname</label>
                         <label id="geburtsdatum"><span class="glyphicon glyphicon-asterisk"></span> Geburtsdatum</label>
                         <label id="todestag"><span class="glyphicon glyphicon-plus"></span> Todestag</label>
                     </div>
@@ -80,7 +79,7 @@
             <div class="information col-md-6 col-md-offset-0">
                 <div class="panel">
                     <div class="panel-heading">
-                        <a id="link_information" href="#">Information Title</a>
+                        <label id="link_information">Information Title</label>
                     </div>
                     <div class="panel-body">
                         <div class="characteristics">
@@ -97,7 +96,7 @@
 </div>
 
 <?php
-require("kontaktzeile_unten.php");
+require("footer.php");
 ?>
 
 </body>

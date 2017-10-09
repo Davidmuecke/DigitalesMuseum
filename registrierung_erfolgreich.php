@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Registrierung 4-Gewinnt</title>
-    <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="rahels_css.css">
+    <link rel="stylesheet" href="css/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
@@ -129,8 +129,8 @@ if(isset($_REQUEST['challenge'])){
                     <h2>F&uumlr dich wurde erfolgreich ein Account angelegt!</h2>
                  </div>
               </div>";
-        echo "<div class=\"alert alert-success\">
-                    <strong>Bestätigung war erfolgreich!</strong> Du kannst dich jetzt mit deinem Account <a href='login_test2.php'>anmelden</a>!
+        echo ">
+                    <strong>Bestätigung war erfolgreich!</strong> Du kannst dich jetzt mit deinem Account <a href='login.php'>anmelden</a>!
                   </div>
               </div>";
     }

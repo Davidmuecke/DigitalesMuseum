@@ -15,7 +15,7 @@
     </div>
 
     <?php
-    require("kopfzeile_Uberpruefung.php");
+    require("header.php");
     ?>
 
     <script language="javascript">
@@ -41,7 +41,7 @@
             var ready = req.readyState;
             if (ready == READY_STATE_COMPLETE) {
                 if (req.responseText) {
-                    var refZiel = document.getElementById("persoenlichkeiten_felder");
+                    var refZiel = document.getElementById("startseite_button");
                     refZiel.innerHTML = req.responseText;
                 }
             }
@@ -50,33 +50,46 @@
     </script>
 </div>
 
-<div id="persoenlichkeiten_felder">
+<div id="startseite_button">
     <div class="container">
         <?php
         date_default_timezone_set('Europe/Berlin');
         $current_date = date('d/m/Y == H:i:s');
         ?>
         <div class="row vertical-offset-100">
-            <div class="col-md-7 col-md-offset-2">
-                <div class="panel">
-                    <div class="panel-heading">
-                        <a id="link_persoenlichkeit" href="#">
-                            <label id="name_persoenlichkeit">Vorname Nachname</label>
-                        </a>
-                        <label id="geburtsdatum"><span class="glyphicon glyphicon-asterisk"></span> Geburtsdatum</label>
-                        <label id="todestag"><span class="glyphicon glyphicon-plus"></span> Todestag</label>
+            <div class="col-md-4 col-md-offset-4">
+                <a href="#">
+                    <div class="panel">
+                        <div class="panel-body">
+                            <div class="face-button">
+                                Kategorien
+                            </div>
+                        </div>
                     </div>
-                    <div class="panel-body">
-
-                        <label id="kurzbeschreibung_persoenlichkeit">Kurzbeschreibung</label>
+                </a>
+                <a href="persoenlichkeiten_uebersicht.php">
+                    <div class="panel">
+                        <div class="panel-body">
+                            <div class="face-button">
+                                Persönlichkeiten
+                            </div>
+                        </div>
                     </div>
-                </div>
+                </a>
+                <a href="#">
+                    <div class="panel">
+                        <div class="panel-body">
+                            <div class="face-button">
+                                Epochen
+                            </div>
+                    </div>
+                </a>
             </div>
         </div>
     </div>
 </div>
 <?php
-require("kontaktzeile_unten.php");
+require("footer.php");
 ?>
 </body>
-</html>
+</html>>

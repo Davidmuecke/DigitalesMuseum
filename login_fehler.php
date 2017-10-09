@@ -67,7 +67,7 @@
 </div>
 
 <?php
-require("kontaktzeile_unten.php");
+require("footer.php");
 ?>
 
 </body>
