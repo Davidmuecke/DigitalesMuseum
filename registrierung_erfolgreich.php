@@ -43,13 +43,14 @@ if(isset($_REQUEST['vorname'])&& isset($_REQUEST['nachname'])&&isset($_REQUEST['
         $sql= "INSERT INTO unbestaetigt (challenge, userName, vorname, nachname, mail, password) VALUES('".$challenge."','".$userName."','".$vorname."','".$nachname."','".$mail."','".$pas."')";
 
         $res = mysqli_query($my_db, $sql) or die (mysqli_error($my_db));
-        echo "<div class='container'>
-                            <div class=\"jumbotron\">
+        ?>
+        <div class="container">
+                            <div class="jumbotron">
                                 <h2>Vielen Dank für deine Registrierung! </h2>
                                 <h2>F&uumlr dich wurde erfolgreich ein Account angelegt!</h2>
                             </div>
-                         </div>";
-
+                         </div>;
+        <?php
         echo "<div class='container'>
                              <div class=\"alert alert-info\">
                                 <strong>Info!</strong> Bitte klicke auf den folgenden Link, um deinen Account zu <a href='registrierung_erfolgreich.php?challenge=".$challenge."'>bestätigen</a>.

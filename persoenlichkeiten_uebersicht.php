@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Persönlichkeiten</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="/css/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap-3.3.7-dist/css/bootstrap.min.css">
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
     <script language="javascript" type="text/javascript" src="js/main.js"></script>
 </head>
