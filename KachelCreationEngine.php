@@ -21,7 +21,7 @@ class KachelCreationEngine {
     // Erstellt eine Persönlichkeitskachel
     function persoenlichkeit() {
         ?>
-        <div class="kachel_persoenlichkeit" onclick="location.replace('persoenlichkeiten_uebersicht.php')">
+        <div class="kachel_persoenlichkeit" onclick="location.replace('persoenlichkeit.php')">
             <div class="panel-heading">
                 <a id="link_persoenlichkeit" href="#">
                     <label id="name_persoenlichkeit">Vorname Nachname</label>

@@ -98,6 +98,7 @@ h4{
     align-content: center;
     border-color: black;
     border-width: 4px;
+    height: auto;
 
 }
 
@@ -232,7 +233,7 @@ footer{
 }
 
 .panel {
-    min-height: 355px;
+    //min-height: 355px;
 }
 
 .kachel_kategorie, .kachel_persoenlichkeit, .kachel_start{
