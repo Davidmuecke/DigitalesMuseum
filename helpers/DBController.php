@@ -10,7 +10,7 @@
  */
 class DBController
 {
-    public $DB;
+    private $DB;
 
     /*
      * Konstruktor mit PWD Daten
@@ -26,8 +26,6 @@ class DBController
         $this->DB = mysqli_connect($sqlhost, $sqluser, $sqlpass, $dbname) or die ("Datenbank-System nicht verfügbar");
         if (mysqli_connect_errno()) {
             echo "Failed to connect to MySQL: " . mysqli_connect_error();
-        } else {
-            echo "DB success!";
         }
     }
 

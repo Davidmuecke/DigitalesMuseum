@@ -6,7 +6,7 @@
  * Time: 16:34
  */
 
-//require("DBController.php");
+require("helpers/DBController.php");
 //Mit dieser Engine werden verschiedenste Kacheln erstellt und in die Webseite eingebunden
 class KachelCreationEngine {
 
@@ -14,7 +14,8 @@ class KachelCreationEngine {
 
     // Erstellt eine Kategorie kachel
     function kategorie($title) {
-        $kategorien = DBController::getKategorienByUsage();
+        $Controller = new DBController();
+        $kategorien = $Controller->getKategorienByUsage();
 
         ?>
             <div class="kachel_kategorie">
