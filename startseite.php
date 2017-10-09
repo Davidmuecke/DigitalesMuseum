@@ -37,9 +37,9 @@
     <div class="containerKachelnStart">
         <div class="clear"></div>
         <?php
-            KachelCreationEngine::start("Kategorien", "kategorien");
-            KachelCreationEngine::start("Persönlichkeiten", "persoenlichkeiten");
-            KachelCreationEngine::start("Epochen", "epochen");
+            KachelCreationEngine::start("Kategorien", "kategorien_uebersicht");
+            KachelCreationEngine::start("Persönlichkeiten", "persoenlichkeiten_uebersicht");
+            KachelCreationEngine::start("Epochen", "epochen_uebersicht");
             ?>
         <div class="clear"></div>
     </div>
