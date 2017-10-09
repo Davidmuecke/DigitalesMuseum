@@ -36,14 +36,8 @@
     <div class="containerKachelnKategorien">
         <div class="clear"></div>
         <?php
-        $dbCon = new DBController();
-        $kategorien = $dbCon->getKategorien();
-        for ($i = 0; $i < sizeof($kategorien); $i++) {
-            KachelCreationEngine::kategorie($kategorien[$i]["bezeichnung"]);
-        }
-
-        KachelCreationEngine::kategorie();
-            ?>
+              KachelCreationEngine::kategorie();
+        ?>
         <div class="clear"></div>
     </div>
 
