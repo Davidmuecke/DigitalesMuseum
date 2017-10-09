@@ -10,7 +10,7 @@
  */
 class DBController
 {
-    public $DB;
+    private $DB;
 
     /*
      * Konstruktor mit PWD Daten
@@ -39,6 +39,17 @@ class DBController
     {
         $id = mysqli_escape_string($this->DB, $id);
         $query = mysqli_query($this->DB, "SELECT * FROM persoenlichkeit WHERE persoenlichkeitID='" . $id . "'");
+        $result = mysqli_fetch_assoc($query);
+        return $result;
+    }
+
+    /**
+     * Liste der Persoenlichkeiten sortiert nach Name,Vorname
+     * @return array|null mehrdimensionales Array
+     */
+    public function getPersoenlichkeitenSorted()
+    {
+        $query = mysqli_query($this->DB, "SELECT * FROM persoenlichkeit ORDER BY name, vorname DESC");
         $result = mysqli_fetch_assoc($query);
         return $result;
     }

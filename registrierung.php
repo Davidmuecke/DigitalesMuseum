@@ -65,20 +65,6 @@
                                required>
                     </div>
 
-                    <div class="form-group">
-                        <label>Alter:</label>
-                        <input type="text" placeholder="Alter"
-                               name="userAlter" class="form-control"
-                               required>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Geschlecht:</label><br/>
-                        <input type="radio" checked="checked"
-                               name="geschlecht" value="weiblich"> weiblich<br/>
-                        <input type="radio"
-                               name="geschlecht" value="männlich"> m&aumlnnlich<br/><br/>
-                    </div>
 
                     <!--<div class="form-group">
                         <label>Profilbild:</label>

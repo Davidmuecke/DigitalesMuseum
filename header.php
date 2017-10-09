@@ -69,6 +69,8 @@ else {
             <li class="active"><a href="kategorien_uebersicht.php">Kategorien</a></li>
             <li class="active"><a href="persoenlichkeiten_uebersicht.php">Persönlichkeiten</a></li>
             <li class="active"><a href="epochen_uebersicht.php">Epochen</a></li>
+            <li class="active"> <label id="unsichtbar">a</label>
+            <li class="active"><a href="persoenlichkeit_anlegen.php">Neue Persönlichkeit anlegen</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
                     <form class="navbar-form navbar-left">

@@ -1,7 +1,6 @@
 <?php
 
 require("helpers/DBController.php");
-
 //Mit dieser Engine werden verschiedenste Kacheln erstellt und in die Webseite eingebunden
 class KachelCreationEngine {
 

@@ -2,7 +2,7 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <title>Persönlichkeiten</title>
+    <title>Kategorien</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/bootstrap-3.3.7-dist/css/bootstrap.min.css">
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
@@ -36,6 +36,12 @@
     <div class="containerKachelnKategorien">
         <div class="clear"></div>
         <?php
+        $dbCon = new DBController();
+        $kategorien = $dbCon->getKategorien();
+        for ($i = 0; $i < sizeof($kategorien); $i++) {
+            KachelCreationEngine::kategorie($kategorien[$i]["bezeichnung"]);
+        }
+
         KachelCreationEngine::kategorie();
             ?>
         <div class="clear"></div>
