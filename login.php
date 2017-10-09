@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Login Digitales Museum</title>
-    <link rel="stylesheet" href="../../../../Users/illi/OneDrive%20-%20Hewlett%20Packard%20Enterprise/DHBW/3.%20Semester/Grundlagen_der_Datenbanken/Projekt_DB/GitHub_Projekt_Datenbanken/DigitalesMuseum/bootstrap-3.3.7-dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../../../Users/illi/OneDrive%20-%20Hewlett%20Packard%20Enterprise/DHBW/3.%20Semester/Grundlagen_der_Datenbanken/Projekt_DB/GitHub_Projekt_Datenbanken/DigitalesMuseum/rahels_css.css">
+    <link rel="stylesheet" href="/css/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body onload="mail();">
@@ -27,7 +27,7 @@
             <div class="col-md-4 col-md-offset-4">
                 <h1>Anmeldung</h1>
 
-                <form accept-charset="UTF-8" role="form" action="lobby.php" method="post" enctype='multipart/form-data'>
+                <form accept-charset="UTF-8" role="form" action="startseite.php" method="post" enctype='multipart/form-data'>
                     <fieldset>
                     <div class="form-group">
                         <label>E-Mail oder Benutzername:</label>
@@ -60,7 +60,7 @@
 </div>
 
 <?php
-require("done/kontaktzeile_unten.php");
+require("footer.php");
 ?>
 
 </body>

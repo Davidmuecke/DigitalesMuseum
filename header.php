@@ -1,6 +1,6 @@
 <?php
 session_start();
-require("done/datenbank.php");
+require("datenbank.php");
 
 //Ueberpruefung der Login-Daten
 if(!isset($_SESSION['login'])){
@@ -13,7 +13,7 @@ if(!isset($_SESSION['login'])){
         $res = mysqli_query($my_db,$sql);
 
         if($res == false){
-            header("Location: done/login_fehler.php");
+            header("Location: login_fehler.php");
             die();
         }
         else{
@@ -30,14 +30,14 @@ if(!isset($_SESSION['login'])){
             session_regenerate_id();
             //--> Login erfolgreich
         } else {
-            header("Location: done/login_fehler.php");
+            header("Location: login_fehler.php");
             die();
         }
     }
 
 }
 else {
-        //der Benutzer war schon angemeldet
+    //der Benutzer war schon angemeldet
 }
 
 
@@ -49,8 +49,11 @@ else {
 <head>
     <meta charset="UTF-8">
     <title>Digitales Museum Startseite</title>
-    <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="rahels_css.css">
+    <link rel="stylesheet" href="css/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+    <script language="javascript" type="text/javascript" src="js/kachelnLaden.js"></script>
 </head>
 
 <body onload="mail();">
@@ -62,10 +65,10 @@ else {
             <a class="navbar-brand" href="#" style="color: white">Digitales Museum</a>
         </div>
         <ul class="nav navbar-nav">
-            <li class="active"><a href="html_startseite_test1.php">Home</a></li>
-            <li class="active"><a href="html_startseite_test1.php">Kategorien</a></li>
-            <li class="active"><a href="html_startseite_test1.php">Persönlichkeiten</a></li>
-            <li class="active"><a href="html_startseite_test1.php">Epochen</a></li>
+            <li class="active"><a href="startseite.php">Home</a></li>
+            <li class="active"><a href="kategorien_uebersicht.php">Kategorien</a></li>
+            <li class="active"><a href="persoenlichkeiten_uebersicht.php">Persönlichkeiten</a></li>
+            <li class="active"><a href="epochen_uebersicht.php">Epochen</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
                     <form class="navbar-form navbar-left">
@@ -74,11 +77,11 @@ else {
                         </div>
                         <button id="suchen_button" type="submit" class="btn"><span class="glyphicon glyphicon-search"></span></button>
                     </form>
-            <li class="active"><a href="done/logout.php"><span class="glyphicon glyphicon-log-out"></span>Abmelden</a></li>
+            <li class="active"><a href="logout.php"><span class="glyphicon glyphicon-log-out"></span>Abmelden</a></li>
         </ul>
     </div>
 </nav>
-
+<div class="clear"></div>
 
 
 

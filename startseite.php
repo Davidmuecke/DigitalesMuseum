@@ -3,19 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <title>Digitales Museum Startseite</title>
-    <link rel="stylesheet" href="../../../../Users/illi/OneDrive%20-%20Hewlett%20Packard%20Enterprise/DHBW/3.%20Semester/Grundlagen_der_Datenbanken/Projekt_DB/GitHub_Projekt_Datenbanken/DigitalesMuseum/bootstrap-3.3.7-dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../../../Users/illi/OneDrive%20-%20Hewlett%20Packard%20Enterprise/DHBW/3.%20Semester/Grundlagen_der_Datenbanken/Projekt_DB/GitHub_Projekt_Datenbanken/DigitalesMuseum/rahels_css.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="/css/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+    <script language="javascript" type="text/javascript" src="js/main.js"></script>
 </head>
+
 
 <body>
 <div class="container">
 
     <div class="jumbotron">
+        <div class="clear"></div>
         <h1>Digitales Museum</h1>
     </div>
 
     <?php
-    require("kopfzeile_Uberpruefung.php");
+    require("header.php");
+    require("KachelCreationEngine.php");
     ?>
 
     <script language="javascript">
@@ -41,7 +46,7 @@
             var ready = req.readyState;
             if (ready == READY_STATE_COMPLETE) {
                 if (req.responseText) {
-                    var refZiel = document.getElementById("dasDrumHerum");
+                    var refZiel = document.getElementById("startseite_button");
                     refZiel.innerHTML = req.responseText;
                 }
             }
@@ -50,17 +55,27 @@
     </script>
 </div>
 
-<div id="dasDrumHerum">
+<div id="startseite_button">
     <div class="container">
         <?php
         date_default_timezone_set('Europe/Berlin');
         $current_date = date('d/m/Y == H:i:s');
-        echo $current_date;
         ?>
     </div>
+
+    <div class="containerKachelnStart">
+        <div class="clear"></div>
+        <?php
+            KachelCreationEngine::start("Kategorien", "kategorien_uebersicht");
+            KachelCreationEngine::start("Persönlichkeiten", "persoenlichkeiten_uebersicht");
+            KachelCreationEngine::start("Epochen", "epochen_uebersicht");
+            ?>
+        <div class="clear"></div>
+    </div>
+
 </div>
 <?php
-require("done/kontaktzeile_unten.php");
+require("footer.php");
 ?>
 </body>
 </html>

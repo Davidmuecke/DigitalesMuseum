@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Registrierung 4-Gewinnt</title>
-    <link rel="stylesheet" href="../../../../Users/illi/OneDrive%20-%20Hewlett%20Packard%20Enterprise/DHBW/3.%20Semester/Grundlagen_der_Datenbanken/Projekt_DB/GitHub_Projekt_Datenbanken/DigitalesMuseum/bootstrap-3.3.7-dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../../../Users/illi/OneDrive%20-%20Hewlett%20Packard%20Enterprise/DHBW/3.%20Semester/Grundlagen_der_Datenbanken/Projekt_DB/GitHub_Projekt_Datenbanken/DigitalesMuseum/rahels_css.css">
+    <link rel="stylesheet" href="/css/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body onload="mail();">
@@ -22,76 +22,76 @@
 
                 <form accept-charset="UTF-8" role="form" action="registrierung_erfolgreich.php" method="post" enctype='multipart/form-data'>
 
-                        <div class="form-group">
-                            <label>Vorname:</label>
-                            <input type="text" placeholder="Vorname"
-                                   name="vorname" class="form-control"
-                                   required>
-                        </div>
+                    <div class="form-group">
+                        <label>Vorname:</label>
+                        <input type="text" placeholder="Vorname"
+                               name="vorname" class="form-control"
+                               required>
+                    </div>
 
-                        <div class="form-group">
-                            <label>Nachname:</label>
-                            <input type="text" placeholder="Nachname"
-                                   name="nachname" class="form-control"
-                                   required>
-                        </div>
+                    <div class="form-group">
+                        <label>Nachname:</label>
+                        <input type="text" placeholder="Nachname"
+                               name="nachname" class="form-control"
+                               required>
+                    </div>
 
-                        <div class="form-group">
-                            <label for="mail">E-Mail:</label>
-                            <input type="text" placeholder="E-Mailadresse"
-                                   name="mail" class="form-control"
-                                   pattern="[a-zA-Z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*"
-                                   required>
-                        </div>
+                    <div class="form-group">
+                        <label for="mail">E-Mail:</label>
+                        <input type="text" placeholder="E-Mailadresse"
+                               name="mail" class="form-control"
+                               pattern="[a-zA-Z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*"
+                               required>
+                    </div>
 
-                        <div class="form-group">
-                            <label>Benutzername:</label>
-                            <input type="text" placeholder="Benutzername"
-                                   name="userName" class="form-control"
-                                   required>
-                        </div>
+                    <div class="form-group">
+                        <label>Benutzername:</label>
+                        <input type="text" placeholder="Benutzername"
+                               name="userName" class="form-control"
+                               required>
+                    </div>
 
-                        <div class="form-group">
-                            <label>Passwort:</label>
-                            <input type="password" placeholder="Passwort"
-                                   name="password" class="form-control"
-                                   required>
-                        </div>
+                    <div class="form-group">
+                        <label>Passwort:</label>
+                        <input type="password" placeholder="Passwort"
+                               name="password" class="form-control"
+                               required>
+                    </div>
 
-                        <div class="form-group">
-                            <label>Passwort wiederholen:</label>
-                            <input type="password" placeholder="Passwort wiederholen"
-                                   name="passwordWdh" class="form-control"
-                                   required>
-                        </div>
+                    <div class="form-group">
+                        <label>Passwort wiederholen:</label>
+                        <input type="password" placeholder="Passwort wiederholen"
+                               name="passwordWdh" class="form-control"
+                               required>
+                    </div>
 
-                        <div class="form-group">
-                            <label>Alter:</label>
-                            <input type="text" placeholder="Alter"
-                                   name="userAlter" class="form-control"
-                            required>
-                        </div>
+                    <div class="form-group">
+                        <label>Alter:</label>
+                        <input type="text" placeholder="Alter"
+                               name="userAlter" class="form-control"
+                               required>
+                    </div>
 
-                        <div class="form-group">
-                            <label>Geschlecht:</label><br/>
-                            <input type="radio" checked="checked"
-                                   name="geschlecht" value="weiblich"> weiblich<br/>
-                            <input type="radio"
-                                   name="geschlecht" value="männlich"> m&aumlnnlich<br/><br/>
-                        </div>
+                    <div class="form-group">
+                        <label>Geschlecht:</label><br/>
+                        <input type="radio" checked="checked"
+                               name="geschlecht" value="weiblich"> weiblich<br/>
+                        <input type="radio"
+                               name="geschlecht" value="männlich"> m&aumlnnlich<br/><br/>
+                    </div>
 
-                        <!--<div class="form-group">
-                            <label>Profilbild:</label>
-                            <input type="file" name="bild_dateien">
-                        </div> -->
+                    <!--<div class="form-group">
+                        <label>Profilbild:</label>
+                        <input type="file" name="bild_dateien">
+                    </div> -->
 
-                        <button type="submit" class="btn">Account anlegen</button>
+                    <button type="submit" class="btn">Account anlegen</button>
 
-                        <div class="small register">
-                            <p>
+                    <div class="small register">
+                        <p>
                             Du hast bereits einen Account? <a href="../../../../Users/illi/OneDrive%20-%20Hewlett%20Packard%20Enterprise/DHBW/3.%20Semester/Grundlagen_der_Datenbanken/Projekt_DB/GitHub_Projekt_Datenbanken/DigitalesMuseum/bootstrap-3.3.7-dist/login_test2.php">Anmelden</a>
-                            </p>
-                        </div>
+                        </p>
+                    </div>
 
                 </form>
             </div>
@@ -100,7 +100,7 @@
 </div>
 
 <?php
-require("done/kontaktzeile_unten.php");
+require("footer.php");
 ?>
 </body>
 </html>

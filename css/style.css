@@ -1,0 +1,294 @@
+body{
+    padding-top: 70px;
+    padding-bottom: 100px;
+    background-color: #FFCC99;
+}
+
+input[type=text], input[type=password]{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0px;
+    display: inline-block;
+    border: 1px solid;
+    border-color: black;
+}
+
+nav{
+    background-color: dimgray;
+    color: #663333;
+    font-weight: bold;
+    padding: 0%;
+}
+
+.navbar-inverse{
+    background-color: dimgray;
+    color: #663333;
+    border-color: black;
+}
+
+.navbar-inverse .navbar-nav> .active>a {
+    background-color: #663333;
+    color: white;
+}
+
+.navbar-inverse .navbar-nav> li>a {
+    background-color: #663333;
+    color: white;
+}
+
+.navbar-inverse .navbar-nav>.active>a>span{
+    color: #FFCC99;
+}
+
+
+
+.btn{
+    background-color: #be5959;
+    color: #FFCC99;
+    text-shadow: -1px 0 #663333, 0 1px #663333, 1px 0 #663333, 0 -1px #663333;
+    font-weight: bold;
+}
+
+#suchen_button{
+    background-color: #663333;
+    color: #FFCC99;
+    text-shadow: -1px 0 #663333, 0 1px #663333, 1px 0 #663333, 0 -1px #663333;
+    font-weight: bold;
+}
+
+#suchen_feld{
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+
+#kontakt{
+    color: #663333;
+    margin-left: 10px;
+}
+
+h1{
+    color: #663333;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+
+h2{
+    color: white;
+    font-weight: bold;
+
+}
+
+
+
+
+h4{
+    color: black;
+    font-weight: bold;
+}
+
+
+
+
+.panel{
+    background-color: #663333;
+    color: white;
+    font-size: 30px;
+    align-content: center;
+    border-color: black;
+    border-width: 4px;
+    height: auto;
+
+}
+
+.panel-body{
+    background-color: #663333;
+    color: white;
+    font-size: 20px;
+    align-content: center;
+}
+
+
+.panel-heading{
+    background-color: #be5959;
+    color: #FFCC99;
+    text-shadow: -1px 0 #663333, 0 1px #663333, 1px 0 #663333, 0 -1px #663333;
+    font-weight: bold;
+}
+
+#todestag,#geburtsdatum{
+    color: #FFCC99;
+    text-shadow: none;
+    font-weight: bold;
+    color: white;
+    font-size: 14px;
+    align-content: center;
+}
+
+.face-button{
+    font-size: 30px;
+}
+
+
+.jumbotron{
+    font-size: medium;
+    background-color: #663333;
+    color: white;
+}
+
+p {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+footer{
+    margin-top: 150px;
+}
+
+.alert{
+    margin-bottom: 20px;
+}
+
+.alert-info{
+    background-color: #663333;
+    color: white;
+    border-color: black;
+}
+
+.alert-danger{
+    background-color: #CC3300;
+    color: white;
+    border-color: black;
+}
+
+.alert-success{
+    background-color: #be5959;
+    color: black;
+    border-color: black;
+}
+
+#link_persoenlichkeit, #link_information {
+    color: #FFCC99;
+}
+
+#link_persoenlichkeit:hover, #link_information:hover {
+    text-underline: none;
+}
+
+.title_image {
+    display: block;
+    overflow: hidden;
+    position: relative;
+    border: 4px solid;
+    border-color: black;
+
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0 auto 1em;
+    max-width: 100%;
+}
+
+.title_image:before {
+    content: "";
+    display: block;
+    width: 100%;
+}
+
+.title_image--32by9:before {
+    padding-bottom: 28.125%;
+}
+
+.profile_image {
+    float: left;
+    overflow: hidden;
+    position: relative;
+    border: 2px solid;
+    border-color: black;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 50%;
+}
+
+.profile_image:before {
+    display: block;
+    content: "";
+    width: 100%;
+}
+
+.profile_image--1by1 {
+    padding-bottom: 50%;
+}
+
+.characteristics {
+    float: left;
+    margin: 2%;
+    max-width: 45%;
+}
+
+.charac_label {
+    width: 100%;
+}
+
+.panel {
+    //min-height: 355px;
+}
+
+.kachel_kategorie, .kachel_persoenlichkeit, .kachel_start{
+    background-color: white;
+    border-color: red;
+    boder-width: 3px;
+    border-style: solid;
+    float: left;
+    width: 20%;
+    height: 155px;
+    box-sizing: border-box;
+    margin: 10px;
+    border-radius: 1%;
+    box-shadow: 5px 5px 20px rgba(5,5,5,0.3);
+}
+
+.kachel_persoenlichkeit{
+    width: 48%;
+    height: 155px;
+    border-color: black;
+    background-color: #663333;
+}
+
+.kachel_kategorie{
+    width: 48%;
+    height: 155px;
+    border-color: black;
+    background-color: #663333;
+    color: white;
+}
+
+.kachel_persoenlichkeit:hover {
+    background-color: #663333;
+}
+
+
+
+.kachelHeading {
+    color: black;
+    font-weight: bold;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.containerKachelnStart {
+    margin-left: 37%;
+    margin-right: 37%;
+}
+
+.containerKachelnPersoenlichkeit, .containerKachelnKategorien{
+    margin-left: 9%;
+    margin-right: 9%;
+}
+
+
+.clear {
+    clear: both;
+}

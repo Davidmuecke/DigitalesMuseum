@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Registrierung 4-Gewinnt</title>
-    <link rel="stylesheet" href="../../../../Users/illi/OneDrive%20-%20Hewlett%20Packard%20Enterprise/DHBW/3.%20Semester/Grundlagen_der_Datenbanken/Projekt_DB/GitHub_Projekt_Datenbanken/DigitalesMuseum/bootstrap-3.3.7-dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../../../Users/illi/OneDrive%20-%20Hewlett%20Packard%20Enterprise/DHBW/3.%20Semester/Grundlagen_der_Datenbanken/Projekt_DB/GitHub_Projekt_Datenbanken/DigitalesMuseum/rahels_css.css">
+    <link rel="stylesheet" href="css/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 <?php
-require("done/datenbank.php");
+require("datenbank.php");
 
 if(isset($_REQUEST['vorname'])&& isset($_REQUEST['nachname'])&&isset($_REQUEST['mail']) && isset($_REQUEST['userName']) && isset($_REQUEST['password']) && isset($_REQUEST["passwordWdh"]) && isset($_REQUEST['userAlter']) && isset($_REQUEST['geschlecht'])){
 
@@ -64,40 +64,40 @@ if(isset($_REQUEST['vorname'])&& isset($_REQUEST['nachname'])&&isset($_REQUEST['
                     $res = mysqli_query($my_db, $id) or die (mysqli_error($my_db));
                     $res = mysqli_fetch_assoc($res);
                 */
-                    $sql= "INSERT INTO unbestaetigt (challenge, userName, vorname, nachname, mail, password, userAlter, geschlecht/*, bild*/) VALUES('".$challenge."','".$userName."','".$vorname."','".$nachname."','".$mail."','".$pas."','".$userAlter."','".$geschlecht."')";
+        $sql= "INSERT INTO unbestaetigt (challenge, userName, vorname, nachname, mail, password, userAlter, geschlecht/*, bild*/) VALUES('".$challenge."','".$userName."','".$vorname."','".$nachname."','".$mail."','".$pas."','".$userAlter."','".$geschlecht."')";
 
-                    $res = mysqli_query($my_db, $sql) or die (mysqli_error($my_db));
-                    echo "<div class='container'>
+        $res = mysqli_query($my_db, $sql) or die (mysqli_error($my_db));
+        echo "<div class='container'>
                             <div class=\"jumbotron\">
                                 <h2>Vielen Dank für deine Registrierung! </h2>
                                 <h2>F&uumlr dich wurde erfolgreich ein Account angelegt!</h2>
                             </div>
                          </div>";
 
-                    echo "<div class='container'>
+        echo "<div class='container'>
                              <div class=\"alert alert-info\">
                                 <strong>Info!</strong> Bitte klicke auf den folgenden Link, um deinen Account zu <a href='registrierung_erfolgreich.php?challenge=".$challenge."'>bestätigen</a>.
                              </div>
                           </div>";
-                /*
-                }
-                else {
-                    echo "<div class=\"alert alert-danger\">
-                            <strong>Ung&uumltiges Bildformat!</strong> Bitte gib ein g&uumltiges Bildfromat ein (gif, pjpeg, jpeg, png)!</a>.
-                          </div>";
-                }
-            }
-            else {
-                echo "<div class=\"alert alert-danger\">
-                        <strong>Es wurde kein Bild &uumlbergeben</strong> Du musst ein Bild &uumlbergeben!</a>.
-                      </div>";
-            }
+        /*
         }
-        else{
+        else {
             echo "<div class=\"alert alert-danger\">
-                    <strong>Fehler!</strong> Bei deinem Bild ist ein Fehler aufgetreten!</a>.
+                    <strong>Ung&uumltiges Bildformat!</strong> Bitte gib ein g&uumltiges Bildfromat ein (gif, pjpeg, jpeg, png)!</a>.
                   </div>";
-        }*/
+        }
+    }
+    else {
+        echo "<div class=\"alert alert-danger\">
+                <strong>Es wurde kein Bild &uumlbergeben</strong> Du musst ein Bild &uumlbergeben!</a>.
+              </div>";
+    }
+}
+else{
+    echo "<div class=\"alert alert-danger\">
+            <strong>Fehler!</strong> Bei deinem Bild ist ein Fehler aufgetreten!</a>.
+          </div>";
+}*/
     }
     else{
         echo "<div class='container'>    
@@ -130,7 +130,7 @@ if(isset($_REQUEST['challenge'])){
                  </div>
               </div>";
         echo ">
-                    <strong>Bestätigung war erfolgreich!</strong> Du kannst dich jetzt mit deinem Account <a href='../../../../Users/illi/OneDrive%20-%20Hewlett%20Packard%20Enterprise/DHBW/3.%20Semester/Grundlagen_der_Datenbanken/Projekt_DB/GitHub_Projekt_Datenbanken/DigitalesMuseum/bootstrap-3.3.7-dist/login_test2.php'>anmelden</a>!
+                    <strong>Bestätigung war erfolgreich!</strong> Du kannst dich jetzt mit deinem Account <a href='login.php'>anmelden</a>!
                   </div>
               </div>";
     }
