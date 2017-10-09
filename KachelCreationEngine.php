@@ -15,11 +15,15 @@ class KachelCreationEngine {
         $title = "Titel";
         for($i = 0; $i < $anz; $i++) {
             $title = $kategorien[$i]["bezeichnung"];
-
+            $id = $kategorien[$i]["kategorieID"];
             ?>
-            <div class="kachel_kategorie">
-                <h2 class="kachelHeading"><?php echo $title?></h2>
-            </div>
+                <div class="kachel_kategorie" onclick="location.replace('persoenlichkeiten_uebersicht.php?katid=' + <?php echo $id ?>)">
+                    <div class="panel-body">
+                        <div class="characteristics">
+                            <label id="kategorie"><?php echo $title?></label>
+                        </div>
+                    </div>
+                </div>
             <?php
         }
     }
