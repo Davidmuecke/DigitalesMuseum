@@ -6,7 +6,7 @@
  * Time: 13:28
  */
 ?>
-<link rel="stylesheet" href="/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="/css/bootstrap-3.3.7-dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="css/style.css">
 <footer class="footer navbar-fixed-bottom">
     <div id="kontakt">

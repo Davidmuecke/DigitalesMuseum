@@ -21,9 +21,19 @@ class KachelCreationEngine {
     // Erstellt eine Persönlichkeitskachel
     function persoenlichkeit() {
         ?>
-            <div class="kachel_persoenlichkeit" onclick="location.replace('registrierung.php')">
-                <h2 class="kachelHeading">Persöhnlichkeit</h2>
+        <div class="kachel_persoenlichkeit" onclick="location.replace('registrierung.php')">
+            <div class="panel-heading">
+                <a id="link_persoenlichkeit" href="#">
+                    <label id="name_persoenlichkeit">Vorname Nachname</label>
+                </a>
+                <label id="geburtsdatum"><span class="glyphicon glyphicon-asterisk"></span> Geburtsdatum</label>
+                <label id="todestag"><span class="glyphicon glyphicon-plus"></span> Todestag</label>
             </div>
+
+
+        </div>
+
+
         <?php
     }
 

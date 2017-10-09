@@ -2,7 +2,7 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <title>Digitales Museum Startseite</title>
+    <title>Epochen</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="/css/bootstrap-3.3.7-dist/css/bootstrap.min.css">
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
@@ -15,7 +15,7 @@
 
     <div class="jumbotron">
         <div class="clear"></div>
-        <h1>Digitales Museum</h1>
+        <h1>Epochen</h1>
     </div>
 
     <?php
@@ -34,12 +34,13 @@
         ?>
     </div>
 
-    <div class="containerKachelnStart">
+    <div class="containerKachelnKategorien">
         <div class="clear"></div>
         <?php
-            KachelCreationEngine::start("Kategorien", "kategorien");
-            KachelCreationEngine::start("Persönlichkeiten", "persoenlichkeiten");
-            KachelCreationEngine::start("Epochen", "epochen");
+            KachelCreationEngine::kategorie("Romantik");
+            KachelCreationEngine::kategorie("Barock");
+            KachelCreationEngine::kategorie("Antike");
+            KachelCreationEngine::kategorie("Neuzeit");
             ?>
         <div class="clear"></div>
     </div>
