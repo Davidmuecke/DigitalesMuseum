@@ -22,7 +22,7 @@ if(isset($_REQUEST['vorname'])&& isset($_REQUEST['nachname'])&&isset($_REQUEST['
     $challenge = password_hash($mail,PASSWORD_DEFAULT);
 
     //Abfrage, ob "userName" schon verhanden:
-    $query = mysqli_query($my_db,"SELECT * FROM benutzer WHERE userName='".$userName."'");
+    /*$query = mysqli_query($my_db,"SELECT * FROM benutzer WHERE userName='".$userName."'");
     $result = mysqli_num_rows($query);
     if ($result === 0) {
         //"userName" ist noch nicht vorhanden!
@@ -37,7 +37,7 @@ if(isset($_REQUEST['vorname'])&& isset($_REQUEST['nachname'])&&isset($_REQUEST['
               </div>";
         die();
 
-    }
+    }*/
 
     if($_REQUEST["password"] == $_REQUEST["passwordWdh"]){
         $pas = password_hash($_REQUEST['password'],PASSWORD_DEFAULT);
@@ -64,21 +64,17 @@ if(isset($_REQUEST['vorname'])&& isset($_REQUEST['nachname'])&&isset($_REQUEST['
                     $res = mysqli_query($my_db, $id) or die (mysqli_error($my_db));
                     $res = mysqli_fetch_assoc($res);
                 */
-        $sql= "INSERT INTO unbestaetigt (challenge, userName, vorname, nachname, mail, password, userAlter, geschlecht/*, bild*/) VALUES('".$challenge."','".$userName."','".$vorname."','".$nachname."','".$mail."','".$pas."','".$userAlter."','".$geschlecht."')";
+        $sql= "INSERT INTO user (mail, password) VALUES('".$userName."','".$vorname."','".$nachname."','".$mail."','".$pas."','".$userAlter."','".$geschlecht."')";
 
         $res = mysqli_query($my_db, $sql) or die (mysqli_error($my_db));
-        echo "<div class='container'>
-                            <div class=\"jumbotron\">
+        ?>
+        <div class="container">
+                            <div class="jumbotron">
                                 <h2>Vielen Dank für deine Registrierung! </h2>
                                 <h2>F&uumlr dich wurde erfolgreich ein Account angelegt!</h2>
                             </div>
-                         </div>";
-
-        echo "<div class='container'>
-                             <div class=\"alert alert-info\">
-                                <strong>Info!</strong> Bitte klicke auf den folgenden Link, um deinen Account zu <a href='registrierung_erfolgreich.php?challenge=".$challenge."'>bestätigen</a>.
-                             </div>
-                          </div>";
+        </div>;
+        <?php
         /*
         }
         else {
@@ -100,7 +96,7 @@ else{
 }*/
     }
     else{
-        echo "<div class='container'>    
+        echo "<div class=\"container\">    
                   <div class=\"alert alert-danger\">
                     <strong>Fehler!</strong> Dein Passwort stimmt nicht überein! </a>
                     Versuche es bitte <a href=\"javascript:history.back()\">erneut</a>!

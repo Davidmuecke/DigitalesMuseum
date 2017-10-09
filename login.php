@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Login Digitales Museum</title>
-    <link rel="stylesheet" href="/css/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap-3.3.7-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 
