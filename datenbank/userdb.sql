@@ -28,8 +28,10 @@ USE `userdb`;
 CREATE TABLE `user` (
   `userID`       int(11)      NOT NULL,
   `mail`         varchar(30)  NOT NULL,
-  `password`     varchar(30)  NOT NULL
-
+  `password`     varchar(30)  NOT NULL,
+  'username'     varchar(30)  NOT NULL,
+  'name'         varchar(30)  NOT NULL,
+  'vorname'      varchar(30)  NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- Indizes für die Tabelle `user`
