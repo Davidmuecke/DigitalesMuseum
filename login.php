@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Login Digitales Museum</title>
-    <link rel="stylesheet" href="css/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/bootstrap-3.3.7-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -29,27 +29,27 @@
 
                 <form accept-charset="UTF-8" role="form" action="startseite.php" method="post" enctype='multipart/form-data'>
                     <fieldset>
-                        <div class="form-group">
-                            <label>E-Mail oder Benutzername:</label>
-                            <input type="text" placeholder="E-Mail oder Benutzername"
-                                   name="login" class="form-control"
-                                   required>
-                        </div>
+                    <div class="form-group">
+                        <label>E-Mail oder Benutzername:</label>
+                        <input type="text" placeholder="E-Mail oder Benutzername"
+                               name="login" class="form-control"
+                                required>
+                    </div>
 
-                        <div class="form-group">
-                            <label>Passwort:</label>
-                            <input type="password" placeholder="Password"
-                                   name="password" class="form-control"
-                                   required>
-                        </div>
+                    <div class="form-group">
+                        <label>Passwort:</label>
+                        <input type="password" placeholder="Password"
+                               name="password" class="form-control"
+                                required>
+                    </div>
 
-                        <button type="submit" class="btn">Login</button>
+                    <button type="submit" class="btn">Login</button>
 
-                        <div class="small">
-                            <p>
-                                <a href="registrierung.php">Neuen Account erstellen</a>
-                            </p>
-                        </div>
+                    <div class="small">
+                        <p>
+                        <a href="registrierung.php">Neuen Account erstellen</a>
+                        </p>
+                    </div>
                     </fieldset>
 
                 </form>
@@ -64,4 +64,4 @@ require("footer.php");
 ?>
 
 </body>
-</html>>
+</html>

@@ -77,6 +77,7 @@ h1{
 h2{
     color: white;
     font-weight: bold;
+
 }
 
 
@@ -234,3 +235,59 @@ footer{
     min-height: 355px;
 }
 
+.kachel_kategorie, .kachel_persoenlichkeit, .kachel_start{
+    background-color: white;
+    border-color: red;
+    boder-width: 3px;
+    border-style: solid;
+    float: left;
+    width: 20%;
+    height: 155px;
+    box-sizing: border-box;
+    margin: 10px;
+    border-radius: 1%;
+    box-shadow: 5px 5px 20px rgba(5,5,5,0.3);
+}
+
+.kachel_persoenlichkeit{
+    width: 48%;
+    height: 155px;
+    border-color: black;
+    background-color: #663333;
+}
+
+.kachel_kategorie{
+    width: 48%;
+    height: 155px;
+    border-color: black;
+    background-color: #663333;
+    color: white;
+}
+
+.kachel_persoenlichkeit:hover {
+    background-color: #663333;
+}
+
+
+
+.kachelHeading {
+    color: black;
+    font-weight: bold;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.containerKachelnStart {
+    margin-left: 37%;
+    margin-right: 37%;
+}
+
+.containerKachelnPersoenlichkeit, .containerKachelnKategorien{
+    margin-left: 9%;
+    margin-right: 9%;
+}
+
+
+.clear {
+    clear: both;
+}

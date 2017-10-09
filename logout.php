@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Logout 4-Gewinnt</title>
-    <link rel="stylesheet" href="css/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/bootstrap-3.3.7-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body onload="mail();">
@@ -19,9 +19,9 @@
       </div>";
     ?>
 
-    <?php
-    require("footer.php");
-    ?>
+<?php
+require("footer.php");
+?>
 </form>
 </body>
 </html>
