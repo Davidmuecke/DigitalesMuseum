@@ -42,6 +42,17 @@ class DBController
     }
 
     /**
+     * Liste der Persoenlichkeiten sortiert nach Name,Vorname
+     * @return array|null mehrdimensionales Array
+     */
+    public function getPersoenlichkeitenSorted()
+    {
+        $query = mysqli_query($this->DB, "SELECT * FROM persoenlichkeit ORDER BY name, vorname DESC");
+        $result = mysqli_fetch_assoc($query);
+        return $result;
+    }
+
+    /**
      * Gibt ein mehrdimendionales Array mit allen Kategorien zurück
      * Zugriff nach dem Schema: $erg[0]["bezeichnung"]
      * @return array|null

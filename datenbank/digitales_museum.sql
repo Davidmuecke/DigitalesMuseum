@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 07. Okt 2017 um 17:22
+-- Erstellungszeit: 09. Okt 2017 um 17:15
 -- Server-Version: 10.1.22-MariaDB
 -- PHP-Version: 7.1.4
 
@@ -33,15 +33,36 @@ USE `digitales_museum`;
 --
 
 CREATE TABLE `bild` (
-  `bildID`       int(11)      NOT NULL,
+  `bildID`       INT(11)      NOT NULL,
   `beschreibung` varchar(300) NOT NULL,
   `datum`        DATE         NOT NULL,
-  `quelle`       varchar(100) NOT NULL,
+  `quelle`       VARCHAR(100) NOT NULL,
   `titel`        VARCHAR(100) NOT NULL,
-  `data`         longblob     NOT NULL,
+  `data`         LONGBLOB     NOT NULL,
   `datatype`     VARCHAR(20)  NOT NULL,
   `size`         INT(11)      NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `epoche`
+--
+
+CREATE TABLE `epoche` (
+  `epocheID`    INT(11)      NOT NULL,
+  `bezeichnung` VARCHAR(100) NOT NULL
+)
+  ENGINE = InnoDB
+  DEFAULT CHARSET = latin1;
+
+--
+-- Daten für Tabelle `epoche`
+--
+
+INSERT INTO `epoche` (`epocheID`, `bezeichnung`) VALUES
+  (3, 'Klassik'),
+  (1, 'Moderne');
 
 -- --------------------------------------------------------
 
@@ -71,12 +92,12 @@ INSERT INTO `kategorie` (`kategorieID`, `bezeichnung`) VALUES
 --
 
 CREATE TABLE `literaturangaben` (
-  `literaturangabenID` int(11)      NOT NULL,
+  `literaturangabenID` INT(11)      NOT NULL,
   `autor`              VARCHAR(100) NOT NULL,
   `titel`              VARCHAR(300) NOT NULL,
-  `datum`              date         NOT NULL,
-  `herausgeberName`    varchar(100) NOT NULL,
-  `herausgeberOrt`     varchar(30)  NOT NULL
+  `datum`              DATE         NOT NULL,
+  `herausgeberName`    VARCHAR(100) NOT NULL,
+  `herausgeberOrt`     VARCHAR(30)  NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -86,9 +107,7 @@ CREATE TABLE `literaturangaben` (
 INSERT INTO `literaturangaben` (`literaturangabenID`, `autor`, `titel`, `datum`, `herausgeberName`, `herausgeberOrt`)
 VALUES
   (2, 'David Koch', 'Eine Literatur', '2017-10-31', '', ''),
-  (3, 'David Koch', 'Eine Literatur', '0000-00-00', 'DHBW', 'Stuttgart'),
-  (4, 'David Koch', 'Eine Literatur', '0000-00-00', 'DHBW', 'Stuttgart'),
-  (5, '', '', '0000-00-00', '', '');
+  (3, 'David Koch', 'Eine Literatur', '0000-00-00', 'DHBW', 'Stuttgart');
 
 -- --------------------------------------------------------
 
@@ -97,56 +116,50 @@ VALUES
 --
 
 CREATE TABLE `persoenlichkeit` (
-  `persoenlichkeitID`  int(11)        NOT NULL,
-  `epoche`             varchar(30)    NOT NULL,
-  `kuenstlername`      varchar(30)    NOT NULL,
-  `profilbild`         int(11)        NOT NULL,
-  `titelbild`          int(11)        NOT NULL,
-  `name`               varchar(30)    NOT NULL,
-  `vorname`            varchar(30)    NOT NULL,
-  `geburtsdatum`       date           NOT NULL,
-  `todesdatum`         date           NOT NULL,
-  `geburtsort`         VARCHAR(50)    NOT NULL,
-  `nationalitaet`      varchar(30)    NOT NULL,
-  `vater`              varchar(30)    NOT NULL,
-  `mutter`             varchar(30)    NOT NULL,
-  `textInhalt`         varchar(10000) NOT NULL,
-  `textQuelle`         varchar(100)   NOT NULL,
-  `textTitel`          varchar(100)   NOT NULL,
-  `TextAutor`          varchar(30)    NOT NULL,
+  `persoenlichkeitID`  INT(11)        NOT NULL,
+  `kuenstlername`      VARCHAR(30)    NOT NULL,
+  `profilbild`         INT(11)        NOT NULL,
+  `titelbild`          INT(11)        NOT NULL,
+  `name`               VARCHAR(30)    NOT NULL,
+  `vorname`            VARCHAR(30)    NOT NULL,
+  `geburtsdatum`       DATE           NOT NULL,
+  `todesdatum`         DATE           NOT NULL,
+  `geburtsort`         VARCHAR(40)    NOT NULL,
+  `nationalitaet`      VARCHAR(30)    NOT NULL,
+  `vater`              VARCHAR(100)   NOT NULL,
+  `mutter`             VARCHAR(100)   NOT NULL,
+  `textInhalt`         VARCHAR(10000) NOT NULL,
+  `textQuelle`         VARCHAR(100)   NOT NULL,
+  `textTitel`          VARCHAR(100)   NOT NULL,
+  `TextAutor`          VARCHAR(30)    NOT NULL,
   `beschreibungInhalt` varchar(10000) NOT NULL,
-  `beschreibungQuelle` varchar(100)   NOT NULL,
-  `zitatInhalt`        VARCHAR(1000)  NOT NULL,
-  `zitatDatum`         date           NOT NULL,
-  `zitatAnlass`        varchar(1000)  NOT NULL,
-  `zitatUrheber`       VARCHAR(100)   NOT NULL
+  `beschreibungQuelle` VARCHAR(100)   NOT NULL,
+  `zitatInhalt`        VARCHAR(300)   NOT NULL,
+  `zitatDatum`         DATE           NOT NULL,
+  `zitatAnlass`        VARCHAR(1000)  NOT NULL,
+  `zitatUrheber`       VARCHAR(30)    NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Daten für Tabelle `persoenlichkeit`
 --
 
-INSERT INTO `persoenlichkeit` (`persoenlichkeitID`, `epoche`, `kuenstlername`, `profilbild`, `titelbild`, `name`, `vorname`, `geburtsdatum`, `todesdatum`, `geburtsort`, `nationalitaet`, `vater`, `mutter`, `textInhalt`, `textQuelle`, `textTitel`, `TextAutor`, `beschreibungInhalt`, `beschreibungQuelle`, `zitatInhalt`, `zitatDatum`, `zitatAnlass`, `zitatUrheber`)
+INSERT INTO `persoenlichkeit` (`persoenlichkeitID`, `kuenstlername`, `profilbild`, `titelbild`, `name`, `vorname`, `geburtsdatum`, `todesdatum`, `geburtsort`, `nationalitaet`, `vater`, `mutter`, `textInhalt`, `textQuelle`, `textTitel`, `TextAutor`, `beschreibungInhalt`, `beschreibungQuelle`, `zitatInhalt`, `zitatDatum`, `zitatAnlass`, `zitatUrheber`)
 VALUES
-  (1, 'EPOCHE', 'KÜNSTLERNAME', 1, 2, 'Name', 'VORNAME', '2017-10-01', '2017-10-02', '0', 'NATIONALITÄT', 'VATER',
-                                                                                                          'MUTTER',
-                                                                                                          'INHALT LANGTEXT',
-                                                                                                          'QUELLE LANGTEXT',
-                                                                                                          'TITEL LANGTEXT',
-                                                                                                          'AUTOR LANGTEXT',
-                                                                                                          'KURZBESCHREIBUNG INHALT',
-                                                                                                          'KURZBESCHREIBUNG QUELLE',
-                                                                                                          'ZITAT INHALT',
-                                                                                                          '2017-10-09',
-   'ANLASS ZITAT', 'URHEBER'),
-  (2, 'Moderne', 'DK', 1, 1, 'Koch', 'David', '1996-10-04', '0000-00-00', 'Lich', 'deutsch', 's', 'a', 'lalal', '', '',
-                                                                                             'jemand', '', '', '',
-                                                                                             '0000-00-00', 'nichts',
-   'ich'),
-  (3, 'Moderne', 'DK', 1, 1, 'Koch', 'David', '1996-10-04', '0000-00-00', 'Lich', 'deutsch', 's', 'a', 'lalal', '', '',
-                                                                                             'jemand', '', '', '',
-                                                                                             '0000-00-00', 'nichts',
-   'ich');
+  (1, 'KÜNSTLERNAME', 1, 2, 'Name', 'VORNAME', '2017-10-01', '2017-10-02', '0', 'NATIONALITÄT', 'VATER', 'MUTTER',
+                                                                                                         'INHALT LANGTEXT',
+                                                                                                         'QUELLE LANGTEXT',
+                                                                                                         'TITEL LANGTEXT',
+                                                                                                         'AUTOR LANGTEXT',
+                                                                                                         'KURZBESCHREIBUNG INHALT',
+                                                                                                         'KURZBESCHREIBUNG QUELLE',
+                                                                                                         'ZITAT INHALT',
+                                                                                                         '2017-10-09',
+                                                                                                         'ANLASS ZITAT',
+   'URHEBER'),
+  (2, 'DK', 1, 1, 'Koch', 'David', '1996-10-04', '0000-00-00', 'Lich', 'deutsch', 's', 'a', 'lalal', '', '', 'jemand',
+                                                                                       '', '', '', '0000-00-00',
+                                                                                       'nichts', 'ich');
 
 -- --------------------------------------------------------
 
@@ -159,6 +172,20 @@ CREATE TABLE `persoenlichkeitbild` (
   `persoenlichkeitID` int(11) NOT NULL,
   `bildID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `persoenlichkeitepoche`
+--
+
+CREATE TABLE `persoenlichkeitepoche` (
+  `persoenlichkeitEpocheID` INT(11) NOT NULL,
+  `persoenlichkeitID`       INT(11) NOT NULL,
+  `epocheID`                INT(11) NOT NULL
+)
+  ENGINE = InnoDB
+  DEFAULT CHARSET = latin1;
 
 -- --------------------------------------------------------
 
@@ -178,9 +205,7 @@ CREATE TABLE `persoenlichkeitkategorie` (
 
 INSERT INTO `persoenlichkeitkategorie` (`persoenlichkeitKategorieID`, `persoenlichkeitID`, `kategorieID`) VALUES
   (1, 1, 1),
-  (4, 1, 4),
-  (2, 5, 2),
-  (3, 1111, 2);
+  (2, 5, 2);
 
 -- --------------------------------------------------------
 
@@ -207,6 +232,13 @@ ALTER TABLE `bild`
   ADD FULLTEXT KEY `beschreibung` (`beschreibung`);
 
 --
+-- Indizes für die Tabelle `epoche`
+--
+ALTER TABLE `epoche`
+  ADD PRIMARY KEY (`epocheID`),
+  ADD UNIQUE KEY `bezeichnung` (`bezeichnung`);
+
+--
 -- Indizes für die Tabelle `kategorie`
 --
 ALTER TABLE `kategorie`
@@ -227,6 +259,8 @@ ALTER TABLE `persoenlichkeit`
 ALTER TABLE `persoenlichkeit`
   ADD FULLTEXT KEY `textInhalt` (`textInhalt`);
 ALTER TABLE `persoenlichkeit`
+  ADD FULLTEXT KEY `textTitel` (`textTitel`);
+ALTER TABLE `persoenlichkeit`
   ADD FULLTEXT KEY `beschreibungInhalt` (`beschreibungInhalt`);
 ALTER TABLE `persoenlichkeit`
   ADD FULLTEXT KEY `zitatInhalt` (`zitatInhalt`);
@@ -236,7 +270,15 @@ ALTER TABLE `persoenlichkeit`
 --
 ALTER TABLE `persoenlichkeitbild`
   ADD PRIMARY KEY (`persoenlichkeitBildID`),
-  ADD UNIQUE KEY `persoenlichkeitID` (`persoenlichkeitID`, `bildID`);
+  ADD UNIQUE KEY `persoenlichkeitID` (`persoenlichkeitID`),
+  ADD UNIQUE KEY `persoenlichkeitID_2` (`persoenlichkeitID`, `bildID`);
+
+--
+-- Indizes für die Tabelle `persoenlichkeitepoche`
+--
+ALTER TABLE `persoenlichkeitepoche`
+  ADD PRIMARY KEY (`persoenlichkeitEpocheID`),
+  ADD UNIQUE KEY `persoenlichkeitID` (`persoenlichkeitID`, `epocheID`);
 
 --
 -- Indizes für die Tabelle `persoenlichkeitkategorie`
@@ -257,44 +299,11 @@ ALTER TABLE `persoenlichkeitliteraturangaben`
 --
 
 --
--- AUTO_INCREMENT für Tabelle `bild`
+-- AUTO_INCREMENT für Tabelle `epoche`
 --
-ALTER TABLE `bild`
-  MODIFY `bildID` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT für Tabelle `kategorie`
---
-ALTER TABLE `kategorie`
-  MODIFY `kategorieID` INT(11) NOT NULL AUTO_INCREMENT,
-  AUTO_INCREMENT = 6;
---
--- AUTO_INCREMENT für Tabelle `literaturangaben`
---
-ALTER TABLE `literaturangaben`
-  MODIFY `literaturangabenID` INT(11) NOT NULL AUTO_INCREMENT,
-  AUTO_INCREMENT = 6;
---
--- AUTO_INCREMENT für Tabelle `persoenlichkeit`
---
-ALTER TABLE `persoenlichkeit`
-  MODIFY `persoenlichkeitID` INT(11) NOT NULL AUTO_INCREMENT,
-  AUTO_INCREMENT = 6;
---
--- AUTO_INCREMENT für Tabelle `persoenlichkeitbild`
---
-ALTER TABLE `persoenlichkeitbild`
-  MODIFY `persoenlichkeitBildID` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT für Tabelle `persoenlichkeitkategorie`
---
-ALTER TABLE `persoenlichkeitkategorie`
-  MODIFY `persoenlichkeitKategorieID` INT(11) NOT NULL AUTO_INCREMENT,
-  AUTO_INCREMENT = 6;
---
--- AUTO_INCREMENT für Tabelle `persoenlichkeitliteraturangaben`
---
-ALTER TABLE `persoenlichkeitliteraturangaben`
-  MODIFY `persoenlichkeitLiteraturangabenID` INT(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `epoche`
+  MODIFY `epocheID` INT(11) NOT NULL AUTO_INCREMENT,
+  AUTO_INCREMENT = 4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
