@@ -243,6 +243,19 @@ INSERT INTO `persoenlichkeitliteraturangaben` (`persoenlichkeitLiteraturangabenI
 (8, 3, 3),
 (7, 3, 4);
 --
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `persoenlichkeitpersoenlichkeit`
+--
+
+CREATE TABLE `persoenlichkeitpersoenlichkeit` (
+  `persoenlichkeitPersoenlichkeitID` int(11) NOT NULL,
+  `persoenlichkeit1ID` int(11) NOT NULL,
+  `persoenlichkeit2ID` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
 -- Indizes der exportierten Tabellen
 --
 
@@ -317,6 +330,12 @@ ALTER TABLE `persoenlichkeitliteraturangaben`
   ADD PRIMARY KEY (`persoenlichkeitLiteraturangabenID`),
   ADD UNIQUE KEY `persoenlichkeitID` (`persoenlichkeitID`, `literaturangabenID`);
 
+--
+-- Indizes für die Tabelle `persoenlichkeitpersoenlichkeit`
+--
+ALTER TABLE `persoenlichkeitpersoenlichkeit`
+  ADD PRIMARY KEY (`persoenlichkeitPersoenlichkeitID`),
+  ADD UNIQUE KEY `persoenlichkeitID` (`persoenlichkeit1ID`, `persoenlichkeit2ID`);
 --
 -- AUTO_INCREMENT für exportierte Tabellen
 --
