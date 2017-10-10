@@ -156,10 +156,10 @@ CREATE TABLE `persoenlichkeit` (
 -- Daten für Tabelle `persoenlichkeit`
 --
 
-INSERT INTO `persoenlichkeit` (`persoenlichkeitID`, `epoche`, `kuenstlername`, `profilbild`, `titelbild`, `name`, `vorname`, `geburtsdatum`, `todesdatum`, `geburtsort`, `nationalitaet`, `vater`, `mutter`, `textInhalt`, `textQuelle`, `textTitel`, `TextAutor`, `beschreibungInhalt`, `beschreibungQuelle`, `zitatInhalt`, `zitatDatum`, `zitatAnlass`, `zitatUrheber`) VALUES
-(1, 'EPOCHE', 'KÜNSTLERNAME', 1, 2, 'Jonathan', 'Weyl', '2017-10-01', '2017-10-02', '0', 'NATIONALITÄT', 'VATER', 'MUTTER', 'INHALT LANGTEXT', 'QUELLE LANGTEXT', 'TITEL LANGTEXT', 'AUTOR LANGTEXT', 'KURZBESCHREIBUNG INHALT', 'KURZBESCHREIBUNG QUELLE', 'ZITAT INHALT', '2017-10-09', 'ANLASS ZITAT', 'URHEBER'),
-(2, 'Moderne', 'FW', 1, 1, 'Felix', 'Waldbach', '1996-10-04', '2088-10-03', 'Lich', 'deutsch', 'Andreas', 'Andrea', 'Felix Waldbach wurde als erstes Kind einer grossen Familie geboren. Sein Vater starb frueh, sodass er schon mit jungen Jahren der aelteste Mann im Haus war...', 'www.google.de', 'Kinder erziehen Kinder', 'Walther von der Vogelweide', 'Diese Person hat grosses vollbracht.', 'https://www.google.de', 'Hallo i bims 1 Felix', '2017-10-18', 'Leben', 'Felix Waldbach'),
-(3, 'Moderne', 'DK', 1, 1, 'Koch', 'David', '1996-10-04', '0000-00-00', 'Lich', 'deutsch', 's', 'a', 'lalal', '', '', 'jemand', '', '', '', '0000-00-00', 'nichts', 'ich');
+INSERT INTO `persoenlichkeit` (`persoenlichkeitID`, `kuenstlername`, `profilbild`, `titelbild`, `name`, `vorname`, `geburtsdatum`, `todesdatum`, `geburtsort`, `nationalitaet`, `vater`, `mutter`, `textInhalt`, `textQuelle`, `textTitel`, `TextAutor`, `beschreibungInhalt`, `beschreibungQuelle`, `zitatInhalt`, `zitatDatum`, `zitatAnlass`, `zitatUrheber`) VALUES
+(1, 'KÜNSTLERNAME', 1, 2, 'Jonathan', 'Weyl', '2017-10-01', '2017-10-02', '0', 'NATIONALITÄT', 'VATER', 'MUTTER', 'INHALT LANGTEXT', 'QUELLE LANGTEXT', 'TITEL LANGTEXT', 'AUTOR LANGTEXT', 'KURZBESCHREIBUNG INHALT', 'KURZBESCHREIBUNG QUELLE', 'ZITAT INHALT', '2017-10-09', 'ANLASS ZITAT', 'URHEBER'),
+(2, 'FW', 1, 1, 'Felix', 'Waldbach', '1996-10-04', '2088-10-03', 'Lich', 'deutsch', 'Andreas', 'Andrea', 'Felix Waldbach wurde als erstes Kind einer grossen Familie geboren. Sein Vater starb frueh, sodass er schon mit jungen Jahren der aelteste Mann im Haus war...', 'www.google.de', 'Kinder erziehen Kinder', 'Walther von der Vogelweide', 'Diese Person hat grosses vollbracht.', 'https://www.google.de', 'Hallo i bims 1 Felix', '2017-10-18', 'Leben', 'Felix Waldbach'),
+(3,'DK', 1, 1, 'Koch', 'David', '1996-10-04', '0000-00-00', 'Lich', 'deutsch', 's', 'a', 'lalal', '', '', 'jemand', '', '', '', '0000-00-00', 'nichts', 'ich');
 
 -- --------------------------------------------------------
 
