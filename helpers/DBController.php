@@ -26,9 +26,41 @@ class DBController
         $this->DB = mysqli_connect($sqlhost, $sqluser, $sqlpass, $dbname) or die ("Datenbank-System nicht verfügbar");
         if (mysqli_connect_errno()) {
             echo "Failed to connect to MySQL: " . mysqli_connect_error();
-        } else {
-            //echo "DB success!";
         }
+    }
+
+    /**
+     * @param $id   Epochen ID
+     * @return array|null
+     */
+    public function getEpocheByID($id)
+    {
+        $id = mysqli_escape_string($this->DB, $id);
+        $query = mysqli_query($this->DB, "SELECT * FROM epoche WHERE epocheID='" . $id . "'");
+        $result = mysqli_fetch_assoc($query);
+        return $result;
+    }
+
+    /**
+     * @return array|null mehrdimensionales Array mit allen Epochen in alphabetischer Reihenfolge
+     */
+    public function getEpochen()
+    {
+        $query = mysqli_query($this->DB, "SELECT * FROM epoche ORDER BY bezeichnung DESC;");
+        $result = mysqli_fetch_all($query, MYSQLI_ASSOC);
+        return $result;
+    }
+
+    /**
+     * @param $personID
+     * @return array|null mehrdimensionales Array mit allen Epochen zu einer Persönlichkeit
+     */
+    public function getEpochenByPersoenlichekeit($personID)
+    {
+        $id = mysqli_escape_string($this->DB, $personID); //
+        $query = mysqli_query($this->DB, "SELECT bezeichnung, epoche.epocheID AS 'epocheID' FROM epoche INNER JOIN persoenlichkeitepoche ON (epoche.epocheID = persoenlichkeitepoche.epocheID) WHERE persoenlichkeitID='" . $id . "' ");
+        $result = mysqli_fetch_all($query, MYSQLI_ASSOC);
+        return $result;
     }
 
     /**
@@ -50,7 +82,7 @@ class DBController
     public function getPersoenlichkeitenSorted()
     {
         $query = mysqli_query($this->DB, "SELECT * FROM persoenlichkeit ORDER BY name, vorname DESC");
-        $result = mysqli_fetch_assoc($query);
+        $result = mysqli_fetch_all($query, MYSQLI_ASSOC);
         return $result;
     }
 
@@ -125,7 +157,7 @@ class DBController
     public function getKategorienByPersoenlichkeit($idPersoenlichkeit)
     {
         $idPersoenlichkeit = mysqli_escape_string($this->DB, $idPersoenlichkeit);
-        $query = mysqli_query($this->DB, "SELECT * FROM kategorie INNER JOIN persoenlichkeitkategorie ON (kategorie.kategorieID = persoenlichkeitkategorie.kategorieID) WHERE persoenlichkeitkategorie.persoenlichkeitID ='" . $idPersoenlichkeit . "' ");
+        $query = mysqli_query($this->DB, "SELECT kategorie.kategorieID AS 'kategorieID', bezeichnung FROM kategorie INNER JOIN persoenlichkeitkategorie ON (kategorie.kategorieID = persoenlichkeitkategorie.kategorieID) WHERE persoenlichkeitkategorie.persoenlichkeitID ='" . $idPersoenlichkeit . "' ");
         $result = mysqli_fetch_all($query, MYSQLI_ASSOC);
         return $result;
     }
@@ -177,6 +209,18 @@ class DBController
     {
         $string = mysqli_escape_string($this->DB, $string);
         $query = mysqli_query($this->DB, "SELECT *, ABS(STRCMP(bezeichnung, \"" . $string . "\")) AS \"STRCMP\" FROM `kategorie` WHERE kategorie.bezeichnung LIKE \"%" . $string . "%\" OR SOUNDEX(kategorie.bezeichnung) = SOUNDEX(\"" . $string . "\") ORDER BY `STRCMP` ASC");
+        $result = mysqli_fetch_all($query, MYSQLI_ASSOC);
+        return $result;
+    }
+
+    /**
+     * @param $string Suche nach Epoche mit eine String
+     * @return array|null   mehrdimensionales Array mit möglichen Treffern
+     */
+    public function sucheEpoche($string)
+    {
+        $string = mysqli_escape_string($this->DB, $string);
+        $query = mysqli_query($this->DB, "SELECT *, ABS(STRCMP(bezeichnung, \"" . $string . "\")) AS \"STRCMP\" FROM `epoche` WHERE epoche.bezeichnung LIKE \"%" . $string . "%\" OR SOUNDEX(epoche.bezeichnung) = SOUNDEX(\"" . $string . "\") ORDER BY `STRCMP` ASC");
         $result = mysqli_fetch_all($query, MYSQLI_ASSOC);
         return $result;
     }
@@ -243,6 +287,24 @@ class DBController
         return $query;
     }
 
+    /**
+     * @param $bezeichnung Bezeichnung der neuen Epoche
+     * @return bool|mysqli_result  Erfolg der Operation als Boolean
+     */
+    public function addEpoche($bezeichnung)
+    {
+        $bezeichnung = mysqli_escape_string($this->DB, htmlentities($bezeichnung));
+        $query = mysqli_query($this->DB, "INSERT INTO epoche(bezeichnung) VALUES('" . $bezeichnung . "') ");
+        return $query;
+    }
+
+    public function addEpochezuPersoenlichkeit($persoenlichkeitID, $epocheID)
+    {
+        $persoenlichkeitID = (int)$persoenlichkeitID;
+        $epocheID = (int)$epocheID;
+        $query = mysqli_query($this->DB, "INSERT INTO persoenlichkeitepoche(persoenlichkeitID,epocheID) VALUES('" . $persoenlichkeitID . "','" . $epocheID . "') ");
+        return $query;
+    }
     /**
      * @param $bezeichnung      Bezeichnung der neuen Kategorie
      * @return bool     success true/false
@@ -386,7 +448,25 @@ class DBController
         return $query;
     }
     //Einträge verändern
+    //UPDATE `persoenlichkeit` SET `beschreibungInhalt` = 'Meine Beschreibung' WHERE `persoenlichkeit`.`persoenlichkeitID` = 2;
+
     //Einträge löschen
+    /** Löscht die Persönlichkeit und all ihr vorkommen aus den Beziehungstabellen
+     * @param $id ID der zu löschenden Persoenlichkeit
+     * @return bool|mysqli_result
+     */
+    public function deletePersoenlichkeit($id)
+    {
+        $id = (int)$id;
+        //alle Verknüpfungen löschen
+        mysqli_query($this->DB, "DELETE FROM persoenlichkeitepoche WHERE persoenlichkeitID = '$id'");
+        mysqli_query($this->DB, "DELETE FROM persoenlichkeitkategorie WHERE persoenlichkeitID = '$id'");
+        mysqli_query($this->DB, "DELETE FROM persoenlichkeitliteraturangaben WHERE persoenlichkeitID = '$id'");
+        mysqli_query($this->DB, "DELETE FROM persoenlichkeitbild WHERE persoenlichkeitID = '$id'");
+        //eigentliche Person
+        return mysqli_query($this->DB, "DELETE FROM persoenlichkeit WHERE persoenlichkeitID = '$id'");
+    }
+
     //intern
     private function komma($string)
     {
