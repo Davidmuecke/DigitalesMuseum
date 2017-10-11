@@ -110,6 +110,18 @@ class DBController
         return $result;
     }
 
+    /**
+     * Gibt alle Persönlichkeiten zurück, die mit dieser in Beziehung stehen
+     * @param katid ID der Persoenlichkeit
+     * @return array|null
+     */
+    public function getPersoenlichkeitenOfAPersoenlichkeit($id)
+    {
+        $query = mysqli_query($this->DB, "SELECT * FROM persoenlichkeit INNER JOIN persoenlichkeitpersoenlichkeit ON (persoenlichkeit.persoenlichkeitID = persoenlichkeitpersoenlichkeit.persoenlichkeit1ID) WHERE persoenlichkeitpersoenlichkeit.persoenlichkeit1ID='" . $id . "'");
+        $result = mysqli_fetch_all($query, MYSQLI_ASSOC);
+        return $result;
+    }
+
 
 
     /**

@@ -233,7 +233,12 @@ class KachelCreationEngine {
                     <div class="information-content">
                         <?php echo "\"".$zitat."\"" ?>
                         <i><?php
-                            echo $urheber.", ".$anlass.", ".$datum ?></i>
+                            echo $urheber.", ".$anlass;
+                            if($datum != "0000-00-00") {
+                                echo ", ".$datum;
+                            }
+                        ?></i>
+
                     </div>
                 </div>
             </div>
@@ -264,7 +269,15 @@ class KachelCreationEngine {
                                     $herausgeber = $literaturen[$i]["herausgeberName"];
                                     $herausgeberOrt = $literaturen[$i]["herausgeberOrt"];
                                     ?>
-                                    <li><?php echo $titel . ", " . $autor . ", " . $datum . ", " . $herausgeber . ", " . $herausgeberOrt ?></li>
+                                    <li>
+                                        <?php
+                                            echo $titel . ", " . $autor;
+                                            if($datum != "0000-00-00") {
+                                                echo ", ".$datum;
+                                            }
+                                            echo ", " . $herausgeber . ", " . $herausgeberOrt ?>
+
+                                    </li>
                                     <?php
                                 }
                             ?>
@@ -278,9 +291,9 @@ class KachelCreationEngine {
 
     function persoenlichkeit_linkPersonen($id) {
         $dbcontroller = new DBController();
-        //$freunde = $dbcontroller->getFreundeOfPersoenlichkeitByID($id);
-        //$name = $freunde["name"];
-        //$vorname = $freunde["vorname"];
+        $freunde = $dbcontroller->getPersoenlichkeitenOfAPersoenlichkeit($id);
+        $anz = count($freunde);
+
 
         ?>
         <div class="information col-md-6 col-md-offset-0">
@@ -290,7 +303,21 @@ class KachelCreationEngine {
                 </div>
                 <div class="panel-body panel-body-persoenlichkeit">
                     <div class="information-content">
-                        Hier müssen noch die Verknüpften Persoen aufgelistet werden
+                        <ul>
+                            <?php
+                            for($i = 0; $i < $anz; $i++) {
+                                //$name = $freunde["name"];
+                                //$vorname = $freunde["vorname"];
+                                $idpers = $freunde["id"];
+                                $link = "persoenlichkeit.php?id=".$idpers;
+                                ?>
+                                <li>
+                                    <a id="link_kategorie" href=<?php echo $link?>><?php echo "test" ?></a>
+                                </li>
+                                <?php
+                            }
+                            ?>
+                        </ul>
                     </div>
                 </div>
             </div>
