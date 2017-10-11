@@ -103,7 +103,7 @@ class KachelCreationEngine {
     //link: Seite, die geöffnet werden woll, wenn auf die Kachel geklickt wird
     function start($title, $link) {
         ?>
-        <div class="panel panel-default">
+        <div class="kachel_start panel panel-default">
             <div class="panel-body" onclick="location.replace('<?php echo $link?>.php')">
                 <?php echo $title?>
             </div>

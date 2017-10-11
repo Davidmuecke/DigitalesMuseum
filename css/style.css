@@ -168,9 +168,6 @@ h2{
 
 }
 
-
-
-
 h4{
     color: black;
     font-weight: bold;
@@ -182,7 +179,7 @@ h4{
 .panel, .panel_kategorie{
     background-color: #663333;
     color: white;
-    font-size: 30px;
+    font-size: xx-large;
     align-content: center;
     border-color: black;
     border-width: 4px;
@@ -346,15 +343,11 @@ footer{
 }
 
 .kachel_kategorie, .kachel_persoenlichkeit, .kachel_start{
-    background-color: white;
-    border-color: red;
     border-width: 3px;
     border-style: solid;
     float: left;
-    width: 20%;
-    height: 155px;
     box-sizing: border-box;
-    margin: 10px;
+    margin: 1%;
     border-radius: 1%;
     box-shadow: 5px 5px 20px rgba(5,5,5,0.3);
 }
@@ -374,11 +367,19 @@ footer{
     color: white;
 }
 
-.kachel_persoenlichkeit:hover {
-    background-color: #663333;
+.kachel_start {
+    float: none;
 }
 
+.kachel_kategorie:hover, .kachel_persoenlichkeit:hover, .kachel_start:hover {
+    cursor: pointer;
+    border-color: #be5959;
+    box-shadow: 5px 5px 20px #663333;
+}
 
+.kachel_kategorie *:hover, .kachel_persoenlichkeit *:hover, .kachel_start *:hover {
+    cursor: pointer;
+}
 
 .kachelHeading {
     color: black;
@@ -396,7 +397,6 @@ footer{
     margin-left: 9%;
     margin-right: 9%;
 }
-
 
 .clear {
     clear: both;
