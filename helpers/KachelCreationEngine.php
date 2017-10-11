@@ -28,14 +28,38 @@ class KachelCreationEngine {
         }
     }
 
+
+    // Erstellt eine Epoche kachel
+    function epoche() {
+        $dbcontroller = new DBController();
+        $epochen = $dbcontroller->getEpochen();
+        $anz = count($epochen);
+        $title = "Titel";
+        for($i = 0; $i < $anz; $i++) {
+            $title = $epochen[$i]["bezeichnung"];
+            $id = $epochen[$i]["epocheID"];
+            ?>
+            <div class="kachel_kategorie" onclick="location.replace('persoenlichkeiten_uebersicht.php?epid=' + <?php echo $id ?>)">
+                <div class="panel-body">
+                    <div class="characteristics">
+                        <label id="kategorie"><?php echo $title?></label>
+                    </div>
+                </div>
+            </div>
+            <?php
+        }
+    }
+
+
+
+
     // Erstellt eine Persönlichkeitskachel
     function persoenlichkeit($katid, $epid) {
         $dbcontroller = new DBController();
         if($katid != -1) {
             $personen = $dbcontroller->getPersoenlichkeitenOfAKategorie($katid);
-        } else if(!$epid != -1) {
-            //$personen = $dbcontroller->getPersoenlichkeitenOfAnEpoche($epid);
-            $personen = $dbcontroller->getPersoenlichkeiten();
+        } else if($epid != -1) {
+            $personen = $dbcontroller->getPersoenlichkeitenOfAnEpoche($epid);
         } else {
             $personen = $dbcontroller->getPersoenlichkeiten();
         }
@@ -47,6 +71,7 @@ class KachelCreationEngine {
             $geburtsdatum = $personen[$i]["geburtsdatum"];
             $todesdatum = $personen[$i]["todesdatum"];
             $id = $personen[$i]["persoenlichkeitID"];
+            $profilbild = "helpers/BildLaden.php?id=".$id;
             ?>
             <div class="kachel_persoenlichkeit" onclick="location.replace('persoenlichkeit.php?id=' + <?php echo $id ?>)">
                 <div class="panel-heading">
@@ -57,7 +82,7 @@ class KachelCreationEngine {
                     <label id="todestag"><span class="glyphicon glyphicon-plus"></span> <?php echo $todesdatum?></label>
                 </div>
                 <div class="panel-body">
-                    <div class="profile_image profile_image--1by1" style="background-image:url(img_flower.jpg); height:30px"></div>
+                    <div class="profile_image profile_image--1by1" style="background-image:url(<?php echo $profilbild; ?>);"></div>
                 </div>
             </div>
 
@@ -81,13 +106,15 @@ class KachelCreationEngine {
     }
 
 
-    function persoenlichkeit_title() {
+    function persoenlichkeit_title($id) {
+        $titelbild = "helpers/BildLaden.php?id=".$id;
         ?>
-        <div class="title_image title_image--32by9" style="background-image:url(img_flower.jpg)"></div>
+        <div class="title_image title_image--32by9" style="background-image:url(<?php echo $titelbild; ?>);"></div>
         <?php
     }
 
-
+    //Erstellt die Kachel mit der Persönlichkeits-Characteristic
+    //@param id ID der anazuzeigenden Persönlichkeit
     function persoenlichkeit_characteristic($id) {
         $dbcontroller = new DBController();
         $person = $dbcontroller->getPersoenlichkeitByID($id);
@@ -100,6 +127,7 @@ class KachelCreationEngine {
         $vater = $person["vater"];
         $mutter = $person["mutter"];
         $kuenstlername = $person["kuenstlername"];
+        $profilbild = "helpers/BildLaden.php?id=" . $id;
 
         ?>
         <div class="information col-md-6 col-md-offset-0">
@@ -111,6 +139,8 @@ class KachelCreationEngine {
                 </div>
                 <div class="panel-body panel-body-persoenlichkeit">
                     <div class="profile_image profile_image--1by1" style="background-image:url(img_flower.jpg)"></div>
+                <div class="panel-body">
+                    <div class="profile_image profile_image--1by1" style="background-image:url(<?php echo $profilbild; ?>)""></div>
                     <div class="characteristics">
                         <label class="charac_label">Geburtsort</label> <?php echo $geburtsort ?>
                         <label class="charac_label">Vater</label> <?php echo $vater ?>
@@ -260,10 +290,8 @@ class KachelCreationEngine {
         $anzKat = count($kategorien);
 
 
-        //$epochen = $dbcontroller->getKategorienByPersoenlichkeit($id);
-        //$anzEpochen = count($epochen);
-        //$epoche_ID = $kategorien[$i]["kategorieID"];
-        //$epoche_Name = $kategorien[$i]["kategorieBezeichnung"];
+        $epochen = $dbcontroller->getEpochenByPersoenlichekeit($id);
+        $anzEpochen = count($epochen);
 
         ?>
         <div class="information col-md-6 col-md-offset-0">
@@ -289,19 +317,18 @@ class KachelCreationEngine {
                         ?>
                         </ul>
                         <label class="charac_label">Epochen</label>
-                        Hier werden in Kürze die zur Persoenlichkeit passenden Epochen aufgelistet...
                         <ul>
                             <?php
-                            /*for($i = 0; $i < $anzEpochen; $i++) {
-                                //$epoche_ID = $kategorien[$i]["EpocheID"];
-                                //$epoche_Name = $kategorien[$i]["epocheBezeichnung"];
-                                //$link = "persoenlichkeiten_uebersicht.php?epid=".$epoche_ID;
+                            for($i = 0; $i < $anzEpochen; $i++) {
+                                $epoche_ID = $epochen[$i]["epocheID"];
+                                $epoche_Name = $epochen[$i]["bezeichnung"];
+                                $link = "persoenlichkeiten_uebersicht.php?epid=".$epoche_ID;
                                 ?>
                                 <li>
-                                    <a id="link_epoche" href=<?php echo $link?>>Test <?php echo $epo_Name ?></a>
+                                    <a id="link_epoche" href=<?php echo $link?>><?php echo $epoche_Name ?></a>
                                 </li>
                                 <?php
-                            }*/
+                            }
                             ?>
                         </ul>
                     </div>

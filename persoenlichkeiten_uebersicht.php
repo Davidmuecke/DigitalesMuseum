@@ -10,7 +10,7 @@
 
 <?php
 require("header.php");
-require("KachelCreationEngine.php");
+require("helpers/KachelCreationEngine.php");
 
 
 $katid = -1;
@@ -21,7 +21,7 @@ if(isset($_GET['katid'])) {
 }
 
 if(isset($_GET['epid'])) {
-    $katid = $_GET['epid'];
+    $epid = $_GET['epid'];
 }
 
 
@@ -37,14 +37,14 @@ if(isset($_GET['epid'])) {
                 $dbcontroller = new DBController();
                 $kategorie = $dbcontroller->getKategorieByID($katid);
                 ?>
-                <h1><?php echo $kategorie[0]["bezeichnung"]; ?></h1>
+                <h1><?php echo $kategorie["bezeichnung"]; ?></h1>
                 <?php
             } else if($epid != -1) {
 
-                //$dbcontroller = new DBController();
-                //$kategorien = $dbcontroller->getEpcheByID($id);
+                $dbcontroller = new DBController();
+                $epochen = $dbcontroller->getEpocheByID($epid);
                 ?>
-                <h1>Persönlichkeiten</h1>
+                <h1><?php echo $epochen["bezeichnung"]; ?></h1>
                 <?php
             } else {
                 ?>

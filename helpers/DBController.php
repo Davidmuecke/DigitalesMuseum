@@ -110,6 +110,20 @@ class DBController
         return $result;
     }
 
+
+
+    /**
+     * Gibt alle Persönlichkeiten einer Kategorie zurück
+     * @param katid ID der Kategorie
+     * @return array|null
+     */
+    public function getPersoenlichkeitenOfAnEpoche($epid)
+    {
+        $query = mysqli_query($this->DB, "SELECT * FROM persoenlichkeit INNER JOIN persoenlichkeitepoche ON (persoenlichkeit.persoenlichkeitID = persoenlichkeitepoche.persoenlichkeitID) WHERE persoenlichkeitepoche.epocheID='" . $epid . "'");
+        $result = mysqli_fetch_all($query, MYSQLI_ASSOC);
+        return $result;
+    }
+
     /**
      * Gibt ein mehrdimendionales Array mit allen Kategorien zurück
      * Zugriff nach dem Schema: $erg[0]["bezeichnung"]
@@ -130,7 +144,7 @@ class DBController
     public function getKategorieByID($katid)
     {
         $query = mysqli_query($this->DB, "SELECT * FROM kategorie WHERE kategorieID='" . $katid . "'");
-        $result = mysqli_fetch_all($query, MYSQLI_ASSOC);
+        $result = mysqli_fetch_assoc($query);
         return $result;
     }
 

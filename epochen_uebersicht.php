@@ -19,7 +19,7 @@
 
     <?php
     require("header.php");
-    require("KachelCreationEngine.php");
+    require("helpers/KachelCreationEngine.php");
     ?>
 
 
@@ -36,7 +36,7 @@
     <div class="containerKachelnKategorien">
         <div class="clear"></div>
         <?php
-            KachelCreationEngine::kategorie();
+            KachelCreationEngine::epoche();
             ?>
         <div class="clear"></div>
     </div>
