@@ -137,7 +137,7 @@ class KachelCreationEngine {
         $profilbild = "helpers/BildLaden.php?id=" . $id;
 
         ?>
-        <div class="information col-md-6 col-md-offset-0">
+        <div class="information col-md-6">
             <div class="panel">
                 <div class="panel-heading panel-heading-persoenlichkeit">
                     <label id="link_persoenlichkeit"><?php echo $vorname.' '.$name ?></label>
@@ -176,7 +176,7 @@ class KachelCreationEngine {
         $kurzbeschreibung = $person["beschreibungInhalt"];
         $quelle = $person["beschreibungQuelle"];
         ?>
-        <div class="information col-md-6 col-md-offset-0">
+        <div class="information col-md-6">
             <div class="panel">
                 <div class="panel-heading panel-heading-persoenlichkeit">
                     <label id="link_information">Kurzbeschreibung</label>
@@ -200,7 +200,7 @@ class KachelCreationEngine {
         $autor = $person["TextAutor"];
         $quelle = $person["textQuelle"];
         ?>
-        <div class="information col-md-6 col-md-offset-0">
+        <div class="information col-md-6">
             <div class="panel">
                 <div class="panel-heading panel-heading-persoenlichkeit">
                     <label id="link_information"><?php echo $titel ?></label>
@@ -224,7 +224,7 @@ class KachelCreationEngine {
         $urheber = $person["zitatUrheber"];
         $datum = $person["zitatDatum"];
         ?>
-        <div class="information col-md-6 col-md-offset-0">
+        <div class="information col-md-6">
             <div class="panel">
                 <div class="panel-heading panel-heading-persoenlichkeit">
                     <label id="link_information">Zitat</label>
@@ -248,7 +248,7 @@ class KachelCreationEngine {
         $anz = count($literaturen);
 
         ?>
-        <div class="information col-md-6 col-md-offset-0">
+        <div class="information col-md-6">
             <div class="panel">
                 <div class="panel-heading panel-heading-persoenlichkeit">
                     <label id="link_information">Literaturangaben</label>
@@ -283,7 +283,7 @@ class KachelCreationEngine {
         //$vorname = $freunde["vorname"];
 
         ?>
-        <div class="information col-md-6 col-md-offset-0">
+        <div class="information col-md-6">
             <div class="panel">
                 <div class="panel-heading panel-heading-persoenlichkeit">
                     <label id="link_information">Freunde</label>
@@ -308,7 +308,7 @@ class KachelCreationEngine {
         $anzEpochen = count($epochen);
 
         ?>
-        <div class="information col-md-6 col-md-offset-0">
+        <div class="information col-md-6">
             <div class="panel">
                 <div class="panel-heading panel-heading-persoenlichkeit">
                     <label id="link_information">Kategorien und Epochen</label>
