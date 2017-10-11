@@ -266,6 +266,15 @@ CREATE TABLE `persoenlichkeitpersoenlichkeit` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
+-- Daten für Tabelle `persoenlichkeitpersoenlichkeit`
+--
+
+INSERT INTO `persoenlichkeitpersoenlichkeit` (`persoenlichkeitPersoenlichkeitID`, `persoenlichkeit1ID`, `persoenlichkeit2ID`) VALUES
+(1, 1, 2),
+(2, 1, 3);
+
+
+--
 -- Indizes der exportierten Tabellen
 --
 

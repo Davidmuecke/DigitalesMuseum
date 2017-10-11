@@ -117,7 +117,7 @@ class DBController
      */
     public function getPersoenlichkeitenOfAPersoenlichkeit($id)
     {
-        $query = mysqli_query($this->DB, "SELECT * FROM persoenlichkeit INNER JOIN persoenlichkeitpersoenlichkeit ON (persoenlichkeit.persoenlichkeitID = persoenlichkeitpersoenlichkeit.persoenlichkeit1ID) WHERE persoenlichkeitpersoenlichkeit.persoenlichkeit1ID='" . $id . "'");
+        $query = mysqli_query($this->DB, "SELECT DISTINCT person.name, person.vorname, person.persoenlichkeitID FROM persoenlichkeit person, persoenlichkeitpersoenlichkeit bez where (bez.persoenlichkeit1ID = person.persoenlichkeitID AND bez.persoenlichkeit2ID ='" . $id . "') OR (bez.persoenlichkeit2ID = person.persoenlichkeitID AND bez.persoenlichkeit1ID = '" . $id . "')");
         $result = mysqli_fetch_all($query, MYSQLI_ASSOC);
         return $result;
     }
