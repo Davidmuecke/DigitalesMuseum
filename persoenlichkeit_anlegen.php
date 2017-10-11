@@ -30,11 +30,11 @@
                 <form accept-charset="UTF-8" role="form" action="persoenlichkeit_anlegen_erfolgreich.php.php" method="post" enctype='multipart/form-data'>
 
         <div class="row vertical-offset-100">
-            <div class="col-md-4 col-md-offset-4">
-
+            <div class="col-md-offset-2">
+                <div class="col-md-4">
                     <!--Vorname-->
                     <div class="form-group">
-                        <label>Vorname:</label>
+                        <label class="p_h1">Vorname:</label>
                         <input type="text" placeholder="Vorname"
                                name="P_vorname" class="form-control"
                                required>
@@ -47,6 +47,8 @@
                                name="p_nachname" class="form-control"
                                required>
                     </div>
+
+                </div>
 
                     <!--Künstlername-->
                     <div class="form-group">
@@ -97,11 +99,11 @@
                                required>
                     </div>
 
-                    <!--Todestag-->
+                    <!--Todesdatum-->
                     <div class="form-group">
-                        <label>Todestag</label>
+                        <label>Todesdatum</label>
                         <input type="text" placeholder="dd/mm/yyyy"
-                               name="p_todestag" class="form-control"
+                               name="p_todesdatum" class="form-control"
                                pattern="([0-3])+([0-9])+.+([0-1])+([0-9])+.+([0-9])+([0-9])+([0-9])+([0-9])"
                                required>
                     </div>
