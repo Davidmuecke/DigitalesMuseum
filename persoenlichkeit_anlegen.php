@@ -30,8 +30,9 @@
                 <form accept-charset="UTF-8" role="form" action="persoenlichkeit_anlegen_erfolgreich.php.php" method="post" enctype='multipart/form-data'>
 
         <div class="row vertical-offset-100">
-            <div class="col-md-4 col-md-offset-4">
+            <div class="col-md-0 col-md-offset-0">
 
+                <div class="create create-one">
                     <!--Vorname-->
                     <div class="form-group">
                         <label>Vorname:</label>
@@ -55,7 +56,9 @@
                                name="p_kuenstlername" class="form-control"
                                required>
                     </div>
+                </div>
 
+                <div class="create create-two">
                     <!--Nationalität-->
                     <div class="form-group">
                         <label>Nationalität:</label>
@@ -79,7 +82,9 @@
                                name="p_mutter" class="form-control"
                                required>
                     </div>
+                </div>
 
+                <div class="create create-three">
                     <!--Geburtsdatum-->
                     <div class="form-group">
                         <label>Geburtsdatum</label>
@@ -105,7 +110,9 @@
                                pattern="([0-3])+([0-9])+.+([0-1])+([0-9])+.+([0-9])+([0-9])+([0-9])+([0-9])"
                                required>
                     </div>
+                </div>
 
+                <div class="create create-four">
                     <!--Kurzbeschreibung-->
                     <div class="form-group">
                         <label>Kurzbeschreibung</label>
@@ -125,7 +132,9 @@
                                   name="p_zitat" class="form-control"
                                   required></textarea>
                     </div>
+                </div>
 
+                <div class="create create-five">
                     <!--Text-->
                     <div class="form-group">
                         <label>Text</label>
@@ -147,7 +156,9 @@
                                name="p_text_titel" class="form-control"
                                required>
                     </div>
+                </div>
 
+                <div class="create create-six">
                     <!--Epoch-->
                     <div class="form-group">
                         <label>Epoche:</label>
@@ -204,7 +215,7 @@
                     </div>
 
                     <script  type="text/javascript">
-                        <!--
+                        /*
                         var sel = document.getElementById('kategorie_auswahl');
                         sel.onchange = function eins() {
                             if (document.getElementById('kategorie_auswahl').value == "neueKategorie"){
@@ -216,10 +227,11 @@
                                 show.style.display = "none";
                             }
                         }
-                        -->
+                        */
                     </script>
+                </div>
 
-
+                <div class="create create-seven">
                     <!--Quellen-->
                     <div class="form-group">
                         <label>Quellen:</label>
@@ -235,6 +247,7 @@
                                name="p_litaraturangaben" class="form-control"
                                required>
                     </div>
+                </div>
 
                     <!--Bilder-->
                     <!--<div class="form-group">

@@ -335,3 +335,14 @@ footer{
     margin-top: -10px;
     margin-left: -200px;
 }
+
+.create {
+    width: 100%;
+    float: left;
+}
+
+.create * {
+    width: 30%;
+    margin: 1%;
+    display: inline-block;
+}
