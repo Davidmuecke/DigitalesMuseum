@@ -4,6 +4,24 @@ body{
     background-color: #FFCC99;
 }
 
+.panel-body::-webkit-scrollbar
+{
+    width: 12px;  /* for vertical scrollbars */
+    height: 12px; /* for horizontal scrollbars */
+}
+
+.panel-body::-webkit-scrollbar-track
+{
+    border: 1px solid;
+    border-color: black;
+    background: #be5959;
+}
+
+.panel-body::-webkit-scrollbar-thumb
+{
+    background: rgba(0, 0, 0, 0.5);
+}
+
 input[type=text], input[type=password]{
     width: 100%;
     padding: 12px 20px;
@@ -142,6 +160,10 @@ h4{
     font-weight: bold;
 }
 
+.panel-heading-persoenlichkeit {
+    height: 10vh;
+}
+
 #todestag,#geburtsdatum{
     text-shadow: none;
     font-weight: bold;
@@ -238,6 +260,7 @@ footer{
     background-repeat: no-repeat;
     background-size: cover;
     width: 50%;
+    height: 100%;
 }
 
 .profile_image:before {
@@ -254,14 +277,24 @@ footer{
     float: left;
     margin: 2%;
     max-width: 45%;
+    font-size: large;
+}
+
+.information-content {
+    float: left;
+    margin: 2%;
+    width: 100%;
+    font-size: large;
 }
 
 .charac_label {
     width: 100%;
+    font-size: medium;
 }
 
-.panel {
-    //min-height: 355px;
+.panel-body-persoenlichkeit {
+    height: 50vh;
+    overflow-y: auto;
 }
 
 .kachel_kategorie, .kachel_persoenlichkeit, .kachel_start{
@@ -344,5 +377,11 @@ footer{
 .create * {
     width: 30%;
     margin: 1%;
+    display: inline-block;
+}
+
+.information {
+    margin: 2%;
+    width: 45%;
     display: inline-block;
 }

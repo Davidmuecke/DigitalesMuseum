@@ -59,8 +59,6 @@ class KachelCreationEngine {
                 <div class="panel-body">
                     <div class="profile_image profile_image--1by1" style="background-image:url(img_flower.jpg); height:30px"></div>
                 </div>
-
-
             </div>
 
 
@@ -104,14 +102,14 @@ class KachelCreationEngine {
         $kuenstlername = $person["kuenstlername"];
 
         ?>
-        <div class=" col-md-6 col-md-offset-0">
+        <div class="information col-md-6 col-md-offset-0">
             <div class="panel">
-                <div class="panel-heading">
+                <div class="panel-heading panel-heading-persoenlichkeit">
                     <label id="link_persoenlichkeit"><?php echo $vorname.' '.$name ?></label>
                     <label id="geburtsdatum"><span class="glyphicon glyphicon-asterisk"></span> <?php echo $geburtsdatum ?></label>
                     <label id="todestag"><span class="glyphicon glyphicon-plus"></span> <?php echo $todesdatum ?></label>
                 </div>
-                <div class="panel-body">
+                <div class="panel-body panel-body-persoenlichkeit">
                     <div class="profile_image profile_image--1by1" style="background-image:url(img_flower.jpg)"></div>
                     <div class="characteristics">
                         <label class="charac_label">Geburtsort</label> <?php echo $geburtsort ?>
@@ -137,11 +135,11 @@ class KachelCreationEngine {
         ?>
         <div class="information col-md-6 col-md-offset-0">
             <div class="panel">
-                <div class="panel-heading">
+                <div class="panel-heading panel-heading-persoenlichkeit">
                     <label id="link_information">Kurzbeschreibung</label>
                 </div>
-                <div class="panel-body">
-                    <div class="characteristics">
+                <div class="panel-body panel-body-persoenlichkeit">
+                    <div class="information-content">
                         <?php echo $kurzbeschreibung ?>
                         <i><?php echo $quelle?></i>
                     </div>
@@ -161,11 +159,11 @@ class KachelCreationEngine {
         ?>
         <div class="information col-md-6 col-md-offset-0">
             <div class="panel">
-                <div class="panel-heading">
+                <div class="panel-heading panel-heading-persoenlichkeit">
                     <label id="link_information"><?php echo $titel ?></label>
                 </div>
-                <div class="panel-body">
-                    <div class="characteristics">
+                <div class="panel-body panel-body-persoenlichkeit">
+                    <div class="information-content">
                         <?php echo $text ?>
                         <i><?php echo $autor.", ".$quelle ?></i>
                     </div>
@@ -185,11 +183,11 @@ class KachelCreationEngine {
         ?>
         <div class="information col-md-6 col-md-offset-0">
             <div class="panel">
-                <div class="panel-heading">
+                <div class="panel-heading panel-heading-persoenlichkeit">
                     <label id="link_information">Zitat</label>
                 </div>
-                <div class="panel-body">
-                    <div class="characteristics">
+                <div class="panel-body panel-body-persoenlichkeit">
+                    <div class="information-content">
                         <?php echo "\"".$zitat."\"" ?>
                         <i><?php echo $urheber.", ".$anlass.", ".$datum ?></i>
                     </div>
@@ -208,11 +206,11 @@ class KachelCreationEngine {
         ?>
         <div class="information col-md-6 col-md-offset-0">
             <div class="panel">
-                <div class="panel-heading">
+                <div class="panel-heading panel-heading-persoenlichkeit">
                     <label id="link_information">Literaturangaben</label>
                 </div>
-                <div class="panel-body">
-                    <div class="characteristics">
+                <div class="panel-body panel-body-persoenlichkeit">
+                    <div class="information-content">
                         <ul>
                             <?php
                                 for($i = 0; $i < $anz; $i++) {
@@ -243,11 +241,11 @@ class KachelCreationEngine {
         ?>
         <div class="information col-md-6 col-md-offset-0">
             <div class="panel">
-                <div class="panel-heading">
+                <div class="panel-heading panel-heading-persoenlichkeit">
                     <label id="link_information">Freunde</label>
                 </div>
-                <div class="panel-body">
-                    <div class="characteristics">
+                <div class="panel-body panel-body-persoenlichkeit">
+                    <div class="information-content">
                         Hier müssen noch die Verknüpften Persoen aufgelistet werden
                     </div>
                 </div>
@@ -270,11 +268,11 @@ class KachelCreationEngine {
         ?>
         <div class="information col-md-6 col-md-offset-0">
             <div class="panel">
-                <div class="panel-heading">
+                <div class="panel-heading panel-heading-persoenlichkeit">
                     <label id="link_information">Kategorien und Epochen</label>
                 </div>
-                <div class="panel-body">
-                    <div class="characteristics">
+                <div class="panel-body panel-body-persoenlichkeit">
+                    <div class="information-content">
                         <label class="charac_label">Kategorien</label>
                         <ul>
                         <?php
