@@ -58,7 +58,7 @@ class KachelCreationEngine {
         $dbcontroller = new DBController();
         if($katid != -1) {
             $personen = $dbcontroller->getPersoenlichkeitenOfAKategorie($katid);
-        } else if(!$epid != -1) {
+        } else if($epid != -1) {
             $personen = $dbcontroller->getPersoenlichkeitenOfAnEpoche($epid);
         } else {
             $personen = $dbcontroller->getPersoenlichkeiten();
