@@ -144,7 +144,7 @@ class DBController
     public function getKategorieByID($katid)
     {
         $query = mysqli_query($this->DB, "SELECT * FROM kategorie WHERE kategorieID='" . $katid . "'");
-        $result = mysqli_fetch_all($query, MYSQLI_ASSOC);
+        $result = mysqli_fetch_assoc($query);
         return $result;
     }
 

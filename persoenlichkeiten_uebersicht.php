@@ -37,7 +37,7 @@ if(isset($_GET['epid'])) {
                 $dbcontroller = new DBController();
                 $kategorie = $dbcontroller->getKategorieByID($katid);
                 ?>
-                <h1><?php echo $kategorie[0]["bezeichnung"]; ?></h1>
+                <h1><?php echo $kategorie["bezeichnung"]; ?></h1>
                 <?php
             } else if($epid != -1) {
 
