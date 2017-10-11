@@ -79,7 +79,14 @@ class KachelCreationEngine {
                         <label id="name_persoenlichkeit"><?php echo $vorname.' '.$name?></label>
                     </a>
                     <label id="geburtsdatum"><span class="glyphicon glyphicon-asterisk"></span> <?php echo $geburtsdatum?></label>
-                    <label id="todestag"><span class="glyphicon glyphicon-plus"></span> <?php echo $todesdatum?></label>
+                    <?php
+                        if($todesdatum != "0000-00-00") {
+                            ?>
+                            <label id="todestag"><span class="glyphicon glyphicon-plus"></span> <?php echo $todesdatum ?>
+                            </label>
+                            <?php
+                        }
+                    ?>
                 </div>
                 <div class="panel-body">
                     <div class="profile_image profile_image--1by1" style="background-image:url(<?php echo $profilbild; ?>);"></div>
@@ -135,12 +142,18 @@ class KachelCreationEngine {
                 <div class="panel-heading panel-heading-persoenlichkeit">
                     <label id="link_persoenlichkeit"><?php echo $vorname.' '.$name ?></label>
                     <label id="geburtsdatum"><span class="glyphicon glyphicon-asterisk"></span> <?php echo $geburtsdatum ?></label>
-                    <label id="todestag"><span class="glyphicon glyphicon-plus"></span> <?php echo $todesdatum ?></label>
+                    <?php
+                    if($todesdatum != "0000-00-00") {
+                        ?>
+                        <label id="todestag"><span class="glyphicon glyphicon-plus"></span> <?php echo $todesdatum ?>
+                        </label>
+                        <?php
+                    }
+                    ?>
                 </div>
                 <div class="panel-body panel-body-persoenlichkeit">
-                    <div class="profile_image profile_image--1by1" style="background-image:url(img_flower.jpg)"></div>
-                <div class="panel-body">
-                    <div class="profile_image profile_image--1by1" style="background-image:url(<?php echo $profilbild; ?>)""></div>
+                    <div class="profile_image profile_image--1by1" style="background-image:url(<?php echo $profilbild; ?>)"></div>
+                
                     <div class="characteristics">
                         <label class="charac_label">Geburtsort</label> <?php echo $geburtsort ?>
                         <label class="charac_label">Vater</label> <?php echo $vater ?>
@@ -150,8 +163,8 @@ class KachelCreationEngine {
                             <label class="charac_label">Künstlername</label> <?php echo $kuenstlername ?>
                         <?php }?>
                     </div>
-                </div>
             </div>
+        </div>
         </div>
         <?php
     }
@@ -219,7 +232,8 @@ class KachelCreationEngine {
                 <div class="panel-body panel-body-persoenlichkeit">
                     <div class="information-content">
                         <?php echo "\"".$zitat."\"" ?>
-                        <i><?php echo $urheber.", ".$anlass.", ".$datum ?></i>
+                        <i><?php
+                            echo $urheber.", ".$anlass.", ".$datum ?></i>
                     </div>
                 </div>
             </div>
