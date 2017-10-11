@@ -12,12 +12,13 @@
 <?php
     require("header.php");
     //require("helpers/DBController.php");
-    require("KachelCreationEngine.php")
+    require("helpers/KachelCreationEngine.php");
+
 ?>
 
     <div class="container">
         <?php
-            KachelCreationEngine::persoenlichkeit_title();
+            KachelCreationEngine::persoenlichkeit_title($_GET["id"]);
             KachelCreationEngine::persoenlichkeit_characteristic($_GET["id"]);
             KachelCreationEngine::persoenlichkeit_kurzbeschreibung($_GET["id"]);
             KachelCreationEngine::persoenlichkeit_zitat($_GET["id"]);

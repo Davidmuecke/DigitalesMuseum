@@ -12,8 +12,9 @@ $my_db = mysqli_connect($sqlhost, $sqluser, $sqlpass, $dbname) or die ("Datenban
 $id = htmlentities($_GET['id']);
 $query = mysqli_query($my_db, "select * from bild where bildID='$id'");
 if (mysqli_num_rows($query)) {
-    $ein = mysqli_fetch_object($query);
-    //Header( "Content-type: $ein->datatype");
+    $ein = mysqli_fetch_assoc($query);
+    header( "Content-type:". $ein["datatype"]);
+    echo $ein["data"];
     echo "test";
 }
 //$result = mysqli_fetch_all($query, MYSQLI_ASSOC);

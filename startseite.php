@@ -19,7 +19,7 @@
 
     <?php
     require("header.php");
-    require("KachelCreationEngine.php");
+    require("helpers/KachelCreationEngine.php");
     ?>
 
     <script language="javascript">
@@ -62,9 +62,10 @@
         ?>
     </div>
 
-    <div class="containerKachelnStart">
+    <div class="containerKachelnStart"">
         <div class="clear"></div>
         <?php
+
             KachelCreationEngine::start("Kategorien", "kategorien_uebersicht");
             KachelCreationEngine::start("Persönlichkeiten", "persoenlichkeiten_uebersicht");
             KachelCreationEngine::start("Epochen", "epochen_uebersicht");

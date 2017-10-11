@@ -10,7 +10,7 @@
 
 <?php
 require("header.php");
-require("KachelCreationEngine.php");
+require("helpers/KachelCreationEngine.php");
 
 
 $katid = -1;
