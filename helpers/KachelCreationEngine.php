@@ -104,7 +104,7 @@ class KachelCreationEngine {
                     ?>
                 </div>
                 <div class="panel-body">
-                    <div class="profile_image profile_image--1by1" style="background-image:url(<?php echo $profilbild; ?>);"></div>
+                    <div class="profile_image profile_image--1by1 profile_image_uebersicht" style="background-image:url(<?php echo $profilbild; ?>);"></div>
                 </div>
             </div>
 
