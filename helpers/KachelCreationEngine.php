@@ -4,10 +4,17 @@ require("helpers/DBController.php");
 //Mit dieser Engine werden verschiedenste Kacheln erstellt und in die Webseite eingebunden
 class KachelCreationEngine {
 
-    // Erstellt eine Kategorie kachel
-    function kategorie() {
+    //Gibt die Anzahl an Suchergebnissen zurück
+    function kategorie_anz($find) {
         $dbcontroller = new DBController();
-        $kategorien = $dbcontroller->getKategorien();
+        $kategorien = $dbcontroller->sucheKategorie($find);
+        return count($kategorien);
+    }
+
+    // Erstellt eine Kategorie kachel
+    function kategorie($find) {
+        $dbcontroller = new DBController();
+        $kategorien = $dbcontroller->sucheKategorie($find);
         $anz = count($kategorien);
         $title = "Titel";
         for($i = 0; $i < $anz; $i++) {
@@ -23,13 +30,21 @@ class KachelCreationEngine {
                 </div>
             <?php
         }
+        return $anz;
     }
 
 
-    // Erstellt eine Epoche kachel
-    function epoche() {
+    //Gibt die Anzahl an Suchergebnissen zurück
+    function epoche_anz($find) {
         $dbcontroller = new DBController();
-        $epochen = $dbcontroller->getEpochen();
+        $epochen = $dbcontroller->sucheEpoche($find);
+        return count($epochen);
+    }
+
+    // Erstellt eine Epoche kachel
+    function epoche($find) {
+        $dbcontroller = new DBController();
+        $epochen = $dbcontroller->sucheEpoche($find);
         $anz = count($epochen);
         $title = "Titel";
         for($i = 0; $i < $anz; $i++) {
@@ -47,18 +62,21 @@ class KachelCreationEngine {
         }
     }
 
-
-
+    function persoenlichkeit_anz($find) {
+        $dbcontroller = new DBController();
+        $personen = $dbcontroller->suchePersoenlichkeit($find);
+        return $anz = count($personen);
+    }
 
     // Erstellt eine Persönlichkeitskachel
-    function persoenlichkeit($katid, $epid) {
+    function persoenlichkeit($katid, $epid, $find) {
         $dbcontroller = new DBController();
         if($katid != -1) {
             $personen = $dbcontroller->getPersoenlichkeitenOfAKategorie($katid);
         } else if($epid != -1) {
             $personen = $dbcontroller->getPersoenlichkeitenOfAnEpoche($epid);
         } else {
-            $personen = $dbcontroller->getPersoenlichkeiten();
+            $personen = $dbcontroller->suchePersoenlichkeit($find);
         }
         $anz = count($personen);
         $title = "Titel";

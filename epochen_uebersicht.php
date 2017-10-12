@@ -36,7 +36,7 @@
     <div class="containerKachelnKategorien">
         <div class="clear"></div>
         <?php
-            KachelCreationEngine::epoche();
+            KachelCreationEngine::epoche("");
             ?>
         <div class="clear"></div>
     </div>

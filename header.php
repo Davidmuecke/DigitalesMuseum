@@ -76,9 +76,9 @@ else {
                 <li id="button_persoenlichkeit_anlegen"><a href="persoenlichkeit_anlegen.php">Neu</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <form class="navbar-form navbar-left" role="search">
+                <form class="navbar-form navbar-left" role="search" action="suchen.php" method="get">
                     <div class="input-group">
-                        <input type="text" class="form-control" id="suchen_feld" placeholder="Search">
+                        <input type="text" name="suchbegriff" class="form-control" id="suchen_feld" placeholder="Search">
                         <div class="input-group-btn">
                             <button class="btn btn-default" type="submit" id="suchen_button"><i class="glyphicon glyphicon-search"></i></button>
                         </div>

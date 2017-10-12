@@ -70,7 +70,7 @@ if(isset($_GET['epid'])) {
     <div class="containerKachelnPersoenlichkeit">
         <div class="clear"></div>
         <?php
-        KachelCreationEngine::persoenlichkeit($katid, $epid);
+        KachelCreationEngine::persoenlichkeit($katid, $epid,"");
         ?>
         <div class="clear"></div>
     </div>
