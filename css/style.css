@@ -195,6 +195,8 @@ h4{
     color: white;
     font-size: 20px;
     align-content: center;
+    display: flex;
+    justify-content: center;
 }
 
 
@@ -299,7 +301,7 @@ footer{
     float: left;
     overflow: hidden;
     position: relative;
-    border: 2px solid;
+    border: 1px solid;
     border-color: black;
     background-position: 50%;
     background-repeat: no-repeat;

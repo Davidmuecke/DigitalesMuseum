@@ -93,11 +93,11 @@ class KachelCreationEngine {
                     <a id="link_persoenlichkeit" href="#">
                         <label id="name_persoenlichkeit"><?php echo $vorname.' '.$name?></label>
                     </a>
-                    <label id="geburtsdatum"><span class="glyphicon glyphicon-asterisk"></span> <?php echo $geburtsdatum?></label>
+                    <label id="geburtsdatum">&#10033; <?php echo $geburtsdatum?></label>
                     <?php
                         if($todesdatum != "0000-00-00") {
                             ?>
-                            <label id="todestag"><span class="glyphicon glyphicon-plus"></span> <?php echo $todesdatum ?>
+                            <label id="todestag">&dagger; <?php echo $todesdatum ?>
                             </label>
                             <?php
                         }
@@ -159,11 +159,11 @@ class KachelCreationEngine {
             <div class="panel">
                 <div class="panel-heading panel-heading-persoenlichkeit">
                     <label id="link_persoenlichkeit"><?php echo $vorname.' '.$name ?></label>
-                    <label id="geburtsdatum"><span class="glyphicon glyphicon-asterisk"></span> <?php echo $geburtsdatum ?></label>
+                    <label id="geburtsdatum">&#10033; <?php echo $geburtsdatum ?></label>
                     <?php
                     if($todesdatum != "0000-00-00") {
                         ?>
-                        <label id="todestag"><span class="glyphicon glyphicon-plus"></span> <?php echo $todesdatum ?>
+                        <label id="todestag">&dagger; <?php echo $todesdatum ?>
                         </label>
                         <?php
                     }
