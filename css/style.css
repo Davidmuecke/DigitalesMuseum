@@ -135,6 +135,15 @@ nav{
     font-weight: bold;
 }
 
+.btn_add{
+    background-color: #be5959;
+    color: #FFCC99;
+    text-shadow: -1px 0 #663333, 0 1px #663333, 1px 0 #663333, 0 -1px #663333;
+    font-weight: bold;
+    margin-left: 100%;
+}
+
+
 
 #suchen_button{
     background-color: #663333;
@@ -220,10 +229,6 @@ h4{
 }
 
 #kategorie {
-    font-size: 30px;
-}
-
-.face-button{
     font-size: 30px;
 }
 
@@ -418,16 +423,6 @@ footer{
     margin-left: -200px;
 }
 
-.create {
-    width: 100%;
-    float: left;
-}
-
-.create * {
-    width: 30%;
-    margin: 1%;
-    display: inline-block;
-}
 
 .information {
     margin: 2%;
@@ -437,6 +432,17 @@ footer{
 
 #button_persoenlichkeit_anlegen {
     margin-left: 0%;
+}
+
+.create {
+    width: 100%;
+    float: left;
+}
+
+.create * {
+    width: 30%;
+    margin: 1%;
+    display: inline-block;
 }
 
 .create-text{
@@ -449,8 +455,30 @@ footer{
     width: 97.25%;
 }
 
+.create-zitat{
+    width: 100%;
+    float: left;
+    margin: 1%;
+}
+
+.create-zitat*{
+    width: 50%;
+
+}
+
+.create-einzeilig{
+    width: 100%;
+    margin: 1%;
+    float: left;
+}
+
+
 .p_h1{
     color: black;
     font-weight: bolder;
     font-size: 20px;
+}
+
+#p_literatur_ort{
+    width: 60%
 }

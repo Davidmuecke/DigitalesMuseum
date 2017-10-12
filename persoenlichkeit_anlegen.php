@@ -32,6 +32,7 @@
             <div class="row vertical-offset-100">
                 <div class="col-md-0 col-md-offset-0">
 
+                    <!--1.Reihe-->
                     <div class="create create-one">
                         <!--Nachname-->
                         <div class="form-group">
@@ -57,6 +58,7 @@
                         </div>
                     </div>
 
+                    <!--2.Reihe-->
                     <div class="create create-two">
                         <!--Vater-->
                         <div class="form-group">
@@ -83,6 +85,7 @@
                         </div>
                     </div>
 
+                    <!--3.Reihe-->
                     <div class="create create-three">
                         <!--Geburtsdatum-->
                         <div class="form-group">
@@ -111,200 +114,357 @@
                     </div>
 
                     <!--Kurzbeschreibung-->
-                    <div class="create create-four">
-                        <label class="p_h1">Kurzbeschreibung</label>
-                    </div>
-
-                    <div class="create create-four">
-                        <div class="form-group">
-                            <label>Titel:</label>
-                            <input type="text" placeholder="Titel der Kurzbeschreibung"
-                                   name="p_kbeschreibung_titel" class="form-control"
-                                   required>
+                    <div>
+                        <div class="create create-four">
+                            <label class="p_h1">Kurzbeschreibung</label>
                         </div>
 
-                        <div class="form-group">
-                            <label>Autor:</label>
-                            <input type="text" placeholder="Autor der Kurzbeschreibung"
-                                   name="p_kbeschreibung_autor" class="form-control"
-                                   required>
+                        <div class="create create-four">
+                            <div class="form-group">
+                                <label>Quelle:</label>
+                                <input type="text" placeholder="Quelle der Kurzbeschreibung"
+                                       name="p_kbeschreibung_quelle" class="form-control"
+                                       required>
+                            </div>
                         </div>
 
-                        <div class="form-group">
-                            <label>Quelle:</label>
-                            <input type="text" placeholder="Quelle der Kurzbeschreibung"
-                                   name="p_kbeschreibung_quelle" class="form-control"
-                                   required>
-                        </div>
-
-                    </div>
-
-                    <div class="create-text">
+                        <div class="create-text">
                         <div class="form-group">
                             <textarea placeholder="Kurzbeschreibung"
                                       name="p_kurzbeschreibung" class="form-control"
                                       required></textarea>
                         </div>
                     </div>
+                    </div>
 
                     <!--Text-->
-                    <div class="create create-five">
-                        <label class="p_h1">Text</label>
+                    <div>
+                        <div class="create create-five">
+                            <label class="p_h1">Text</label>
+                        </div>
+
+                        <div class="create create-five">
+                            <div class="form-group">
+                                <label>Titel:</label>
+                                <input type="text" placeholder="Titel des Textes"
+                                       name="p_text_titel" class="form-control"
+                                       required>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Autor:</label>
+                                <input type="text" placeholder="Autor des Textes"
+                                       name="p_text_autor" class="form-control"
+                                       required>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Quelle:</label>
+                                <input type="text" placeholder="Quelle des Textes"
+                                       name="p_text_quellen" class="form-control"
+                                       required>
+                            </div>
+                        </div>
+
+                        <div class="create-text">
+                            <div class="form-group">
+                            <textarea placeholder="Text"
+                                      name="p_text" class="form-control"
+                                      required></textarea>
+                            </div>
+                        </div>
                     </div>
-
-                    <div class="create create-five">
-                        <div class="form-group">
-                            <label>Titel:</label>
-                            <input type="text" placeholder="Titel des Textes"
-                                   name="p_text_titel" class="form-control"
-                                   required>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Autor:</label>
-                            <input type="text" placeholder="Autor des Textes"
-                                   name="p_text_autor" class="form-control"
-                                   required>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Quelle:</label>
-                            <input type="text" placeholder="Quelle des Textes"
-                                   name="p_text_quellen" class="form-control"
-                                   required>
-                        </div>
-                    </div>
-
-                    <div class="create">
-                        <div class="form-group">
-                        <textarea placeholder="Text"
-                                  name="p_text" class="form-control"
-                                  required></textarea>
-                        </div>
-                    <div/>
 
                     <!--Zitat-->
-                    <div class="form-group">
-                        <label>Zitat:</label><br>
-                        <input type="radio" name="zitat" value="zitat_von" checked>
-                        <label>Zitat von dieser Perönlichkeit</label><br>
-                        <input type="radio" name="zitat" value="zitat_ueber">
-                        <label>Zitat über diese Persönlichkeit</label><br>
-                        <textarea placeholder="Zitat"
-                                  name="p_zitat" class="form-control"
-                                  required></textarea>
-                    </div>
-
-
-                    <div class="create create-six">
-                        <!--Epoch-->
-                        <div class="form-group">
-                            <label>Epoche:</label>
-                            <select id="epochen_auswahl">
-                                <option value="" disabled selected>Bitte wählen</option>
-                                <option value="Barock">Barock</option>
-                                <option value="Romantik">Romantik</option>
-                                <option value="Neuzeit">Neuzeit</option>
-                                <option value="Antike">Antike</option>
-                                <option value="neueEpoche">Neue Epoche</option>
-                            </select>
+                    <div>
+                        <div class="create create-six">
+                            <label class="p_h1">Zitat:</label><br>
                         </div>
 
-                        <div id="ne_input" style="display:none;">
-                            <input type="text" placeholder="Neue Epoche eingeben"
-                                   name="neue_epoche" class="form-control"
-                                   required>
+                        <div class="create create-five">
+                            <div class="form-group">
+                                <label>Anlass:</label>
+                                <input type="text" placeholder="Anlass des Zitats"
+                                       name="p_zitat_anlass" class="form-control"
+                                       required>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Datum:</label>
+                                <input type="text" placeholder="Datum des Zitats"
+                                       name="p_zitat_datum" class="form-control"
+                                       required>
+                            </div>
+
+                            <div id="urheber_input" class="form-group">
+                                <label>Urheber:</label>
+                                <input type="text" placeholder="Urheber des Zitats"
+                                       name="p_zitat_urheber" class="form-control"
+                                       required>
+                            </div>
                         </div>
 
-                        <script  type="text/javascript">
-                        <!--
-                        var sel = document.getElementById('epochen_auswahl');
-                        sel.onchange = function eins() {
-                            if (document.getElementById('epochen_auswahl').value == "neueEpoche"){
-                                var show = document.getElementById('ne_input');
-                                show.style.display = "block";
-                            }
-                            else{
-                                var show = document.getElementById('ne_input');
-                                show.style.display = "none";
-                            }
-                        }
-                        -->
-                        </script>
+                        <!--<div class="create-zitat">
+                            <divclass="form-group">
+                                <label>Zitat von dieser Perönlichkeit:</label>
+                                <input type="radio" name="zitat" value="zitat_von" checked><br>
+                                <label>Zitat über diese Persönlichkeit:</label>
+                                <input type="radio" name="zitat" value="zitat_ueber">
+                            </div>
 
 
-                        <!--Kategorie-->
-                        <div class="form-group">
-                            <label>Kategorie:</label>
-                            <select id="kategorie_auswahl">
-                                <option value="" disabled selected>Bitte wählen</option>
-                                <option value="Erziehung">Erziehung</option>
-                                <option value="Vorschule">Vorschule</option>
-                                <option value="Kinderbetreuung">Kinderbetreuung</option>
-                                <option value="Früherziehung">Früherziehung</option>
-                                <option value="neueKategorie">Neue Kategorie</option>
-                            </select>
                         </div>
 
-                        <div id="nk_input" style="display:none;">
-                            <input type="text" placeholder="Neue Kategorie eingeben"
-                                   name="neue_kategorie" class="form-control"
-                                   required>
-                        </div>
-
-                        <script  type="text/javascript">
+                        <script  type="text/javascript"> -->
                             <!--
-                            var sel = document.getElementById('kategorie_auswahl');
-                            sel.onchange = function eins() {
-                                if (document.getElementById('kategorie_auswahl').value == "neueKategorie"){
-                                    var show = document.getElementById('nk_input');
+                            function radioWert(rObj) {
+                                for (var i=0; i<rObj.length; i++) if (rObj[i].checked) return rObj[i].value;
+                                return false;
+                            }
+
+                            var sel1 = document.getElementsByName('zitat');
+                            sel1.onchange = function() {
+                                if (radioWert(document.getElementsByName('zitat')) == "zitat_ueber"){
+                                    var show = document.getElementById('urheber_input');
                                     show.style.display = "block";
                                 }
                                 else{
-                                    var show = document.getElementById('nk_input');
+                                    var show = document.getElementById('urheber_input');
                                     show.style.display = "none";
                                 }
                             }
                             -->
-                        </script>
-                    </div>
+                        <!--</script> -->
 
-
-
-                        <!--Literaturangaben-->
-                        <div class="form-group">
-                            <label>Litaraturangaben:</label>
-                            <input type="text" placeholder="Litaraturangaben"
-                                   name="p_litaraturangaben" class="form-control"
-                                   required>
+                        <div class="create-text">
+                            <div class="form-group">
+                                <textarea placeholder="Zitat"
+                                          name="p_zitat" class="form-control"
+                                          required></textarea>
+                            </div>
                         </div>
                     </div>
 
-                        <!--Bilder-->
-                        <!--<div class="form-group">
-                            <label>Bilder:</label>
-                            <input type="file" name="bild_dateien">
-                        </div> -->
+                    <!--Epoch-->
+                    <div>
+                        <div id="ueber_epoche">
+                            <div class="create create-seven">
+                                <div class="form-group">
+                                    <label class="p_h1">Epoche:</label>
+                                </div>
+                            </div>
+                            <div id="epoche">
+                                <div class="create creat-seven">
+                                    <select id="epochen_auswahl">
+                                        <option value="" disabled selected>Bitte wählen</option>
+                                        <option value="Barock">Barock</option>
+                                        <option value="Romantik">Romantik</option>
+                                        <option value="Neuzeit">Neuzeit</option>
+                                        <option value="Antike">Antike</option>
+                                        <option value="neueEpoche">Neue Epoche</option>
+                                    </select>
 
-                        <!--<div class="form-group">
-                            <label>Profilbild:</label>
-                            <input type="file" name="bild_profilbild">
-                        </div> -->
+                                    <div id="ne_input" style="display:none;">
+                                        <input type="text" placeholder="Neue Epoche eingeben"
+                                               name="neue_epoche" class="form-control"
+                                               required>
+                                    </div>
+                                </div>
 
-                        <!--<div class="form-group">
-                            <label>Titelbild:</label>
-                            <input type="file" name="bild_titelbild">
-                        </div> -->
+                                <script  type="text/javascript">
+                            <!--
+                                var sel = document.getElementById('epochen_auswahl');
+                                sel.onchange = function eins() {
+                                    if (document.getElementById('epochen_auswahl').value == "neueEpoche"){
+                                        var show = document.getElementById('ne_input');
+                                        show.style.display = "block";
+                                    }
+                                    else{
+                                        var show = document.getElementById('ne_input');
+                                        show.style.display = "none";
+                                    }
+                                }
+                            -->
+                            </script>
+                            </div>
+                        </div>
+
+                        <div id="add_button_epoche">
+                            <a onclick="addElement('epoche','ueber_epoche')" class="btn_add"><span class="glyphicon glyphicon-plus"></span></a>
+                        </div>
+
+
+
+                        <div id="add_button_person">
+                            <a onclick="addElement('epoche','ueber_epoche')" class="btn_add"><span class="glyphicon glyphicon-plus"></span></a>
+                        </div>
+
+                    </div>
+                    <!--Kategorie-->
+                    <div>
+                        <div id="ueber_kategorie">
+                            <div class="create create-eight">
+                                <div class="form-group">
+                                    <label class="p_h1">Kategorie:</label>
+                                </div>
+                            </div>
+                            <div id="kategorie">
+                                <div class="create create-eight">
+                                    <select id="kategorie_auswahl">
+                                        <option value="" disabled selected>Bitte wählen</option>
+                                        <option value="Erziehung">Erziehung</option>
+                                        <option value="Vorschule">Vorschule</option>
+                                        <option value="Kinderbetreuung">Kinderbetreuung</option>
+                                        <option value="Früherziehung">Früherziehung</option>
+                                        <option value="neueKategorie">Neue Kategorie</option>
+                                    </select>
+
+                                    <div id="nk_input" style="display:none;">
+                                        <input type="text" placeholder="Neue Kategorie eingeben"
+                                               name="neue_kategorie" class="form-control"
+                                               required>
+                                    </div>
+                                </div>
+
+                                <script  type="text/javascript">
+                        <!--
+                        var sel = document.getElementById('kategorie_auswahl');
+                        sel.onchange = function eins() {
+                            if (document.getElementById('kategorie_auswahl').value == "neueKategorie"){
+                                var show = document.getElementById('nk_input');
+                                show.style.display = "block";
+                            }
+                            else{
+                                var show = document.getElementById('nk_input');
+                                show.style.display = "none";
+                            }
+                        }
+                        -->
+                    </script>
+                            </div>
+                        </div>
+
+                        <div id="add_button_kategorie">
+                            <a onclick="addElement('epoche','ueber_epoche')" class="btn_add"><span class="glyphicon glyphicon-plus"></span></a>
+                        </div>
+                    </div>
+
+                    <!--Literaturangabe-->
+                    <div>
+                        <div id="ueber_literatur">
+                            <div class="create create-nine">
+                                <div class="form-group">
+                                    <label class="p_h1">Literaturangabe:</label>
+                                </div>
+                            </div>
+                            <div id="literatur">
+                                <div class="create create-nine">
+                                    <div class="form-group">
+                                        <label>Titel:</label>
+                                        <input type="text" placeholder="Titel der Literaturangabe"
+                                               name="p_literatur_titel" class="form-control"
+                                               required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Autor:</label>
+                                        <input type="text" placeholder="Autor der Literaturangabe"
+                                               name="p_literatur_autor" class="form-control"
+                                               required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Jahr:</label>
+                                        <input type="text" placeholder="Jahr der Literaturangabe"
+                                               name="p_literatur_quellen" class="form-control"
+                                               required>
+                                    </div>
+                                </div>
+
+                                <div class="create create-nine">
+                                    <div class="form-group">
+                                        <label>Herausgeber:</label>
+                                        <input type="text" placeholder="Name des Herausgebers"
+                                               name="p_literatur_herausgeber" class="form-control"
+                                               required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label id="p_literatur_ort">Ort/ Firmensitz des Herausgebers:</label>
+                                        <input type="text" placeholder="Ort/Firmensitz des Herausgebers"
+                                               name="p_literatur_ort" class="form-control"
+                                               required>
+                                    </div>
+                                </div>
+
+                                <div class="create-einzeilig">
+                        <div class="form-group">
+                            <input type="text" placeholder="Literaturangabe"
+                                   name="p_literaturangabe" class="form-control"
+                                   required>
+                        </div>
+                    </div>
+                            </div>
+                        </div>
+
+                        <div id="add_button_literatur">
+                            <a onclick="addElement('epoche','ueber_epoche')" class="btn_add"><span class="glyphicon glyphicon-plus"></span></a>
+                        </div>
+                    </div>
+
+                    <!--Bilder-->
+                    <div>
+                        <div id="ueber_bilder">
+                            <div class="create create-ten">
+                                <label class="p_h1">Bilder:</label>
+                            </div>
+
+                            <div class="create-einzeilig create-ten">
+                                <div class="form-group">
+                                    <label>Profilbild:</label>
+                                    <input type="file" name="bild_profilbild">
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Titelbild:</label>
+                                    <input type="file" name="bild_titelbild">
+                                </div>
+                                <div id="bilder">
+                                    <div class="form-group" id="bilder">
+                                        <label>Weitere Bilder:</label>
+                                        <input type="file" name="bild_dateien">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                        <div id="add_button_bilder">
+                            <a onclick="addElement('bilder','ueber_bilder')" class="btn_add"><span class="glyphicon glyphicon-plus"></span></a>
+                        </div>
+                    </div>
 
                 </div>
             </div>
-                            <div id="p_button">
-                                <button style="float:left" type="submit" class="btn">Persönlichkeit anlegen</button>
-                                <button style="float:left" type="reset" class="btn">Einträge löschen</button>
-                                <a style="float:left" id="btn_abbrechen" href="startseite.php" class="btn">Abbrechen</a>
-                            </div>
 
+            <!--Function für ADD-Button--->
+            <script  type="text/javascript">
+                <!--
+                function addElement (id, ueber_id) {
+                    var newDiv = document.createElement("div");
+                    newDiv.innerHTML = document.getElementById(id).innerHTML;
+                    document.getElementById(ueber_id).appendChild(newDiv);
+                }
+                -->
+            </script>
+
+            <!--Button--->
+            <div id="p_button">
+                <button style="float:left" type="submit" class="btn">Persönlichkeit anlegen</button>
+                <button style="float:left" type="reset" class="btn">Einträge löschen</button>
+                <a style="float:left" id="btn_abbrechen" href="startseite.php" class="btn">Abbrechen</a>
             </div>
+
         </form>
     </div>
 <?php
