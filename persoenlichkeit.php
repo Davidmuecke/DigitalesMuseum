@@ -2,7 +2,7 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <title>Digitales Museum Startseite</title>
+    <title>Persönlichkeit</title>
     <link rel="stylesheet" href="css/bootstrap-3.3.7-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -12,12 +12,13 @@
 <?php
     require("header.php");
     //require("helpers/DBController.php");
-    require("KachelCreationEngine.php")
+    require("helpers/KachelCreationEngine.php");
+
 ?>
 
     <div class="container">
         <?php
-            KachelCreationEngine::persoenlichkeit_title();
+            KachelCreationEngine::persoenlichkeit_title($_GET["id"]);
             KachelCreationEngine::persoenlichkeit_characteristic($_GET["id"]);
             KachelCreationEngine::persoenlichkeit_kurzbeschreibung($_GET["id"]);
             KachelCreationEngine::persoenlichkeit_zitat($_GET["id"]);

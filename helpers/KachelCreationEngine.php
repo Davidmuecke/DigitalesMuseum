@@ -47,6 +47,7 @@ class KachelCreationEngine {
             $geburtsdatum = $personen[$i]["geburtsdatum"];
             $todesdatum = $personen[$i]["todesdatum"];
             $id = $personen[$i]["persoenlichkeitID"];
+            $profilbild = "helpers/BildLaden.php?id=".$id;
             ?>
             <div class="kachel_persoenlichkeit" onclick="location.replace('persoenlichkeit.php?id=' + <?php echo $id ?>)">
                 <div class="panel-heading">
@@ -57,7 +58,7 @@ class KachelCreationEngine {
                     <label id="todestag"><span class="glyphicon glyphicon-plus"></span> <?php echo $todesdatum?></label>
                 </div>
                 <div class="panel-body">
-                    <div class="profile_image profile_image--1by1" style="background-image:url(img_flower.jpg); height:30px"></div>
+                    <div class="profile_image profile_image--1by1" style="background-image:url(<?php echo $profilbild; ?>);"></div>
                 </div>
 
 
@@ -83,9 +84,10 @@ class KachelCreationEngine {
     }
 
 
-    function persoenlichkeit_title() {
+    function persoenlichkeit_title($id) {
+        $titelbild = "helpers/BildLaden.php?id=".$id;
         ?>
-        <div class="title_image title_image--32by9" style="background-image:url(img_flower.jpg)"></div>
+        <div class="title_image title_image--32by9" style="background-image:url(<?php echo $titelbild; ?>);"></div>
         <?php
     }
 
@@ -102,6 +104,7 @@ class KachelCreationEngine {
         $vater = $person["vater"];
         $mutter = $person["mutter"];
         $kuenstlername = $person["kuenstlername"];
+        $profilbild = "helpers/BildLaden.php?id=" . $id;
 
         ?>
         <div class=" col-md-6 col-md-offset-0">
@@ -112,7 +115,7 @@ class KachelCreationEngine {
                     <label id="todestag"><span class="glyphicon glyphicon-plus"></span> <?php echo $todesdatum ?></label>
                 </div>
                 <div class="panel-body">
-                    <div class="profile_image profile_image--1by1" style="background-image:url(img_flower.jpg)"></div>
+                    <div class="profile_image profile_image--1by1" style="background-image:url(<?php echo $profilbild; ?>)""></div>
                     <div class="characteristics">
                         <label class="charac_label">Geburtsort</label> <?php echo $geburtsort ?>
                         <label class="charac_label">Vater</label> <?php echo $vater ?>

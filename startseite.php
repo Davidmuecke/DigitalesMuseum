@@ -6,7 +6,6 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/bootstrap-3.3.7-dist/css/bootstrap.min.css">
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
-    <script language="javascript" type="text/javascript" src="js/main.js"></script>
 </head>
 
 
@@ -20,7 +19,7 @@
 
     <?php
     require("header.php");
-    require("KachelCreationEngine.php");
+    require("helpers/KachelCreationEngine.php");
     ?>
 
     <script language="javascript">
@@ -63,9 +62,10 @@
         ?>
     </div>
 
-    <div class="containerKachelnStart">
+    <div class="containerKachelnStart"">
         <div class="clear"></div>
         <?php
+
             KachelCreationEngine::start("Kategorien", "kategorien_uebersicht");
             KachelCreationEngine::start("Persönlichkeiten", "persoenlichkeiten_uebersicht");
             KachelCreationEngine::start("Epochen", "epochen_uebersicht");
