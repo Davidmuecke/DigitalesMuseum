@@ -28,7 +28,7 @@ USE `userdb`;
 CREATE TABLE `user` (
   `userID`       int(11)      NOT NULL,
   `mail`         varchar(30)  NOT NULL,
-  `password`     varchar(30)  NOT NULL,
+  `password`     varchar(300)  NOT NULL,
   `username`      varchar(30)  NOT NULL,
   `name`         varchar(30)  NOT NULL,
   `vorname`      varchar(30)  NOT NULL

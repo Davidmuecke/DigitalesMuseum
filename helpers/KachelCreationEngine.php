@@ -1,16 +1,20 @@
 <?php
 
-require("helpers/DBController.php");
+
 //Mit dieser Engine werden verschiedenste Kacheln erstellt und in die Webseite eingebunden
 class KachelCreationEngine {
 
-
-    public $dbcontroller;
+    //Gibt die Anzahl an Suchergebnissen zurück
+    function kategorie_anz($find) {
+        $dbcontroller = new DBController();
+        $kategorien = $dbcontroller->sucheKategorie($find);
+        return count($kategorien);
+    }
 
     // Erstellt eine Kategorie kachel
-    function kategorie() {
+    function kategorie($find) {
         $dbcontroller = new DBController();
-        $kategorien = $dbcontroller->getKategorien();
+        $kategorien = $dbcontroller->sucheKategorie($find);
         $anz = count($kategorien);
         $title = "Titel";
         for($i = 0; $i < $anz; $i++) {
@@ -26,13 +30,21 @@ class KachelCreationEngine {
                 </div>
             <?php
         }
+        return $anz;
     }
 
 
-    // Erstellt eine Epoche kachel
-    function epoche() {
+    //Gibt die Anzahl an Suchergebnissen zurück
+    function epoche_anz($find) {
         $dbcontroller = new DBController();
-        $epochen = $dbcontroller->getEpochen();
+        $epochen = $dbcontroller->sucheEpoche($find);
+        return count($epochen);
+    }
+
+    // Erstellt eine Epoche kachel
+    function epoche($find) {
+        $dbcontroller = new DBController();
+        $epochen = $dbcontroller->sucheEpoche($find);
         $anz = count($epochen);
         $title = "Titel";
         for($i = 0; $i < $anz; $i++) {
@@ -50,18 +62,21 @@ class KachelCreationEngine {
         }
     }
 
-
-
+    function persoenlichkeit_anz($find) {
+        $dbcontroller = new DBController();
+        $personen = $dbcontroller->suchePersoenlichkeit($find);
+        return $anz = count($personen);
+    }
 
     // Erstellt eine Persönlichkeitskachel
-    function persoenlichkeit($katid, $epid) {
+    function persoenlichkeit($katid, $epid, $find) {
         $dbcontroller = new DBController();
         if($katid != -1) {
             $personen = $dbcontroller->getPersoenlichkeitenOfAKategorie($katid);
         } else if($epid != -1) {
             $personen = $dbcontroller->getPersoenlichkeitenOfAnEpoche($epid);
         } else {
-            $personen = $dbcontroller->getPersoenlichkeiten();
+            $personen = $dbcontroller->suchePersoenlichkeit($find);
         }
         $anz = count($personen);
         $title = "Titel";
@@ -71,18 +86,18 @@ class KachelCreationEngine {
             $geburtsdatum = $personen[$i]["geburtsdatum"];
             $todesdatum = $personen[$i]["todesdatum"];
             $id = $personen[$i]["persoenlichkeitID"];
-            $profilbild = "helpers/BildLaden.php?id=".$id;
+            $profilbild = "helpers/BildLaden.php?id=".$id."&profil=1";
             ?>
             <div class="kachel_persoenlichkeit" onclick="location.replace('persoenlichkeit.php?id=' + <?php echo $id ?>)">
                 <div class="panel-heading">
                     <a id="link_persoenlichkeit" href="#">
                         <label id="name_persoenlichkeit"><?php echo $vorname.' '.$name?></label>
                     </a>
-                    <label id="geburtsdatum"><span class="glyphicon glyphicon-asterisk"></span> <?php echo $geburtsdatum?></label>
+                    <label id="geburtsdatum">&#10033; <?php echo $geburtsdatum?></label>
                     <?php
                         if($todesdatum != "0000-00-00") {
                             ?>
-                            <label id="todestag"><span class="glyphicon glyphicon-plus"></span> <?php echo $todesdatum ?>
+                            <label id="todestag">&dagger; <?php echo $todesdatum ?>
                             </label>
                             <?php
                         }
@@ -113,8 +128,11 @@ class KachelCreationEngine {
     }
 
 
+
+
+
     function persoenlichkeit_title($id) {
-        $titelbild = "helpers/BildLaden.php?id=".$id;
+        $titelbild = "helpers/BildLaden.php?id=".$id."&titel=1";
         ?>
         <div class="title_image title_image--32by9" style="background-image:url(<?php echo $titelbild; ?>);"></div>
         <?php
@@ -134,18 +152,18 @@ class KachelCreationEngine {
         $vater = $person["vater"];
         $mutter = $person["mutter"];
         $kuenstlername = $person["kuenstlername"];
-        $profilbild = "helpers/BildLaden.php?id=" . $id;
+        $profilbild = "helpers/BildLaden.php?id=" . $id."&profil=1";
 
         ?>
         <div class="information col-md-6">
             <div class="panel">
                 <div class="panel-heading panel-heading-persoenlichkeit">
                     <label id="link_persoenlichkeit"><?php echo $vorname.' '.$name ?></label>
-                    <label id="geburtsdatum"><span class="glyphicon glyphicon-asterisk"></span> <?php echo $geburtsdatum ?></label>
+                    <label id="geburtsdatum">&#10033; <?php echo $geburtsdatum ?></label>
                     <?php
                     if($todesdatum != "0000-00-00") {
                         ?>
-                        <label id="todestag"><span class="glyphicon glyphicon-plus"></span> <?php echo $todesdatum ?>
+                        <label id="todestag">&dagger; <?php echo $todesdatum ?>
                         </label>
                         <?php
                     }
@@ -233,7 +251,12 @@ class KachelCreationEngine {
                     <div class="information-content">
                         <?php echo "\"".$zitat."\"" ?>
                         <i><?php
-                            echo $urheber.", ".$anlass.", ".$datum ?></i>
+                            echo $urheber.", ".$anlass;
+                            if($datum != "0000-00-00") {
+                                echo ", ".$datum;
+                            }
+                        ?></i>
+
                     </div>
                 </div>
             </div>
@@ -264,7 +287,15 @@ class KachelCreationEngine {
                                     $herausgeber = $literaturen[$i]["herausgeberName"];
                                     $herausgeberOrt = $literaturen[$i]["herausgeberOrt"];
                                     ?>
-                                    <li><?php echo $titel . ", " . $autor . ", " . $datum . ", " . $herausgeber . ", " . $herausgeberOrt ?></li>
+                                    <li>
+                                        <?php
+                                            echo $titel . ", " . $autor;
+                                            if($datum != "0000-00-00") {
+                                                echo ", ".$datum;
+                                            }
+                                            echo ", " . $herausgeber . ", " . $herausgeberOrt ?>
+
+                                    </li>
                                     <?php
                                 }
                             ?>
@@ -278,9 +309,11 @@ class KachelCreationEngine {
 
     function persoenlichkeit_linkPersonen($id) {
         $dbcontroller = new DBController();
-        //$freunde = $dbcontroller->getFreundeOfPersoenlichkeitByID($id);
-        //$name = $freunde["name"];
-        //$vorname = $freunde["vorname"];
+        $freunde = $dbcontroller->getPersoenlichkeitenOfAPersoenlichkeit($id);
+        $anz = count($freunde);
+        $name="";
+        $vorname="";
+        $id=0;
 
         ?>
         <div class="information col-md-6">
@@ -290,7 +323,21 @@ class KachelCreationEngine {
                 </div>
                 <div class="panel-body panel-body-persoenlichkeit">
                     <div class="information-content">
-                        Hier müssen noch die Verknüpften Persoen aufgelistet werden
+                        <ul>
+                            <?php
+                            for($i = 0; $i < $anz; $i++) {
+                                $name = $freunde[$i]['name'];
+                                $vorname = $freunde[$i]["vorname"];
+                                $idpers = $freunde[$i]["persoenlichkeitID"];
+                                $link = "persoenlichkeit.php?id=".$idpers;
+                                ?>
+                                <li>
+                                    <a id="link_kategorie" href=<?php echo $link?>><?php echo $vorname." ".$name ?></a>
+                                </li>
+                                <?php
+                            }
+                            ?>
+                        </ul>
                     </div>
                 </div>
             </div>

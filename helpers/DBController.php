@@ -11,13 +11,13 @@
 class DBController
 {
     private $DB;
+    private $UserDB;
 
     /*
      * Konstruktor mit PWD Daten
      */
     function __construct()
     {
-        $sqlhost = "localhost";
         $sqlhost = "127.0.0.1";
         $sqluser = "david";
         $sqlpass = "david";
@@ -27,6 +27,12 @@ class DBController
         if (mysqli_connect_errno()) {
             echo "Failed to connect to MySQL: " . mysqli_connect_error();
         }
+
+        $this->UserDB =  mysqli_connect($sqlhost, $sqluser, $sqlpass, "userdb") or die ("Datenbank-System nicht verfügbar");
+    }
+    //User Verwaltung
+    public function  getUserDB(){
+        return $this->UserDB;
     }
 
     /**
@@ -106,6 +112,18 @@ class DBController
     public function getPersoenlichkeitenOfAKategorie($katid)
     {
         $query = mysqli_query($this->DB, "SELECT * FROM persoenlichkeit INNER JOIN persoenlichkeitkategorie ON (persoenlichkeit.persoenlichkeitID = persoenlichkeitkategorie.persoenlichkeitID) WHERE persoenlichkeitkategorie.kategorieID='" . $katid . "'");
+        $result = mysqli_fetch_all($query, MYSQLI_ASSOC);
+        return $result;
+    }
+
+    /**
+     * Gibt alle Persönlichkeiten zurück, die mit dieser in Beziehung stehen
+     * @param katid ID der Persoenlichkeit
+     * @return array|null
+     */
+    public function getPersoenlichkeitenOfAPersoenlichkeit($id)
+    {
+        $query = mysqli_query($this->DB, "SELECT DISTINCT person.name, person.vorname, person.persoenlichkeitID FROM persoenlichkeit person, persoenlichkeitpersoenlichkeit bez where (bez.persoenlichkeit1ID = person.persoenlichkeitID AND bez.persoenlichkeit2ID ='" . $id . "') OR (bez.persoenlichkeit2ID = person.persoenlichkeitID AND bez.persoenlichkeit1ID = '" . $id . "')");
         $result = mysqli_fetch_all($query, MYSQLI_ASSOC);
         return $result;
     }

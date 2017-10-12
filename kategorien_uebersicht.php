@@ -12,15 +12,17 @@
 <body>
 <div class="container">
 
+    <?php
+    require("header.php");
+    require("helpers/KachelCreationEngine.php");
+    ?>
+
     <div class="jumbotron">
         <div class="clear"></div>
         <h1>Kategorien</h1>
     </div>
 
-    <?php
-    require("header.php");
-    require("helpers/KachelCreationEngine.php");
-    ?>
+
 
 
 </div>
@@ -36,7 +38,7 @@
     <div class="containerKachelnKategorien">
         <div class="clear"></div>
         <?php
-              KachelCreationEngine::kategorie();
+              KachelCreationEngine::kategorie("");
         ?>
         <div class="clear"></div>
     </div>

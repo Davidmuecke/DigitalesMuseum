@@ -2,31 +2,31 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <title>Registrierung 4-Gewinnt</title>
+    <title>Registrierung Digitales Museum</title>
     <link rel="stylesheet" href="css/bootstrap-3.3.7-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 <?php
-require("datenbank.php");
+require("helpers/DBController.php");
 
 if(isset($_REQUEST['vorname'])&& isset($_REQUEST['nachname'])&&isset($_REQUEST['mail']) && isset($_REQUEST['userName']) && isset($_REQUEST['password']) && isset($_REQUEST["passwordWdh"])){
-
+    $con = new DBController();
+    $my_db = $con->getUserDB();
     $vorname = mysqli_real_escape_string($my_db,htmlentities($_REQUEST['vorname']));
     $nachname = mysqli_real_escape_string($my_db,htmlentities($_REQUEST['nachname']));
     $mail = mysqli_real_escape_string($my_db,htmlentities($_REQUEST['mail']));
     $userName = mysqli_real_escape_string($my_db,htmlentities($_REQUEST['userName']));
-    $challenge = password_hash($mail,PASSWORD_DEFAULT);
+
 
 
     //Abfrage, ob "userName" schon verhanden:
-    $query = mysqli_query($my_db,"SELECT * FROM benutzer WHERE userName='".$userName."'");
+    $query = mysqli_query($my_db,"SELECT * FROM user WHERE username='".$userName."'");
     $result = mysqli_num_rows($query);
     if ($result === 0) {
         //"userName" ist noch nicht vorhanden!
     }
-
     else{
         echo "<div class='container'>
                  <div class=\"alert alert-danger\">
@@ -40,24 +40,19 @@ if(isset($_REQUEST['vorname'])&& isset($_REQUEST['nachname'])&&isset($_REQUEST['
 
     if($_REQUEST["password"] == $_REQUEST["passwordWdh"]){
         $pas = password_hash($_REQUEST['password'],PASSWORD_DEFAULT);
-
-        $sql= "INSERT INTO unbestaetigt (challenge, userName, vorname, nachname, mail, password) VALUES('".$challenge."','".$userName."','".$vorname."','".$nachname."','".$mail."','".$pas."')";
-
+        $sql= "INSERT INTO user ( username, vorname, name, mail, password) VALUES('$userName','$vorname','$nachname','$mail','$pas')";
         $res = mysqli_query($my_db, $sql) or die (mysqli_error($my_db));
-        ?>
-        <div class="container">
-                            <div class="jumbotron">
-                                <h2>Vielen Dank für deine Registrierung! </h2>
-                                <h2>F&uumlr dich wurde erfolgreich ein Account angelegt!</h2>
-                            </div>
-                         </div>;
-        <?php
-        echo "<div class='container'>
-                             <div class=\"alert alert-info\">
-                                <strong>Info!</strong> Bitte klicke auf den folgenden Link, um deinen Account zu <a href='registrierung_erfolgreich.php?challenge=".$challenge."'>bestätigen</a>.
-                             </div>
-                          </div>";
 
+       echo " <div class=\"container\">
+                            <div class=\"jumbotron\">
+                                <h2>Vielen Dank für deine Registrierung! </h2>                               
+                            </div>
+                         </div>;   ";
+        echo "<div class='container'>    
+                  <div class=\"alert alert-success\"
+                    <strong>Registrierung war erfolgreich!</strong> Du kannst dich jetzt mit deinem Account <a href='login.php'>anmelden</a>!
+                  </div>
+              </div>";
     }
     else{
         echo "<div class='container'>    
@@ -69,33 +64,7 @@ if(isset($_REQUEST['vorname'])&& isset($_REQUEST['nachname'])&&isset($_REQUEST['
     }
 }
 
-if(isset($_REQUEST['challenge'])){
 
-    $challenge = mysqli_real_escape_string($my_db,htmlentities($_REQUEST['challenge']));
-    $sql="SELECT * FROM unbestaetigt WHERE challenge='".$challenge."'";
-    $res = mysqli_query($my_db, $sql) or die (mysqli_error($my_db));
-    $res = mysqli_fetch_assoc($res);
-
-    if($res['challenge']==$challenge){
-
-        $sql = "INSERT INTO benutzer (userName, vorname, nachname, mail, password) VALUES ('".$res['userName']."','".$res['vorname']."','".$res['nachname']."','".$res['mail']."','".$res['password']."')";
-        $res = mysqli_query($my_db, $sql) or die (mysqli_error($my_db));
-        $sql = "DELETE FROM unbestaetigt WHERE challenge='".$challenge."'";
-        $res = mysqli_query($my_db, $sql) or die (mysqli_error($my_db));
-
-        echo "<div class='container'>
-                <div class=\"jumbotron\">
-                    <h2>Vielen Dank für deine Registrierung! </h2>
-                    <h2>F&uumlr dich wurde erfolgreich ein Account angelegt!</h2>
-                 </div>
-              </div>";
-        echo "<div class='container'>    
-                  <div class=\"alert alert-success\"
-                    <strong>Bestätigung war erfolgreich!</strong> Du kannst dich jetzt mit deinem Account <a href='login.php'>anmelden</a>!
-                  </div>
-              </div>";
-    }
-}
 ?>
 </body>
 </html>
