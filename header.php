@@ -73,7 +73,7 @@ else {
                 <li><a href="persoenlichkeiten_uebersicht.php">Persönlichkeiten</a></li>
                 <li><a href="epochen_uebersicht.php">Epochen</a></li>
                 <li id="unsichtbar">a</li>
-                <li id="button_persoenlichkeit_anlegen"><a href="persoenlichkeit_anlegen.php">Neue Persönlichkeit anlegen</a></li>
+                <li id="button_persoenlichkeit_anlegen"><a href="persoenlichkeit_anlegen.php">Neu</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <form class="navbar-form navbar-left" role="search">

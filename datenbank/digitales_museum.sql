@@ -370,6 +370,12 @@ ALTER TABLE `epoche`
 --
 ALTER TABLE `persoenlichkeitepoche`
   MODIFY `persoenlichkeitEpocheID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT für Tabelle `persoenlichkeitepoche`
+--
+ALTER TABLE `persoenlichkeitpersoenlichkeit`
+  MODIFY `persoenlichkeitPersoenlichkeitID` int(11) NOT NULL AUTO_INCREMENT;
 --
 
 COMMIT;
