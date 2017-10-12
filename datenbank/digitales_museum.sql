@@ -346,6 +346,13 @@ ALTER TABLE `persoenlichkeitpersoenlichkeit`
 ALTER TABLE `epoche`
   MODIFY `epocheID` INT(11) NOT NULL AUTO_INCREMENT,
   AUTO_INCREMENT = 4;
+
+-- AUTO_INCREMENT für Tabelle `persoenlichkeitepoche`
+--
+ALTER TABLE `persoenlichkeitepoche`
+  MODIFY `persoenlichkeitEpocheID` int(11) NOT NULL AUTO_INCREMENT;
+--
+
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
