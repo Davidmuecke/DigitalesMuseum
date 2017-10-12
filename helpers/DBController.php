@@ -11,13 +11,13 @@
 class DBController
 {
     private $DB;
+    private $UserDB;
 
     /*
      * Konstruktor mit PWD Daten
      */
     function __construct()
     {
-        $sqlhost = "localhost";
         $sqlhost = "127.0.0.1";
         $sqluser = "david";
         $sqlpass = "david";
@@ -27,6 +27,12 @@ class DBController
         if (mysqli_connect_errno()) {
             echo "Failed to connect to MySQL: " . mysqli_connect_error();
         }
+
+        $this->UserDB =  mysqli_connect($sqlhost, $sqluser, $sqlpass, "userdb") or die ("Datenbank-System nicht verfügbar");
+    }
+    //User Verwaltung
+    public function  getUserDB(){
+        return $this->UserDB;
     }
 
     /**
