@@ -347,6 +347,16 @@ footer{
     display: inline-block;
 }
 
+.create-text{
+    width: 100%;
+    float: left;
+    margin: 1%;
+}
+
+.create-text *{
+    width: 97.25%;
+}
+
 .p_h1{
     color: black;
     font-weight: bolder;

@@ -33,6 +33,14 @@
             <div class="col-md-0 col-md-offset-0">
 
                 <div class="create create-one">
+                    <!--Nachname-->
+                    <div class="form-group">
+                        <label class="p_h1">Name:</label>
+                        <input type="text" placeholder="Nachname"
+                               name="p_nachname" class="form-control"
+                               required>
+                    </div>
+
                     <!--Vorname-->
                     <div class="form-group">
                         <label class="p_h1">Vorname:</label>
@@ -41,35 +49,18 @@
                                required>
                     </div>
 
-                    <!--Nachname-->
-                    <div class="form-group">
-                        <label>Nachname:</label>
-                        <input type="text" placeholder="Nachname"
-                               name="p_nachname" class="form-control"
-                               required>
-                    </div>
-
                     <!--Künstlername-->
                     <div class="form-group">
-                        <label>Künstlername:</label>
+                        <label class="p_h1">Künstlername:</label>
                         <input type="text" placeholder="Künstlername"
-                               name="p_kuenstlername" class="form-control"
-                               required>
+                               name="p_kuenstlername" class="form-control">
                     </div>
                 </div>
 
                 <div class="create create-two">
-                    <!--Nationalität-->
-                    <div class="form-group">
-                        <label>Nationalität:</label>
-                        <input type="text" placeholder="Nationalität"
-                               name="p_nationalität" class="form-control"
-                               required>
-                    </div>
-
                     <!--Vater-->
                     <div class="form-group">
-                        <label>Vater:</label>
+                        <label class="p_h1">Vater:</label>
                         <input type="text" placeholder="Vater"
                                name="p_vater" class="form-control"
                                required>
@@ -77,9 +68,17 @@
 
                     <!--Mutter-->
                     <div class="form-group">
-                        <label>Mutter:</label>
+                        <label class="p_h1">Mutter:</label>
                         <input type="text" placeholder="Mutter"
                                name="p_mutter" class="form-control"
+                               required>
+                    </div>
+
+                    <!--Nationalität-->
+                    <div class="form-group">
+                        <label class="p_h1">Nationalität:</label>
+                        <input type="text" placeholder="Nationalität"
+                               name="p_nationalität" class="form-control"
                                required>
                     </div>
                 </div>
@@ -87,7 +86,7 @@
                 <div class="create create-three">
                     <!--Geburtsdatum-->
                     <div class="form-group">
-                        <label>Geburtsdatum</label>
+                        <label class="p_h1">Geburtsdatum:</label>
                         <input type="text" placeholder="dd/mm/yyyy"
                                name="p_geburtsdatum" class="form-control"
                                pattern="([0-3])+([0-9])+.+([0-1])+([0-9])+.+([0-9])+([0-9])+([0-9])+([0-9])"
@@ -96,7 +95,7 @@
 
                     <!--Geburtsort-->
                     <div class="form-group">
-                        <label>Geburtsort:</label>
+                        <label class="p_h1">Geburtsort:</label>
                         <input type="text" placeholder="Geburtsort"
                                name="p_geburtsort" class="form-control"
                                required>
@@ -104,43 +103,61 @@
 
                     <!--Todesdatum-->
                     <div class="form-group">
-                        <label>Todesdatum</label>
+                        <label class="p_h1">Todesdatum:</label>
                         <input type="text" placeholder="dd/mm/yyyy"
                                name="p_todesdatum" class="form-control"
-                               pattern="([0-3])+([0-9])+.+([0-1])+([0-9])+.+([0-9])+([0-9])+([0-9])+([0-9])"
-                               required>
+                               pattern="([0-3])+([0-9])+.+([0-1])+([0-9])+.+([0-9])+([0-9])+([0-9])+([0-9])">
                     </div>
+                </div>
+
+                <!--Kurzbeschreibung-->
+                <div class="create create-four">
+                    <label class="p_h1">Kurzbeschreibung</label>
                 </div>
 
                 <div class="create create-four">
-                    <!--Kurzbeschreibung-->
                     <div class="form-group">
-                        <label>Kurzbeschreibung</label>
-                        <textarea placeholder="Kurzbeschreibung"
-                               name="p_kurzbeschreibung" class="form-control"
-                                  required></textarea>
+                        <label>Titel:</label>
+                        <input type="text" placeholder="Titel der Kurzbeschreibung"
+                               name="p_kbeschreibung_titel" class="form-control"
+                               required>
                     </div>
 
-                    <!--Zitat-->
                     <div class="form-group">
-                        <label>Zitat:</label><br>
-                        <input type="radio" name="zitat" value="zitat_von" checked>
-                        <label>Zitat von dieser Perönlichkeit</label><br>
-                        <input type="radio" name="zitat" value="zitat_ueber">
-                        <label>Zitat über diese Persönlichkeit</label><br>
-                        <textarea placeholder="Zitat"
-                                  name="p_zitat" class="form-control"
+                        <label>Autor:</label>
+                        <input type="text" placeholder="Autor der Kurzbeschreibung"
+                               name="p_kbeschreibung_autor" class="form-control"
+                               required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Quelle:</label>
+                        <input type="text" placeholder="Quelle der Kurzbeschreibung"
+                               name="p_kbeschreibung_quelle" class="form-control"
+                               required>
+                    </div>
+
+                </div>
+
+                <div class="create-text">
+                    <div class="form-group">
+                        <textarea placeholder="Kurzbeschreibung"
+                                  name="p_kurzbeschreibung" class="form-control"
                                   required></textarea>
                     </div>
                 </div>
 
+                <!--Text-->
                 <div class="create create-five">
-                    <!--Text-->
+                    <label class="p_h1">Text</label>
+                </div>
+
+                <div class="create create-five">
                     <div class="form-group">
-                        <label>Text</label>
-                        <textarea placeholder="Text"
-                               name="p_text" class="form-control"
-                                  required></textarea>
+                        <label>Titel:</label>
+                        <input type="text" placeholder="Titel des Textes"
+                               name="p_text_titel" class="form-control"
+                               required>
                     </div>
 
                     <div class="form-group">
@@ -151,12 +168,33 @@
                     </div>
 
                     <div class="form-group">
-                        <label>Titel:</label>
-                        <input type="text" placeholder="Titel des Textes"
-                               name="p_text_titel" class="form-control"
+                        <label>Quelle:</label>
+                        <input type="text" placeholder="Quelle des Textes"
+                               name="p_text_quellen" class="form-control"
                                required>
                     </div>
                 </div>
+
+                <div class="create">
+                    <div class="form-group">
+                    <textarea placeholder="Text"
+                              name="p_text" class="form-control"
+                              required></textarea>
+                    </div>
+                <div/>
+
+                <!--Zitat-->
+                <div class="form-group">
+                    <label>Zitat:</label><br>
+                    <input type="radio" name="zitat" value="zitat_von" checked>
+                    <label>Zitat von dieser Perönlichkeit</label><br>
+                    <input type="radio" name="zitat" value="zitat_ueber">
+                    <label>Zitat über diese Persönlichkeit</label><br>
+                    <textarea placeholder="Zitat"
+                              name="p_zitat" class="form-control"
+                              required></textarea>
+                </div>
+
 
                 <div class="create create-six">
                     <!--Epoch-->
@@ -231,14 +269,7 @@
                     </script>
                 </div>
 
-                <div class="create create-seven">
-                    <!--Quellen-->
-                    <div class="form-group">
-                        <label>Quellen:</label>
-                        <input type="text" placeholder="Quellen"
-                               name="p_quellen" class="form-control"
-                               required>
-                    </div>
+
 
                     <!--Literaturangaben-->
                     <div class="form-group">
