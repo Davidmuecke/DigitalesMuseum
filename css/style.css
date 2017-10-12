@@ -111,6 +111,7 @@ textarea{
     border: 1px solid;
     border-color: black;
     border-radius: 5px;
+    resize: vertical;
 }
 /* Ende Textarea */
 
@@ -360,9 +361,6 @@ footer{
     margin-left: 100%;
 }
 
-.face-button{
-    font-size: 30px;
-}
 /* Ende Button */
 
 /* Title Image */
