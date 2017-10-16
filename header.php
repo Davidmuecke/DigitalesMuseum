@@ -71,7 +71,6 @@ else {
 
         <div class="collapse navbar-collapse navHeaderCollapse">
             <ul class="nav navbar-nav">
-                <li><a href="startseite.php">Home</a></li>
                 <li><a href="kategorien_uebersicht.php">Kategorien</a></li>
                 <li><a href="persoenlichkeiten_uebersicht.php">Persönlichkeiten</a></li>
                 <li><a href="epochen_uebersicht.php">Epochen</a></li>

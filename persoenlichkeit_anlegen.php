@@ -11,7 +11,7 @@
 <div class="container">
 
     <div class="jumbotron">
-        <h1>Digitales Museum</h1>
+        <h1>Neue Persönlichkeit</h1>
     </div>
 
     <?php
@@ -19,13 +19,6 @@
     ?>
 
     <div>
-        <div class="row vertical-offset-100">
-            <div class="col-md-4 col-md-offset-4">
-
-                <h1>Neue Persönlichkeit</h1>
-
-            </div>
-        </div>
 
         <form accept-charset="UTF-8" role="form" action="persoenlichkeit_anlegen_erfolgreich.php.php" method="post" enctype='multipart/form-data'>
 
@@ -64,24 +57,21 @@
                         <div class="form-group">
                             <label class="p_h1">Vater:</label>
                             <input type="text" placeholder="Vater"
-                                   name="p_vater" class="form-control"
-                                   required>
+                                   name="p_vater" class="form-control">
                         </div>
 
                         <!--Mutter-->
                         <div class="form-group">
                             <label class="p_h1">Mutter:</label>
                             <input type="text" placeholder="Mutter"
-                                   name="p_mutter" class="form-control"
-                                   required>
+                                   name="p_mutter" class="form-control">
                         </div>
 
                         <!--Nationalität-->
                         <div class="form-group">
                             <label class="p_h1">Nationalität:</label>
                             <input type="text" placeholder="Nationalität"
-                                   name="p_nationalität" class="form-control"
-                                   required>
+                                   name="p_nationalität" class="form-control">
                         </div>
                     </div>
 
@@ -100,8 +90,7 @@
                         <div class="form-group">
                             <label class="p_h1">Geburtsort:</label>
                             <input type="text" placeholder="Geburtsort"
-                                   name="p_geburtsort" class="form-control"
-                                   required>
+                                   name="p_geburtsort" class="form-control">
                         </div>
 
                         <!--Todesdatum-->
@@ -185,15 +174,14 @@
                             <div class="form-group">
                                 <label>Anlass:</label>
                                 <input type="text" placeholder="Anlass des Zitats"
-                                       name="p_zitat_anlass" class="form-control"
-                                       required>
+                                       name="p_zitat_anlass" class="form-control">
                             </div>
 
                             <div class="form-group">
                                 <label>Datum:</label>
-                                <input type="text" placeholder="Datum des Zitats"
+                                <input type="text" placeholder="Datum des Zitats: dd/mm/yyyy"
                                        name="p_zitat_datum" class="form-control"
-                                       required>
+                                       pattern="([0-3])+([0-9])+.+([0-1])+([0-9])+.+([0-9])+([0-9])+([0-9])+([0-9])">
                             </div>
 
                             <div id="urheber_input" class="form-group">
@@ -245,7 +233,7 @@
                         </div>
                     </div>
 
-                    <!--Epoch-->
+                    <!--Epoche-->
                     <div>
                         <div id="ueber_epoche">
                             <div class="create create-seven">
@@ -264,7 +252,7 @@
                                         <option value="neueEpoche">Neue Epoche</option>
                                     </select>
 
-                                    <div id="ne_input" style="display:none;">
+                                    <div id="ne_input">
                                         <input type="text" placeholder="Neue Epoche eingeben"
                                                name="neue_epoche" class="form-control"
                                                required>
@@ -284,7 +272,6 @@
                                         show.style.display = "none";
                                     }
                                 }
-                            }
                             -->
                             </script>
                             </div>
@@ -320,7 +307,7 @@
                                         <option value="neueKategorie">Neue Kategorie</option>
                                     </select>
 
-                                    <div id="nk_input" style="display:none;">
+                                    <div id="nk_input">
                                         <input type="text" placeholder="Neue Kategorie eingeben"
                                                name="neue_kategorie" class="form-control"
                                                required>
@@ -363,22 +350,19 @@
                                     <div class="form-group">
                                         <label>Titel:</label>
                                         <input type="text" placeholder="Titel der Literaturangabe"
-                                               name="p_literatur_titel" class="form-control"
-                                               required>
+                                               name="p_literatur_titel" class="form-control">
                                     </div>
 
                                     <div class="form-group">
                                         <label>Autor:</label>
                                         <input type="text" placeholder="Autor der Literaturangabe"
-                                               name="p_literatur_autor" class="form-control"
-                                               required>
+                                               name="p_literatur_autor" class="form-control">
                                     </div>
 
                                     <div class="form-group">
                                         <label>Jahr:</label>
                                         <input type="text" placeholder="Jahr der Literaturangabe"
-                                               name="p_literatur_quellen" class="form-control"
-                                               required>
+                                               name="p_literatur_quellen" class="form-control">
                                     </div>
                                 </div>
 
@@ -386,23 +370,20 @@
                                     <div class="form-group">
                                         <label>Herausgeber:</label>
                                         <input type="text" placeholder="Name des Herausgebers"
-                                               name="p_literatur_herausgeber" class="form-control"
-                                               required>
+                                               name="p_literatur_herausgeber" class="form-control">
                                     </div>
 
                                     <div class="form-group">
                                         <label id="p_literatur_ort">Ort/ Firmensitz des Herausgebers:</label>
                                         <input type="text" placeholder="Ort/Firmensitz des Herausgebers"
-                                               name="p_literatur_ort" class="form-control"
-                                               required>
+                                               name="p_literatur_ort" class="form-control">
                                     </div>
                                 </div>
 
                                 <div class="create-einzeilig">
                         <div class="form-group">
                             <input type="text" placeholder="Literaturangabe"
-                                   name="p_literaturangabe" class="form-control"
-                                   required>
+                                   name="p_literaturangabe" class="form-control">
                         </div>
                     </div>
                             </div>
@@ -461,9 +442,9 @@
 
             <!--Button--->
             <div id="p_button">
-                <button style="float:left" type="submit" class="btn">Persönlichkeit anlegen</button>
-                <button style="float:left" type="reset" class="btn">Einträge löschen</button>
-                <a style="float:left" id="btn_abbrechen" href="startseite.php" class="btn">Abbrechen</a>
+                <button id="btn_anlegen" type="submit" class="btn">Persönlichkeit anlegen</button>
+                <button id="btn_loeschen" type="reset" class="btn">Einträge löschen</button>
+                <a id="btn_abbrechen" href="startseite.php" class="btn">Abbrechen</a>
             </div>
 
         </form>

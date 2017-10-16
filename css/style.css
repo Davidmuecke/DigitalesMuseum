@@ -318,6 +318,7 @@ footer{
 /* Alert */
 .alert{
     margin-bottom: 3vh;
+
 }
 
 .alert-info{
@@ -333,7 +334,7 @@ footer{
 }
 
 .alert-success{
-    background-color: #be5959;
+    background-color: white;
     color: black;
     border-color: black;
 }
@@ -360,6 +361,10 @@ footer{
     text-shadow: -1px 0 #663333, 0 1px #663333, 1px 0 #663333, 0 -1px #663333;
     font-weight: bold;
     margin-left: 100%;
+}
+
+.btn_add:hover {
+    box-shadow: none;
 }
 
 /* Ende Button */
@@ -511,6 +516,15 @@ footer{
 /* Ende Link */
 
 
+/* Neu-Seite Inputs */
+#ne_input {
+    display: none;
+}
+
+#nk_input {
+    display: none;
+}
+
 /* Suchen */
 #suchen_button{
     background-color: #663333;
@@ -569,6 +583,14 @@ footer{
     left: 50%;
     margin-top: 1vh;
     margin-left: -17vw;
+}
+
+#btn_abbrechen, #btn_anlegen, #btn_loeschen {
+    float: left;
+}
+
+#btn_abbrechen:hover, #btn_anlegen:hover, #btn_loeschen:hover {
+    box-shadow: none;
 }
 /* Ende Button */
 
