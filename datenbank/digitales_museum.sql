@@ -360,16 +360,57 @@ ALTER TABLE `persoenlichkeitpersoenlichkeit`
 --
 
 --
+-- AUTO_INCREMENT für Tabelle `bild`
+--
+ALTER TABLE `bild`
+  MODIFY `bildID` int(11) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT für Tabelle `epoche`
 --
 ALTER TABLE `epoche`
-  MODIFY `epocheID` INT(11) NOT NULL AUTO_INCREMENT,
-  AUTO_INCREMENT = 4;
+  MODIFY `epocheID` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT für Tabelle `kategorie`
+--
+ALTER TABLE `kategorie`
+  MODIFY `kategorieID` INT(11) NOT NULL AUTO_INCREMENT,
+  AUTO_INCREMENT = 6;
+--
+-- AUTO_INCREMENT für Tabelle `literaturangaben`
+--
+ALTER TABLE `literaturangaben`
+  MODIFY `literaturangabenID` INT(11) NOT NULL AUTO_INCREMENT,
+  AUTO_INCREMENT = 6;
+--
+-- AUTO_INCREMENT für Tabelle `persoenlichkeit`
+--
+ALTER TABLE `persoenlichkeit`
+  MODIFY `persoenlichkeitID` INT(11) NOT NULL AUTO_INCREMENT,
+  AUTO_INCREMENT = 6;
 
+--
+-- AUTO_INCREMENT für Tabelle `persoenlichkeitbild`
+--
+ALTER TABLE `persoenlichkeitbild`
+  MODIFY `persoenlichkeitBildID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT für Tabelle `persoenlichkeitepoche`
 --
 ALTER TABLE `persoenlichkeitepoche`
   MODIFY `persoenlichkeitEpocheID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT für Tabelle `persoenlichkeitkategorie`
+--
+ALTER TABLE `persoenlichkeitkategorie`
+  MODIFY `persoenlichkeitKategorieID` INT(11) NOT NULL AUTO_INCREMENT,
+  AUTO_INCREMENT = 6;
+--
+-- AUTO_INCREMENT für Tabelle `persoenlichkeitliteraturangaben`
+--
+ALTER TABLE `persoenlichkeitliteraturangaben`
+  MODIFY `persoenlichkeitLiteraturangabenID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT für Tabelle `persoenlichkeitepoche`
