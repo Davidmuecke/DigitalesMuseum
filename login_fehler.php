@@ -22,12 +22,10 @@
     }
     ?> -->
 
-    <div class='container'>
         <div class="alert alert-danger">
             <strong>Fehler!</strong> Dein Benutzername oder Passwort stimmt nicht!</a>
             Versuche es bitte erneut</a>!
         </div>
-    </div>
 
     <div class="container">
         <div class="row vertical-offset-100">
