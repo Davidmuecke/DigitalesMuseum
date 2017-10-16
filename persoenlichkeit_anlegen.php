@@ -262,7 +262,7 @@
                                 <script  type="text/javascript">
                             <!--
                                 var sel = document.getElementById('epochen_auswahl');
-                                sel.onchange = function eins() {
+                                sel.onchange = function zwei() {
                                     if (document.getElementById('epochen_auswahl').value == "neueEpoche"){
                                         var show = document.getElementById('ne_input');
                                         show.style.display = "block";
@@ -333,7 +333,7 @@
                         </div>
 
                         <div id="add_button_kategorie">
-                            <a onclick="addElement('epoche','ueber_epoche')" class="btn_add"><span class="glyphicon glyphicon-plus"></span></a>
+                            <a onclick="addElement('kategorie','ueber_kategorie')" class="btn_add"><span class="glyphicon glyphicon-plus"></span></a>
                         </div>
                     </div>
 
@@ -390,32 +390,30 @@
                         </div>
 
                         <div id="add_button_literatur">
-                            <a onclick="addElement('epoche','ueber_epoche')" class="btn_add"><span class="glyphicon glyphicon-plus"></span></a>
+                            <a onclick="addElement('literatur','ueber_literatur')" class="btn_add"><span class="glyphicon glyphicon-plus"></span></a>
                         </div>
                     </div>
 
                     <!--Bilder-->
                     <div>
-                        <div id="ueber_bilder">
-                            <div class="create create-ten">
-                                <label class="p_h1">Bilder:</label>
+                        <div class="create create-ten">
+                            <label class="p_h1">Bilder:</label>
+                        </div>
+
+                        <div id="ueber_bilder" class="create-einzeilig create-ten">
+                            <div class="form-group">
+                                <label>Profilbild:</label>
+                                <input type="file" name="bild_profilbild">
                             </div>
 
-                            <div class="create-einzeilig create-ten">
-                                <div class="form-group">
-                                    <label>Profilbild:</label>
-                                    <input type="file" name="bild_profilbild">
-                                </div>
-
-                                <div class="form-group">
-                                    <label>Titelbild:</label>
-                                    <input type="file" name="bild_titelbild">
-                                </div>
-                                <div id="bilder">
-                                    <div class="form-group" id="bilder">
-                                        <label>Weitere Bilder:</label>
-                                        <input type="file" name="bild_dateien">
-                                    </div>
+                            <div class="form-group">
+                                <label>Titelbild:</label>
+                                <input type="file" name="bild_titelbild">
+                            </div>
+                            <div id="bilder">
+                                <div class="form-group" id="bilder">
+                                    <label>Weitere Bilder:</label>
+                                    <input type="file" name="bild_dateien">
                                 </div>
                             </div>
                         </div>
