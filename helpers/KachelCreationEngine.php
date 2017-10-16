@@ -24,7 +24,7 @@ class KachelCreationEngine {
                 <div class="kachel_kategorie" onclick="location.replace('persoenlichkeiten_uebersicht.php?katid=' + <?php echo $id ?>)">
                     <div class="panel-body">
                         <div class="characteristics">
-                            <label id="kategorie"><?php echo $title?></label>
+                            <label id="kategorie_label"><?php echo $title?></label>
                         </div>
                     </div>
                 </div>

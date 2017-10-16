@@ -65,7 +65,7 @@ else {
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="#" style="color: white">Digitales Museum</a>
+            <a class="navbar-brand" href="startseite.php" style="color: white">Digitales Museum</a>
             <button class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse" aria-expanded="false" aria-controls="navHeaderCollapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
         </div>
 
