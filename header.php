@@ -65,13 +65,12 @@ else {
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="#" style="color: white">Digitales Museum</a>
+            <a class="navbar-brand" href="startseite.php" style="color: white">Digitales Museum</a>
             <button class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse" aria-expanded="false" aria-controls="navHeaderCollapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
         </div>
 
         <div class="collapse navbar-collapse navHeaderCollapse">
             <ul class="nav navbar-nav">
-                <li><a href="startseite.php">Home</a></li>
                 <li><a href="kategorien_uebersicht.php">Kategorien</a></li>
                 <li><a href="persoenlichkeiten_uebersicht.php">Persönlichkeiten</a></li>
                 <li><a href="epochen_uebersicht.php">Epochen</a></li>

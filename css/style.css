@@ -1,3 +1,18 @@
+/****************************
+       E L E M E N T E
+****************************/
+
+
+/* Body */
+body{
+    padding-top: 12vh;
+    padding-bottom: 15vh;
+    background-color: #FFCC99;
+}
+/* Ende Body */
+
+
+/* Resizing ab einer Fensterbreite von weniger als 1243px für die Navbar */
 @media (max-width: 1243px) {
     .navbar-header {
         float: none;
@@ -44,68 +59,100 @@
         box-shadow: none;
     }
 }
+/* Ende Resizing Navbar */
 
-body{
-    padding-top: 70px;
-    padding-bottom: 100px;
-    background-color: #FFCC99;
-}
 
-.panel-body::-webkit-scrollbar
-{
-    width: 12px;  /* for vertical scrollbars */
-    height: 12px; /* for horizontal scrollbars */
-}
-
-.panel-body::-webkit-scrollbar-track
-{
-    border: 1px solid;
-    border-color: black;
-    background: #663333;
-}
-
-.panel-body::-webkit-scrollbar-thumb
-{
-    background: rgba(0, 0, 0, 0.5);
-}
-
-input[type=text], input[type=password]{
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0px;
-    display: inline-block;
-    border: 1px solid;
-    border-color: black;
-}
-
-textarea{
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0px;
-    display: inline-block;
-    border: 1px solid;
-    border-color: black;
-    border-radius: 5px;
-}
-
-select{
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0px;
-    display: inline-block;
-    border: 1px solid;
-    border-color: black;
-    border-radius: 5px;
-
-}
-
+/* Nav */
 nav{
     background-color: dimgray;
     color: #663333;
     font-weight: bold;
     padding: 0%;
 }
+/* Ende Nav */
 
+
+/* Überschriften h1, h2, h4 */
+
+h1{
+    color: #663333;
+    font-weight: bold;
+    margin-top: 5vh;
+}
+
+h2{
+    color: white;
+    font-weight: bold;
+}
+
+h4{
+    color: black;
+    font-weight: bold;
+}
+/* Ende Überschriften */
+
+
+/* Input */
+input[type=text], input[type=password]{
+    width: 100%;
+    margin: 1vh 0vw;
+    display: inline-block;
+    border: 1px solid;
+    border-color: black;
+}
+/* Ende Input */
+
+/* Textarea */
+textarea{
+    width: 100%;
+    padding: 2vh 3vw;
+    margin: 1vh 0vw;
+    display: inline-block;
+    border: 1px solid;
+    border-color: black;
+    border-radius: 5px;
+    resize: vertical;
+}
+/* Ende Textarea */
+
+
+/* Select */
+select{
+    width: 100%;
+    padding: 2vh 3vw;
+    margin: 1vh 0vw;
+    display: inline-block;
+    border: 1px solid;
+    border-color: black;
+    border-radius: 5px;
+}
+/* Ende Select */
+
+
+/* p */
+p {
+    margin-top: 7vh;
+    margin-bottom: 7vh;
+}
+/* Ende p */
+
+
+/* Footer */
+footer{
+    margin-top: 20vh;
+    max-height: 15vh;
+}
+/* Ende footer */
+
+
+
+/****************************
+       K L A S S E N
+****************************/
+
+
+
+/* Navbar */
 .navbar-inverse{
     background-color: dimgray;
     color: #663333;
@@ -125,66 +172,34 @@ nav{
 .navbar-inverse .navbar-nav>.active>a>span{
     color: #FFCC99;
 }
+/* Ende Navbar */
 
 
-
-.btn{
-    background-color: #be5959;
-    color: #FFCC99;
-    text-shadow: -1px 0 #663333, 0 1px #663333, 1px 0 #663333, 0 -1px #663333;
-    font-weight: bold;
-}
-
-.btn_add{
-    background-color: #be5959;
-    color: #FFCC99;
-    text-shadow: -1px 0 #663333, 0 1px #663333, 1px 0 #663333, 0 -1px #663333;
-    font-weight: bold;
-    margin-left: 100%;
-}
-
-
-
-#suchen_button{
+/* Jumbotron */
+.jumbotron{
+    font-size: medium;
     background-color: #663333;
-    color: #FFCC99;
-    text-shadow: -1px 0 #663333, 0 1px #663333, 1px 0 #663333, 0 -1px #663333;
-    font-weight: bold;
-    border-color: black;
-}
-
-#suchen_feld{
-    margin-bottom: 0;
-    margin-top: 0;
-}
-
-
-#kontakt{
-    color: #663333;
-    margin-left: 10px;
-}
-
-h1{
-    color: #663333;
-    font-weight: bold;
-    margin-top: 20px;
-}
-
-
-h2{
     color: white;
-    font-weight: bold;
-
 }
+/* Ende Jumbotron */
 
-h4{
+/* Clear */
+.clear {
+    clear: both;
+}
+/* Ende Clear */
+
+
+/* Überschrift p_h1 */
+.p_h1{
     color: black;
-    font-weight: bold;
+    font-weight: bolder;
+    font-size: large;
 }
+/* Ende Überschrift p_h1 */
 
 
-
-
+/* Panel */
 .panel, .panel_kategorie{
     background-color: #663333;
     color: white;
@@ -199,16 +214,6 @@ h4{
     width: 48%;
 }
 
-.panel-body{
-    background-color: #663333;
-    color: white;
-    font-size: 20px;
-    align-content: center;
-    display: flex;
-    justify-content: center;
-}
-
-
 .panel-heading{
     background-color: #be5959;
     color: #FFCC99;
@@ -220,132 +225,46 @@ h4{
     height: 8vh;
 }
 
-#todestag,#geburtsdatum{
-    text-shadow: none;
-    font-weight: bold;
-    color: white;
-    font-size: 14px;
-    align-content: center;
-}
-
-#kategorie {
-    font-size: 30px;
-}
-
-
-.jumbotron{
-    font-size: medium;
+.panel-body{
     background-color: #663333;
     color: white;
-}
-
-p {
-    margin-top: 50px;
-    margin-bottom: 50px;
-}
-
-footer{
-    margin-top: 150px;
-}
-
-.alert{
-    margin-bottom: 20px;
-}
-
-.alert-info{
-    background-color: #663333;
-    color: white;
-    border-color: black;
-}
-
-.alert-danger{
-    background-color: #CC3300;
-    color: white;
-    border-color: black;
-}
-
-.alert-success{
-    background-color: #be5959;
-    color: black;
-    border-color: black;
-}
-
-#link_persoenlichkeit, #link_information, #link_kategorie, #link_epoche {
-    color: #FFCC99;
-}
-
-#link_persoenlichkeit:hover, #link_information:hover, #link_kategorie:hover, #link_epoche:hover {
-    text-underline: none;
-}
-
-.title_image {
-    display: block;
-    overflow: hidden;
-    position: relative;
-    border: 4px solid;
-    border-color: black;
-
-    background-position: 50%;
-    background-repeat: no-repeat;
-    background-size: cover;
-    margin: 0 auto 1em;
-    max-width: 100%;
-}
-
-.title_image:before {
-    content: "";
-    display: block;
-    width: 100%;
-}
-
-.title_image--32by9:before {
-    padding-bottom: 28.125%;
-}
-
-.profile_image {
-    float: left;
-    overflow: hidden;
-    position: relative;
-    border: 1px solid;
-    border-color: black;
-    background-position: 50%;
-    background-repeat: no-repeat;
-    background-size: cover;
-    width: 50%;
-    height: 80%;
-}
-
-.profile_image:before {
-    display: block;
-    content: "";
-    width: 100%;
-}
-
-.profile_image--1by1 {
-    padding-bottom: 50%;
-}
-
-.characteristics {
-    float: left;
-    margin: 2%;
-    max-width: 45%;
-    font-size: large;
-}
-
-.information-content {
-    float: left;
-    margin: 2%;
-    width: 100%;
-    font-size: large;
-}
-
-.charac_label {
-    width: 100%;
+    font-size: 20px;
 }
 
 .panel-body-persoenlichkeit {
     height: 40vh;
     overflow-y: auto;
+}
+
+.panel-body::-webkit-scrollbar
+{
+    width: 0.75vw;  /* for vertical scrollbars */
+    height: 2vh; /* for horizontal scrollbars */
+}
+
+.panel-body::-webkit-scrollbar-track
+{
+    border: 1px solid;
+    border-color: black;
+    background: #663333;
+}
+
+.panel-body::-webkit-scrollbar-thumb
+{
+    background: rgba(0, 0, 0, 0.5);
+}
+/* Ende Panel */
+
+
+/* Kachel */
+.containerKachelnStart {
+    margin-left: 37%;
+    margin-right: 37%;
+}
+
+.containerKachelnPersoenlichkeit, .containerKachelnKategorien{
+    margin-left: 9%;
+    margin-right: 9%;
 }
 
 .kachel_kategorie, .kachel_persoenlichkeit, .kachel_start{
@@ -367,7 +286,7 @@ footer{
 
 .kachel_kategorie{
     width: 48%;
-    height: 155px;
+    height: 20vh;
     border-color: black;
     background-color: #663333;
     color: white;
@@ -393,47 +312,137 @@ footer{
     text-align: center;
     vertical-align: middle;
 }
+/* Ende Kachel */
 
-.containerKachelnStart {
-    margin-left: 37%;
-    margin-right: 37%;
+
+/* Alert */
+.alert{
+    margin-bottom: 3vh;
+
 }
 
-.containerKachelnPersoenlichkeit, .containerKachelnKategorien{
-    margin-left: 9%;
-    margin-right: 9%;
+.alert-info{
+    background-color: #663333;
+    color: white;
+    border-color: black;
 }
 
-.clear {
-    clear: both;
+.alert-danger{
+    background-color: #CC3300;
+    color: white;
+    border-color: black;
 }
 
+.alert-success{
+    background-color: white;
+    color: black;
+    border-color: black;
+}
+/* Ende Alert */
 
-#unsichtbar{
-    color: dimgray;
+/* Button */
+.btn{
+    background-color: #be5959;
+    color: #FFCC99;
+    text-shadow: -1px 0 #663333, 0 1px #663333, 1px 0 #663333, 0 -1px #663333;
+    font-weight: bold;
 }
 
-#p_button{
+.btn:hover {
+    cursor: pointer;
+    border-color: #be5959;
+    box-shadow: 5px 5px 20px #663333;
+    color: #FFCC99;
+}
+
+.btn_add{
+    background-color: #be5959;
+    color: #FFCC99;
+    text-shadow: -1px 0 #663333, 0 1px #663333, 1px 0 #663333, 0 -1px #663333;
+    font-weight: bold;
+    margin-left: 100%;
+}
+
+.btn_add:hover {
+    box-shadow: none;
+}
+
+/* Ende Button */
+
+/* Title Image */
+.title_image {
+    display: block;
+    overflow: hidden;
     position: relative;
+    border: 4px solid;
+    border-color: black;
+
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0 auto 1em;
+    max-width: 100%;
+}
+
+.title_image:before {
+    content: "";
+    display: block;
     width: 100%;
-    height: 100%;
-    top: 50%;
-    left: 50%;
-    margin-top: -10px;
-    margin-left: -200px;
 }
 
+.title_image--32by9:before {
+    padding-bottom: 28.125%;
+}
+/* Ende Title Image */
 
-.information {
+
+/* Profile Image */
+.profile_image {
+    float: left;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid black;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 50%;
+    height: 80%;
+}
+
+.profile_image:before {
+    display: block;
+    content: "";
+    width: 100%;
+}
+
+.profile_image--1by1 {
+    padding-bottom: 50%;
+}
+
+.profile_image_uebersicht {
+    float: none;
+    display:block !important;
+    margin-left:auto !important;
+    margin-right:auto !important;
+}
+/* Ende Profile Image */
+
+
+/* Steckbrief | Charateristics */
+.characteristics {
+    float: left;
     margin: 2%;
-    width: 45%;
-    display: inline-block;
+    max-width: 45%;
+    font-size: large;
 }
 
-#button_persoenlichkeit_anlegen {
-    margin-left: 0%;
+.charac_label {
+    width: 100%;
 }
+/* Ende Steckbrief | Charateristics */
 
+
+/* Create */
 .create {
     width: 100%;
     float: left;
@@ -455,30 +464,146 @@ footer{
     width: 97.25%;
 }
 
-.create-zitat{
+.create-zitat {
     width: 100%;
     float: left;
     margin: 1%;
 }
 
-.create-zitat*{
+.create-zitat *{
     width: 50%;
-
 }
 
-.create-einzeilig{
+.create-einzeilig {
     width: 100%;
     margin: 1%;
     float: left;
 }
+/* Ende Create */
 
 
-.p_h1{
-    color: black;
-    font-weight: bolder;
-    font-size: 20px;
+/* Information */
+.information {
+    margin: 2%;
+    width: 45%;
+    display: inline-block;
 }
 
+.information-content {
+    float: left;
+    margin: 2%;
+    width: 100%;
+    font-size: large;
+}
+/* Ende Information */
+
+
+
+/****************************
+       I D S
+****************************/
+
+
+
+/* Link */
+#link_persoenlichkeit, #link_information, #link_kategorie, #link_epoche {
+    color: #FFCC99;
+}
+
+#link_persoenlichkeit:hover, #link_information:hover, #link_kategorie:hover, #link_epoche:hover {
+    text-underline: none;
+}
+/* Ende Link */
+
+
+/* Neu-Seite Inputs */
+#ne_input {
+    display: none;
+}
+
+#nk_input {
+    display: none;
+}
+
+/* Suchen */
+#suchen_button{
+    background-color: #663333;
+    color: #FFCC99;
+    text-shadow: -1px 0 #663333, 0 1px #663333, 1px 0 #663333, 0 -1px #663333;
+    font-weight: bold;
+    border-color: black;
+}
+
+#suchen_feld{
+    margin-bottom: 0;
+    margin-top: 0;
+}
+/* Ende Suchen */
+
+
+/* Kontakt */
+#kontakt{
+    color: #663333;
+    margin-left: 1vw;
+}
+/* Ende Kontakt */
+
+
+/* Daten */
+#todestag,#geburtsdatum{
+    text-shadow: none;
+    font-weight: bold;
+    color: white;
+    font-size: small;
+    align-content: center;
+}
+/* Ende Daten */
+
+
+/* Kategorie */
+#kategorie_label {
+    font-size: xx-large;
+}
+/* Ende Kategorie */
+
+
+/* Unsichtbar */
+#unsichtbar{
+    color: dimgray;
+}
+/* Ende Unsichtbar */
+
+
+/* Button */
+#p_button{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    top: 50%;
+    left: 50%;
+    margin-top: 1vh;
+    margin-left: -17vw;
+}
+
+#btn_abbrechen, #btn_anlegen, #btn_loeschen {
+    float: left;
+}
+
+#btn_abbrechen:hover, #btn_anlegen:hover, #btn_loeschen:hover {
+    box-shadow: none;
+}
+/* Ende Button */
+
+
+/* Button Persönlichkeit anlegen */
+#button_persoenlichkeit_anlegen {
+    margin-left: 0%;
+}
+/* Ende Button Persönlichkeit anlegen */
+
+
+/* Literatur Ort */
 #p_literatur_ort{
-    width: 60%
+    width: 60%;
 }
+/* Ende Literatur Ort */
