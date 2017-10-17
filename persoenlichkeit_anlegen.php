@@ -27,7 +27,7 @@
             </div>
         </div>
 
-        <form accept-charset="UTF-8" role="form" action="persoenlichkeit_anlegen_erfolgreich.php.php" method="post" enctype='multipart/form-data'>
+        <form accept-charset="UTF-8" role="form" action="persoenlichkeit_anlegen_erfolgreich.php" method="post" enctype='multipart/form-data'>
 
             <div class="row vertical-offset-100">
                 <div class="col-md-0 col-md-offset-0">
@@ -453,6 +453,8 @@
                 function addElement (id, ueber_id) {
                     var newDiv = document.createElement("div");
                     newDiv.innerHTML = document.getElementById(id).innerHTML;
+                    alert("TEST" + newDiv.firstElementChild.getAttribute("id"));
+                    //newDiv.childNodes.item()
                     document.getElementById(ueber_id).appendChild(newDiv);
                 }
                 -->
