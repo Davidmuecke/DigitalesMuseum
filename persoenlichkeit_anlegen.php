@@ -179,7 +179,7 @@
 
                             <div class="form-group">
                                 <label>Datum:</label>
-                                <input type="text" placeholder="Datum des Zitats: dd/mm/yyyy"
+                                <input type="text" placeholder="dd/mm/yyyy"
                                        name="p_zitat_datum" class="form-control"
                                        pattern="([0-3])+([0-9])+.+([0-1])+([0-9])+.+([0-9])+([0-9])+([0-9])+([0-9])">
                             </div>
