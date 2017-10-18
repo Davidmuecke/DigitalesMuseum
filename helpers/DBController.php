@@ -5,7 +5,7 @@
  * User: kochdavi
  * Date: 05.10.2017
  * Time: 09:25
- *Adapterklasse zur Kommunikation mit der Datenbank
+ * Adapterklasse zur Kommunikation mit der Datenbank
  *
  */
 class DBController
@@ -264,7 +264,7 @@ class DBController
     public function suchePersoenlichkeit($string)
     {
         $string = mysqli_escape_string($this->DB, $string);
-        $query = mysqli_query($this->DB, "SELECT *, ABS(STRCMP(name, \"" . $string . "\")) AS \"STRCMP\" FROM persoenlichkeit WHERE vorname LIKE \"%" . $string . "%\" OR NAME LIKE \"%" . $string . "%\" OR kuenstlername LIKE \"%" . $string . "%\" OR SOUNDEX(name) = SOUNDEX(\"" . $string . "\") OR SOUNDEX(vorname) = SOUNDEX(\"" . $string . "\") OR SOUNDEX(kuenstlername) = SOUNDEX(\"" . $string . "\") ORDER BY STRCMP ASC");
+        $query = mysqli_query($this->DB, "SELECT *, ABS(STRCMP(name, \"" . $string . "\")) AS \"STRCMP\" FROM persoenlichkeit WHERE vorname LIKE \"%" . $string . "%\" OR NAME LIKE \"%" . $string . "%\" OR kuenstlername LIKE \"%" . $string . "%\" OR SOUNDEX(name) = SOUNDEX(\"" . $string . "\") OR SOUNDEX(vorname) = SOUNDEX(\"" . $string . "\") OR SOUNDEX(kuenstlername) = SOUNDEX(\"" . $string . "\")  ORDER BY STRCMP ASC");
         $result = mysqli_fetch_all($query, MYSQLI_ASSOC);
         return $result;
     }
@@ -287,9 +287,9 @@ class DBController
      * @param $datum
      * @param $quelle
      * @param $titel
-     * @param $data     BLOB
-     * @param $datatype   image/jpeg
-     * @param $size   Bildgröße als int
+     * @param $data     "BLOB"
+     * @param $datatype   "image/jpeg"
+     * @param $size   "Bildgröße als int"
      * @return bool Erbebnis der Abfrage true/false 1/""
      */
     public function addBild($beschreibung, $datum, $quelle, $titel, $data, $datatype, $size)
@@ -301,7 +301,7 @@ class DBController
         $data = mysqli_escape_string($this->DB, htmlentities($data));
         $datatype = mysqli_escape_string($this->DB, htmlentities($datatype));
         $size = (int)$size;
-        $query = mysqli_query($this->DB, "INSERT INTO bild(beschreibung,datum,quelle,titel,data,datatype,size) VALUES('$beschreibung','$datum','$titel','$data','$datatype','$size') ");
+        $query = mysqli_query($this->DB, "INSERT INTO bild(beschreibung,datum,quelle,titel,data,datatype,size) VALUES('$beschreibung','$datum','$quelle','$titel','$data','$datatype','$size') ");
         return $query;
 
     }
@@ -448,9 +448,9 @@ class DBController
      * @param $zitatUrheber
      * @return bool|mysqli_result  Ergebnis der Abfrage
      */
-    public function addPersoenlichkeit($epoche, $name, $vorname, $kuenstlername, $profilbild, $titelbild, $geburtsdatum, $todesdatum, $geburtsort, $nationalitaet, $vater, $mutter, $textInhalt, $textQuelle, $textTitel, $textAutor, $beschreibungInhalt, $beschreibungQuelle, $zitatInhalt, $zitatDatum, $zitatAnlass, $zitatUrheber)
+    public function addPersoenlichkeit($name, $vorname, $kuenstlername, $profilbild, $titelbild, $geburtsdatum, $todesdatum, $geburtsort, $nationalitaet, $vater, $mutter, $textInhalt, $textQuelle, $textTitel, $textAutor, $beschreibungInhalt, $beschreibungQuelle, $zitatInhalt, $zitatDatum, $zitatAnlass, $zitatUrheber)
     {
-        $epoche = mysqli_escape_string($this->DB, htmlentities($epoche));
+
         $name = mysqli_escape_string($this->DB, htmlentities($name));
         $vorname = mysqli_escape_string($this->DB, htmlentities($vorname));
         $kuenstlername = mysqli_escape_string($this->DB, htmlentities($kuenstlername));
@@ -473,16 +473,177 @@ class DBController
         $zitatInhalt = mysqli_escape_string($this->DB, htmlentities($zitatInhalt));
         $zitatUrheber = mysqli_escape_string($this->DB, htmlentities($zitatUrheber));
 
-        $columns = "`epoche`,`name`,vorname,kuenstlername,profilbild,titelbild,geburtsdatum,todesdatum,geburtsort,nationalitaet,vater,mutter,textInhalt,textQuelle,textTitel,textAutor,beschreibungInhalt,beschreibungQuelle,zitatInhalt,zitatDatum,zitatAnlass,zitatUrheber";
-        $values = "'$epoche','$name','$vorname','$kuenstlername','$profilbild','$titelbild','$geburtsdatum','$todesdatum','$geburtsort','$nationalitaet','$vater','$mutter','$textInhalt','$textQuelle','$textTitel','$textAutor','$beschreibungInhalt','$beschreibungQuelle','$zitatInhalt','$zitatDatum','$zitatAnlass','$zitatUrheber'";
+        $columns = "name`,vorname,kuenstlername,profilbild,titelbild,geburtsdatum,todesdatum,geburtsort,nationalitaet,vater,mutter,textInhalt,textQuelle,textTitel,textAutor,beschreibungInhalt,beschreibungQuelle,zitatInhalt,zitatDatum,zitatAnlass,zitatUrheber";
+        $values = "'$name','$vorname','$kuenstlername','$profilbild','$titelbild','$geburtsdatum','$todesdatum','$geburtsort','$nationalitaet','$vater','$mutter','$textInhalt','$textQuelle','$textTitel','$textAutor','$beschreibungInhalt','$beschreibungQuelle','$zitatInhalt','$zitatDatum','$zitatAnlass','$zitatUrheber'";
 
         $query = mysqli_query($this->DB, "INSERT INTO persoenlichkeit($columns) VALUES($values) ");
         return $query;
     }
     //Einträge verändern
-    //UPDATE `persoenlichkeit` SET `beschreibungInhalt` = 'Meine Beschreibung' WHERE `persoenlichkeit`.`persoenlichkeitID` = 2;
+
+    /** aktuallisiert das Bild in der Datenbank mit den übergebenen Werten
+     * @param $id
+     * @param $beschreibung
+     * @param $datum
+     * @param $quelle
+     * @param $titel
+     * @param $data
+     * @param $datatype
+     * @param $size
+     * @return bool|mysqli_result
+     */
+    public function updateBild($id,$beschreibung, $datum, $quelle, $titel, $data, $datatype, $size){
+        $id = (int) $id;
+        $beschreibung = mysqli_escape_string($this->DB, htmlentities($beschreibung));
+        $datum = mysqli_escape_string($this->DB, htmlentities($datum));
+        $quelle = mysqli_escape_string($this->DB, htmlentities($quelle));
+        $titel = mysqli_escape_string($this->DB, htmlentities($titel));
+        $data = mysqli_escape_string($this->DB, htmlentities($data));
+        $datatype = mysqli_escape_string($this->DB, htmlentities($datatype));
+        $size = (int)$size;
+
+        $sql = "UPDATE `bild` SET `beschreibung` = '$beschreibung', `datum` = '$datum', `quelle` = '$quelle', `titel` = '$titel', `datatype` = '$datatype', `size` = '$size', data ='$data' WHERE `bild`.`bildID` = $id";
+        return mysqli_query($this->DB, $sql);
+    }
+
+    /**aktuallisiert die Epoche in der Datenbank mit den übergebenen Werten
+     * @param $id
+     * @param $bezeichnung
+     * @return bool|mysqli_result
+     */
+    public function updateEpoche($id,$bezeichnung){
+        $id = (int) $id;
+        $bezeichnung = mysqli_escape_string($this->DB, htmlentities($bezeichnung));
+        return mysqli_query($this->DB, "UPDATE `epoche` SET `bezeichnung` = '$bezeichnung' WHERE `epoche`.`epocheID` = $id");
+    }
+
+    /**aktuallisiert die Kategorie in der Datenbank mit den übergebenen Werten
+     * @param $id
+     * @param $bezeichnung
+     * @return bool|mysqli_result
+     */
+    public function  updateKategorie($id, $bezeichnung){
+        $id = (int) $id;
+        $bezeichnung = mysqli_escape_string($this->DB, htmlentities($bezeichnung));
+        return mysqli_query($this->DB, "UPDATE `kategorie` SET `bezeichnung` = '$bezeichnung' WHERE `kategorie`.`kategorieID` = $id");
+    }
+
+    /** aktuallisiert die Literaturangabe in der Datenbank mit den übergebenen Werten
+     * @param $id
+     * @param $autor
+     * @param $titel
+     * @param $datum
+     * @param $herausgeberName
+     * @param $herausgeberOrt
+     * @return bool|mysqli_result
+     */
+    public function updateLiteraturangabe($id,$autor, $titel, $datum, $herausgeberName, $herausgeberOrt){
+        $autor = mysqli_escape_string($this->DB, htmlentities($autor));
+        $titel = mysqli_escape_string($this->DB, htmlentities($titel));
+        $datum = mysqli_escape_string($this->DB, htmlentities($datum));
+        $herausgeberName = mysqli_escape_string($this->DB, htmlentities($herausgeberName));
+        $herausgeberOrt = mysqli_escape_string($this->DB, htmlentities($herausgeberOrt));
+
+        $sql = "UPDATE `literaturangaben` SET `autor` = '$autor', `titel` = '$titel', `datum` = '$datum', `herausgeberName` = '$herausgeberName', `herausgeberOrt` = '$herausgeberOrt' WHERE `literaturangaben`.`literaturangabenID` = $id";
+        return mysqli_query($this->DB, $sql);
+}
+
+    /** aktuallisiert die Persoenlichkeit in der Datenbank mit den übergebenen Werten
+     * @param $id
+     * @param $name
+     * @param $vorname
+     * @param $kuenstlername
+     * @param $profilbild
+     * @param $titelbild
+     * @param $geburtsdatum
+     * @param $todesdatum
+     * @param $geburtsort
+     * @param $nationalitaet
+     * @param $vater
+     * @param $mutter
+     * @param $textInhalt
+     * @param $textQuelle
+     * @param $textTitel
+     * @param $textAutor
+     * @param $beschreibungInhalt
+     * @param $beschreibungQuelle
+     * @param $zitatInhalt
+     * @param $zitatDatum
+     * @param $zitatAnlass
+     * @param $zitatUrheber
+     * @return bool|mysqli_result
+     */
+    public function updatePersoenlichkeit($id,$name, $vorname, $kuenstlername, $profilbild, $titelbild, $geburtsdatum, $todesdatum, $geburtsort, $nationalitaet, $vater, $mutter, $textInhalt, $textQuelle, $textTitel, $textAutor, $beschreibungInhalt, $beschreibungQuelle, $zitatInhalt, $zitatDatum, $zitatAnlass, $zitatUrheber){
+        $id = (int) $id;
+        $name = mysqli_escape_string($this->DB, htmlentities($name));
+        $vorname = mysqli_escape_string($this->DB, htmlentities($vorname));
+        $kuenstlername = mysqli_escape_string($this->DB, htmlentities($kuenstlername));
+        $profilbild = (int)$profilbild;
+        $titelbild = (int)$titelbild;
+        $geburtsdatum = mysqli_escape_string($this->DB, htmlentities($geburtsdatum));
+        $todesdatum = mysqli_escape_string($this->DB, htmlentities($todesdatum));
+        $geburtsort = mysqli_escape_string($this->DB, htmlentities($geburtsort));
+        $nationalitaet = mysqli_escape_string($this->DB, htmlentities($nationalitaet));
+        $vater = mysqli_escape_string($this->DB, htmlentities($vater));
+        $mutter = mysqli_escape_string($this->DB, htmlentities($mutter));
+        $textInhalt = mysqli_escape_string($this->DB, htmlentities($textInhalt));
+        $textQuelle = mysqli_escape_string($this->DB, htmlentities($textQuelle));
+        $textTitel = mysqli_escape_string($this->DB, htmlentities($textTitel));
+        $textAutor = mysqli_escape_string($this->DB, htmlentities($textAutor));
+        $beschreibungInhalt = mysqli_escape_string($this->DB, htmlentities($beschreibungInhalt));
+        $beschreibungQuelle = mysqli_escape_string($this->DB, htmlentities($beschreibungQuelle));
+        $zitatAnlass = mysqli_escape_string($this->DB, htmlentities($zitatAnlass));
+        $zitatDatum = mysqli_escape_string($this->DB, htmlentities($zitatDatum));
+        $zitatInhalt = mysqli_escape_string($this->DB, htmlentities($zitatInhalt));
+        $zitatUrheber = mysqli_escape_string($this->DB, htmlentities($zitatUrheber));
+
+        $sql ="UPDATE `persoenlichkeit` SET `kuenstlername` = '$kuenstlername', `profilbild` = '$profilbild', `titelbild` = '$titelbild', `name` = '$name', `vorname` = '$vorname', `geburtsdatum` = '$geburtsdatum', `todesdatum` = '$todesdatum', `geburtsort` = '$geburtsort', `nationalitaet` = '$nationalitaet', `vater` = '$vater', `mutter` = '$mutter', `textInhalt` = '$textInhalt', `textQuelle` = '$textQuelle', `textTitel` = '$textTitel', `TextAutor` = '$textAutor', `beschreibungInhalt` = '$beschreibungInhalt', `beschreibungQuelle` = '$beschreibungQuelle', `zitatInhalt` = '$zitatInhalt', `zitatDatum` = '$zitatDatum', `zitatAnlass` = '$zitatAnlass', `zitatUrheber` = '$zitatUrheber' WHERE `persoenlichkeit`.`persoenlichkeitID` = $id";
+        return mysqli_query($this->DB, $sql);
+    }
+
 
     //Einträge löschen
+
+    /**Löscht das Bild mit der übergebenen ID aus der Datenbank und Verweise aus persoenlichkeitBild
+     * @param $id
+     * @return bool|mysqli_result
+     */
+    public function deleteBild($id){
+        $id = (int)$id;
+        mysqli_query($this->DB, "DELETE FROM persoenlichkeitbild WHERE bildID = '$id'");
+        return mysqli_query($this->DB, "DELETE FROM bild WHERE bildID = '$id'");
+    }
+
+    /** Löscht die Epoche mit der übergebenen ID und Verweise auf sie
+     * @param $id
+     * @return bool|mysqli_result
+     */
+    public function deleteEpoche($id){
+        $id = (int)$id;
+        mysqli_query($this->DB, "DELETE FROM persoenlichkeitepoche WHERE epocheID = '$id'");
+        return mysqli_query($this->DB, "DELETE FROM epoche WHERE epocheID = '$id'");
+    }
+
+    /** Löscht die Kategorie mit der übergebenen ID und Verweise auf sie
+     * @param $id
+     * @return bool|mysqli_result
+     */
+    public function deleteKategorie($id){
+        $id = (int)$id;
+        mysqli_query($this->DB, "DELETE FROM persoenlichkeitkategorie WHERE kategorieID = '$id'");
+        return mysqli_query($this->DB, "DELETE FROM kategorie WHERE kategorieID = '$id'");
+    }
+
+    /** Löscht die Literaturangabe mit der übergebenen ID und Verweise auf sie
+     * @param $id
+     * @return bool|mysqli_result
+     */
+    public function deleteLiteraturangabe($id){
+        $id = (int)$id;
+        mysqli_query($this->DB, "DELETE FROM persoenlichkeitliteraturangaben WHERE literaturangabenID = '$id'");
+        return mysqli_query($this->DB, "DELETE FROM literaturangaben WHERE literaturangabenID = '$id'");
+    }
+
     /** Löscht die Persönlichkeit und all ihr vorkommen aus den Beziehungstabellen
      * @param $id ID der zu löschenden Persoenlichkeit
      * @return bool|mysqli_result
@@ -495,8 +656,54 @@ class DBController
         mysqli_query($this->DB, "DELETE FROM persoenlichkeitkategorie WHERE persoenlichkeitID = '$id'");
         mysqli_query($this->DB, "DELETE FROM persoenlichkeitliteraturangaben WHERE persoenlichkeitID = '$id'");
         mysqli_query($this->DB, "DELETE FROM persoenlichkeitbild WHERE persoenlichkeitID = '$id'");
+        mysqli_query($this->DB, "DELETE FROM persoenlichkeitpersoenlichkeit WHERE persoenlichkeit1ID = '$id' OR persoenlichkeit2ID = '$id'");
         //eigentliche Person
         return mysqli_query($this->DB, "DELETE FROM persoenlichkeit WHERE persoenlichkeitID = '$id'");
+    }
+
+    /**Löscht den Eintrag mit der übergebenen ID aus der Beziehungstabelle PersoenlichkeitEpoche
+     * @param $id
+     * @return bool|mysqli_result
+     */
+    public function  deletePersoenlichkeitEpoche($id){
+        $id = (int)$id;
+        return mysqli_query($this->DB, "DELETE FROM persoenlichkeitepoche WHERE persoenlichkeitepocheID = '$id'");
+    }
+
+    /**Löscht den Eintrag mit der übergebenen ID aus der Beziehungstabelle PersoenlichkeitKategorie
+     * @param $id
+     * @return bool|mysqli_result
+     */
+    public function deletePersoenlichkeitKategorie($id){
+        $id = (int)$id;
+        return mysqli_query($this->DB, "DELETE FROM persoenlichkeitkategorie WHERE persoenlichkeitkategorieID = '$id'");
+    }
+
+    /** Löscht den Eintrag mit der übergebenen ID aus der Beziehungstabelle PersoenlichkeitLiteraturangabe
+     * @param $id
+     * @return bool|mysqli_result
+     */
+    public function deletePersoenlichkeitLiteraturangaben($id){
+        $id = (int)$id;
+        return mysqli_query($this->DB, "DELETE FROM  persoenlichkeitliteraturangaben WHERE persoenlichkeitliteraturangabenID = '$id'");
+    }
+
+    /**Löscht den Eintrag mit der übergebenen ID aus der Beziehungstabelle PersoenlichkeitBild
+     * @param $id
+     * @return bool|mysqli_result
+     */
+    public function deletePersoenlichkeitBild($id){
+        $id = (int)$id;
+        return mysqli_query($this->DB, "DELETE FROM  persoenlichkeitbild WHERE persoenlichkeitbildID = '$id'");
+    }
+
+    /**Löscht den Eintrag mit der übergebenen ID aus der Beziehungstabelle PersoenlichkeitPersoenlichkeit
+     * @param $id
+     * @return bool|mysqli_result
+     */
+    public function deletePersoenlichkeitPersoenlichkeit($id){
+        $id = (int)$id;
+        return mysqli_query($this->DB, "DELETE FROM  persoenlichkeitpersoenlichkeit WHERE persoenlichkeitpersoenlichkeitID = '$id'");
     }
 
     //intern
