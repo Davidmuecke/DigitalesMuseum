@@ -1,6 +1,6 @@
 <?php
 session_start();
-require("helpers\DBController.php");
+require("helpers/DBController.php");
 
 //Ueberpruefung der Login-Daten
 if(!isset($_SESSION['login'])){
