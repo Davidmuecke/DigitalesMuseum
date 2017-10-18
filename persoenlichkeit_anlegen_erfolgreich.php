@@ -2,7 +2,7 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <title>Registrierung 4-Gewinnt</title>
+    <title>Anlegen erfolgreich</title>
     <link rel="stylesheet" href="css/bootstrap-3.3.7-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -46,7 +46,7 @@ require("datenbank.php");
 
         echo "<div class='container'>    
                       <div class=\"alert alert-success\"
-                        <strong>Anlegen war erfolgreich!</strong> Du kannst die neue Perönlichkeit jetzt <a href='login.php'>anschauen</a>!
+                        <strong>Anlegen war erfolgreich!</strong> Du kannst die neue Perönlichkeit jetzt <a href='#'>anschauen</a>!
                       </div>
                   </div>";
 

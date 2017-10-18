@@ -5,6 +5,9 @@
     <title>Neue Persönlichkeit anlegen</title>
     <link rel="stylesheet" href="css/bootstrap-3.3.7-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
+    <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery.autocomplete.min.js"></script>
+    <script type="text/javascript" src="js/currency-autocomplete.js"></script>
 </head>
 
 <body onload="mail();">
@@ -20,7 +23,7 @@
 
     <div>
 
-        <form accept-charset="UTF-8" role="form" action="persoenlichkeit_anlegen_erfolgreich.php.php" method="post" enctype='multipart/form-data'>
+        <form accept-charset="UTF-8" role="form" action="persoenlichkeit_anlegen_erfolgreich.php" method="post" enctype='multipart/form-data'>
 
             <div class="row vertical-offset-100">
                 <div class="col-md-0 col-md-offset-0">
@@ -118,12 +121,12 @@
                         </div>
 
                         <div class="create-text">
-                        <div class="form-group">
+                            <div class="form-group">
                             <textarea placeholder="Kurzbeschreibung"
                                       name="p_kurzbeschreibung" class="form-control"
                                       required></textarea>
+                            </div>
                         </div>
-                    </div>
                     </div>
 
                     <!--Text-->
@@ -179,7 +182,7 @@
 
                             <div class="form-group">
                                 <label>Datum:</label>
-                                <input type="text" placeholder="Datum des Zitats: dd/mm/yyyy"
+                                <input type="text" placeholder="dd/mm/yyyy"
                                        name="p_zitat_datum" class="form-control"
                                        pattern="([0-3])+([0-9])+.+([0-1])+([0-9])+.+([0-9])+([0-9])+([0-9])+([0-9])">
                             </div>
@@ -187,8 +190,7 @@
                             <div id="urheber_input" class="form-group">
                                 <label>Urheber:</label>
                                 <input type="text" placeholder="Urheber des Zitats"
-                                       name="p_zitat_urheber" class="form-control"
-                                       required>
+                                       name="p_zitat_urheber" class="form-control">
                             </div>
                         </div>
 
@@ -204,31 +206,31 @@
                         </div>
 
                         <script  type="text/javascript"> -->
-                            <!--
-                            function radioWert(rObj) {
-                                for (var i=0; i<rObj.length; i++) if (rObj[i].checked) return rObj[i].value;
-                                return false;
-                            }
+                        <!--
+                        function radioWert(rObj) {
+                            for (var i=0; i<rObj.length; i++) if (rObj[i].checked) return rObj[i].value;
+                            return false;
+                        }
 
-                            var sel1 = document.getElementsByName('zitat');
-                            sel1.onchange = function() {
-                                if (radioWert(document.getElementsByName('zitat')) == "zitat_ueber"){
-                                    var show = document.getElementById('urheber_input');
-                                    show.style.display = "block";
-                                }
-                                else{
-                                    var show = document.getElementById('urheber_input');
-                                    show.style.display = "none";
-                                }
+                        var sel1 = document.getElementsByName('zitat');
+                        sel1.onchange = function() {
+                            if (radioWert(document.getElementsByName('zitat')) == "zitat_ueber"){
+                                var show = document.getElementById('urheber_input');
+                                show.style.display = "block";
                             }
-                            -->
+                            else{
+                                var show = document.getElementById('urheber_input');
+                                show.style.display = "none";
+                            }
+                        }
+                        -->
                         <!--</script> -->
 
                         <div class="create-text">
                             <div class="form-group">
                                 <textarea placeholder="Zitat"
-                                          name="p_zitat" class="form-control"
-                                          required></textarea>
+                                          name="p_zitat" class="form-control">
+                                </textarea>
                             </div>
                         </div>
                     </div>
@@ -254,26 +256,25 @@
 
                                     <div id="ne_input">
                                         <input type="text" placeholder="Neue Epoche eingeben"
-                                               name="neue_epoche" class="form-control"
-                                               required>
+                                               name="neue_epoche" class="form-control">
                                     </div>
                                 </div>
 
                                 <script  type="text/javascript">
-                            <!--
-                                var sel = document.getElementById('epochen_auswahl');
-                                sel.onchange = function zwei() {
-                                    if (document.getElementById('epochen_auswahl').value == "neueEpoche"){
-                                        var show = document.getElementById('ne_input');
-                                        show.style.display = "block";
+                                    <!--
+                                    var sel = document.getElementById('epochen_auswahl');
+                                    sel.onchange = function zwei() {
+                                        if (document.getElementById('epochen_auswahl').value == "neueEpoche"){
+                                            var show = document.getElementById('ne_input');
+                                            show.style.display = "block";
+                                        }
+                                        else{
+                                            var show = document.getElementById('ne_input');
+                                            show.style.display = "none";
+                                        }
                                     }
-                                    else{
-                                        var show = document.getElementById('ne_input');
-                                        show.style.display = "none";
-                                    }
-                                }
-                            -->
-                            </script>
+                                    -->
+                                </script>
                             </div>
                         </div>
 
@@ -281,13 +282,8 @@
                             <a onclick="addElement('epoche','ueber_epoche')" class="btn_add"><span class="glyphicon glyphicon-plus"></span></a>
                         </div>
 
-
-
-                        <div id="add_button_person">
-                            <a onclick="addElement('epoche','ueber_epoche')" class="btn_add"><span class="glyphicon glyphicon-plus"></span></a>
-                        </div>
-
                     </div>
+
                     <!--Kategorie-->
                     <div>
                         <div id="ueber_kategorie">
@@ -309,31 +305,52 @@
 
                                     <div id="nk_input">
                                         <input type="text" placeholder="Neue Kategorie eingeben"
-                                               name="neue_kategorie" class="form-control"
-                                               required>
+                                               name="neue_kategorie" class="form-control">
                                     </div>
                                 </div>
 
                                 <script  type="text/javascript">
-                        <!--
-                        var sel = document.getElementById('kategorie_auswahl');
-                        sel.onchange = function eins() {
-                            if (document.getElementById('kategorie_auswahl').value == "neueKategorie"){
-                                var show = document.getElementById('nk_input');
-                                show.style.display = "block";
-                            }
-                            else{
-                                var show = document.getElementById('nk_input');
-                                show.style.display = "none";
-                            }
-                        }
-                        -->
-                    </script>
+                                    <!--
+                                    var sel = document.getElementById('kategorie_auswahl');
+                                    sel.onchange = function eins() {
+                                        if (document.getElementById('kategorie_auswahl').value == "neueKategorie"){
+                                            var show = document.getElementById('nk_input');
+                                            show.style.display = "block";
+                                        }
+                                        else{
+                                            var show = document.getElementById('nk_input');
+                                            show.style.display = "none";
+                                        }
+                                    }
+                                    -->
+                                </script>
                             </div>
                         </div>
 
                         <div id="add_button_kategorie">
                             <a onclick="addElement('kategorie','ueber_kategorie')" class="btn_add"><span class="glyphicon glyphicon-plus"></span></a>
+                        </div>
+                    </div>
+
+                    <!--Freund-->
+                    <div>
+                        <div id="ueber_freunde">
+                            <div class="create create-eight">
+                                <div class="form-group">
+                                    <label class="p_h1">Freund:</label>
+                                </div>
+                            </div>
+                            <div id="freund">
+                                <div class="create create-eight">
+                                    <div id="searchfield">
+                                        <form><input type="text" name="freund" class="form-control" placeholder="Freund eingeben" id="input_freund"></form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="add_button_kategorie">
+                            <a onclick="addElement('freund','ueber_freund')" class="btn_add"><span class="glyphicon glyphicon-plus"></span></a>
                         </div>
                     </div>
 
@@ -381,11 +398,11 @@
                                 </div>
 
                                 <div class="create-einzeilig">
-                        <div class="form-group">
-                            <input type="text" placeholder="Literaturangabe"
-                                   name="p_literaturangabe" class="form-control">
-                        </div>
-                    </div>
+                                    <div class="form-group">
+                                        <input type="text" placeholder="Literaturangabe"
+                                               name="p_literaturangabe" class="form-control">
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
@@ -419,11 +436,9 @@
                         </div>
                     </div>
 
-                        <div id="add_button_bilder">
-                            <a onclick="addElement('bilder','ueber_bilder')" class="btn_add"><span class="glyphicon glyphicon-plus"></span></a>
-                        </div>
+                    <div id="add_button_bilder">
+                        <a onclick="addElement('bilder','ueber_bilder')" class="btn_add"><span class="glyphicon glyphicon-plus"></span></a>
                     </div>
-
                 </div>
             </div>
 
@@ -447,6 +462,7 @@
 
         </form>
     </div>
+</div>
 <?php
 require("footer.php");
 ?>
