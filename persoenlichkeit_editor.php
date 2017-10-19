@@ -18,16 +18,27 @@
         require("header.php");
 
         $counter = array("anzEpoche", "anzKategorie", "anzPerson", "anzLiteratur");
-        $counter2 = array("epoche", "kategorie", "person", "literatur");
+        $counter2 = array("epoche", "kategorie", "person", "literatur_titel", "literatur_autor", "literatur_datum", "literatur_verlag", "literatur_ort", "literatur_text");
         $felder = array("nachname", "vorname", "kuenstlername", "vater", "mutter", "nationalitaet", "geburtsdatum", "geburtsort", "todesdatum", "kurzbeschreibung_quelle", "kurzbeschreibung_text",
-        "text_titel", "text_autor","text_quelle", "text_text", "zitat_anlass", "zitat_datum", "zitat_urheber", "zitat_text", "epoche_0", "kategorie_0", "person_0", "literatur_0");
+        "text_titel", "text_autor","text_quelle", "text_text", "zitat_anlass", "zitat_datum", "zitat_urheber", "zitat_text", "epoche_0", "kategorie_0", "person_0", "literatur_titel_0",
+        "literatur_autor_0", "literatur_datum_0", "literatur_verlag_0", "literatur_ort_0", "literatur_text_0");
+
+    foreach ($felder as $feld) {
+        $values[$feld] = "";
+    }
 
     foreach ($counter as $feld) {
-        if(!isset($_SESSION[$feld]) || empty($_POST)) {
-            $_SESSION[$feld]=1;
+        if(isset($_GET[$feld])) {
+            $_SESSION[$feld] = $_GET[$feld];
         }
     }
 
+    foreach ($counter as $feld) {
+        if(!isset($_SESSION[$feld]) || empty($_POST)) {
+            $_SESSION[$feld]=0;
+        }
+    }
+    //Befüllung der Werte für die dynamscihen Felder
     $zaehler = 0;
     foreach ($counter as $feld) {
         if(isset($_SESSION[$feld])) {
@@ -37,28 +48,39 @@
         }
         $zaehler++;
     }
-
-
-        foreach ($counter as $feld) {
-            if(isset($_GET[$feld])) {
-                $_SESSION[$feld] = $_GET[$feld];
+    //Befüllung der restlichen Literatur angabe Werten
+    for($i = 0; $i < sizeof($counter2)-4; $i++) {
+        if(isset($_SESSION["anzLiteratur"])) {
+            for($j = 1; $j <= $_SESSION["anzLiteratur"]; $j++) {
+                $values[$counter2[$i + 4] . "_" . $j] = "";
             }
         }
+    }
 
 
 
 
 
 
-
-        foreach ($felder as $feld) {
-            $values[$feld] = "";
-        }
         foreach ($values as $feld => $wert) {
             if(isset($_POST[$feld])) {
                 $values[$feld] = $_POST[$feld];
             } else { $values[$feld] =""; }
         }
+
+    echo implode(", ",$values);
+
+    echo "keys: ";
+    echo implode(", ", array_keys($values));
+    echo "   ---  ";
+
+    echo "keys POST: ";
+    echo implode(", ", array_keys($_POST));
+    echo "   ---  ";
+
+
+
+
 
     ?>
 
@@ -155,9 +177,7 @@
 
                         <div class="create-text">
                         <div class="form-group">
-                            <textarea value="<?php echo $values["kurzbeschreibung_text"] ?>" placeholder="Kurzbeschreibung"
-                                      name="kurzbeschreibung_text" class="form-control">
-                            </textarea>
+                            <textarea name="kurzbeschreibung_text" placeholder="Kurzbeschreibung"class="form-control"><?php echo $values["kurzbeschreibung_text"] ?></textarea>
                         </div>
                     </div>
                     </div>
@@ -184,16 +204,13 @@
                             <div class="form-group">
                                 <label>Quelle:</label>
                                 <input type="text" value="<?php echo $values["text_quelle"] ?>" placeholder="Quelle des Textes"
-                                       name="text_quelle" class="form-control"
-                                       >
+                                       name="text_quelle" class="form-control">
                             </div>
                         </div>
 
                         <div class="create-text">
                             <div class="form-group">
-                            <textarea content="<?php echo $values["text_text"] ?>"placeholder="Text"
-                                      name="text_text" class="form-control">
-                            </textarea>
+                                <textarea name="kurzbeschreibung_text" placeholder="Text"class="form-control"><?php echo $values["text_text"] ?></textarea>
                             </div>
                         </div>
                     </div>
@@ -221,16 +238,13 @@
                             <div id="urheber_input" class="form-group">
                                 <label>Urheber:</label>
                                 <input type="text" value="<?php echo $values["zitat_urheber"] ?>"placeholder="Urheber des Zitats"
-                                       name="zitat_urheber" class="form-control"
-                                       >
+                                       name="zitat_urheber" class="form-control">
                             </div>
                         </div>
 
                         <div class="create-text">
                             <div class="form-group">
-                                <textarea text="<?php echo $values["zitat_text"] ?>" placeholder="Zitat"
-                                          name="zitat" class="form-control">
-                                </textarea>
+                                <textarea name="kurzbeschreibung_text" placeholder="Zitat"class="form-control"><?php echo $values["zitat_text"] ?></textarea>
                             </div>
                         </div>
                     </div>
@@ -244,7 +258,7 @@
                                         </div>
                                     </div>
                                     <?php
-                                        for($i = 0; $i < $_SESSION["anzEpoche"]; $i++) {
+                                        for($i = 0; $i <= $_SESSION["anzEpoche"]; $i++) {
                                     ?>
                                     <div id="epoche">
                                         <div class="create creat-seven">
@@ -275,11 +289,12 @@
                                 </div>
                             </div>
                             <?php
-                            for($i = 0; $i < $_SESSION['anzKategorie']; $i++) {
+                            for($i = 0; $i <= $_SESSION['anzKategorie']; $i++) {
                             ?>
                             <div id="epoche">
                                 <div class="create creat-seven">
-                                    <input type="text" id="kategorien_auswahl" class="form-control" name="kategorie_<?php echo $i ?>" list="kategorien">
+                                    <input type="text" value="<?php echo $values["kategorie_".$i] ?>" placeholder="Kategorie auswählen"
+                                           id="kategorien_auswahl" class="form-control" name="kategorie_<?php echo $i ?>" list="kategorien">
                                     <datalist id="kategorien">
                                         <option value="Eltern" />
                                         <option value="Ausbildung" />
@@ -304,39 +319,45 @@
                                 </div>
                             </div>
                             <?php
-                            for($i = 0; $i < $_SESSION['anzLiteratur']; $i++) {
+                            for($i = 0; $i <= $_SESSION['anzLiteratur']; $i++) {
                             ?>
                             <div id="literatur">
                                 <div class="create create-nine">
                                     <div class="form-group">
                                         <label>Titel:</label>
-                                        <input type="text" placeholder="Titel der Literaturangabe" name="p_literatur_titel" class="form-control">
+                                        <input type="text" value="<?php echo $values["literatur_titel_".$i] ?>" placeholder="Titel der Literaturangabe"
+                                               name="literatur_titel_<?php echo $i ?>" class="form-control">
                                     </div>
 
                                     <div class="form-group">
                                         <label>Autor:</label>
-                                        <input type="text" placeholder="Autor der Literaturangabe" name="p_literatur_autor" class="form-control">
+                                        <input type="text" value="<?php echo $values["literatur_autor_".$i] ?>" placeholder="Autor der Literaturangabe"
+                                        name="literatur_autor_<?php echo $i ?>" class="form-control">
                                     </div>
 
                                     <div class="form-group">
                                         <label>Jahr:</label>
-                                        <input type="text" placeholder="Jahr der Literaturangabe" name="p_literatur_quellen" class="form-control">
+                                        <input type="text" value="<?php echo $values["literatur_datum_".$i] ?>" placeholder="Jahr der Literaturangabe"
+                                               name="literatur_datum_<?php echo $i ?>" class="form-control">
                                     </div>
                                 </div>
                                 <div class="create create-nine">
                                     <div class="form-group">
                                         <label>Herausgeber:</label>
-                                        <input type="text" placeholder="Name des Herausgebers" name="p_literatur_herausgeber" class="form-control">
+                                        <input type="text" value="<?php echo $values["literatur_verlag_".$i] ?>" placeholder="Name des Herausgebers"
+                                               name="literatur_verlag_<?php echo $i ?>" class="form-control">
                                     </div>
 
                                     <div class="form-group">
                                         <label id="p_literatur_ort">Ort/ Firmensitz des Herausgebers:</label>
-                                        <input type="text" placeholder="Ort/Firmensitz des Herausgebers" name="p_literatur_ort" class="form-control">
+                                        <input type="text" value="<?php echo $values["literatur_ort_".$i] ?>" placeholder="Ort des Herausgebers"
+                                               name="literatur_ort_<?php echo $i ?>" class="form-control">
                                     </div>
                                 </div>
                                 <div class="create-einzeilig">
                                     <div class="form-group">
-                                        <input type="text" placeholder="Literaturangabe" name="p_literaturangabe" class="form-control">
+                                        <input type="text" value="<?php echo $values["literatur_text_".$i] ?>" placeholder="Literaturangabe"
+                                               name="literatur_text_<?php echo $i ?>" class="form-control">
                                     </div>
                                 </div>
                             </div>
