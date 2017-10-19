@@ -9,7 +9,7 @@
 
 <body>
 <?php
-require("datenbank.php");
+
 
 
 $counter = array("anzEpoche", "anzKategorie", "anzPerson", "anzLiteratur");

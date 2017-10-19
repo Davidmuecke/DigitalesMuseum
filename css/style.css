@@ -233,7 +233,7 @@ footer{
 .panel-body{
     background-color: #663333;
     color: white;
-    font-size: 20px;
+    font-size: large;
 }
 
 .panel-body-persoenlichkeit {
@@ -245,7 +245,6 @@ footer{
 .panel-body::-webkit-scrollbar
 {
     width: 0.75vw;  /* for vertical scrollbars */
-    height: 2vh; /* for horizontal scrollbars */
 }
 
 .panel-body::-webkit-scrollbar-track
@@ -387,6 +386,7 @@ footer{
     background-repeat: no-repeat;
     background-size: cover;
     margin: 0 auto 1em;
+    margin-bottom: 4%;
     max-width: 100%;
 }
 
@@ -491,6 +491,7 @@ footer{
 /* Information */
 .information {
     margin: 2%;
+    margin-top: -2%;
     width: 45%;
     display: inline-block;
 }
@@ -598,6 +599,8 @@ footer{
 
 #btn_bearbeiten {
     float: right;
+    margin-bottom: 0.5%;
+    margin-right: 0.5%;
 }
 
 #btn_abbrechen, #btn_anlegen, #btn_loeschen {
