@@ -239,6 +239,7 @@ footer{
 .panel-body-persoenlichkeit {
     height: 40vh;
     overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .panel-body::-webkit-scrollbar
@@ -503,6 +504,11 @@ footer{
 /* Ende Information */
 
 
+/* Glyphicons */
+.glyphicon-plus, .glyphicon {
+    border: none;
+}
+/* Ende Glyphicons */
 
 /****************************
        I D S
@@ -539,7 +545,7 @@ footer{
     border-color: black;
 }
 
-#suchen_feld{
+#input_suchen{
     margin-bottom: 0;
     margin-top: 0;
 }
@@ -590,6 +596,10 @@ footer{
     margin-left: -17vw;
 }
 
+#btn_bearbeiten {
+    float: right;
+}
+
 #btn_abbrechen, #btn_anlegen, #btn_loeschen {
     float: left;
 }
@@ -607,8 +617,51 @@ footer{
 /* Ende Button Persönlichkeit anlegen */
 
 
+#panel_text {
+    width: 94%;
+}
+
 /* Literatur Ort */
 #p_literatur_ort{
     width: 60%;
 }
 /* Ende Literatur Ort */
+
+/*TEST Rahel*/
+
+#searchfield {
+    display: block;
+    width: 30%;
+    text-align: center;
+    margin-bottom: 35px; }
+
+#searchfield form {
+    display: inline-block;
+    background: #eeefed;
+    padding: 0;
+    margin: 0;
+    padding: 5px;
+    border-radius: 3px;
+    margin: 5px 0 0 0;
+}
+#searchfield form .biginput {
+    width: 600px;
+    height: 40px;
+    padding: 0 10px 0 10px;
+    background-color: #fff;
+    border: 1px solid #c8c8c8;
+    border-radius: 3px;
+    color: #aeaeae;
+    font-weight:normal;
+    font-size: 1.5em;
+    -webkit-transition: all 0.2s linear;
+    -moz-transition: all 0.2s linear;
+    transition: all 0.2s linear;
+}
+#searchfield form .biginput:focus {
+    color: #858585;
+}
+.autocomplete-suggestions { border: 1px solid #999; background: #fff; cursor: default; overflow: auto; }
+.autocomplete-suggestion { padding: 10px 5px; font-size: 1.2em; white-space: nowrap; overflow: hidden; }
+.autocomplete-selected { background: #f0f0f0; }
+.autocomplete-suggestions strong { font-weight: normal; color: #3399ff; }
