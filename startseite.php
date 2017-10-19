@@ -14,7 +14,7 @@
 <div class="container">
 
     <div class="jumbotron">
-        <div class="clear"></div>
+        <div class="clear"><!--damit die Kacheln nicht über das Jumbotron laufen-->/div>
         <h1>Digitales Museum</h1>
     </div>
 

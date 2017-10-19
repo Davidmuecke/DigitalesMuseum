@@ -27,7 +27,7 @@
     ?>
 
     <div class="jumbotron">
-        <div class="clear"></div>
+        <div class="clear"><!--damit die Kacheln nicht über das Jumbotron laufen--></div>
         <h1>Suche nach <i><?php echo $suchbegriff; ?></i></h1>
     </div>
 </div>
@@ -92,7 +92,7 @@
         ?>
         <div class="container">
             <div class="jumbotron">
-                <div class="clear"></div>
+                <div class="clear"><!--damit die Kacheln nicht über das Jumbotron laufen--></div>
                 <h1>Geben sie bitte einen Suchbegriff ein!</h1>
             </div>
         </div>
