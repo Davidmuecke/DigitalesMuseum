@@ -234,6 +234,7 @@ footer{
 .panel-body-persoenlichkeit {
     height: 40vh;
     overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .panel-body::-webkit-scrollbar
@@ -498,6 +499,11 @@ footer{
 /* Ende Information */
 
 
+/* Glyphicons */
+.glyphicon-plus, .glyphicon {
+    border: none;
+}
+/* Ende Glyphicons */
 
 /****************************
        I D S
@@ -585,6 +591,10 @@ footer{
     margin-left: -17vw;
 }
 
+#btn_bearbeiten {
+    float: right;
+}
+
 #btn_abbrechen, #btn_anlegen, #btn_loeschen {
     float: left;
 }
@@ -602,6 +612,10 @@ footer{
 /* Ende Button Persönlichkeit anlegen */
 
 
+#panel_text {
+    width: 94%;
+}
+
 /* Literatur Ort */
 #p_literatur_ort{
     width: 60%;
@@ -610,7 +624,11 @@ footer{
 
 /*TEST Rahel*/
 
-#searchfield { display: block; width: 100%; text-align: center; margin-bottom: 35px; }
+#searchfield {
+    display: block;
+    width: 30%;
+    text-align: center;
+    margin-bottom: 35px; }
 
 #searchfield form {
     display: inline-block;

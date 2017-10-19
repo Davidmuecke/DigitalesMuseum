@@ -134,7 +134,9 @@ class KachelCreationEngine {
     function persoenlichkeit_title($id) {
         $titelbild = "helpers/BildLaden.php?id=".$id."&titel=1";
         ?>
-        <div class="title_image title_image--32by9" style="background-image:url(<?php echo $titelbild; ?>);"></div>
+        <div class="title_image title_image--32by9" style="background-image:url(<?php echo $titelbild; ?>);">
+            <button id="btn_bearbeiten" type="submit" class="btn">Persönlichkeit bearbeiten</button>
+        </div>
         <?php
     }
 
@@ -171,7 +173,7 @@ class KachelCreationEngine {
                 </div>
                 <div class="panel-body panel-body-persoenlichkeit">
                     <div class="profile_image profile_image--1by1" style="background-image:url(<?php echo $profilbild; ?>)"></div>
-                
+
                     <div class="characteristics">
                         <label class="charac_label">Geburtsort</label> <?php echo $geburtsort ?>
                         <label class="charac_label">Vater</label> <?php echo $vater ?>
@@ -218,7 +220,7 @@ class KachelCreationEngine {
         $autor = $person["TextAutor"];
         $quelle = $person["textQuelle"];
         ?>
-        <div class="information col-md-6">
+        <div class="information col-md-6" id="panel_text">
             <div class="panel">
                 <div class="panel-heading panel-heading-persoenlichkeit">
                     <label id="link_information"><?php echo $titel ?></label>
@@ -226,7 +228,7 @@ class KachelCreationEngine {
                 <div class="panel-body panel-body-persoenlichkeit">
                     <div class="information-content">
                         <?php echo $text ?>
-                        <i><?php echo $autor.", ".$quelle ?></i>
+                        <i><?php echo "(Autor: " .$autor.", Quelle: ".$quelle.")" ?></i>
                     </div>
                 </div>
             </div>
