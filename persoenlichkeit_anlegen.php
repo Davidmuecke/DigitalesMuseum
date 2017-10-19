@@ -347,7 +347,7 @@
                             </div>
                         </div>
 
-                        <div id="add_button_kategorie">
+                        <div id="add_button_freund">
                             <a onclick="addElement('freund','ueber_freund')" class="btn_add"><span class="glyphicon glyphicon-plus"></span></a>
                         </div>
                     </div>
