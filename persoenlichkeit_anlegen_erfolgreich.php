@@ -9,7 +9,7 @@
 
 <body>
 <?php
-require("datenbank.php");
+
 
 /*if(isset($_REQUEST['vorname'])&& isset($_REQUEST['nachname'])&&isset($_REQUEST['mail']) && isset($_REQUEST['userName']) && isset($_REQUEST['password']) && isset($_REQUEST["passwordWdh"])){
 

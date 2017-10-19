@@ -1,3 +1,8 @@
+<!--
+login_fehler.php
+Anmeldeseite mit Formular auf die umgeleitet wird, wenn der Nutzer nicht (mehr) angemeldet ist
+Die eigentliche Überprüfung der Anmeldedaten findet in header.php statt, welche in jeder geschützten Seite eingebunden ist
+-->
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -13,14 +18,6 @@
     <div class="jumbotron">
         <h1>Digitales Museum</h1>
     </div>
-
-    <!-- <?php
-    if (isset($_REQUEST['error'])) {
-        if ($_REQUEST['error'] == 'login') {
-            echo "<div class='error'>Du hast deinen Benutzername oder dein Passwort falsch eingegeben</div>";
-        }
-    }
-    ?> -->
 
         <div class="alert alert-danger">
             <strong>Fehler!</strong> Dein Benutzername oder Passwort stimmt nicht!</a>
