@@ -56,8 +56,9 @@ else {
     <title>Digitales Museum Startseite</title>
     <link rel="stylesheet" href="css/bootstrap-3.3.7-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="css/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
+    <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery.autocomplete.min.js"></script>
+    <script type="text/javascript" src="js/currency-autocomplete.js"></script>
 </head>
 
 <body onload="mail();">
@@ -80,7 +81,7 @@ else {
             <ul class="nav navbar-nav navbar-right">
                 <form class="navbar-form navbar-left" role="search" action="suchen.php" method="get">
                     <div class="input-group">
-                        <input type="text" name="suchbegriff" class="form-control" id="suchen_feld" placeholder="Search">
+                        <form><input type="text" name="suchbegriff" class="form-control" id="input_suchen" placeholder="Suche"></form>
                         <div class="input-group-btn">
                             <button class="btn btn-default" type="submit" id="suchen_button"><i class="glyphicon glyphicon-search"></i></button>
                         </div>
