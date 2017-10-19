@@ -10,7 +10,7 @@
 
 <body>
 <?php
-require("datenbank.php");
+//require("datenbank.php");
 require("session_check.php");
 $dbcontroller = new DBController();
 $personID = 1;
@@ -24,55 +24,11 @@ $felder = array("nachname", "vorname", "kuenstlername", "vater", "mutter", "nati
 foreach ($felder as $feld) {
     $values[$feld] = " ";
 }
-echo "POST: ";
-echo implode(", ",$_POST);
-echo "   ---  ";
-
-echo "SESSION: ";
-echo implode(", ",array_keys($_SESSION));
-echo "   ---  ";
 
 foreach ($_POST as $feld => $wert) {
     $values[$feld]= $wert;
 }
 
-/*//Befüllung der Werte für die dynamscihen Felder
-$zaehler = 0;
-foreach ($counter as $feld) {
-    if(isset($_SESSION[$feld])) {
-        for($i = 1; $i <= $_SESSION[$feld]; $i++) {
-            $values[$counter2[$zaehler]."_".$i]="";
-        }
-    }
-    $zaehler++;
-}
-
-//Befüllung der restlichen Literatur angabe Werten
-for($i = 0; $i < sizeof($counter2)-4; $i++) {
-    if(isset($_SESSION["anzLiteratur"])) {
-        for($j = 1; $j <= $_SESSION["anzLiteratur"]; $j++) {
-            $values[$counter2[$i + 4] . "_" . $j] = "";
-        }
-    }
-}
-
-foreach ($counter as $feld) {
-    if(!isset($_SESSION[$feld])) {
-        $_SESSION[$feld]=1;
-    }
-}
-
-foreach ($values as $feld => $wert) {
-    if(isset($_POST[$feld])) {
-        $values[$feld] = $_POST[$feld];
-    } else { $values[$feld] =" "; }
-}*/
-
-echo implode(", ",$values);
-
-echo "keys: ";
-echo implode(", ", array_keys($values));
-echo "   ---  ";
 //Persohnlichkeit wird angelegt
 $personID = $dbcontroller->addPersoenlichkeit($values["nachname"], $values["vorname"], $values["kuenstlername"], "1", "1", $values["geburtsdatum"],
     $values["todesdatum"], $values["geburtsort"], $values["nationalitaet"], $values["vater"], $values["mutter"], $values["text_text"], $values["text_quelle"],
@@ -82,15 +38,31 @@ $personID = $dbcontroller->addPersoenlichkeit($values["nachname"], $values["vorn
 //Kategorien werden angelegt
 for($i = 0; $i <= $_SESSION["anzKategorie"]; $i++) {
     if(empty($dbcontroller->getKategorieByName($values["kategorie_".$i]))) {
-        $kategorieID[$i] = $dbcontroller->addKategorie($values["kategorie_".$i]);
+        $kategorieID[$i] = implode($dbcontroller->addKategorie($values["kategorie_".$i]));
     } else {
-        $kategorieID[$i] = $dbcontroller->getIDOfAKategorie($values["kategorie_".$i]);
+        $kategorieID[$i] = implode($dbcontroller->getIDOfAKategorie($values["kategorie_".$i]));
     }
 }
 //Verknüpfung von Person und Kategorie
 for($i = 0; $i < count($kategorieID); $i++) {
     $dbcontroller->addKategoriezuPersoenlichkeit($personID, $kategorieID[$i]);
 }
+
+
+//Epochen werden angelegt
+for($i = 0; $i <= $_SESSION["anzEpoche"]; $i++) {
+    if(empty($dbcontroller->getEpocheByName($values["epoche_".$i]))) {
+        $epocheID[$i] = implode($dbcontroller->addEpoche($values["epoche_".$i]));
+    } else {
+        $epocheID[$i] = implode($dbcontroller->getIDOfAnEpoche($values["epoche_".$i]));
+    }
+    echo "EPOCHENNUMMER: " . $epocheID[$i];
+}
+//Verknüpfung von Person und Epochen
+for($i = 0; $i < count($epocheID); $i++) {
+    $dbcontroller->addEpochezuPersoenlichkeit($personID, $epocheID[$i]);
+}
+
 
 
 ?>

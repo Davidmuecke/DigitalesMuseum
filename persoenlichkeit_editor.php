@@ -38,7 +38,7 @@
             $_SESSION[$feld]=0;
         }
     }
-    //Befüllung der Werte für die dynamscihen Felder
+    //Befüllung der Werte für die dynamischen Felder
     $zaehler = 0;
     foreach ($counter as $feld) {
         if(isset($_SESSION[$feld])) {
