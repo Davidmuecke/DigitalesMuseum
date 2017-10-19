@@ -5,9 +5,7 @@
     <title>Neue Persönlichkeit anlegen</title>
     <link rel="stylesheet" href="css/bootstrap-3.3.7-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
-    <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
-    <script type="text/javascript" src="js/jquery.autocomplete.min.js"></script>
-    <script type="text/javascript" src="js/currency-autocomplete.js"></script>
+
 </head>
 
 <body onload="mail();">
