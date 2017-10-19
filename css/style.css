@@ -12,6 +12,9 @@ body{
 /* Ende Body */
 
 
+
+
+
 /* Resizing ab einer Fensterbreite von weniger als 1243px für die Navbar */
 @media (max-width: 1243px) {
     .navbar-header {
@@ -117,7 +120,7 @@ textarea{
 
 
 /* Select */
-select{
+select {
     width: 100%;
     padding: 2vh 3vw;
     margin: 1vh 0vw;
@@ -127,6 +130,8 @@ select{
     border-radius: 5px;
 }
 /* Ende Select */
+
+
 
 
 /* p */
