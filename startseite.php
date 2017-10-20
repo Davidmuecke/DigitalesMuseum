@@ -28,10 +28,7 @@
 
 <div id="startseite_button">
     <div class="container">
-        <?php
-        date_default_timezone_set('Europe/Berlin');
-        $current_date = date('d/m/Y == H:i:s');
-        ?>
+
     </div>
 
     <div class="containerKachelnStart"">

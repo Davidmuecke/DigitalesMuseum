@@ -12,6 +12,9 @@ body{
 /* Ende Body */
 
 
+
+
+
 /* Resizing ab einer Fensterbreite von weniger als 1243px für die Navbar */
 @media (max-width: 1243px) {
     .navbar-header {
@@ -117,7 +120,7 @@ textarea{
 
 
 /* Select */
-select{
+select {
     width: 100%;
     padding: 2vh 3vw;
     margin: 1vh 0vw;
@@ -127,6 +130,8 @@ select{
     border-radius: 5px;
 }
 /* Ende Select */
+
+
 
 
 /* p */
@@ -228,18 +233,18 @@ footer{
 .panel-body{
     background-color: #663333;
     color: white;
-    font-size: 20px;
+    font-size: large;
 }
 
 .panel-body-persoenlichkeit {
     height: 40vh;
     overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .panel-body::-webkit-scrollbar
 {
     width: 0.75vw;  /* for vertical scrollbars */
-    height: 2vh; /* for horizontal scrollbars */
 }
 
 .panel-body::-webkit-scrollbar-track
@@ -381,6 +386,7 @@ footer{
     background-repeat: no-repeat;
     background-size: cover;
     margin: 0 auto 1em;
+    margin-bottom: 4%;
     max-width: 100%;
 }
 
@@ -485,6 +491,7 @@ footer{
 /* Information */
 .information {
     margin: 2%;
+    margin-top: -2%;
     width: 45%;
     display: inline-block;
 }
@@ -498,6 +505,11 @@ footer{
 /* Ende Information */
 
 
+/* Glyphicons */
+.glyphicon-plus, .glyphicon {
+    border: none;
+}
+/* Ende Glyphicons */
 
 /****************************
        I D S
@@ -585,6 +597,12 @@ footer{
     margin-left: -17vw;
 }
 
+#btn_bearbeiten {
+    float: right;
+    margin-bottom: 0.5%;
+    margin-right: 0.5%;
+}
+
 #btn_abbrechen, #btn_anlegen, #btn_loeschen {
     float: left;
 }
@@ -602,6 +620,10 @@ footer{
 /* Ende Button Persönlichkeit anlegen */
 
 
+#panel_text {
+    width: 94%;
+}
+
 /* Literatur Ort */
 #p_literatur_ort{
     width: 60%;
@@ -610,7 +632,11 @@ footer{
 
 /*TEST Rahel*/
 
-#searchfield { display: block; width: 100%; text-align: center; margin-bottom: 35px; }
+#searchfield {
+    display: block;
+    width: 30%;
+    text-align: center;
+    margin-bottom: 35px; }
 
 #searchfield form {
     display: inline-block;

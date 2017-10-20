@@ -58,6 +58,32 @@ class DBController
     }
 
     /**
+     * Gibt die ID der Epoche mit dem übergeben Namen zurück
+     * @param name Name der Epoche
+     * @return array|null
+     */
+    public function getEpocheByName($name)
+    {
+        $query = mysqli_query($this->DB, "SELECT * FROM epoche WHERE bezeichnung='" . $name . "'");
+        $result = mysqli_fetch_assoc($query);
+        return $result;
+    }
+
+    /**
+     * Gibt die ID einer Kategorie zurück
+     * @param bezeichnung Bezeichnung der Kategorie
+     * @return array|null
+     */
+    public function getIDOfAnEpoche($bezeichnung)
+    {
+        $query = mysqli_query($this->DB, "SELECT epocheID FROM epoche WHERE bezeichnung='" . $bezeichnung . "'");
+        $result = mysqli_fetch_assoc($query);
+        return $result;
+    }
+
+
+
+    /**
      * @param $personID
      * @return array|null mehrdimensionales Array mit allen Epochen zu einer Persönlichkeit
      */
@@ -162,6 +188,31 @@ class DBController
     public function getKategorieByID($katid)
     {
         $query = mysqli_query($this->DB, "SELECT * FROM kategorie WHERE kategorieID='" . $katid . "'");
+        $result = mysqli_fetch_assoc($query);
+        return $result;
+    }
+
+
+    /**
+     * Gibt die ID der Kategorie mit dem übergeben Namen zurück
+     * @param name Name der Kategorie
+     * @return array|null
+     */
+    public function getKategorieByName($name)
+    {
+        $query = mysqli_query($this->DB, "SELECT * FROM kategorie WHERE bezeichnung='" . $name . "'");
+        $result = mysqli_fetch_assoc($query);
+        return $result;
+    }
+
+    /**
+     * Gibt die ID einer Kategorie zurück
+     * @param bezeichnung Bezeichnung der Kategorie
+     * @return array|null
+     */
+    public function getIDOfAKategorie($bezeichnung)
+    {
+        $query = mysqli_query($this->DB, "SELECT kategorieID FROM kategorie WHERE bezeichnung='" . $bezeichnung . "'");
         $result = mysqli_fetch_assoc($query);
         return $result;
     }
@@ -327,7 +378,13 @@ class DBController
     {
         $bezeichnung = mysqli_escape_string($this->DB, htmlentities($bezeichnung));
         $query = mysqli_query($this->DB, "INSERT INTO epoche(bezeichnung) VALUES('" . $bezeichnung . "') ");
-        return $query;
+
+
+        $anz = mysqli_query($this->DB, "select MAX(epocheID) FROM epoche");
+
+        $result = mysqli_fetch_assoc($anz);
+        return implode ($result);
+        //return $query;
     }
 
     public function addEpochezuPersoenlichkeit($persoenlichkeitID, $epocheID)
@@ -345,8 +402,14 @@ class DBController
     {
         $bezeichnung = mysqli_escape_string($this->DB, htmlentities($bezeichnung));
         $query = mysqli_query($this->DB, "INSERT INTO kategorie(bezeichnung) VALUES('" . $bezeichnung . "') ");
-        return $query;
+
+        $anz = mysqli_query($this->DB, "select MAX(kategorieID) FROM kategorie");
+
+        $result = mysqli_fetch_assoc($anz);
+        return implode ($result);
+        //$query
     }
+
 
     /**
      * @param $persoenlichkeitID
@@ -473,11 +536,16 @@ class DBController
         $zitatInhalt = mysqli_escape_string($this->DB, htmlentities($zitatInhalt));
         $zitatUrheber = mysqli_escape_string($this->DB, htmlentities($zitatUrheber));
 
-        $columns = "name`,vorname,kuenstlername,profilbild,titelbild,geburtsdatum,todesdatum,geburtsort,nationalitaet,vater,mutter,textInhalt,textQuelle,textTitel,textAutor,beschreibungInhalt,beschreibungQuelle,zitatInhalt,zitatDatum,zitatAnlass,zitatUrheber";
+        $columns = "name,vorname,kuenstlername,profilbild,titelbild,geburtsdatum,todesdatum,geburtsort,nationalitaet,vater,mutter,textInhalt,textQuelle,textTitel,textAutor,beschreibungInhalt,beschreibungQuelle,zitatInhalt,zitatDatum,zitatAnlass,zitatUrheber";
         $values = "'$name','$vorname','$kuenstlername','$profilbild','$titelbild','$geburtsdatum','$todesdatum','$geburtsort','$nationalitaet','$vater','$mutter','$textInhalt','$textQuelle','$textTitel','$textAutor','$beschreibungInhalt','$beschreibungQuelle','$zitatInhalt','$zitatDatum','$zitatAnlass','$zitatUrheber'";
 
         $query = mysqli_query($this->DB, "INSERT INTO persoenlichkeit($columns) VALUES($values) ");
-        return $query;
+
+        $anz = mysqli_query($this->DB, "select MAX(persoenlichkeitID) FROM persoenlichkeit");
+
+        $result = mysqli_fetch_assoc($anz);
+        return implode ($result);
+        //return $query;
     }
     //Einträge verändern
 

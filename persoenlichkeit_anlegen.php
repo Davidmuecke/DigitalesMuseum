@@ -347,7 +347,7 @@
                             </div>
                         </div>
 
-                        <div id="add_button_kategorie">
+                        <div id="add_button_freund">
                             <a onclick="addElement('freund','ueber_freund')" class="btn_add"><span class="glyphicon glyphicon-plus"></span></a>
                         </div>
                     </div>
@@ -446,6 +446,8 @@
                 function addElement (id, ueber_id) {
                     var newDiv = document.createElement("div");
                     newDiv.innerHTML = document.getElementById(id).innerHTML;
+                    alert("TEST" + newDiv.firstElementChild.getAttribute("id"));
+                    //newDiv.childNodes.item()
                     document.getElementById(ueber_id).appendChild(newDiv);
                 }
                 -->
