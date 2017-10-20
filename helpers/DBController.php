@@ -107,6 +107,7 @@ class DBController
         return $result;
     }
 
+
     /**
      * Liste der Persoenlichkeiten sortiert nach Name,Vorname
      * @return array|null mehrdimensionales Array
@@ -349,12 +350,16 @@ class DBController
         $datum = mysqli_escape_string($this->DB, htmlentities($datum));
         $quelle = mysqli_escape_string($this->DB, htmlentities($quelle));
         $titel = mysqli_escape_string($this->DB, htmlentities($titel));
-        $data = mysqli_escape_string($this->DB, htmlentities($data));
+        //$data = mysqli_escape_string($this->DB, htmlentities($data));
         $datatype = mysqli_escape_string($this->DB, htmlentities($datatype));
         $size = (int)$size;
         $query = mysqli_query($this->DB, "INSERT INTO bild(beschreibung,datum,quelle,titel,data,datatype,size) VALUES('$beschreibung','$datum','$quelle','$titel','$data','$datatype','$size') ");
-        return $query;
 
+        $anz = mysqli_query($this->DB, "select MAX(bildID) FROM bild");
+
+        $result = mysqli_fetch_assoc($anz);
+        return implode ($result);
+        //return $query;
     }
 
     /**
@@ -470,7 +475,13 @@ class DBController
             $values .= "'$herausgeberOrt'";
         }
         $query = mysqli_query($this->DB, "INSERT INTO literaturangaben(" . $columns . ") VALUES(" . $values . ") ");
-        return $query;
+
+
+        $anz = mysqli_query($this->DB, "select MAX(literaturangabenID) FROM literaturangaben");
+
+        $result = mysqli_fetch_assoc($anz);
+        return implode ($result);
+        //return $query;
     }
 
     /**
@@ -547,6 +558,22 @@ class DBController
         return implode ($result);
         //return $query;
     }
+
+    /**
+     * @param $persoenlichkeitID1
+     * @param $persoenlichkeitID2
+     * @return bool Erbebnis der Abfrage true/false 1/""
+     */
+    public function addPersoenlichkeitzuPersoenlichkeit($persoenlichkeitID1, $persoenlichkeitID2)
+    {
+        $persoenlichkeitID1 = (int)$persoenlichkeitID1;
+        $persoenlichkeitID2 = (int)$persoenlichkeitID2;
+        $query = mysqli_query($this->DB, "INSERT INTO persoenlichkeitpersoenlichkeit(persoenlichkeit1ID,persoenlichkeit2ID) VALUES('" . $persoenlichkeitID1 . "','" . $persoenlichkeitID2 . "') ");
+        return $query;
+    }
+
+
+
     //Einträge verändern
 
     /** aktuallisiert das Bild in der Datenbank mit den übergebenen Werten

@@ -11,57 +11,111 @@
 <body>
 <?php
 //require("datenbank.php");
-require("session_check.php");
+require("header.php");
 $dbcontroller = new DBController();
 $personID = 1;
 
 $counter = array("anzEpoche", "anzKategorie", "anzPerson", "anzLiteratur");
-$counter2 = array("epoche", "kategorie", "person", "literatur_titel", "literatur_autor", "literatur_datum", "literatur_verlag", "literatur_ort", "literatur_text");
+$counter2 = array("epoche", "kategorie", "person", "literatur_titel", "literatur_autor", "literatur_datum", "literatur_verlag", "literatur_ort");
 $felder = array("nachname", "vorname", "kuenstlername", "vater", "mutter", "nationalitaet", "geburtsdatum", "geburtsort", "todesdatum", "kurzbeschreibung_quelle", "kurzbeschreibung_text",
     "text_titel", "text_autor","text_quelle", "text_text", "zitat_anlass", "zitat_datum", "zitat_urheber", "zitat_text", "epoche_0", "kategorie_0", "person_0", "literatur_titel_0",
-    "literatur_autor_0", "literatur_datum_0", "literatur_verlag_0", "literatur_ort_0", "literatur_text_0");
+    "literatur_autor_0", "literatur_datum_0", "literatur_verlag_0", "literatur_ort_0");
 
 foreach ($felder as $feld) {
-    $values[$feld] = " ";
+    $values[$feld] = "";
 }
 
 foreach ($_POST as $feld => $wert) {
     $values[$feld]= $wert;
 }
 
-//Persohnlichkeit wird angelegt
-$personID = $dbcontroller->addPersoenlichkeit($values["nachname"], $values["vorname"], $values["kuenstlername"], "1", "1", $values["geburtsdatum"],
+
+$profilbild=1;
+$titelbild=1;
+//Profil-Bilder speichern
+if (array_key_exists('bild_profilbild',$_FILES)) {
+    if($_FILES['bild_profilbild']['tmp_name'] != "") {
+        $tmpname = $_FILES['bild_profilbild']['tmp_name'];
+        $type = $_FILES['bild_profilbild']['type'];
+        $size = $_FILES ["bild_profilbild"] ["size"];
+        $hndFile = fopen($tmpname, "r");
+        $data = addslashes(fread($hndFile, filesize($tmpname)));
+        $profilbild = $dbcontroller->addBild("","","","",$data,$type,$size);
+    }
+}
+
+//Titel-Bilder speichern
+if (array_key_exists('bild_titelbild',$_FILES)) {
+    if($_FILES['bild_titelbild']['tmp_name'] != "") {
+        $tmpname = $_FILES['bild_titelbild']['tmp_name'];
+        $type = $_FILES['bild_titelbild']['type'];
+        $size = $_FILES ["bild_titelbild"] ["size"];
+        $hndFile = fopen($tmpname, "r");
+        $data = addslashes(fread($hndFile, filesize($tmpname)));
+        $titelbild = $dbcontroller->addBild("","","","",$data,$type,$size);
+    }
+}
+
+
+//Persoenlichkeit wird angelegt
+$personID = $dbcontroller->addPersoenlichkeit($values["nachname"], $values["vorname"], $values["kuenstlername"], $profilbild, $titelbild, $values["geburtsdatum"],
     $values["todesdatum"], $values["geburtsort"], $values["nationalitaet"], $values["vater"], $values["mutter"], $values["text_text"], $values["text_quelle"],
     $values["text_titel"], $values["text_autor"], $values["kurzbeschreibung_text"], $values["kurzbeschreibung_quelle"], $values["zitat_text"], $values["zitat_datum"], $values["zitat_anlass"], $values["zitat_urheber"]);
 
 
 //Kategorien werden angelegt
 for($i = 0; $i <= $_SESSION["anzKategorie"]; $i++) {
-    if(empty($dbcontroller->getKategorieByName($values["kategorie_".$i]))) {
-        $kategorieID[$i] = implode($dbcontroller->addKategorie($values["kategorie_".$i]));
-    } else {
-        $kategorieID[$i] = implode($dbcontroller->getIDOfAKategorie($values["kategorie_".$i]));
+    if(!empty($values["kategorie_".$i])) {
+        if (empty($dbcontroller->getKategorieByName($values["kategorie_" . $i]))) {
+            $kategorieID[$i] = $dbcontroller->addKategorie($values["kategorie_" . $i]);
+        } else {
+            $kategorieID[$i] = implode($dbcontroller->getIDOfAKategorie($values["kategorie_" . $i]));
+        }
     }
 }
 //Verknüpfung von Person und Kategorie
-for($i = 0; $i < count($kategorieID); $i++) {
-    $dbcontroller->addKategoriezuPersoenlichkeit($personID, $kategorieID[$i]);
+if(isset($kategorieID)) {
+    for($i = 0; $i < count($kategorieID); $i++) {
+        $dbcontroller->addKategoriezuPersoenlichkeit($personID, $kategorieID[$i]);
+    }
 }
 
 
 //Epochen werden angelegt
 for($i = 0; $i <= $_SESSION["anzEpoche"]; $i++) {
-    if(empty($dbcontroller->getEpocheByName($values["epoche_".$i]))) {
-        $epocheID[$i] = implode($dbcontroller->addEpoche($values["epoche_".$i]));
-    } else {
-        $epocheID[$i] = implode($dbcontroller->getIDOfAnEpoche($values["epoche_".$i]));
+    if(!empty($values["epoche_".$i])) {
+        if (empty($dbcontroller->getEpocheByName($values["epoche_" . $i]))) {
+
+            $epocheID[$i] = $dbcontroller->addEpoche($values["epoche_" . $i]);
+        } else {
+            $epocheID[$i] = implode($dbcontroller->getIDOfAnEpoche($values["epoche_" . $i]));
+        }
     }
-    echo "EPOCHENNUMMER: " . $epocheID[$i];
 }
 //Verknüpfung von Person und Epochen
-for($i = 0; $i < count($epocheID); $i++) {
-    $dbcontroller->addEpochezuPersoenlichkeit($personID, $epocheID[$i]);
+if(isset($epocheID)) {
+    for ($i = 0; $i < count($epocheID); $i++) {
+        $dbcontroller->addEpochezuPersoenlichkeit($personID, $epocheID[$i]);
+    }
 }
+
+//Literaturangaben werden angelegt
+for($i = 0; $i <= $_SESSION["anzLiteratur"]; $i++) {
+    $literaturID[$i] = $dbcontroller->addLiteraturangabe($values["literatur_autor_".$i], $values["literatur_titel_".$i], $values["literatur_datum_".$i], $values["literatur_verlag_".$i], $values["literatur_ort_".$i]);
+}
+//Verknüpfung von Person und Literaturangaben
+for($i = 0; $i < count($literaturID); $i++) {
+    $dbcontroller->addLiteraturangabezuPersoenlichkeit($personID, $literaturID[$i]);
+}
+
+
+//Verknüpfung von Person und Personen
+for($i = 0; $i <= $_SESSION["anzPerson"]; $i++) {
+    $dbcontroller->addPersoenlichkeitzuPersoenlichkeit($personID, $values["person_".$i]);
+}
+
+
+
 
 
 

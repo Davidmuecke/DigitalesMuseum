@@ -243,27 +243,35 @@ class KachelCreationEngine {
         $anlass = $person["zitatAnlass"];
         $urheber = $person["zitatUrheber"];
         $datum = $person["zitatDatum"];
-        ?>
-        <div class="information col-md-6">
-            <div class="panel">
-                <div class="panel-heading panel-heading-persoenlichkeit">
-                    <label id="link_information">Zitat</label>
-                </div>
-                <div class="panel-body panel-body-persoenlichkeit">
-                    <div class="information-content">
-                        <?php echo "\"".$zitat."\"" ?>
-                        <i><?php
-                            echo $urheber.", ".$anlass;
-                            if($datum != "0000-00-00") {
-                                echo ", ".$datum;
-                            }
-                        ?></i>
+        if(!empty($zitat) && $zitat!=" ") {
+            ?>
+            <div class="information col-md-6">
+                <div class="panel">
+                    <div class="panel-heading panel-heading-persoenlichkeit">
+                        <label id="link_information">Zitat</label>
+                    </div>
+                    <div class="panel-body panel-body-persoenlichkeit">
+                        <div class="information-content">
+                            <?php echo "\"" . $zitat . "\"" ?>
+                            <i><?php
+                                if(!empty($urheber)) {
+                                    echo $urheber;
+                                }
+                                if(!empty($anlass)) {
+                                    echo ", " . $anlass;
+                                }
 
+                                if ($datum != "0000-00-00") {
+                                    echo ", " . $datum;
+                                }
+                                ?></i>
+
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <?php
+            <?php
+        }
     }
 
 
@@ -316,35 +324,37 @@ class KachelCreationEngine {
         $name="";
         $vorname="";
         $id=0;
-
-        ?>
-        <div class="information col-md-6">
-            <div class="panel">
-                <div class="panel-heading panel-heading-persoenlichkeit">
-                    <label id="link_information">Freunde</label>
-                </div>
-                <div class="panel-body panel-body-persoenlichkeit">
-                    <div class="information-content">
-                        <ul>
-                            <?php
-                            for($i = 0; $i < $anz; $i++) {
-                                $name = $freunde[$i]['name'];
-                                $vorname = $freunde[$i]["vorname"];
-                                $idpers = $freunde[$i]["persoenlichkeitID"];
-                                $link = "persoenlichkeit.php?id=".$idpers;
-                                ?>
-                                <li>
-                                    <a id="link_kategorie" href=<?php echo $link?>><?php echo $vorname." ".$name ?></a>
-                                </li>
+        if($anz!=0) {
+            ?>
+            <div class="information col-md-6">
+                <div class="panel">
+                    <div class="panel-heading panel-heading-persoenlichkeit">
+                        <label id="link_information">Freunde</label>
+                    </div>
+                    <div class="panel-body panel-body-persoenlichkeit">
+                        <div class="information-content">
+                            <ul>
                                 <?php
-                            }
-                            ?>
-                        </ul>
+                                for ($i = 0; $i < $anz; $i++) {
+                                    $name = $freunde[$i]['name'];
+                                    $vorname = $freunde[$i]["vorname"];
+                                    $idpers = $freunde[$i]["persoenlichkeitID"];
+                                    $link = "persoenlichkeit.php?id=" . $idpers;
+                                    ?>
+                                    <li>
+                                        <a id="link_kategorie"
+                                           href=<?php echo $link ?>><?php echo $vorname . " " . $name ?></a>
+                                    </li>
+                                    <?php
+                                }
+                                ?>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <?php
+            <?php
+        }
     }
 
     function persoenlichkeit_linkKatEpoch($id) {
@@ -356,49 +366,57 @@ class KachelCreationEngine {
         $epochen = $dbcontroller->getEpochenByPersoenlichekeit($id);
         $anzEpochen = count($epochen);
 
-        ?>
-        <div class="information col-md-6">
-            <div class="panel">
-                <div class="panel-heading panel-heading-persoenlichkeit">
-                    <label id="link_information">Kategorien und Epochen</label>
-                </div>
-                <div class="panel-body panel-body-persoenlichkeit">
-                    <div class="information-content">
-                        <label class="charac_label">Kategorien</label>
-                        <ul>
-                        <?php
-                            for($i = 0; $i < $anzKat; $i++) {
-                                $kat_ID = $kategorien[$i]["kategorieID"];
-                                $kat_Name = $kategorien[$i]["bezeichnung"];
-                                $link = "persoenlichkeiten_uebersicht.php?katid=".$kat_ID;
-                                ?>
-                                <li>
-                                    <a id="link_kategorie" href=<?php echo $link?>><?php echo $kat_Name ?></a>
-                                </li>
-                            <?php
-                            }
-                        ?>
-                        </ul>
-                        <label class="charac_label">Epochen</label>
-                        <ul>
-                            <?php
-                            for($i = 0; $i < $anzEpochen; $i++) {
-                                $epoche_ID = $epochen[$i]["epocheID"];
-                                $epoche_Name = $epochen[$i]["bezeichnung"];
-                                $link = "persoenlichkeiten_uebersicht.php?epid=".$epoche_ID;
-                                ?>
-                                <li>
-                                    <a id="link_epoche" href=<?php echo $link?>><?php echo $epoche_Name ?></a>
-                                </li>
+        if($anzKat!=0 && $anzEpochen!=0) {
+            ?>
+            <div class="information col-md-6">
+                <div class="panel">
+                    <div class="panel-heading panel-heading-persoenlichkeit">
+                        <label id="link_information">Kategorien und Epochen</label>
+                    </div>
+                    <div class="panel-body panel-body-persoenlichkeit">
+                        <div class="information-content">
+                            <?php if($anzKat!=0) {?>
+                            <label class="charac_label">Kategorien</label>
+                            <ul>
                                 <?php
+                                for ($i = 0; $i < $anzKat; $i++) {
+                                    $kat_ID = $kategorien[$i]["kategorieID"];
+                                    $kat_Name = $kategorien[$i]["bezeichnung"];
+                                    $link = "persoenlichkeiten_uebersicht.php?katid=" . $kat_ID;
+                                    ?>
+                                    <li>
+                                        <a id="link_kategorie" href=<?php echo $link ?>><?php echo $kat_Name ?></a>
+                                    </li>
+                                    <?php
+                                }
+                                ?>
+                            </ul>
+                            <?php
                             }
+                            if($anzEpochen!=0) {
                             ?>
-                        </ul>
+                            <label class="charac_label">Epochen</label>
+                            <ul>
+                                <?php
+                                for ($i = 0; $i < $anzEpochen; $i++) {
+                                    $epoche_ID = $epochen[$i]["epocheID"];
+                                    $epoche_Name = $epochen[$i]["bezeichnung"];
+                                    $link = "persoenlichkeiten_uebersicht.php?epid=" . $epoche_ID;
+                                    ?>
+                                    <li>
+                                        <a id="link_epoche" href=<?php echo $link ?>><?php echo $epoche_Name ?></a>
+                                    </li>
+                                    <?php
+                                }
+                            }
+                                ?>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <?php
+            <?php
+        }
     }
 
 }
