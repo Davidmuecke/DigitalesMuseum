@@ -18,10 +18,10 @@
         require("header.php");
 
         $counter = array("anzEpoche", "anzKategorie", "anzPerson", "anzLiteratur");
-        $counter2 = array("epoche", "kategorie", "person", "literatur_titel", "literatur_autor", "literatur_datum", "literatur_verlag", "literatur_ort", "literatur_text");
+        $counter2 = array("epoche", "kategorie", "person", "literatur_titel", "literatur_autor", "literatur_datum", "literatur_verlag", "literatur_ort");
         $felder = array("nachname", "vorname", "kuenstlername", "vater", "mutter", "nationalitaet", "geburtsdatum", "geburtsort", "todesdatum", "kurzbeschreibung_quelle", "kurzbeschreibung_text",
         "text_titel", "text_autor","text_quelle", "text_text", "zitat_anlass", "zitat_datum", "zitat_urheber", "zitat_text", "epoche_0", "kategorie_0", "person_0", "literatur_titel_0",
-        "literatur_autor_0", "literatur_datum_0", "literatur_verlag_0", "literatur_ort_0", "literatur_text_0");
+        "literatur_autor_0", "literatur_datum_0", "literatur_verlag_0", "literatur_ort_0");
 
     foreach ($felder as $feld) {
         $values[$feld] = "";
@@ -68,7 +68,7 @@
             } else { $values[$feld] =""; }
         }
 
-    echo implode(", ",$values);
+    /*echo implode(", ",$values);
 
     echo "keys: ";
     echo implode(", ", array_keys($values));
@@ -76,7 +76,7 @@
 
     echo "keys POST: ";
     echo implode(", ", array_keys($_POST));
-    echo "   ---  ";
+    echo "   ---  ";*/
 
 
 
@@ -92,21 +92,19 @@
                 <div class="col-md-0 col-md-offset-0">
 
                     <!--1.Reihe-->
-                    <div class="create create-one">
+                    <div class="create">
                         <!--Nachname-->
                         <div class="form-group">
                             <label class="p_h1">Name:</label>
                             <input type="text"  value="<?php echo $values["nachname"] ?>" placeholder="Nachname"
-                                   name="nachname" class="form-control"
-                                   >
+                                   name="nachname" class="form-control">
                         </div>
 
                         <!--Vorname-->
                         <div class="form-group">
                             <label class="p_h1">Vorname:</label>
                             <input type="text" value="<?php echo $values["vorname"] ?>" placeholder="Vorname"
-                                   name="vorname" class="form-control"
-                                   >
+                                   name="vorname" class="form-control">
                         </div>
 
                         <!--Künstlername-->
@@ -180,7 +178,7 @@
                             <textarea name="kurzbeschreibung_text" placeholder="Kurzbeschreibung"class="form-control"><?php echo $values["kurzbeschreibung_text"] ?></textarea>
                         </div>
                     </div>
-                    </div>
+
 
                     <!--Text-->
                     <div>
@@ -210,7 +208,7 @@
 
                         <div class="create-text">
                             <div class="form-group">
-                                <textarea name="kurzbeschreibung_text" placeholder="Text"class="form-control"><?php echo $values["text_text"] ?></textarea>
+                                <textarea name="text_text" placeholder="Text"class="form-control"><?php echo $values["text_text"] ?></textarea>
                             </div>
                         </div>
                     </div>
@@ -242,9 +240,11 @@
                             </div>
                         </div>
 
+                        <a id="ep_jump"></a>
+
                         <div class="create-text">
                             <div class="form-group">
-                                <textarea name="kurzbeschreibung_text" placeholder="Zitat"class="form-control"><?php echo $values["zitat_text"] ?></textarea>
+                                <textarea name="zitat_text" placeholder="Zitat"class="form-control"><?php echo $values["zitat_text"] ?></textarea>
                             </div>
                         </div>
                     </div>
@@ -252,68 +252,82 @@
                     <!--Epoche-->
                           <div>
                                 <div id="ueber_epoche">
-                                    <div class="create create-seven">
+                                    <div class="create">
                                         <div class="form-group">
                                             <label class="p_h1">Epochen:</label>
                                         </div>
                                     </div>
                                     <?php
+                                        $dbcontroller = new DBController();
+                                        $epochen = $dbcontroller->getEpochen();
+                                        $anzEpochen = count($epochen);
                                         for($i = 0; $i <= $_SESSION["anzEpoche"]; $i++) {
                                     ?>
                                     <div id="epoche">
-                                        <div class="create creat-seven">
+                                        <div class="create create-einzeilig">
                                             <input type="text" value="<?php echo $values["epoche_".$i] ?>" placeholder="Epoche auswählen"
                                                    id="epochen_auswahl" class="form-control" name="epoche_<?php echo $i ?>" list="epochen">
                                             <datalist id="epochen">
-                                                <option value="Barock" />
-                                                <option value="Romantik" />
-                                                <option value="Neuzeit" />
-                                                <option value="Antike" />
+                                                <?php
+                                                for($j = 0; $j < $anzEpochen; $j++) {
+                                                    echo "<option value=\"".$epochen[$j]['bezeichnung']."\"/>";
+                                                }
+                                                ?>
                                             </datalist>
                                             </input>
                                         </div>
                                     </div>
+                                    <?php
+                                        }
+                                    ?>
                                 </div>
-                            </div>
-                            <?php
-                        }
-                    ?>
-                    <input id="add_button_epoche" class="btn_add" type="submit" value="weitere Epoche" formaction="persoenlichkeit_editor.php?anzEpoche=<?php echo $_SESSION["anzEpoche"]+1;?>#epochen" formmethod="post">
+                          </div>
+                        <a id="kat_jump"></a>
+                    <input id="add_button_epoche" class="btn_add" type="submit" value="weitere Epoche" formaction="persoenlichkeit_editor.php?anzEpoche=<?php echo $_SESSION["anzEpoche"]+1;?>#ep_jump" formmethod="post">
 
                     <!--Kategorie-->
+
                     <div>
-                        <div id="ueber_epoche">
-                            <div class="create create-seven">
+                        <a id="kat_jump"></a>
+                        <div id="ueber_kategorie">
+                            <div class="create">
                                 <div class="form-group">
-                                    <label class="p_h1">Kategorien:</label>
+                                    <label class="p_h1"">Kategorien:</label>
                                 </div>
                             </div>
                             <?php
+                            $dbcontroller = new DBController();
+                            $kategorien = $dbcontroller->getKategorien();
+                            $anzKategorien = count($kategorien);
                             for($i = 0; $i <= $_SESSION['anzKategorie']; $i++) {
                             ?>
-                            <div id="epoche">
-                                <div class="create creat-seven">
+                            <div id="kategorie">
+                                <div class="create create-einzeilig">
                                     <input type="text" value="<?php echo $values["kategorie_".$i] ?>" placeholder="Kategorie auswählen"
-                                           id="kategorien_auswahl" class="form-control" name="kategorie_<?php echo $i ?>" list="kategorien">
+                                           id="kategorien_auswahl_<?php echo $i ?>" class="form-control" name="kategorie_<?php echo $i ?>" list="kategorien">
                                     <datalist id="kategorien">
-                                        <option value="Eltern" />
-                                        <option value="Ausbildung" />
-                                        <option value="Grundschule" />
-                                        <option value="Kindererziehung" />
+                                        <?php
+                                        for($j = 0; $j < $anzKategorien; $j++) {
+                                            echo "<option value=\"".$kategorien[$j]['bezeichnung']."\"/>";
+                                        }
+                                        ?>
                                     </datalist>
                                     </input>
                                 </div>
                             </div>
-                        </div>
                         <?php
                         }
                         ?>
-                        <input id="add_button_kategorie" class="btn_add" type="submit" value="weitere Kategorien" formaction="persoenlichkeit_editor.php?anzKategorie=<?php echo $_SESSION["anzKategorie"]+1;?>" formmethod="post">
+                        </div>
+                        <a id="lit_jump"></a>
+                        <input id="add_button_kategorie" class="btn_add" type="submit" value="weitere Kategorien" formaction="persoenlichkeit_editor.php?anzKategorie=<?php echo $_SESSION["anzKategorie"]+1;?>#kat_jump" formmethod="post">
                     </div>
+
+
                     <!--Literaturangabe-->
                     <div>
                         <div id="ueber_literatur">
-                            <div class="create create-nine">
+                            <div class="create">
                                 <div class="form-group">
                                     <label class="p_h1">Literaturangaben:</label>
                                 </div>
@@ -321,8 +335,8 @@
                             <?php
                             for($i = 0; $i <= $_SESSION['anzLiteratur']; $i++) {
                             ?>
-                            <div id="literatur">
-                                <div class="create create-nine">
+                            <div id="literatur" >
+                                <div class="create">
                                     <div class="form-group">
                                         <label>Titel:</label>
                                         <input type="text" value="<?php echo $values["literatur_titel_".$i] ?>" placeholder="Titel der Literaturangabe"
@@ -354,19 +368,58 @@
                                                name="literatur_ort_<?php echo $i ?>" class="form-control">
                                     </div>
                                 </div>
-                                <div class="create-einzeilig">
-                                    <div class="form-group">
-                                        <input type="text" value="<?php echo $values["literatur_text_".$i] ?>" placeholder="Literaturangabe"
-                                               name="literatur_text_<?php echo $i ?>" class="form-control">
-                                    </div>
-                                </div>
                             </div>
-                        </div>
                         <?php
                         }
                         ?>
-                        <input id="add_button_kategorie" class="btn_add" type="submit" value="weitere Literaturangaben" formaction="persoenlichkeit_editor.php?anzLiteratur=<?php echo $_SESSION["anzLiteratur"]+1;?>" formmethod="post">
+                        </div>
+                        <a id="per_jump"></a>
+                        <input id="add_button_kategorie" class="btn_add" type="submit" value="weitere Literaturangaben" formaction="persoenlichkeit_editor.php?anzLiteratur=<?php echo $_SESSION["anzLiteratur"]+1;?>#lit_jump" formmethod="post">
                     </div>
+
+                    <!--Freunde-->
+                    <div>
+                        <div id="ueber_freund">
+                            <div class="create">
+                                <div class="form-group">
+                                    <label class="p_h1">Freunde:</label>
+                                </div>
+                            </div>
+                            <?php
+                            $dbcontroller = new DBController();
+                            $personen = $dbcontroller->getPersoenlichkeitenSorted();
+                            $anzPersonen = count($personen);
+
+
+                            for($i = 0; $i <= $_SESSION['anzPerson']; $i++) {
+                            ?>
+                            <div id="freund">
+                                <div class="create">
+                                    <select  id="person_auswahl" class="form-control" name="person_<?php echo $i ?>" size="1" >
+                                        <?php
+                                        $selectedFlag=false;
+                                        for($j = 0; $j < $anzPersonen; $j++) {
+                                            if($personen[$j]["persoenlichkeitID"]==$values["person_".$i]) {
+                                                echo "<option selected value=\"".$personen[$j]['persoenlichkeitID']."\">".$personen[$j]['vorname']." ".$personen[$j]['name']."</option>";
+                                                $selectedFlag=true;
+                                            } else {
+                                                echo "<option value=\"".$personen[$j]['persoenlichkeitID']."\">".$personen[$j]['vorname']." ".$personen[$j]['name']."</option>";
+                                            }
+                                        }
+                                        if(!$selectedFlag) {
+                                            echo "<option disabled selected value> -- wähle Freund aus -- </option>";
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+                            </div>
+                        <?php
+                        }
+                        ?>
+                        </div>
+                        <input id="add_button_person" class="btn_add" type="submit" value="weitere Freunde" formaction="persoenlichkeit_editor.php?anzPerson=<?php echo $_SESSION["anzPerson"]+1;?>#per_jump" formmethod="post">
+                    </div>
+
 
                     <!--Bilder-->
                     <div>
@@ -374,7 +427,7 @@
                             <label class="p_h1">Bilder:</label>
                         </div>
 
-                        <div id="ueber_bilder" class="create-einzeilig create-ten">
+                        <div id="ueber_bilder" class="create-einzeilig">
                             <div class="form-group">
                                 <label>Profilbild:</label>
                                 <input type="file" name="bild_profilbild">
@@ -388,21 +441,25 @@
                     </div>
                     </div>
 
+
+
+
+
+
                 </div>
+
             </div>
 
-
-
             <!--Button--->
+            <div>
             <div id="p_button">
-                <button id="btn_anlegen" type="submit" class="btn">Persönlichkeit anlegen</button>
 
-                <input id="btn_anlegen" class="btn" value="anlegen" type="submit" formaction="persoenlichkeit_datenbank.php" formmethod="post">
-
-
+                <input id="btn_anlegen" class="btn" value="Persönlichkeit anlegen" type="submit" formaction="persoenlichkeit_datenbank.php" formmethod="post">
                 <button id="btn_loeschen" type="reset" class="btn">Einträge löschen</button>
                 <a id="btn_abbrechen" href="startseite.php" class="btn">Abbrechen</a>
             </div>
+            </div>
+
 
         </form>
     </div>

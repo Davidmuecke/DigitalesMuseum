@@ -366,6 +366,7 @@ footer{
     text-shadow: -1px 0 #663333, 0 1px #663333, 1px 0 #663333, 0 -1px #663333;
     font-weight: bold;
     margin-left: 100%;
+    margin-bottom: 10px;
 }
 
 .btn_add:hover {
@@ -484,6 +485,7 @@ footer{
     width: 100%;
     margin: 1%;
     float: left;
+    max-height: 45px;
 }
 /* Ende Create */
 
