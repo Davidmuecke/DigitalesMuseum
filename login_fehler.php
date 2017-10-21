@@ -1,5 +1,5 @@
 <!--
-login_fehler.php
+login_fehler.php:
 Anmeldeseite mit Formular auf die umgeleitet wird, wenn der Nutzer nicht (mehr) angemeldet ist
 Die eigentliche Überprüfung der Anmeldedaten findet in header.php statt, welche in jeder geschützten Seite eingebunden ist
 -->

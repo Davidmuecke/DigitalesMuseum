@@ -1,4 +1,5 @@
 <!--
+persönlichkeit.php:
 Diese Seite stellt das Grundgerüst für die Persönlichkeits-Seite dar.
 Die entsprechenden Kacheln werden mithilfe der KachelCreationEngine erstellt und eingefügt.
 Die Navigation Bar wird mithilfe von header.php erzeugt, der Footer mithilfe von footer.php

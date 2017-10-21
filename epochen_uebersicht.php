@@ -1,8 +1,9 @@
-/*
+<!--
+epochen_uebersicht.php_
 Diese Seite stellt das Grundgerüst für die Epochen-Übersicht dar.
 Die entsprechenden Kacheln werden mithilfe der KachelCreationEngine erstellt und eingefügt.
 Die Navigation Bar wird mithilfe von header.php erzeugt, der Footer mithilfe von footer.php
-*/
+-->
 
 <!DOCTYPE html>
 <html lang="de">

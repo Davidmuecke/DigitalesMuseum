@@ -1,5 +1,5 @@
 <!--
-login.php
+login.php:
 Anmeldeseite mit Formular
 Die eigentliche Überprüfung der Anmeldedaten findet in header.php statt, welche in jeder geschützten Seite eingebunden ist
 -->

@@ -1,3 +1,12 @@
+<!--
+startseite.php:
+Diese Seite stellt das Grundgerüst für die Allgemeinde-Übersicht dar.
+Auf dieser Seite ist alles noch sehr allgemein und oberflächlich.
+Man kann sich von hier aus weiter nach "unten" durchklicken.
+Die entsprechenden Kacheln werden mithilfe der KachelCreationEngine erstellt und eingefügt.
+Die Navigation Bar wird mithilfe von header.php erzeugt, der Footer mithilfe von footer.php
+-->
+
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -14,7 +23,7 @@
 <div class="container">
 
     <div class="jumbotron">
-        <div class="clear"><!--damit die Kacheln nicht über das Jumbotron laufen-->/div>
+        <div class="clear"><!--damit die Kacheln nicht über das Jumbotron laufen--></div>
         <h1>Digitales Museum</h1>
     </div>
 

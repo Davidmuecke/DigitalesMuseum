@@ -1,5 +1,5 @@
 <!--
-registrierung_erfolgreich.php
+registrierung_erfolgreich.php:
 Die eigentliche Registrierung in der Datenbank wird hier ausgeführt
 Wenn der Benutzer schon existiert oder das eingegebene Passwort nicht übereinstimmt wird eine Fehlermeldung ausgegeben
 -->
