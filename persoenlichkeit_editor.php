@@ -10,83 +10,173 @@
 <body onload="mail();">
 <div class="container">
 
-    <div class="jumbotron">
-        <h1>Neue Persönlichkeit</h1>
-    </div>
+
 
     <?php
         require("header.php");
 
-        $counter = array("anzEpoche", "anzKategorie", "anzPerson", "anzLiteratur");
-        $counter2 = array("epoche", "kategorie", "person", "literatur_titel", "literatur_autor", "literatur_datum", "literatur_verlag", "literatur_ort");
-        $felder = array("nachname", "vorname", "kuenstlername", "vater", "mutter", "nationalitaet", "geburtsdatum", "geburtsort", "todesdatum", "kurzbeschreibung_quelle", "kurzbeschreibung_text",
-        "text_titel", "text_autor","text_quelle", "text_text", "zitat_anlass", "zitat_datum", "zitat_urheber", "zitat_text", "epoche_0", "kategorie_0", "person_0", "literatur_titel_0",
-        "literatur_autor_0", "literatur_datum_0", "literatur_verlag_0", "literatur_ort_0");
+    //initiale erstellung der Felder + leer-Befüllung
+    $counter = array("anzEpoche", "anzKategorie", "anzPerson", "anzLiteratur");
+    $counter2 = array("epoche", "kategorie", "person", "literatur_titel", "literatur_autor", "literatur_datum", "literatur_verlag", "literatur_ort");
+    $felder = array("nachname", "vorname", "kuenstlername", "vater", "mutter", "nationalitaet", "geburtsdatum", "geburtsort", "todesdatum", "kurzbeschreibung_quelle", "kurzbeschreibung_text",
+        "text_titel", "text_autor", "text_quelle", "text_text", "zitat_anlass", "zitat_datum", "zitat_urheber", "zitat_text", "epoche_0", "kategorie_0", "person_0", "literatur_titel_0",
+        "literatur_autor_0", "literatur_datum_0", "literatur_verlag_0", "literatur_ort_0", "profilbild", "titelbild");
 
     foreach ($felder as $feld) {
         $values[$feld] = "";
     }
 
     foreach ($counter as $feld) {
-        if(isset($_GET[$feld])) {
+        if (!isset($_SESSION[$feld]) || !isset($_POST["id"])) {
+            $_SESSION[$feld] = 0;
+        }
+    }
+
+    //Ändert Session-Variablen
+    foreach ($counter as $feld) {
+        if (isset($_GET[$feld])) {
             $_SESSION[$feld] = $_GET[$feld];
         }
     }
 
-    foreach ($counter as $feld) {
-        if(!isset($_SESSION[$feld]) || empty($_POST)) {
-            $_SESSION[$feld]=0;
-        }
-    }
+
+
+
+
     //Befüllung der Werte für die dynamischen Felder
     $zaehler = 0;
     foreach ($counter as $feld) {
-        if(isset($_SESSION[$feld])) {
-            for($i = 1; $i <= $_SESSION[$feld]; $i++) {
-                $values[$counter2[$zaehler]."_".$i]="";
+        if (isset($_SESSION[$feld])) {
+            for ($i = 1; $i <= $_SESSION[$feld]; $i++) {
+                $values[$counter2[$zaehler] . "_" . $i] = "";
             }
         }
         $zaehler++;
     }
     //Befüllung der restlichen Literatur angabe Werten
-    for($i = 0; $i < sizeof($counter2)-4; $i++) {
-        if(isset($_SESSION["anzLiteratur"])) {
-            for($j = 1; $j <= $_SESSION["anzLiteratur"]; $j++) {
+    for ($i = 0; $i < sizeof($counter2) - 4; $i++) {
+        if (isset($_SESSION["anzLiteratur"])) {
+            for ($j = 1; $j <= $_SESSION["anzLiteratur"]; $j++) {
                 $values[$counter2[$i + 4] . "_" . $j] = "";
             }
         }
     }
 
+    foreach ($values as $feld => $wert) {
+        if (isset($_POST[$feld])) {
+            $values[$feld] = $_POST[$feld];
+        } else {
+            $values[$feld] = "";
+        }
+    }
 
 
+    //Formular befüllen, wenn Daten bearbeitet werden sollen
+    $ID = 0;
+    $ueberschrift="Neue Persönlichkeit";
+    $changeSESSIONvarsFlag = false;
+    if(isset($_GET["id"])) {
+            $ID = $_GET["id"];
+            $changeSESSIONvarsFlag = true;
+    } else if (isset($_POST["id"])) {
+        $ID = $_POST["id"];
+        $changeSESSIONvarsFlag = false;
+    }
 
+    if($ID != 0) {
+        $dbcontroller = new DBController();
 
+        //Standartwerte
+        $person = $dbcontroller->getPersoenlichkeitByID($ID);
+        $values["nachname"] = $person["name"];
+        $values["vorname"] = $person["vorname"];
+        $values["geburtsdatum"] = $person["geburtsdatum"];
+        $values["todesdatum"] = $person["todesdatum"];
+        $values["geburtsort"] = $person["geburtsort"];
+        $values["nationalitaet"] = $person["nationalitaet"];
+        $values["vater"] = $person["vater"];
+        $values["mutter"] = $person["mutter"];
+        $values["kuenstlername"] = $person["kuenstlername"];
+        $values["text_titel"] = $person["textTitel"];
+        $values["text_autor"] = $person["TextAutor"];
+        $values["text_quelle"] = $person["textQuelle"];
+        $values["text_text"] = $person["textInhalt"];
+        $values["zitat_anlass"] = $person["zitatAnlass"];
+        $values["zitat_datum"] = $person["zitatDatum"];
+        $values["zitat_urheber"] = $person["zitatUrheber"];
+        $values["zitat_text"] = $person["zitatInhalt"];
+        $values["kurzbeschreibung_quelle"] = $person["beschreibungQuelle"];
+        $values["kurzbeschreibung_text"] = $person["beschreibungInhalt"];
+        $values["profilbild"] = $person["profilbild"];
+        $values["titelbild"] = $person["titelbild"];
 
-        foreach ($values as $feld => $wert) {
-            if(isset($_POST[$feld])) {
-                $values[$feld] = $_POST[$feld];
-            } else { $values[$feld] =""; }
+        //Beziehungen (mehrfach-Werte möglich
+
+        //Kategorien
+        $kategorien = $dbcontroller->getKategorienByPersoenlichkeit($ID);
+        $anzKat = count($kategorien);
+        if($changeSESSIONvarsFlag) {
+            $_SESSION["anzKategorie"] = $anzKat - 1;
         }
 
-    /*echo implode(", ",$values);
+        for ($i = 0; $i < $anzKat; $i++) {
+            $values["kategorie_".$i] = $kategorien[$i]["bezeichnung"];
+        }
 
-    echo "keys: ";
-    echo implode(", ", array_keys($values));
-    echo "   ---  ";
+        //Epochen
+        $epochen = $dbcontroller->getEpochenByPersoenlichekeit($ID);
+        $anzEpochen = count($epochen);
+        if($changeSESSIONvarsFlag) {
+            $_SESSION["anzEpoche"]=$anzEpochen-1;
+        }
 
-    echo "keys POST: ";
-    echo implode(", ", array_keys($_POST));
-    echo "   ---  ";*/
+        for ($i = 0; $i < $anzEpochen; $i++) {
+            $values["epoche_".$i] = $epochen[$i]["bezeichnung"];
+        }
+
+        //Literaturangaben
+        $literaturen = $dbcontroller->getLiteraturangabenByPersoenlichkeit($ID);
+        $anzLiteratur = count($literaturen);
+        if($changeSESSIONvarsFlag) {
+            $_SESSION["anzLiteratur"] = $anzLiteratur-1;
+        }
 
 
+        for($i = 0; $i < $anzLiteratur; $i++) {
+            $values["literatur_autor_".$i] = $literaturen[$i]["autor"];
+            $values["literatur_titel_".$i] = $literaturen[$i]["titel"];
+            $values["literatur_datum_".$i] = $literaturen[$i]["datum"];
+            $values["literatur_verlag_".$i] = $literaturen[$i]["herausgeberName"];
+            $values["literatur_ort_".$i] = $literaturen[$i]["herausgeberOrt"];
+        }
 
 
+        //Freunde
+        $freunde = $dbcontroller->getPersoenlichkeitenOfAPersoenlichkeit($ID);
+        $anzFreunde = count($freunde);
+        if($changeSESSIONvarsFlag) {
+            $_SESSION["anzPerson"] = $anzFreunde-1;
+        }
 
+        for ($i = 0; $i < $anzFreunde; $i++) {
+            $values["person_".$i] = $freunde[$i]['persoenlichkeitID'];
+        }
+
+        $ueberschrift = $values["vorname"]. " " . $values["nachname"];
+
+    }
     ?>
+    <div class="jumbotron">
+        <h1><?php echo $ueberschrift;?></h1>
+    </div>
 
     <div>
 
         <form accept-charset="UTF-8" role="form" action="persoenlichkeit_editor.php" method="post" enctype='multipart/form-data'>
+            <!--versteckte Werte die auch uebergeben werden sollen -->
+            <input type="hidden" name="profilbild" value="<?php echo $values["profilbild"] ?>">
+            <input type="hidden" name="titelbild" value="<?php echo $values["titelbild"] ?>">
+            <input type="hidden" name="id" value="<?php echo $ID ?>">
 
             <div class="row vertical-offset-100">
                 <div class="col-md-0 col-md-offset-0">
@@ -141,8 +231,8 @@
                         <!--Geburtsdatum-->
                         <div class="form-group">
                             <label class="p_h1">Geburtsdatum:</label>
-                            <input type="text" value="<?php echo $values["geburtsdatum"] ?>" placeholder="dd/mm/yyyy" name="geburtsdatum" class="form-control"
-                                   pattern="([0-3])+([0-9])+.+([0-1])+([0-9])+.+([0-9])+([0-9])+([0-9])+([0-9])">
+                            <input type="text" value="<?php echo $values["geburtsdatum"] ?>" placeholder="yyyy-mm-dd" name="geburtsdatum" class="form-control"
+                                   pattern="([0-9])+([0-9])+([0-9])+([0-9])+(-)+[0-1])+([0-9])+(-)+([0-3])+([0-9])">
                         </div>
 
                         <!--Geburtsort-->
@@ -154,8 +244,8 @@
                         <!--Todesdatum-->
                         <div class="form-group">
                             <label class="p_h1">Todesdatum:</label>
-                            <input type="text" value="<?php echo $values["todesdatum"] ?>" placeholder="dd/mm/yyyy" name="todesdatum" class="form-control"
-                                   pattern="([0-3])+([0-9])+.+([0-1])+([0-9])+.+([0-9])+([0-9])+([0-9])+([0-9])">
+                            <input type="text" value="<?php echo $values["todesdatum"] ?>" placeholder="yyyy-mm-dd" name="todesdatum" class="form-control"
+                                   pattern="([0-9])+([0-9])+([0-9])+([0-9])+(-)+[0-1])+([0-9])+(-)+([0-3])+([0-9])">
                         </div>
                     </div>
 
@@ -228,9 +318,9 @@
 
                             <div class="form-group">
                                 <label>Datum:</label>
-                                <input type="text" value="<?php echo $values["zitat_datum"] ?>"placeholder="Datum des Zitats: dd/mm/yyyy"
+                                <input type="text" value="<?php echo $values["zitat_datum"] ?>"placeholder="Datum des Zitats: yyyy-mm-dd""
                                        name="zitat_datum" class="form-control"
-                                       pattern="([0-3])+([0-9])+.+([0-1])+([0-9])+.+([0-9])+([0-9])+([0-9])+([0-9])">
+                                       pattern="([0-9])+([0-9])+([0-9])+([0-9])+(-)+[0-1])+([0-9])+(-)+([0-3])+([0-9])">
                             </div>
 
                             <div id="urheber_input" class="form-group">
@@ -350,8 +440,8 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label>Jahr:</label>
-                                        <input type="text" value="<?php echo $values["literatur_datum_".$i] ?>" placeholder="Jahr der Literaturangabe"
+                                        <label>Datum:</label>
+                                        <input type="text" value="<?php echo $values["literatur_datum_".$i] ?>" placeholder="Datum der Literaturangabe"
                                                name="literatur_datum_<?php echo $i ?>" class="form-control">
                                     </div>
                                 </div>
@@ -420,28 +510,60 @@
                         <input id="add_button_person" class="btn_add" type="submit" value="weitere Freunde" formaction="persoenlichkeit_editor.php?anzPerson=<?php echo $_SESSION["anzPerson"]+1;?>#per_jump" formmethod="post">
                     </div>
 
+                        <?php
+                            if($ID == 0) {
+                        ?>
+                        <!--Bilder-->
+                        <div>
+                            <div class="create create-ten">
+                                <label class="p_h1">Bilder:</label>
+                            </div>
 
+                            <div id="ueber_bilder" class="create-einzeilig">
+                                <div class="form-group">
+                                    <label>Profilbild:</label>
+                                    <input type="file" name="bild_profilbild" accept="image/*">
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Titelbild:</label>
+                                    <input type="file" name="bild_titelbild" accept="image/*">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <?php
+                    } else {
+                        $titelbild = "helpers/BildLaden.php?id=".$ID."&titel=1";
+                        $profilbild = "helpers/BildLaden.php?id=" . $ID."&profil=1";
+                        ?>
                     <!--Bilder-->
                     <div>
-                        <div class="create create-ten">
-                            <label class="p_h1">Bilder:</label>
+                        <label class="p_h1">Bilder:</label>
+                        <div class="form-group">
+                            <label>Titelbild:</label>
+                        </div>
+                        <div class="title_image title_image--32by9" style="background-image:url(<?php echo $titelbild; ?>);"></div>
+
+                        <div class="form-group">
+                            <input type="file" name="bild_titelbild" accept="image/*">
+                        </div>
+                        <div class="form-group">
+                            <label>Profilbild:</label>
+                        </div>
+                        <div class="profile_image_form" style="background-image:url(<?php echo $profilbild; ?>)"></div>
+                        <div class="form-group">
+                            <input type="file" name="bild_profilbild" accept="image/*">
                         </div>
 
-                        <div id="ueber_bilder" class="create-einzeilig">
-                            <div class="form-group">
-                                <label>Profilbild:</label>
-                                <input type="file" name="bild_profilbild">
-                            </div>
-
-                            <div class="form-group">
-                                <label>Titelbild:</label>
-                                <input type="file" name="bild_titelbild">
-                            </div>
-                        </div>
                     </div>
                     </div>
+            </div>
 
 
+                        <?php
+                    }
+                    ?>
 
 
 
@@ -453,8 +575,19 @@
             <!--Button--->
             <div>
             <div id="p_button">
-
-                <input id="btn_anlegen" class="btn" value="Persönlichkeit anlegen" type="submit" formaction="persoenlichkeit_datenbank.php" formmethod="post">
+                <?php
+                if($ID == 0) {
+                    ?>
+                    <input id="btn_anlegen" class="btn" value="Persönlichkeit anlegen" type="submit"
+                           formaction="persoenlichkeit_datenbank.php" formmethod="post">
+                    <?php
+                } else {
+                    ?>
+                    <input id="btn_anlegen" class="btn" value="Änderungen speichern" type="submit"
+                           formaction="persoenlichkeit_datenbank.php?id=<?php echo $ID ?>" formmethod="post">
+                    <?php
+                }
+                ?>
                 <button id="btn_loeschen" type="reset" class="btn">Einträge löschen</button>
                 <a id="btn_abbrechen" href="startseite.php" class="btn">Abbrechen</a>
             </div>

@@ -19,7 +19,7 @@ $counter = array("anzEpoche", "anzKategorie", "anzPerson", "anzLiteratur");
 $counter2 = array("epoche", "kategorie", "person", "literatur_titel", "literatur_autor", "literatur_datum", "literatur_verlag", "literatur_ort");
 $felder = array("nachname", "vorname", "kuenstlername", "vater", "mutter", "nationalitaet", "geburtsdatum", "geburtsort", "todesdatum", "kurzbeschreibung_quelle", "kurzbeschreibung_text",
     "text_titel", "text_autor","text_quelle", "text_text", "zitat_anlass", "zitat_datum", "zitat_urheber", "zitat_text", "epoche_0", "kategorie_0", "person_0", "literatur_titel_0",
-    "literatur_autor_0", "literatur_datum_0", "literatur_verlag_0", "literatur_ort_0");
+    "literatur_autor_0", "literatur_datum_0", "literatur_verlag_0", "literatur_ort_0", "profilbild", "titelbild");
 
 foreach ($felder as $feld) {
     $values[$feld] = "";
@@ -29,9 +29,11 @@ foreach ($_POST as $feld => $wert) {
     $values[$feld]= $wert;
 }
 
+$ID = 0;
 
-$profilbild=1;
-$titelbild=1;
+$profilbild=$values["profilbild"];
+$titelbild=$values["titelbild"];
+
 //Profil-Bilder speichern
 if (array_key_exists('bild_profilbild',$_FILES)) {
     if($_FILES['bild_profilbild']['tmp_name'] != "") {
@@ -40,7 +42,11 @@ if (array_key_exists('bild_profilbild',$_FILES)) {
         $size = $_FILES ["bild_profilbild"] ["size"];
         $hndFile = fopen($tmpname, "r");
         $data = addslashes(fread($hndFile, filesize($tmpname)));
-        $profilbild = $dbcontroller->addBild("","","","",$data,$type,$size);
+        if($ID==0) {
+            $profilbild = $dbcontroller->addBild("","","","",$data,$type,$size);
+        } else {
+            $profilbild = $dbcontroller->updateBild("","","","",$data,$type,$size);
+        }
     }
 }
 
@@ -52,17 +58,45 @@ if (array_key_exists('bild_titelbild',$_FILES)) {
         $size = $_FILES ["bild_titelbild"] ["size"];
         $hndFile = fopen($tmpname, "r");
         $data = addslashes(fread($hndFile, filesize($tmpname)));
-        $titelbild = $dbcontroller->addBild("","","","",$data,$type,$size);
+        if($ID==0) {
+            $titelbild = $dbcontroller->addBild("","","","",$data,$type,$size);
+        } else {
+            $titelbild = $dbcontroller->updateBild("","","","",$data,$type,$size);
+        }
     }
 }
 
 
+
+if(isset($_GET["id"])) {
+    $ID=$_GET["id"];
+}
+
+
+
+//Wenn eine Person nur überarbeitet werden soll
+if($ID != 0) {
+    //Persoenlichkeit wird bearbeitet
+    $personID = $ID;
+    $dbcontroller->updatePersoenlichkeit($ID, $values["nachname"], $values["vorname"], $values["kuenstlername"], $profilbild, $titelbild, $values["geburtsdatum"],
+        $values["todesdatum"], $values["geburtsort"], $values["nationalitaet"], $values["vater"], $values["mutter"], $values["text_text"], $values["text_quelle"],
+        $values["text_titel"], $values["text_autor"], $values["kurzbeschreibung_text"], $values["kurzbeschreibung_quelle"], $values["zitat_text"], $values["zitat_datum"], $values["zitat_anlass"], $values["zitat_urheber"]);
+
+
+} else {
 //Persoenlichkeit wird angelegt
-$personID = $dbcontroller->addPersoenlichkeit($values["nachname"], $values["vorname"], $values["kuenstlername"], $profilbild, $titelbild, $values["geburtsdatum"],
-    $values["todesdatum"], $values["geburtsort"], $values["nationalitaet"], $values["vater"], $values["mutter"], $values["text_text"], $values["text_quelle"],
-    $values["text_titel"], $values["text_autor"], $values["kurzbeschreibung_text"], $values["kurzbeschreibung_quelle"], $values["zitat_text"], $values["zitat_datum"], $values["zitat_anlass"], $values["zitat_urheber"]);
+    $personID = $dbcontroller->addPersoenlichkeit($values["nachname"], $values["vorname"], $values["kuenstlername"], $profilbild, $titelbild, $values["geburtsdatum"],
+        $values["todesdatum"], $values["geburtsort"], $values["nationalitaet"], $values["vater"], $values["mutter"], $values["text_text"], $values["text_quelle"],
+        $values["text_titel"], $values["text_autor"], $values["kurzbeschreibung_text"], $values["kurzbeschreibung_quelle"], $values["zitat_text"], $values["zitat_datum"], $values["zitat_anlass"], $values["zitat_urheber"]);
+}
 
-
+//Alte Verknüpfungen werden gelöscht
+if($ID != 0) {
+    $dbcontroller->deletePersoenlichkeitEpocheOfAPersoenlichkeit($ID);
+    $dbcontroller->deletePersoenlichkeitKategorieOfAPersoenlichkeit($ID);
+    $dbcontroller->deletePersoenlichkeitLiteraturangabenOfAPersoenlicheit($ID);
+    $dbcontroller->deletePersoenlichkeitPersoenlichkeitofAPersoenlichkeit($ID);
+}
 //Kategorien werden angelegt
 for($i = 0; $i <= $_SESSION["anzKategorie"]; $i++) {
     if(!empty($values["kategorie_".$i])) {
@@ -117,24 +151,40 @@ for($i = 0; $i <= $_SESSION["anzPerson"]; $i++) {
 
 
 
+if($ID == 0) {
+    ?>
+    <div class="container">
+        <div class="jumbotron">
+            <h2>Vielen Dank für Ihre Eingabe! </h2>
+            <h2>Es wurde erfolgreich eine neue Persönlichkiet erstellt!</h2>
+        </div>
+    </div>
 
+    <div class="container">
+        <div class="alert alert-success">
+            <strong>Anlegen war erfolgreich!</strong>
+            Du kannst die neue Perönlichkeit jetzt <a
+                    href="persoenlichkeit.php?id=<?php echo $personID; ?>">anschauen</a>!
+        </div>
+    </div>
+    <?php
+} else {
+    ?>
+    <div class="container">
+        <div class="jumbotron">
+            <h2>Die Änderungen wurden erfolgreich gespeichert!</h2>
+        </div>
+    </div>
 
+    <div class="container">
+        <div class="alert alert-success">
+            Du kannst die neue Perönlichkeit jetzt <a
+                    href="persoenlichkeit.php?id=<?php echo $personID; ?>">anschauen</a>!
+        </div>
+    </div>
+    <?php
+}
 ?>
-
-
-<div class="container">
-    <div class="jumbotron">
-        <h2>Vielen Dank für Ihre Eingabe! </h2>
-        <h2>Es wurde erfolgreich eine neue Persönlichkiet erstellt!</h2>
-    </div>
-</div>
-
-<div class="container">
-    <div class="alert alert-success">
-        <strong>Anlegen war erfolgreich!</strong>
-        Du kannst die neue Perönlichkeit jetzt <a href="persoenlichkeit.php?id=<?php echo $personID;?>">anschauen</a>!
-    </div>
-</div>
 
 </body>
 </html>

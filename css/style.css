@@ -416,6 +416,16 @@ footer{
     height: 80%;
 }
 
+.profile_image_form {
+    float: none;
+    overflow: hidden;
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 300px;
+    margin-bottom: 10px;
+}
+
 .profile_image:before {
     display: block;
     content: "";

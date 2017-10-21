@@ -765,6 +765,15 @@ class DBController
         return mysqli_query($this->DB, "DELETE FROM persoenlichkeitepoche WHERE persoenlichkeitepocheID = '$id'");
     }
 
+    /**Löscht alle Verknüpfungen einer bestimmten Person und Epchen
+     * @param $id
+     * @return bool|mysqli_result
+     */
+    public function  deletePersoenlichkeitEpocheOfAPersoenlichkeit($id){
+        $id = (int)$id;
+        return mysqli_query($this->DB, "DELETE FROM persoenlichkeitepoche WHERE persoenlichkeitID = '$id'");
+    }
+
     /**Löscht den Eintrag mit der übergebenen ID aus der Beziehungstabelle PersoenlichkeitKategorie
      * @param $id
      * @return bool|mysqli_result
@@ -772,6 +781,15 @@ class DBController
     public function deletePersoenlichkeitKategorie($id){
         $id = (int)$id;
         return mysqli_query($this->DB, "DELETE FROM persoenlichkeitkategorie WHERE persoenlichkeitkategorieID = '$id'");
+    }
+
+    /**Löscht alle Verknüpfungen einer bestimmten Person und Kategorie
+     * @param $id
+     * @return bool|mysqli_result
+     */
+    public function  deletePersoenlichkeitKategorieOfAPersoenlichkeit($id){
+        $id = (int)$id;
+        return mysqli_query($this->DB, "DELETE FROM persoenlichkeitkategorie WHERE persoenlichkeitID = '$id'");
     }
 
     /** Löscht den Eintrag mit der übergebenen ID aus der Beziehungstabelle PersoenlichkeitLiteraturangabe
@@ -783,6 +801,15 @@ class DBController
         return mysqli_query($this->DB, "DELETE FROM  persoenlichkeitliteraturangaben WHERE persoenlichkeitliteraturangabenID = '$id'");
     }
 
+    /** Löscht alle Verknüpfungen einer bestimmten Person und Literaturangabe
+     * @param $id
+     * @return bool|mysqli_result
+     */
+    public function deletePersoenlichkeitLiteraturangabenOfAPersoenlicheit($id){
+        $id = (int)$id;
+        return mysqli_query($this->DB, "DELETE FROM  persoenlichkeitliteraturangaben WHERE persoenlichkeitID = '$id'");
+    }
+
     /**Löscht den Eintrag mit der übergebenen ID aus der Beziehungstabelle PersoenlichkeitBild
      * @param $id
      * @return bool|mysqli_result
@@ -792,6 +819,8 @@ class DBController
         return mysqli_query($this->DB, "DELETE FROM  persoenlichkeitbild WHERE persoenlichkeitbildID = '$id'");
     }
 
+
+
     /**Löscht den Eintrag mit der übergebenen ID aus der Beziehungstabelle PersoenlichkeitPersoenlichkeit
      * @param $id
      * @return bool|mysqli_result
@@ -799,6 +828,15 @@ class DBController
     public function deletePersoenlichkeitPersoenlichkeit($id){
         $id = (int)$id;
         return mysqli_query($this->DB, "DELETE FROM  persoenlichkeitpersoenlichkeit WHERE persoenlichkeitpersoenlichkeitID = '$id'");
+    }
+
+    /** Löscht alle Verknüpfungen einer bestimmten Person und anderen Personen
+     * @param $id
+     * @return bool|mysqli_result
+     */
+    public function deletePersoenlichkeitPersoenlichkeitOfAPersoenlichkeit($id){
+        $id = (int)$id;
+        return mysqli_query($this->DB, "DELETE FROM  persoenlichkeitpersoenlichkeit WHERE persoenlichkeit1ID = '$id' OR persoenlichkeit2ID = '$id'");
     }
 
     //intern

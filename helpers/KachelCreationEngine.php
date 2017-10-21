@@ -135,7 +135,7 @@ class KachelCreationEngine {
         $titelbild = "helpers/BildLaden.php?id=".$id."&titel=1";
         ?>
         <div class="title_image title_image--32by9" style="background-image:url(<?php echo $titelbild; ?>);">
-            <button id="btn_bearbeiten" type="submit" class="btn">Persönlichkeit bearbeiten</button>
+            <a href = "persoenlichkeit_editor.php?id=<?php echo$id ?>"><button id="btn_bearbeiten" type="submit" class="btn">Persönlichkeit bearbeiten</button></a>
         </div>
         <?php
     }
