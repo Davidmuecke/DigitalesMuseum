@@ -1,5 +1,5 @@
 <!--
-logout.php
+logout.php:
 Abmeldeseite
 Der Nutzer wird durch das Beenden der Session ausgeloggt
 -->

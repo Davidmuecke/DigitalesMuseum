@@ -1,8 +1,9 @@
-/*
+<!--
+kategorien_uebersicht.php:
 Diese Seite stellt das Grundgerüst für die Kategorien-Übersicht dar.
 Die entsprechenden Kacheln werden mithilfe der KachelCreationEngine erstellt und eingefügt.
 Die Navigation Bar wird mithilfe von header.php erzeugt, der Footer mithilfe von footer.php
-*/
+-->
 
 <!DOCTYPE html>
 <html lang="de">
@@ -24,7 +25,7 @@ Die Navigation Bar wird mithilfe von header.php erzeugt, der Footer mithilfe von
     ?>
 
     <div class="jumbotron">
-        <div class="clear"></div>
+        <div class="clear"><!--damit die Kacheln nicht über das Jumbotron laufen--></div>
         <h1>Kategorien</h1>
     </div>
 

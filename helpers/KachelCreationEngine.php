@@ -175,13 +175,33 @@ class KachelCreationEngine {
                     <div class="profile_image profile_image--1by1" style="background-image:url(<?php echo $profilbild; ?>)"></div>
 
                     <div class="characteristics">
-                        <label class="charac_label">Geburtsort</label> <?php echo $geburtsort ?>
-                        <label class="charac_label">Vater</label> <?php echo $vater ?>
-                        <label class="charac_label">Mutter</label> <?php echo $mutter ?>
-                        <label class="charac_label">Nationalität</label> <?php echo $nationalitaet ?>
+                        <?php
+                        if(!empty($geburtsort)) { ?>
+                            <label class="charac_label">Geburtsort</label> <?php echo $geburtsort ?>
+                        <?php } ?>
+
+                        <?php
+                        if(!empty($vater)) { ?>
+                            <label class="charac_label">Vater</label> <?php echo $vater ?>
+                        <?php
+                        } ?>
+
+                        <?php
+                        if(!empty($mutter)) { ?>
+                            <label class="charac_label">Mutter</label> <?php echo $mutter ?>
+                            <?php
+                        } ?>
+
+                        <?php
+                        if(!empty($nationalitaet)) { ?>
+                            <label class="charac_label">Nationalität</label> <?php echo $nationalitaet ?>
+                            <?php
+                        } ?>
+
                         <?php if($kuenstlername!="") {?>
                             <label class="charac_label">Künstlername</label> <?php echo $kuenstlername ?>
-                        <?php }?>
+                        <?php
+                        } ?>
                     </div>
             </div>
         </div>
@@ -204,7 +224,7 @@ class KachelCreationEngine {
                 <div class="panel-body panel-body-persoenlichkeit">
                     <div class="information-content">
                         <?php echo $kurzbeschreibung ?>
-                        <i><?php echo $quelle?></i>
+                        <i><?php echo "(Quelle: ".$quelle . ")"?></i>
                     </div>
                 </div>
             </div>
@@ -254,15 +274,21 @@ class KachelCreationEngine {
                         <div class="information-content">
                             <?php echo "\"" . $zitat . "\"" ?>
                             <i><?php
+                                if(!empty($urheber) || !empty($anlass) || ($datum!="0000-00-00")){
+                                    echo "(";
+                                }
                                 if(!empty($urheber)) {
-                                    echo $urheber;
+                                    echo "Urheber: " .$urheber;
                                 }
                                 if(!empty($anlass)) {
-                                    echo ", " . $anlass;
+                                    echo ", Anlass: " . $anlass;
                                 }
 
                                 if ($datum != "0000-00-00") {
-                                    echo ", " . $datum;
+                                    echo ", Datum: " . $datum;
+                                }
+                                if(!empty($urheber) || !empty($anlass) || ($datum != "0000-00-00")){
+                                    echo ")";
                                 }
                                 ?></i>
 
@@ -299,11 +325,11 @@ class KachelCreationEngine {
                                     ?>
                                     <li>
                                         <?php
-                                            echo $titel . ", " . $autor;
+                                            echo "(Titel: ".$titel . ", Autor: " . $autor;
                                             if($datum != "0000-00-00") {
-                                                echo ", ".$datum;
+                                                echo ", Datum: ".$datum;
                                             }
-                                            echo ", " . $herausgeber . ", " . $herausgeberOrt ?>
+                                            echo ", Herausgeber: " . $herausgeber . ", Herausgeberort: " . $herausgeberOrt.")" ?>
 
                                     </li>
                                     <?php
