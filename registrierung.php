@@ -1,6 +1,6 @@
 <!--
-registrierung.php
-registrierungsseite mit Formular
+registrierung.php:
+Registrierungsseite mit Formular
 Die eigentliche Registrierung in der Datenbank wird in registrierung_erfolgreich.php ausgeführt
 -->
 <!DOCTYPE html>

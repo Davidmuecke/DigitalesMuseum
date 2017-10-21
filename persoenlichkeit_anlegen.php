@@ -1,3 +1,9 @@
+<!--
+persoenlichkeit_anlegen.php:
+Anlegenseite mit Formular um neue Persönlichkeiten anzulegen
+Die eigentliche Registrierung in der Datenbank wird in persoenlichkeit_anlegen_erfolgreich.php ausgeführt
+-->
+
 <!DOCTYPE html>
 <html lang="de">
 <head>
