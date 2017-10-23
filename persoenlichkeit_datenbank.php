@@ -34,6 +34,10 @@ $ID = 0;
 $profilbild=$values["profilbild"];
 $titelbild=$values["titelbild"];
 
+if(isset($_GET["id"])) {
+    $ID=$_GET["id"];
+}
+
 //Profil-Bilder speichern
 if (array_key_exists('bild_profilbild',$_FILES)) {
     if($_FILES['bild_profilbild']['tmp_name'] != "") {
@@ -42,10 +46,14 @@ if (array_key_exists('bild_profilbild',$_FILES)) {
         $size = $_FILES ["bild_profilbild"] ["size"];
         $hndFile = fopen($tmpname, "r");
         $data = addslashes(fread($hndFile, filesize($tmpname)));
+        $timestamp = time();
+        $datum = date("Y-m-d",$timestamp);
         if($ID==0) {
-            $profilbild = $dbcontroller->addBild("","","","",$data,$type,$size);
+            $profilbild = $dbcontroller->addBild("profilbild",$datum,"eigene Dateien","",$data,$type,$size);
         } else {
-            $profilbild = $dbcontroller->updateBild("","","","",$data,$type,$size);
+            $person = $dbcontroller->getPersoenlichkeitByID($ID);
+            $profilbildID = $person["profilbild"];
+            $profilbild = $dbcontroller->updateBild($profilbildID,"profilbild",$datum,"eigene Dateien",$data,$type,$size);
         }
     }
 }
@@ -58,19 +66,21 @@ if (array_key_exists('bild_titelbild',$_FILES)) {
         $size = $_FILES ["bild_titelbild"] ["size"];
         $hndFile = fopen($tmpname, "r");
         $data = addslashes(fread($hndFile, filesize($tmpname)));
+        $timestamp = time();
+        $datum = date("Y-m-d",$timestamp);
         if($ID==0) {
-            $titelbild = $dbcontroller->addBild("","","","",$data,$type,$size);
+            $titelbild = $dbcontroller->addBild("titelbild",$datum,"eigene Dateien","titelbild",$data,$type,$size);
         } else {
-            $titelbild = $dbcontroller->updateBild("","","","",$data,$type,$size);
+            $person = $dbcontroller->getPersoenlichkeitByID($ID);
+            $titelbildID = $person["titelbild"];
+            $titelbild = $dbcontroller->updateBild($titelbildID,"titelbild",$datum,"eigene Dateien",$data,$type,$size);
         }
     }
 }
 
 
 
-if(isset($_GET["id"])) {
-    $ID=$_GET["id"];
-}
+
 
 
 
