@@ -49,11 +49,11 @@ if (array_key_exists('bild_profilbild',$_FILES)) {
         $timestamp = time();
         $datum = date("Y-m-d",$timestamp);
         if($ID==0) {
-            $profilbild = $dbcontroller->addBild("profilbild",$datum,"eigene Dateien","",$data,$type,$size);
+            $profilbild = $dbcontroller->addBild("profilbild",$datum,"eigene Dateien","profilbild",$data,$type,$size);
         } else {
             $person = $dbcontroller->getPersoenlichkeitByID($ID);
-            $profilbildID = $person["profilbild"];
-            $profilbild = $dbcontroller->updateBild($profilbildID,"profilbild",$datum,"eigene Dateien",$data,$type,$size);
+            $profilbild = $person["profilbild"];
+            echo $dbcontroller->updateBild($profilbild,"profilbild",$datum,"eigene Dateien","profilbild",$data,$type,$size);
         }
     }
 }
@@ -72,8 +72,8 @@ if (array_key_exists('bild_titelbild',$_FILES)) {
             $titelbild = $dbcontroller->addBild("titelbild",$datum,"eigene Dateien","titelbild",$data,$type,$size);
         } else {
             $person = $dbcontroller->getPersoenlichkeitByID($ID);
-            $titelbildID = $person["titelbild"];
-            $titelbild = $dbcontroller->updateBild($titelbildID,"titelbild",$datum,"eigene Dateien",$data,$type,$size);
+            $titelbild = $person["titelbild"];
+            $titelbild = $dbcontroller->updateBild($titelbild,"titelbild",$datum,"eigene Dateien","titelbild",$data,$type,$size);
         }
     }
 }

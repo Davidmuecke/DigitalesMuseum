@@ -593,7 +593,7 @@ class DBController
         $datum = mysqli_escape_string($this->DB, htmlentities($datum));
         $quelle = mysqli_escape_string($this->DB, htmlentities($quelle));
         $titel = mysqli_escape_string($this->DB, htmlentities($titel));
-        $data = mysqli_escape_string($this->DB, htmlentities($data));
+        //$data = mysqli_escape_string($this->DB, htmlentities($data));
         $datatype = mysqli_escape_string($this->DB, htmlentities($datatype));
         $size = (int)$size;
 
