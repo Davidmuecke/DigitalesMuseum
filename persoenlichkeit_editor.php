@@ -189,18 +189,18 @@ Die eigentliche Registrierung in der Datenbank wird in persoenlichkeit_datenbank
 
                     <!--1.Reihe-->
                     <div class="create">
-                        <!--Nachname-->
-                        <div class="form-group">
-                            <label class="p_h1">Name:</label>
-                            <input type="text"  value="<?php echo $values["nachname"] ?>" placeholder="Nachname"
-                                   name="nachname" class="form-control">
-                        </div>
-
                         <!--Vorname-->
                         <div class="form-group">
                             <label class="p_h1">Vorname:</label>
                             <input type="text" value="<?php echo $values["vorname"] ?>" placeholder="Vorname"
                                    name="vorname" class="form-control">
+                        </div>
+
+                        <!--Nachname-->
+                        <div class="form-group">
+                            <label class="p_h1">Name:</label>
+                            <input type="text"  value="<?php echo $values["nachname"] ?>" placeholder="Nachname"
+                                   name="nachname" class="form-control">
                         </div>
 
                         <!--Künstlername-->
