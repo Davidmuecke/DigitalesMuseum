@@ -1,3 +1,9 @@
+<!--
+persoenlichkeit_datenbanken.php:
+Die eigentliche Registrierung in der Datenbank wird hier ausgeführt
+Wenn die Persönlichkeit schon existiert wird eine Fehlermeldung ausgegeben!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+-->
+
 <!DOCTYPE html>
 <html lang="de">
 <head>
