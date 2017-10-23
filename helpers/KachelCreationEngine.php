@@ -116,12 +116,12 @@ class KachelCreationEngine {
                         <label id="name_persoenlichkeit"><?php echo $vorname.' '.$name?></label>
                     <label id="geburtsdatum">&#10033; <?php echo $geburtsdatum?></label>
                     <?php
-                        if($todesdatum != "0000-00-00") {
-                            ?>
-                            <label id="todestag">&dagger; <?php echo $todesdatum ?>
-                            </label>
-                            <?php
-                        }
+                    if($todesdatum != "0000-00-00" && $todesdatum != "") {
+                        ?>
+                        <label id="todestag">&dagger; <?php echo $todesdatum ?>
+                        </label>
+                        <?php
+                    }
                     ?>
                 </div>
                 <div class="panel-body">
@@ -160,7 +160,6 @@ class KachelCreationEngine {
         $titelbild = "helpers/BildLaden.php?id=".$id."&titel=1";
         ?>
         <div class="title_image title_image--32by9" style="background-image:url(<?php echo $titelbild; ?>);">
-            <a href = "persoenlichkeit_editor.php?id=<?php echo$id ?>"><button id="btn_bearbeiten" type="submit" class="btn btn_noeffect">Persönlichkeit bearbeiten</button></a>
             <a href = "persoenlichkeit_loeschen.php?id=<?php echo$id ?>">
                 <button id="btn_bearbeiten" type="submit" class="btn btn_noeffect">Löschen</button>
             </a>
@@ -423,7 +422,7 @@ class KachelCreationEngine {
         $epochen = $dbcontroller->getEpochenByPersoenlichekeit($id);
         $anzEpochen = count($epochen);
 
-        if($anzKat!=0 && $anzEpochen!=0) {
+        if($anzKat!=0 || $anzEpochen!=0) {
             ?>
             <div class="information col-md-6">
                 <div class="panel">
