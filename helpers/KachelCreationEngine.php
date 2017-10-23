@@ -14,7 +14,11 @@ class KachelCreationEngine {
     // Erstellt eine Kategorie kachel
     function kategorie($find) {
         $dbcontroller = new DBController();
-        $kategorien = $dbcontroller->sucheKategorie($find);
+        if($find == ""){
+            $kategorien = $dbcontroller->getKategorien();
+        } else {
+            $kategorien = $dbcontroller->sucheKategorie($find);
+        }
         $anz = count($kategorien);
         $title = "Titel";
         for($i = 0; $i < $anz; $i++) {
@@ -46,7 +50,11 @@ class KachelCreationEngine {
     // Erstellt eine Epoche kachel
     function epoche($find) {
         $dbcontroller = new DBController();
-        $epochen = $dbcontroller->sucheEpoche($find);
+        if($find == ""){
+            $epochen = $dbcontroller->getEpochen();
+        } else {
+            $epochen = $dbcontroller->sucheEpoche($find);
+        }
         $anz = count($epochen);
         $title = "Titel";
         for($i = 0; $i < $anz; $i++) {
@@ -68,7 +76,11 @@ class KachelCreationEngine {
 
     function persoenlichkeit_anz($find) {
         $dbcontroller = new DBController();
-        $personen = $dbcontroller->suchePersoenlichkeit($find);
+        if($find == ""){
+            $personen = $dbcontroller->getPersoenlichkeitenSorted();
+        } else {
+            $personen = $dbcontroller->suchePersoenlichkeit($find);
+        }
         return $anz = count($personen);
     }
 
@@ -80,7 +92,11 @@ class KachelCreationEngine {
         } else if($epid != -1) {
             $personen = $dbcontroller->getPersoenlichkeitenOfAnEpoche($epid);
         } else {
-            $personen = $dbcontroller->suchePersoenlichkeit($find);
+            if($find == ""){
+                $personen = $dbcontroller->getPersoenlichkeitenSorted();
+            } else {
+                $personen = $dbcontroller->suchePersoenlichkeit($find);
+            }
         }
         $anz = count($personen);
         $title = "Titel";

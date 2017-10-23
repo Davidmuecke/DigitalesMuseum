@@ -52,7 +52,7 @@ class DBController
      */
     public function getEpochen()
     {
-        $query = mysqli_query($this->DB, "SELECT * FROM epoche ORDER BY bezeichnung DESC;");
+        $query = mysqli_query($this->DB, "SELECT * FROM epoche ORDER BY bezeichnung ASC;");
         $result = mysqli_fetch_all($query, MYSQLI_ASSOC);
         return $result;
     }
@@ -64,7 +64,7 @@ class DBController
      */
     public function getEpocheByName($name)
     {
-        $query = mysqli_query($this->DB, "SELECT * FROM epoche WHERE bezeichnung='" . $name . "'");
+        $query = mysqli_query($this->DB, "SELECT * FROM epoche WHERE bezeichnung='" . $name . "' ORDER BY bezeichnung ASC");
         $result = mysqli_fetch_assoc($query);
         return $result;
     }
@@ -90,7 +90,7 @@ class DBController
     public function getEpochenByPersoenlichekeit($personID)
     {
         $id = mysqli_escape_string($this->DB, $personID); //
-        $query = mysqli_query($this->DB, "SELECT bezeichnung, epoche.epocheID AS 'epocheID' FROM epoche INNER JOIN persoenlichkeitepoche ON (epoche.epocheID = persoenlichkeitepoche.epocheID) WHERE persoenlichkeitID='" . $id . "' ");
+        $query = mysqli_query($this->DB, "SELECT bezeichnung, epoche.epocheID AS 'epocheID' FROM epoche INNER JOIN persoenlichkeitepoche ON (epoche.epocheID = persoenlichkeitepoche.epocheID) WHERE persoenlichkeitID='" . $id . "' ORDER BY bezeichnung DESC ");
         $result = mysqli_fetch_all($query, MYSQLI_ASSOC);
         return $result;
     }
@@ -114,7 +114,7 @@ class DBController
      */
     public function getPersoenlichkeitenSorted()
     {
-        $query = mysqli_query($this->DB, "SELECT * FROM persoenlichkeit ORDER BY name, vorname DESC");
+        $query = mysqli_query($this->DB, "SELECT * FROM persoenlichkeit ORDER BY name, vorname ASC");
         $result = mysqli_fetch_all($query, MYSQLI_ASSOC);
         return $result;
     }
@@ -176,7 +176,7 @@ class DBController
      */
     public function getKategorien()
     {
-        $query = mysqli_query($this->DB, "SELECT * FROM kategorie");
+        $query = mysqli_query($this->DB, "SELECT * FROM kategorie ORDER BY bezeichnung ASC");
         $result = mysqli_fetch_all($query, MYSQLI_ASSOC);
         return $result;
     }
@@ -316,7 +316,7 @@ class DBController
     public function suchePersoenlichkeit($string)
     {
         $string = mysqli_escape_string($this->DB, $string);
-        $query = mysqli_query($this->DB, "SELECT *, ABS(STRCMP(name, \"" . $string . "\")) AS \"STRCMP\" FROM persoenlichkeit WHERE vorname LIKE \"%" . $string . "%\" OR NAME LIKE \"%" . $string . "%\" OR kuenstlername LIKE \"%" . $string . "%\" OR SOUNDEX(name) = SOUNDEX(\"" . $string . "\") OR SOUNDEX(vorname) = SOUNDEX(\"" . $string . "\") OR SOUNDEX(kuenstlername) = SOUNDEX(\"" . $string . "\")  ORDER BY STRCMP ASC");
+        $query = mysqli_query($this->DB, "SELECT *, ABS(STRCMP(name, \"" . $string . "\")) AS \"STRCMP\" FROM persoenlichkeit WHERE vorname LIKE \"%" . $string . "%\" OR NAME LIKE \"%" . $string . "%\" OR kuenstlername LIKE \"%" . $string . "%\" OR SOUNDEX(name) = SOUNDEX(\"" . $string . "\") OR SOUNDEX(vorname) = SOUNDEX(\"" . $string . "\") OR SOUNDEX(kuenstlername) = SOUNDEX(\"" . $string . "\") OR geburtsdatum LIKE \"%" . $string . "%\" OR todesdatum LIKE \"%" . $string . "%\"   ORDER BY STRCMP ASC");
         $result = mysqli_fetch_all($query, MYSQLI_ASSOC);
         return $result;
     }
