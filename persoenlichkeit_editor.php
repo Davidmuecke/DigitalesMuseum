@@ -1,3 +1,9 @@
+<!--
+persoenlichkeit_editor.php:
+Anlegenseite mit Formular um neue Persönlichkeiten anzulegen
+Die eigentliche Registrierung in der Datenbank wird in persoenlichkeit_datenbank.php ausgeführt
+-->
+
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -187,7 +193,7 @@
                         <div class="form-group">
                             <label class="p_h1">Name:</label>
                             <input type="text"  value="<?php echo $values["nachname"] ?>" placeholder="Nachname"
-                                   name="nachname" class="form-control">
+                                   name="nachname" class="form-control" required>
                         </div>
 
                         <!--Vorname-->
