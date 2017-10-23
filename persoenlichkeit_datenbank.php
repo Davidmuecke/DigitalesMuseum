@@ -53,7 +53,7 @@ if (array_key_exists('bild_profilbild',$_FILES)) {
         } else {
             $person = $dbcontroller->getPersoenlichkeitByID($ID);
             $profilbild = $person["profilbild"];
-            echo $dbcontroller->updateBild($profilbild,"profilbild",$datum,"eigene Dateien","profilbild",$data,$type,$size);
+            $dbcontroller->updateBild($profilbild,"profilbild",$datum,"eigene Dateien","profilbild",$data,$type,$size);
         }
     }
 }
@@ -73,7 +73,7 @@ if (array_key_exists('bild_titelbild',$_FILES)) {
         } else {
             $person = $dbcontroller->getPersoenlichkeitByID($ID);
             $titelbild = $person["titelbild"];
-            $titelbild = $dbcontroller->updateBild($titelbild,"titelbild",$datum,"eigene Dateien","titelbild",$data,$type,$size);
+            $dbcontroller->updateBild($titelbild,"titelbild",$datum,"eigene Dateien","titelbild",$data,$type,$size);
         }
     }
 }
