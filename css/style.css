@@ -147,17 +147,17 @@ p {
 
 
 /* Footer */
-footer {
+footer{
     margin-top: 20vh;
     max-height: 15vh;
 }
 
 footer > div > a {
-    color: white;
+    color: #FFCC99;
 }
 
 footer > div > a:hover {
-    color: white;
+    color: #FFCC99;
     text-decoration: underline;
 }
 /* Ende footer */
@@ -670,5 +670,3 @@ footer > div > a:hover {
     width: 60%;
 }
 /* Ende Literatur Ort */
-
-
