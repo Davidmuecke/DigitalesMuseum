@@ -586,6 +586,7 @@ Die eigentliche Registrierung in der Datenbank wird in persoenlichkeit_datenbank
                     ?>
                     <input id="btn_anlegen" class="btn" value="Persönlichkeit anlegen" type="submit"
                            formaction="persoenlichkeit_datenbank.php" formmethod="post">
+                    <button id="btn_loeschen" type="reset" class="btn">Einträge löschen</button>
                     <?php
                 } else {
                     ?>
@@ -594,7 +595,6 @@ Die eigentliche Registrierung in der Datenbank wird in persoenlichkeit_datenbank
                     <?php
                 }
                 ?>
-                <button id="btn_loeschen" type="reset" class="btn">Einträge löschen</button>
                 <a id="btn_abbrechen" href="startseite.php" class="btn">Abbrechen</a>
             </div>
             </div>
