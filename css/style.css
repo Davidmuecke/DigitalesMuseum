@@ -4,6 +4,10 @@
 
 
 /* Body */
+html, body {
+    overflox-x: hidden;
+}
+
 body{
     padding-top: 12vh;
     padding-bottom: 15vh;
@@ -539,6 +543,11 @@ footer > div > a:hover {
 }
 /* Ende Glyphicons */
 
+
+.epochen_auswahl, .kategorien_auswahl {
+    max-width: 95%;
+}
+
 /****************************
        I D S
 ****************************/
@@ -625,6 +634,10 @@ footer > div > a:hover {
     margin-left: -17vw;
 }
 
+#btn_anlegen {
+    margin-left: 1%;
+}
+
 #btn_bearbeiten {
     float: right;
     margin-bottom: 0.5%;
@@ -657,3 +670,5 @@ footer > div > a:hover {
     width: 60%;
 }
 /* Ende Literatur Ort */
+
+
