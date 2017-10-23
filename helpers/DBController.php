@@ -555,6 +555,7 @@ class DBController
         $anz = mysqli_query($this->DB, "select MAX(persoenlichkeitID) FROM persoenlichkeit");
 
         $result = mysqli_fetch_assoc($anz);
+        //echo mysqli_error($this->DB);
         return implode ($result);
         //return $query;
     }
