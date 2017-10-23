@@ -362,7 +362,7 @@ Die eigentliche Registrierung in der Datenbank wird in persoenlichkeit_datenbank
                                     <div id="epoche">
                                         <div class="create create-einzeilig">
                                             <input type="text" value="<?php echo $values["epoche_".$i] ?>" placeholder="Epoche auswählen"
-                                                   id="epochen_auswahl" class="form-control" name="epoche_<?php echo $i ?>" list="epochen">
+                                                   id="epochen_auswahl" class="form-control epochen_auswahl" name="epoche_<?php echo $i ?>" list="epochen">
                                             <datalist id="epochen">
                                                 <?php
                                                 for($j = 0; $j < $anzEpochen; $j++) {
@@ -400,7 +400,7 @@ Die eigentliche Registrierung in der Datenbank wird in persoenlichkeit_datenbank
                             <div id="kategorie">
                                 <div class="create create-einzeilig">
                                     <input type="text" value="<?php echo $values["kategorie_".$i] ?>" placeholder="Kategorie auswählen"
-                                           id="kategorien_auswahl_<?php echo $i ?>" class="form-control" name="kategorie_<?php echo $i ?>" list="kategorien">
+                                           id="kategorien_auswahl_<?php echo $i ?>" class="form-control kategorien_auswahl" name="kategorie_<?php echo $i ?>" list="kategorien">
                                     <datalist id="kategorien">
                                         <?php
                                         for($j = 0; $j < $anzKategorien; $j++) {
@@ -584,17 +584,18 @@ Die eigentliche Registrierung in der Datenbank wird in persoenlichkeit_datenbank
                 <?php
                 if($ID == 0) {
                     ?>
-                    <input id="btn_anlegen" class="btn" value="Persönlichkeit anlegen" type="submit"
+                    <input id="btn_anlegen" class="btn btn_noeffect" value="Persönlichkeit anlegen" type="submit"
                            formaction="persoenlichkeit_datenbank.php" formmethod="post">
                     <button id="btn_loeschen" type="reset" class="btn">Einträge löschen</button>
                     <?php
                 } else {
                     ?>
-                    <input id="btn_anlegen" class="btn" value="Änderungen speichern" type="submit"
+                    <input id="btn_anlegen" class="btn btn_noeffect" value="Änderungen speichern" type="submit"
                            formaction="persoenlichkeit_datenbank.php?id=<?php echo $ID ?>" formmethod="post">
                     <?php
                 }
                 ?>
+                <button id="btn_loeschen" type="reset" class="btn btn_noeffect">Einträge löschen</button>
                 <a id="btn_abbrechen" href="startseite.php" class="btn">Abbrechen</a>
             </div>
             </div>
