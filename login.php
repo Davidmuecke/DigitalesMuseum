@@ -48,7 +48,7 @@ Die eigentliche Überprüfung der Anmeldedaten findet in header.php statt, welch
                                 required>
                     </div>
 
-                    <button type="submit" class="btn">Login</button>
+                    <button type="submit" class="btn btn_noeffect">Login</button>
 
                     <div class="small">
                         <p>

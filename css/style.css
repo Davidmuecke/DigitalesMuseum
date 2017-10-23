@@ -4,6 +4,10 @@
 
 
 /* Body */
+html, body {
+    overflox-x: hidden;
+}
+
 body{
     padding-top: 12vh;
     padding-bottom: 15vh;
@@ -147,6 +151,15 @@ footer{
     margin-top: 20vh;
     max-height: 15vh;
 }
+
+footer > div > a {
+    color: #FFCC99;
+}
+
+footer > div > a:hover {
+    color: #FFCC99;
+    text-decoration: underline;
+}
 /* Ende footer */
 
 
@@ -257,6 +270,10 @@ footer{
 .panel-body::-webkit-scrollbar-thumb
 {
     background: rgba(0, 0, 0, 0.5);
+}
+
+.panel-body:hover {
+    text-underline: none;
 }
 /* Ende Panel */
 
@@ -373,6 +390,9 @@ footer{
     box-shadow: none;
 }
 
+.btn_noeffect:hover {
+    box-shadow: none;
+}
 /* Ende Button */
 
 /* Title Image */
@@ -523,6 +543,11 @@ footer{
 }
 /* Ende Glyphicons */
 
+
+.epochen_auswahl, .kategorien_auswahl {
+    max-width: 95%;
+}
+
 /****************************
        I D S
 ****************************/
@@ -609,6 +634,10 @@ footer{
     margin-left: -17vw;
 }
 
+#btn_anlegen {
+    margin-left: 1%;
+}
+
 #btn_bearbeiten {
     float: right;
     margin-bottom: 0.5%;
@@ -641,10 +670,3 @@ footer{
     width: 60%;
 }
 /* Ende Literatur Ort */
-
-
-/* Mailadresse Fußzeile */
-#mail_adresse{
-    color: #FFCC99;
-}
-/* Ende Mailadresse Fußzeile */

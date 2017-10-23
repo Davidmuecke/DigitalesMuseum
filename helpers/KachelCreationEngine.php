@@ -14,7 +14,11 @@ class KachelCreationEngine {
     // Erstellt eine Kategorie kachel
     function kategorie($find) {
         $dbcontroller = new DBController();
-        $kategorien = $dbcontroller->sucheKategorie($find);
+        if($find == ""){
+            $kategorien = $dbcontroller->getKategorien();
+        } else {
+            $kategorien = $dbcontroller->sucheKategorie($find);
+        }
         $anz = count($kategorien);
         $title = "Titel";
         for($i = 0; $i < $anz; $i++) {
@@ -46,7 +50,11 @@ class KachelCreationEngine {
     // Erstellt eine Epoche kachel
     function epoche($find) {
         $dbcontroller = new DBController();
-        $epochen = $dbcontroller->sucheEpoche($find);
+        if($find == ""){
+            $epochen = $dbcontroller->getEpochen();
+        } else {
+            $epochen = $dbcontroller->sucheEpoche($find);
+        }
         $anz = count($epochen);
         $title = "Titel";
         for($i = 0; $i < $anz; $i++) {
@@ -68,7 +76,11 @@ class KachelCreationEngine {
 
     function persoenlichkeit_anz($find) {
         $dbcontroller = new DBController();
-        $personen = $dbcontroller->suchePersoenlichkeit($find);
+        if($find == ""){
+            $personen = $dbcontroller->getPersoenlichkeitenSorted();
+        } else {
+            $personen = $dbcontroller->suchePersoenlichkeit($find);
+        }
         return $anz = count($personen);
     }
 
@@ -80,7 +92,11 @@ class KachelCreationEngine {
         } else if($epid != -1) {
             $personen = $dbcontroller->getPersoenlichkeitenOfAnEpoche($epid);
         } else {
-            $personen = $dbcontroller->suchePersoenlichkeit($find);
+            if($find == ""){
+                $personen = $dbcontroller->getPersoenlichkeitenSorted();
+            } else {
+                $personen = $dbcontroller->suchePersoenlichkeit($find);
+            }
         }
         $anz = count($personen);
         $title = "Titel";
@@ -125,7 +141,7 @@ class KachelCreationEngine {
     //link: Seite, die geöffnet werden woll, wenn auf die Kachel geklickt wird
     function start($title, $link) {
         ?>
-        <a href="<?php echo $link?>.php">
+        <a href="<?php echo $link?>">
             <div class="kachel_start panel panel-default">
                 <div class="panel-body">
                     <?php echo $title?>
@@ -144,7 +160,13 @@ class KachelCreationEngine {
         $titelbild = "helpers/BildLaden.php?id=".$id."&titel=1";
         ?>
         <div class="title_image title_image--32by9" style="background-image:url(<?php echo $titelbild; ?>);">
-            <a href = "persoenlichkeit_editor.php?id=<?php echo$id ?>"><button id="btn_bearbeiten" type="submit" class="btn">Persönlichkeit bearbeiten</button></a>
+            <a href = "persoenlichkeit_editor.php?id=<?php echo$id ?>"><button id="btn_bearbeiten" type="submit" class="btn btn_noeffect">Persönlichkeit bearbeiten</button></a>
+            <a href = "persoenlichkeit_loeschen.php?id=<?php echo$id ?>">
+                <button id="btn_bearbeiten" type="submit" class="btn btn_noeffect">Löschen</button>
+            </a>
+            <a href = "persoenlichkeit_editor.php?id=<?php echo$id ?>">
+                <button id="btn_bearbeiten" type="submit" class="btn btn_noeffect">Bearbeiten</button>
+            </a>
         </div>
         <?php
     }
@@ -172,7 +194,7 @@ class KachelCreationEngine {
                     <label id="link_persoenlichkeit"><?php echo $vorname.' '.$name ?></label>
                     <label id="geburtsdatum">&#10033; <?php echo $geburtsdatum ?></label>
                     <?php
-                    if($todesdatum != "0000-00-00") {
+                    if($todesdatum != "0000-00-00" && $todesdatum != "") {
                         ?>
                         <label id="todestag">&dagger; <?php echo $todesdatum ?>
                         </label>
