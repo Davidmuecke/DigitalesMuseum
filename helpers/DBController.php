@@ -548,14 +548,35 @@ class DBController
         $zitatUrheber = mysqli_escape_string($this->DB, htmlentities($zitatUrheber));
 
         $columns = "name,vorname,kuenstlername,profilbild,titelbild,geburtsdatum,todesdatum,geburtsort,nationalitaet,vater,mutter,textInhalt,textQuelle,textTitel,textAutor,beschreibungInhalt,beschreibungQuelle,zitatInhalt,zitatDatum,zitatAnlass,zitatUrheber";
-        $values = "'$name','$vorname','$kuenstlername','$profilbild','$titelbild','$geburtsdatum','$todesdatum','$geburtsort','$nationalitaet','$vater','$mutter','$textInhalt','$textQuelle','$textTitel','$textAutor','$beschreibungInhalt','$beschreibungQuelle','$zitatInhalt','$zitatDatum','$zitatAnlass','$zitatUrheber'";
+
+        if($geburtsdatum=="") {
+            $geburtsdatum= "NULL";
+        } else {
+            $geburtsdatum = "'". $geburtsdatum . "'";
+        }
+
+        if($todesdatum=="") {
+            $todesdatum= "NULL";
+        } else {
+            $todesdatum = "'". $todesdatum . "'";
+        }
+
+        if($zitatDatum=="") {
+            $zitatDatum= "NULL";
+        } else {
+            $zitatDatum = "'". $zitatDatum . "'";
+        }
+
+        $values = "'$name','$vorname','$kuenstlername','$profilbild','$titelbild',$geburtsdatum,$todesdatum,'$geburtsort','$nationalitaet','$vater','$mutter','$textInhalt','$textQuelle','$textTitel','$textAutor','$beschreibungInhalt','$beschreibungQuelle','$zitatInhalt',$zitatDatum,'$zitatAnlass','$zitatUrheber'";
+
+
 
         $query = mysqli_query($this->DB, "INSERT INTO persoenlichkeit($columns) VALUES($values) ");
-
+        echo mysqli_error($this->DB);
         $anz = mysqli_query($this->DB, "select MAX(persoenlichkeitID) FROM persoenlichkeit");
 
         $result = mysqli_fetch_assoc($anz);
-        //echo mysqli_error($this->DB);
+
         return implode ($result);
         //return $query;
     }
@@ -693,7 +714,27 @@ class DBController
         $zitatInhalt = mysqli_escape_string($this->DB, htmlentities($zitatInhalt));
         $zitatUrheber = mysqli_escape_string($this->DB, htmlentities($zitatUrheber));
 
-        $sql ="UPDATE `persoenlichkeit` SET `kuenstlername` = '$kuenstlername', `profilbild` = '$profilbild', `titelbild` = '$titelbild', `name` = '$name', `vorname` = '$vorname', `geburtsdatum` = '$geburtsdatum', `todesdatum` = '$todesdatum', `geburtsort` = '$geburtsort', `nationalitaet` = '$nationalitaet', `vater` = '$vater', `mutter` = '$mutter', `textInhalt` = '$textInhalt', `textQuelle` = '$textQuelle', `textTitel` = '$textTitel', `TextAutor` = '$textAutor', `beschreibungInhalt` = '$beschreibungInhalt', `beschreibungQuelle` = '$beschreibungQuelle', `zitatInhalt` = '$zitatInhalt', `zitatDatum` = '$zitatDatum', `zitatAnlass` = '$zitatAnlass', `zitatUrheber` = '$zitatUrheber' WHERE `persoenlichkeit`.`persoenlichkeitID` = $id";
+
+        if($geburtsdatum=="") {
+            $geburtsdatum= "NULL";
+        } else {
+            $geburtsdatum = "'". $geburtsdatum . "'";
+        }
+
+        if($todesdatum=="") {
+            $todesdatum= "NULL";
+        } else {
+            $todesdatum = "'". $todesdatum . "'";
+        }
+
+        if($zitatDatum=="") {
+            $zitatDatum= "NULL";
+        } else {
+            $zitatDatum = "'". $zitatDatum . "'";
+        }
+
+
+        $sql ="UPDATE `persoenlichkeit` SET `kuenstlername` = '$kuenstlername', `profilbild` = '$profilbild', `titelbild` = '$titelbild', `name` = '$name', `vorname` = '$vorname', `geburtsdatum` = $geburtsdatum, `todesdatum` = $todesdatum, `geburtsort` = '$geburtsort', `nationalitaet` = '$nationalitaet', `vater` = '$vater', `mutter` = '$mutter', `textInhalt` = '$textInhalt', `textQuelle` = '$textQuelle', `textTitel` = '$textTitel', `TextAutor` = '$textAutor', `beschreibungInhalt` = '$beschreibungInhalt', `beschreibungQuelle` = '$beschreibungQuelle', `zitatInhalt` = '$zitatInhalt', `zitatDatum` = $zitatDatum, `zitatAnlass` = '$zitatAnlass', `zitatUrheber` = '$zitatUrheber' WHERE `persoenlichkeit`.`persoenlichkeitID` = $id";
         return mysqli_query($this->DB, $sql);
     }
 

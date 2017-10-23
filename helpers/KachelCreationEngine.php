@@ -193,7 +193,7 @@ class KachelCreationEngine {
                     <label id="link_persoenlichkeit"><?php echo $vorname.' '.$name ?></label>
                     <label id="geburtsdatum">&#10033; <?php echo $geburtsdatum ?></label>
                     <?php
-                    if($todesdatum != "0000-00-00") {
+                    if($todesdatum != "0000-00-00" && $todesdatum != "") {
                         ?>
                         <label id="todestag">&dagger; <?php echo $todesdatum ?>
                         </label>
