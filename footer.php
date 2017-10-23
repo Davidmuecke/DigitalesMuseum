@@ -8,15 +8,22 @@
 ?>
 <link rel="stylesheet" href="css/bootstrap-3.3.7-dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="css/style.css">
-<footer class="footer navbar-fixed-bottom">
-    <div id="kontakt">
-        DHBW Stuttgart <br>
-        Rotebühlplatz 41,
-        70176 Stuttgart <br>
-        Kontakt:
+<footer class="footer navbar-inverse navbar-fixed-bottom">
+    <div class="container-fluid">
+        <div class="collapse navbar-collapse navHeaderCollapse">
+            <div id="kontakt">
+                <ul class="nav navbar-nav">
+                    <li><b>DHBW Stuttgart  </b></li>
+                    <li><b>Rotebühlplatz 41,  </b></li>
+                    <li><b>70176 Stuttgart  </b></li>
+                    <li><b>Kontakt:</b></li>
+                </ul>
+            </div>
+        </div>
     </div>
 </footer>
-<div>
+<div id="mail_adresse">
+    <b>
     <script type="application/javascript" >
         function mail() {
             var  username = "digitales-museum";
@@ -27,4 +34,5 @@
             document.getElementById("kontakt").appendChild(mail);
         }
     </script>
+    </b>
 </div>

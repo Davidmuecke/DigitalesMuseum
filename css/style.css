@@ -641,3 +641,10 @@ footer{
     width: 60%;
 }
 /* Ende Literatur Ort */
+
+
+/* Mailadresse Fußzeile */
+#mail_adresse{
+    color: #FFCC99;
+}
+/* Ende Mailadresse Fußzeile */
