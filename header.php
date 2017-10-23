@@ -83,7 +83,7 @@ else {
                     <div class="input-group">
                         <form><input type="text" name="suchbegriff" class="form-control" id="input_suchen" placeholder="Suche"></form>
                         <div class="input-group-btn">
-                            <button class="btn btn-default" type="submit" id="suchen_button"><i class="glyphicon glyphicon-search"></i></button>
+                            <button class="btn btn-default btn_noeffect" type="submit" id="suchen_button"><i class="glyphicon glyphicon-search"></i></button>
                         </div>
                     </div>
                 </form>

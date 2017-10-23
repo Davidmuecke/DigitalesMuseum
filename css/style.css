@@ -258,6 +258,10 @@ footer{
 {
     background: rgba(0, 0, 0, 0.5);
 }
+
+.panel-body:hover {
+    text-underline: none;
+}
 /* Ende Panel */
 
 
@@ -373,6 +377,9 @@ footer{
     box-shadow: none;
 }
 
+.btn_noeffect:hover {
+    box-shadow: none;
+}
 /* Ende Button */
 
 /* Title Image */

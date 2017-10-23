@@ -76,7 +76,7 @@ Die eigentliche Registrierung in der Datenbank wird in registrierung_erfolgreich
                         <input type="file" name="bild_dateien">
                     </div> -->
 
-                    <button type="submit" class="btn">Account anlegen</button>
+                    <button type="submit" class="btn btn_noeffect">Account anlegen</button>
 
                     <div class="small register">
                         <p>

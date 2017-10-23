@@ -584,17 +584,17 @@ Die eigentliche Registrierung in der Datenbank wird in persoenlichkeit_datenbank
                 <?php
                 if($ID == 0) {
                     ?>
-                    <input id="btn_anlegen" class="btn" value="Persönlichkeit anlegen" type="submit"
+                    <input id="btn_anlegen" class="btn btn_noeffect" value="Persönlichkeit anlegen" type="submit"
                            formaction="persoenlichkeit_datenbank.php" formmethod="post">
                     <?php
                 } else {
                     ?>
-                    <input id="btn_anlegen" class="btn" value="Änderungen speichern" type="submit"
+                    <input id="btn_anlegen" class="btn btn_noeffect" value="Änderungen speichern" type="submit"
                            formaction="persoenlichkeit_datenbank.php?id=<?php echo $ID ?>" formmethod="post">
                     <?php
                 }
                 ?>
-                <button id="btn_loeschen" type="reset" class="btn">Einträge löschen</button>
+                <button id="btn_loeschen" type="reset" class="btn btn_noeffect">Einträge löschen</button>
                 <a id="btn_abbrechen" href="startseite.php" class="btn">Abbrechen</a>
             </div>
             </div>
