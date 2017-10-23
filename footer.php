@@ -22,7 +22,7 @@
         </div>
     </div>
 </footer>
-<div id="mail_adresse">
+<div>
     <b>
     <script type="application/javascript" >
         function mail() {
