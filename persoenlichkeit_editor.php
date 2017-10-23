@@ -193,7 +193,7 @@ Die eigentliche Registrierung in der Datenbank wird in persoenlichkeit_datenbank
                         <div class="form-group">
                             <label class="p_h1">Name:</label>
                             <input type="text"  value="<?php echo $values["nachname"] ?>" placeholder="Nachname"
-                                   name="nachname" class="form-control" required>
+                                   name="nachname" class="form-control">
                         </div>
 
                         <!--Vorname-->
@@ -379,7 +379,7 @@ Die eigentliche Registrierung in der Datenbank wird in persoenlichkeit_datenbank
                                 </div>
                           </div>
                         <a id="kat_jump"></a>
-                    <input id="add_button_epoche" class="btn_add" type="submit" value="weitere Epoche" formaction="persoenlichkeit_editor.php?anzEpoche=<?php echo $_SESSION["anzEpoche"]+1;?>#ep_jump" formmethod="post">
+                    <input id="add_button_epoche" class="btn btn_add" type="submit" value="weitere Epoche" formaction="persoenlichkeit_editor.php?anzEpoche=<?php echo $_SESSION["anzEpoche"]+1;?>#ep_jump" formmethod="post">
 
                     <!--Kategorie-->
 
@@ -416,7 +416,7 @@ Die eigentliche Registrierung in der Datenbank wird in persoenlichkeit_datenbank
                         ?>
                         </div>
                         <a id="lit_jump"></a>
-                        <input id="add_button_kategorie" class="btn_add" type="submit" value="weitere Kategorien" formaction="persoenlichkeit_editor.php?anzKategorie=<?php echo $_SESSION["anzKategorie"]+1;?>#kat_jump" formmethod="post">
+                        <input id="add_button_kategorie" class="btn btn_add" type="submit" value="weitere Kategorie" formaction="persoenlichkeit_editor.php?anzKategorie=<?php echo $_SESSION["anzKategorie"]+1;?>#kat_jump" formmethod="post">
                     </div>
 
 
@@ -470,7 +470,7 @@ Die eigentliche Registrierung in der Datenbank wird in persoenlichkeit_datenbank
                         ?>
                         </div>
                         <a id="per_jump"></a>
-                        <input id="add_button_kategorie" class="btn_add" type="submit" value="weitere Literaturangaben" formaction="persoenlichkeit_editor.php?anzLiteratur=<?php echo $_SESSION["anzLiteratur"]+1;?>#lit_jump" formmethod="post">
+                        <input id="add_button_kategorie" class="btn btn_add" type="submit" value="weitere Literaturangabe" formaction="persoenlichkeit_editor.php?anzLiteratur=<?php echo $_SESSION["anzLiteratur"]+1;?>#lit_jump" formmethod="post">
                     </div>
 
                     <!--Freunde-->
@@ -513,7 +513,7 @@ Die eigentliche Registrierung in der Datenbank wird in persoenlichkeit_datenbank
                         }
                         ?>
                         </div>
-                        <input id="add_button_person" class="btn_add" type="submit" value="weitere Freunde" formaction="persoenlichkeit_editor.php?anzPerson=<?php echo $_SESSION["anzPerson"]+1;?>#per_jump" formmethod="post">
+                        <input id="add_button_person" class="btn btn_add" type="submit" value="weiterer Freund" formaction="persoenlichkeit_editor.php?anzPerson=<?php echo $_SESSION["anzPerson"]+1;?>#per_jump" formmethod="post">
                     </div>
 
                         <?php
