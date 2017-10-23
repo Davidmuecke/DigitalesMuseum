@@ -44,9 +44,9 @@ Die Navigation Bar wird mithilfe von header.php erzeugt, der Footer mithilfe von
         <div class="clear"></div>
         <?php
 
-            KachelCreationEngine::start("Kategorien", "kategorien_uebersicht");
-            KachelCreationEngine::start("Persönlichkeiten", "persoenlichkeiten_uebersicht");
-            KachelCreationEngine::start("Epochen", "epochen_uebersicht");
+            KachelCreationEngine::start("Kategorien", "kategorien_uebersicht.php");
+            KachelCreationEngine::start("Persönlichkeiten", "persoenlichkeiten_uebersicht.php");
+            KachelCreationEngine::start("Epochen", "epochen_uebersicht.php");
 
             ?>
         <div class="clear"></div>

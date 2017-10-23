@@ -125,7 +125,7 @@ class KachelCreationEngine {
     //link: Seite, die geöffnet werden woll, wenn auf die Kachel geklickt wird
     function start($title, $link) {
         ?>
-        <a href="<?php echo $link?>.php">
+        <a href="<?php echo $link?>">
             <div class="kachel_start panel panel-default">
                 <div class="panel-body">
                     <?php echo $title?>
@@ -144,7 +144,12 @@ class KachelCreationEngine {
         $titelbild = "helpers/BildLaden.php?id=".$id."&titel=1";
         ?>
         <div class="title_image title_image--32by9" style="background-image:url(<?php echo $titelbild; ?>);">
-            <a href = "persoenlichkeit_editor.php?id=<?php echo$id ?>"><button id="btn_bearbeiten" type="submit" class="btn">Persönlichkeit bearbeiten</button></a>
+            <a href = "persoenlichkeit_loeschen.php?id=<?php echo$id ?>">
+                <button id="btn_bearbeiten" type="submit" class="btn">Löschen</button>
+            </a>
+            <a href = "persoenlichkeit_editor.php?id=<?php echo$id ?>">
+                <button id="btn_bearbeiten" type="submit" class="btn">Bearbeiten</button>
+            </a>
         </div>
         <?php
     }
