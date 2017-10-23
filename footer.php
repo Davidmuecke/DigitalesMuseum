@@ -8,11 +8,11 @@
 ?>
 <link rel="stylesheet" href="css/bootstrap-3.3.7-dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="css/style.css">
-<footer class="footer navbar-fixed-bottom">
+<footer class="footer navbar-inverse navbar-fixed-bottom">
     <div id="kontakt">
-        DHBW Stuttgart <br>
+        DHBW Stuttgart:
         Rotebühlplatz 41,
-        70176 Stuttgart <br>
+        70176 Stuttgart
         Kontakt:
     </div>
 </footer>
