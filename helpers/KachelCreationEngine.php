@@ -84,7 +84,7 @@ class KachelCreationEngine {
         return $anz = count($personen);
     }
 
-    // Erstellt eine Persönlichkeitskachel
+    // Erstellt die gesuchten Persönlichkeitskachel
     function persoenlichkeit($katid, $epid, $find) {
         $dbcontroller = new DBController();
         if($katid != -1) {
@@ -127,6 +127,42 @@ class KachelCreationEngine {
                 <div class="panel-body">
                     <div class="profile_image profile_image--1by1 profile_image_uebersicht" style="background-image:url(<?php echo $profilbild; ?>);"></div>
                 </div>
+                </a>
+            </div>
+
+
+
+            <?php
+        }
+    }
+
+
+// Erstellt eine bestimmte Persönlichkeitskachel
+    function persoenlichkeitByID($id) {
+        $dbcontroller = new DBController();
+        $personen = $dbcontroller->getPersoenlichkeitByID($id);
+        $title = "Titel";
+            $name = $personen["name"];
+            $vorname = $personen["vorname"];
+            $geburtsdatum = $personen["geburtsdatum"];
+            $todesdatum = $personen["todesdatum"];
+            $profilbild = "helpers/BildLaden.php?id=".$id."&profil=1";
+            ?>
+
+            <div class="kachel_persoenlichkeit">
+                <a href="persoenlichkeit.php?id=<?php echo $id ?>">
+                    <div class="panel-heading">
+                        <label id="name_persoenlichkeit"><?php echo $vorname.' '.$name?></label>
+                        <label id="geburtsdatum">&#10033; <?php echo $geburtsdatum?></label>
+                        <?php
+                        if($todesdatum != "0000-00-00" && $todesdatum != "") {
+                            ?>
+                            <label id="todestag">&dagger; <?php echo $todesdatum ?>
+                            </label>
+                    </div>
+                    <div class="panel-body">
+                        <div class="profile_image profile_image--1by1 profile_image_uebersicht" style="background-image:url(<?php echo $profilbild; ?>);"></div>
+                    </div>
                 </a>
             </div>
 

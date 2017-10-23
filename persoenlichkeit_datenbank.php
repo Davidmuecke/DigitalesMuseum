@@ -18,8 +18,10 @@ Wenn die Persönlichkeit schon existiert wird eine Fehlermeldung ausgegeben.
 <?php
 //require("datenbank.php");
 require("header.php");
+require("helpers/KachelCreationEngine.php");
 $dbcontroller = new DBController();
 $personID = 1;
+$schonVorhandenFlag = false;
 
 $counter = array("anzEpoche", "anzKategorie", "anzPerson", "anzLiteratur");
 $counter2 = array("epoche", "kategorie", "person", "literatur_titel", "literatur_autor", "literatur_datum", "literatur_verlag", "literatur_ort");
@@ -42,163 +44,180 @@ $titelbild=$values["titelbild"];
 
 if(isset($_GET["id"])) {
     $ID=$_GET["id"];
+}else {
+    $schonVorhandenFlag = $dbcontroller->checkPersoenlichkeit($values["vorname"], $values["nachname"], $values["geburtsdatum"]);
 }
-
+if($schonVorhandenFlag == 0) {
 //Profil-Bilder speichern
-if (array_key_exists('bild_profilbild',$_FILES)) {
-    if($_FILES['bild_profilbild']['tmp_name'] != "") {
-        $tmpname = $_FILES['bild_profilbild']['tmp_name'];
-        $type = $_FILES['bild_profilbild']['type'];
-        $size = $_FILES ["bild_profilbild"] ["size"];
-        $hndFile = fopen($tmpname, "r");
-        $data = addslashes(fread($hndFile, filesize($tmpname)));
-        $timestamp = time();
-        $datum = date("Y-m-d",$timestamp);
-        if($ID==0) {
-            $profilbild = $dbcontroller->addBild("profilbild",$datum,"eigene Dateien","profilbild",$data,$type,$size);
-        } else {
-            $person = $dbcontroller->getPersoenlichkeitByID($ID);
-            $profilbild = $person["profilbild"];
-            $dbcontroller->updateBild($profilbild,"profilbild",$datum,"eigene Dateien","profilbild",$data,$type,$size);
+    if (array_key_exists('bild_profilbild', $_FILES)) {
+        if ($_FILES['bild_profilbild']['tmp_name'] != "") {
+            $tmpname = $_FILES['bild_profilbild']['tmp_name'];
+            $type = $_FILES['bild_profilbild']['type'];
+            $size = $_FILES ["bild_profilbild"] ["size"];
+            $hndFile = fopen($tmpname, "r");
+            $data = addslashes(fread($hndFile, filesize($tmpname)));
+            $timestamp = time();
+            $datum = date("Y-m-d", $timestamp);
+            if ($ID == 0) {
+                $profilbild = $dbcontroller->addBild("profilbild", $datum, "eigene Dateien", "profilbild", $data, $type, $size);
+            } else {
+                $person = $dbcontroller->getPersoenlichkeitByID($ID);
+                $profilbild = $person["profilbild"];
+                $dbcontroller->updateBild($profilbild, "profilbild", $datum, "eigene Dateien", "profilbild", $data, $type, $size);
+            }
         }
     }
-}
 
 //Titel-Bilder speichern
-if (array_key_exists('bild_titelbild',$_FILES)) {
-    if($_FILES['bild_titelbild']['tmp_name'] != "") {
-        $tmpname = $_FILES['bild_titelbild']['tmp_name'];
-        $type = $_FILES['bild_titelbild']['type'];
-        $size = $_FILES ["bild_titelbild"] ["size"];
-        $hndFile = fopen($tmpname, "r");
-        $data = addslashes(fread($hndFile, filesize($tmpname)));
-        $timestamp = time();
-        $datum = date("Y-m-d",$timestamp);
-        if($ID==0) {
-            $titelbild = $dbcontroller->addBild("titelbild",$datum,"eigene Dateien","titelbild",$data,$type,$size);
-        } else {
-            $person = $dbcontroller->getPersoenlichkeitByID($ID);
-            $titelbild = $person["titelbild"];
-            $dbcontroller->updateBild($titelbild,"titelbild",$datum,"eigene Dateien","titelbild",$data,$type,$size);
+    if (array_key_exists('bild_titelbild', $_FILES)) {
+        if ($_FILES['bild_titelbild']['tmp_name'] != "") {
+            $tmpname = $_FILES['bild_titelbild']['tmp_name'];
+            $type = $_FILES['bild_titelbild']['type'];
+            $size = $_FILES ["bild_titelbild"] ["size"];
+            $hndFile = fopen($tmpname, "r");
+            $data = addslashes(fread($hndFile, filesize($tmpname)));
+            $timestamp = time();
+            $datum = date("Y-m-d", $timestamp);
+            if ($ID == 0) {
+                $titelbild = $dbcontroller->addBild("titelbild", $datum, "eigene Dateien", "titelbild", $data, $type, $size);
+            } else {
+                $person = $dbcontroller->getPersoenlichkeitByID($ID);
+                $titelbild = $person["titelbild"];
+                $dbcontroller->updateBild($titelbild, "titelbild", $datum, "eigene Dateien", "titelbild", $data, $type, $size);
+            }
         }
     }
-}
-
-
-
-
-
 
 
 //Wenn eine Person nur überarbeitet werden soll
-if($ID != 0) {
-    //Persoenlichkeit wird bearbeitet
-    $personID = $ID;
-    $dbcontroller->updatePersoenlichkeit($ID, $values["nachname"], $values["vorname"], $values["kuenstlername"], $profilbild, $titelbild, $values["geburtsdatum"],
-        $values["todesdatum"], $values["geburtsort"], $values["nationalitaet"], $values["vater"], $values["mutter"], $values["text_text"], $values["text_quelle"],
-        $values["text_titel"], $values["text_autor"], $values["kurzbeschreibung_text"], $values["kurzbeschreibung_quelle"], $values["zitat_text"], $values["zitat_datum"], $values["zitat_anlass"], $values["zitat_urheber"]);
+    if ($ID != 0) {
+        //Persoenlichkeit wird bearbeitet
+        $personID = $ID;
+        $dbcontroller->updatePersoenlichkeit($ID, $values["nachname"], $values["vorname"], $values["kuenstlername"], $profilbild, $titelbild, $values["geburtsdatum"],
+            $values["todesdatum"], $values["geburtsort"], $values["nationalitaet"], $values["vater"], $values["mutter"], $values["text_text"], $values["text_quelle"],
+            $values["text_titel"], $values["text_autor"], $values["kurzbeschreibung_text"], $values["kurzbeschreibung_quelle"], $values["zitat_text"], $values["zitat_datum"], $values["zitat_anlass"], $values["zitat_urheber"]);
 
 
-} else {
+    } else {
 //Persoenlichkeit wird angelegt
-    $personID = $dbcontroller->addPersoenlichkeit($values["nachname"], $values["vorname"], $values["kuenstlername"], $profilbild, $titelbild, $values["geburtsdatum"],
-        $values["todesdatum"], $values["geburtsort"], $values["nationalitaet"], $values["vater"], $values["mutter"], $values["text_text"], $values["text_quelle"],
-        $values["text_titel"], $values["text_autor"], $values["kurzbeschreibung_text"], $values["kurzbeschreibung_quelle"], $values["zitat_text"], $values["zitat_datum"], $values["zitat_anlass"], $values["zitat_urheber"]);
-}
+        $personID = $dbcontroller->addPersoenlichkeit($values["nachname"], $values["vorname"], $values["kuenstlername"], $profilbild, $titelbild, $values["geburtsdatum"],
+            $values["todesdatum"], $values["geburtsort"], $values["nationalitaet"], $values["vater"], $values["mutter"], $values["text_text"], $values["text_quelle"],
+            $values["text_titel"], $values["text_autor"], $values["kurzbeschreibung_text"], $values["kurzbeschreibung_quelle"], $values["zitat_text"], $values["zitat_datum"], $values["zitat_anlass"], $values["zitat_urheber"]);
+    }
 
 //Alte Verknüpfungen werden gelöscht
-if($ID != 0) {
-    $dbcontroller->deletePersoenlichkeitEpocheOfAPersoenlichkeit($ID);
-    $dbcontroller->deletePersoenlichkeitKategorieOfAPersoenlichkeit($ID);
-    $dbcontroller->deletePersoenlichkeitLiteraturangabenOfAPersoenlicheit($ID);
-    $dbcontroller->deletePersoenlichkeitPersoenlichkeitofAPersoenlichkeit($ID);
-}
+    if ($ID != 0) {
+        $dbcontroller->deletePersoenlichkeitEpocheOfAPersoenlichkeit($ID);
+        $dbcontroller->deletePersoenlichkeitKategorieOfAPersoenlichkeit($ID);
+        $dbcontroller->deletePersoenlichkeitLiteraturangabenOfAPersoenlicheit($ID);
+        $dbcontroller->deletePersoenlichkeitPersoenlichkeitofAPersoenlichkeit($ID);
+    }
 //Kategorien werden angelegt
-for($i = 0; $i <= $_SESSION["anzKategorie"]; $i++) {
-    if(!empty($values["kategorie_".$i])) {
-        if (empty($dbcontroller->getKategorieByName($values["kategorie_" . $i]))) {
-            $kategorieID[$i] = $dbcontroller->addKategorie($values["kategorie_" . $i]);
-        } else {
-            $kategorieID[$i] = implode($dbcontroller->getIDOfAKategorie($values["kategorie_" . $i]));
+    for ($i = 0; $i <= $_SESSION["anzKategorie"]; $i++) {
+        if (!empty($values["kategorie_" . $i])) {
+            if (empty($dbcontroller->getKategorieByName($values["kategorie_" . $i]))) {
+                $kategorieID[$i] = $dbcontroller->addKategorie($values["kategorie_" . $i]);
+            } else {
+                $kategorieID[$i] = implode($dbcontroller->getIDOfAKategorie($values["kategorie_" . $i]));
+            }
         }
     }
-}
 //Verknüpfung von Person und Kategorie
-if(isset($kategorieID)) {
-    for($i = 0; $i < count($kategorieID); $i++) {
-        $dbcontroller->addKategoriezuPersoenlichkeit($personID, $kategorieID[$i]);
+    if (isset($kategorieID)) {
+        for ($i = 0; $i < count($kategorieID); $i++) {
+            $dbcontroller->addKategoriezuPersoenlichkeit($personID, $kategorieID[$i]);
+        }
     }
-}
 
 
 //Epochen werden angelegt
-for($i = 0; $i <= $_SESSION["anzEpoche"]; $i++) {
-    if(!empty($values["epoche_".$i])) {
-        if (empty($dbcontroller->getEpocheByName($values["epoche_" . $i]))) {
+    for ($i = 0; $i <= $_SESSION["anzEpoche"]; $i++) {
+        if (!empty($values["epoche_" . $i])) {
+            if (empty($dbcontroller->getEpocheByName($values["epoche_" . $i]))) {
 
-            $epocheID[$i] = $dbcontroller->addEpoche($values["epoche_" . $i]);
-        } else {
-            $epocheID[$i] = implode($dbcontroller->getIDOfAnEpoche($values["epoche_" . $i]));
+                $epocheID[$i] = $dbcontroller->addEpoche($values["epoche_" . $i]);
+            } else {
+                $epocheID[$i] = implode($dbcontroller->getIDOfAnEpoche($values["epoche_" . $i]));
+            }
         }
     }
-}
 //Verknüpfung von Person und Epochen
-if(isset($epocheID)) {
-    for ($i = 0; $i < count($epocheID); $i++) {
-        $dbcontroller->addEpochezuPersoenlichkeit($personID, $epocheID[$i]);
+    if (isset($epocheID)) {
+        for ($i = 0; $i < count($epocheID); $i++) {
+            $dbcontroller->addEpochezuPersoenlichkeit($personID, $epocheID[$i]);
+        }
     }
-}
 
 //Literaturangaben werden angelegt
-for($i = 0; $i <= $_SESSION["anzLiteratur"]; $i++) {
-    $literaturID[$i] = $dbcontroller->addLiteraturangabe($values["literatur_autor_".$i], $values["literatur_titel_".$i], $values["literatur_datum_".$i], $values["literatur_verlag_".$i], $values["literatur_ort_".$i]);
-}
+    for ($i = 0; $i <= $_SESSION["anzLiteratur"]; $i++) {
+        $literaturID[$i] = $dbcontroller->addLiteraturangabe($values["literatur_autor_" . $i], $values["literatur_titel_" . $i], $values["literatur_datum_" . $i], $values["literatur_verlag_" . $i], $values["literatur_ort_" . $i]);
+    }
 //Verknüpfung von Person und Literaturangaben
-for($i = 0; $i < count($literaturID); $i++) {
-    $dbcontroller->addLiteraturangabezuPersoenlichkeit($personID, $literaturID[$i]);
-}
+    for ($i = 0; $i < count($literaturID); $i++) {
+        $dbcontroller->addLiteraturangabezuPersoenlichkeit($personID, $literaturID[$i]);
+    }
 
 
 //Verknüpfung von Person und Personen
-for($i = 0; $i <= $_SESSION["anzPerson"]; $i++) {
-    $dbcontroller->addPersoenlichkeitzuPersoenlichkeit($personID, $values["person_".$i]);
-}
+    for ($i = 0; $i <= $_SESSION["anzPerson"]; $i++) {
+        $dbcontroller->addPersoenlichkeitzuPersoenlichkeit($personID, $values["person_" . $i]);
+    }
 
 
-
-
-if($ID == 0) {
-    ?>
-    <div class="container">
-        <div class="jumbotron">
-            <h2>Vielen Dank für Ihre Eingabe! </h2>
-            <h2>Es wurde erfolgreich eine neue Persönlichkiet erstellt!</h2>
+    if ($ID == 0) {
+        ?>
+        <div class="container">
+            <div class="jumbotron">
+                <h2>Vielen Dank für Ihre Eingabe! </h2>
+                <h2>Es wurde erfolgreich eine neue Persönlichkiet erstellt!</h2>
+            </div>
         </div>
-    </div>
 
-    <div class="container">
-        <div class="alert alert-success">
-            <strong>Anlegen war erfolgreich!</strong>
-            Du kannst die neue Perönlichkeit jetzt <a
-                    href="persoenlichkeit.php?id=<?php echo $personID; ?>">anschauen</a>!
+        <div class="container">
+            <div class="alert alert-success">
+                <strong>Anlegen war erfolgreich!</strong>
+                Du kannst die neue Perönlichkeit jetzt <a
+                        href="persoenlichkeit.php?id=<?php echo $personID; ?>">anschauen</a>!
+            </div>
         </div>
-    </div>
-    <?php
+        <?php
+    } else {
+        ?>
+        <div class="container">
+            <div class="jumbotron">
+                <h2>Die Änderungen wurden erfolgreich gespeichert!</h2>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="alert alert-success">
+                Du kannst die neue Perönlichkeit jetzt <a
+                        href="persoenlichkeit.php?id=<?php echo $personID; ?>">anschauen</a>!
+            </div>
+        </div>
+        <?php
+    }
 } else {
-    ?>
-    <div class="container">
-        <div class="jumbotron">
-            <h2>Die Änderungen wurden erfolgreich gespeichert!</h2>
-        </div>
+?>
+<div class="container">
+    <div class="jumbotron">
+        <h2>Die Person existiert bereits!</h2>
+        <h2>Es wurde keine neue Persönlichkiet erstellt!</h2>
     </div>
+</div>
 
-    <div class="container">
-        <div class="alert alert-success">
-            Du kannst die neue Perönlichkeit jetzt <a
-                    href="persoenlichkeit.php?id=<?php echo $personID; ?>">anschauen</a>!
-        </div>
+<div class="container">
+    <div id="startseite_button">
+    <div class="containerKachelnPersoenlichkeit">
+        <div class="clear"></div>
+        <?php
+        KachelCreationEngine::persoenlichkeitByID($schonVorhandenFlag);
+        ?>
+        <div class="clear"></div>
     </div>
-    <?php
+</div>
+</div>
+<?php
 }
 ?>
 

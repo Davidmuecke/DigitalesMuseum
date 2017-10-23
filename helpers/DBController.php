@@ -321,6 +321,25 @@ class DBController
         return $result;
     }
 
+    /**Prüft anhand von Vorname, Nachname und Geburtsdatum ob eine Person bereits vorhanden ist.
+     * @param $string   Suchstring
+     * @return array|null Ergebnis als mehrdimensionales Array
+     */
+    public function checkPersoenlichkeit($vorname, $nachname, $geburtsdatum)
+    {
+        $vorname = mysqli_escape_string($this->DB, $vorname);
+        $nachname = mysqli_escape_string($this->DB, $nachname);
+        $geburtsdatum = mysqli_escape_string($this->DB, $geburtsdatum);
+        $query = mysqli_query($this->DB, "SELECT DISTINCT persoenlichkeitID FROM persoenlichkeit WHERE vorname = '". $vorname . "' AND name = '". $nachname . "' AND geburtsdatum = '". $geburtsdatum . "'");
+        $result = mysqli_fetch_array($query, MYSQLI_ASSOC);
+        if(empty($result)) {
+            return 0;
+        } else {
+            return implode ($result);
+        }
+    }
+
+
     /**Durchsucht Zitate, Langtext und Kurzbeschreibung nach dem übergebenen Wort
      * @param $string   Suchtext
      * @return array|null   mehrdimensionales Array

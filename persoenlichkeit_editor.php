@@ -16,8 +16,6 @@ Die eigentliche Registrierung in der Datenbank wird in persoenlichkeit_datenbank
 <body onload="mail();">
 <div class="container">
 
-
-
     <?php
         require("header.php");
 
