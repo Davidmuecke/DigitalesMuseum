@@ -70,7 +70,7 @@ if($confirmed == 0) {
     ?>
     <div class="container">
         <div class="jumbotron">
-            <h2><?php echo $vorname . " " . $nachname. " löschen?"; ?></h2>
+            <h2><?php echo "Soll "; ?><i><?php echo $vorname . " " . $nachname ?></i><?php echo " wirklich gelöscht werden?"; ?></h2>
         </div>
     </div>
 
@@ -90,7 +90,7 @@ if($confirmed == 0) {
     ?>
     <div class="container">
         <div class="jumbotron">
-            <h2><?php echo $vorname . " " . $nachname. " wurde gelöscht."; ?></h2>
+            <h2><i><?php echo $vorname . " " . $nachname ?></i><?php echo " wurde erfolgreich gelöscht."; ?></h2>
         </div>
     </div>
 
@@ -101,6 +101,8 @@ if($confirmed == 0) {
     </div>
     <?php
 }
+
+require("footer.php");
 ?>
 </body>
 </html>

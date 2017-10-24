@@ -1,11 +1,3 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: illi
- * Date: 04.08.2017
- * Time: 13:28
- */
-?>
 <link rel="stylesheet" href="css/bootstrap-3.3.7-dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="css/style.css">
 <footer class="footer navbar-inverse navbar-fixed-bottom">
@@ -13,16 +5,13 @@
         <div class="collapse navbar-collapse navHeaderCollapse">
             <div id="kontakt">
                 <ul class="nav navbar-nav">
-                    <li><b>DHBW Stuttgart  </b></li>
-                    <li><b>Rotebühlplatz 41,  </b></li>
-                    <li><b>70176 Stuttgart  </b></li>
-                    <li><b>Kontakt:</b></li>
+                    <b>DHBW Stuttgart Rotebühlplatz 41, 70176 Stuttgart  Kontakt:</b></li>
                 </ul>
             </div>
         </div>
     </div>
 </footer>
-<div id="mail_adresse">
+<div>
     <b>
     <script type="application/javascript" >
         function mail() {
