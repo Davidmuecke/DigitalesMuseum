@@ -4,7 +4,7 @@
     <div class="container-fluid">
         <div class="collapse navbar-collapse navHeaderCollapse">
             <div id="kontakt">
-                DHBW Stuttgart: Rotebühlplatz 41, 70176 Stuttgart, Kontakt:
+                <b>DHBW Stuttgart: Rotebühlplatz 41, 70176 Stuttgart, Kontakt: </b>
             </div>
         </div>
     </div>
