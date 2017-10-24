@@ -55,10 +55,10 @@ if(isset($_GET["nachname"])) {
 
 //Alle Verknüpfungen werden gelöscht
 if($confirmed==1) {
-    $dbcontroller->deletePersoenlichkeitEpocheOfAPersoenlichkeit($personID);
-    $dbcontroller->deletePersoenlichkeitKategorieOfAPersoenlichkeit($personID);
-    $dbcontroller->deletePersoenlichkeitLiteraturangabenOfAPersoenlicheit($personID);
-    $dbcontroller->deletePersoenlichkeitPersoenlichkeitofAPersoenlichkeit($personID);
+    //$dbcontroller->deletePersoenlichkeitEpocheOfAPersoenlichkeit($personID);
+    //$dbcontroller->deletePersoenlichkeitKategorieOfAPersoenlichkeit($personID);
+    //$dbcontroller->deletePersoenlichkeitLiteraturangabenOfAPersoenlicheit($personID);
+    //$dbcontroller->deletePersoenlichkeitPersoenlichkeitofAPersoenlichkeit($personID);
     $dbcontroller->deletePersoenlichkeit($personID);
     $dbcontroller->deleteBild($titelbild);
     $dbcontroller->deleteBild($profilbild);

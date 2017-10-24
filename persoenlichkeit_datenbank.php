@@ -58,11 +58,12 @@ if($schonVorhandenFlag == 0) {
             $data = addslashes(fread($hndFile, filesize($tmpname)));
             $timestamp = time();
             $datum = date("Y-m-d", $timestamp);
-            if ($ID == 0) {
+            $person = $dbcontroller->getPersoenlichkeitByID($ID);
+            $profilbildID = $person["profilbild"];
+            if ($ID == 0 || $profilbildID==0) {
                 $profilbild = $dbcontroller->addBild("profilbild", $datum, "eigene Dateien", "profilbild", $data, $type, $size);
             } else {
-                $person = $dbcontroller->getPersoenlichkeitByID($ID);
-                $profilbild = $person["profilbild"];
+                $profilbild = $profilbildID;
                 $dbcontroller->updateBild($profilbild, "profilbild", $datum, "eigene Dateien", "profilbild", $data, $type, $size);
             }
         }
@@ -78,11 +79,12 @@ if($schonVorhandenFlag == 0) {
             $data = addslashes(fread($hndFile, filesize($tmpname)));
             $timestamp = time();
             $datum = date("Y-m-d", $timestamp);
-            if ($ID == 0) {
+            $person = $dbcontroller->getPersoenlichkeitByID($ID);
+            $titelbildID = $person["titelbild"];
+            if ($ID == 0 || $titelbildID==0) {
                 $titelbild = $dbcontroller->addBild("titelbild", $datum, "eigene Dateien", "titelbild", $data, $type, $size);
             } else {
-                $person = $dbcontroller->getPersoenlichkeitByID($ID);
-                $titelbild = $person["titelbild"];
+                $titelbild = $titelbildID;
                 $dbcontroller->updateBild($titelbild, "titelbild", $datum, "eigene Dateien", "titelbild", $data, $type, $size);
             }
         }
