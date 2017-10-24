@@ -595,7 +595,6 @@ Die eigentliche Registrierung in der Datenbank wird in persoenlichkeit_datenbank
                     <?php
                 }
                 ?>
-                <button id="btn_loeschen" type="reset" class="btn btn_noeffect">Einträge löschen</button>
                 <a id="btn_abbrechen" href="startseite.php" class="btn">Abbrechen</a>
             </div>
             </div>

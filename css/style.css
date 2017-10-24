@@ -161,14 +161,6 @@ footer div a:hover {
     text-decoration: underline;
 }
 
-div > b > script{
-    color: #FFCC99;
-}
-
-div > b > script:hover {
-    color: #FFCC99;
-    text-decoration: underline;
-}
 /* Ende footer */
 
 
