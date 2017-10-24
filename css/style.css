@@ -152,14 +152,15 @@ footer{
     max-height: 15vh;
 }
 
-div > b > script{
-    color: #FFCC99;
+footer div a {
+    color: white;
 }
 
-div > b > script:hover {
-    color: #FFCC99;
+footer div a:hover {
+    color: white;
     text-decoration: underline;
 }
+
 /* Ende footer */
 
 
