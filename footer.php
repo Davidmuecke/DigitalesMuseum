@@ -1,11 +1,3 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: illi
- * Date: 04.08.2017
- * Time: 13:28
- */
-?>
 <link rel="stylesheet" href="css/bootstrap-3.3.7-dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="css/style.css">
 <footer class="footer navbar-inverse navbar-fixed-bottom">
