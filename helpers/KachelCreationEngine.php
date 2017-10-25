@@ -65,7 +65,7 @@ class KachelCreationEngine {
             <div class="kachel_kategorie">
                 <div class="panel-body">
                     <div class="characteristics">
-                        <label id="kategorie"><?php echo $title?></label>
+                        <label id="epoche_kachel"><?php echo $title?></label>
                     </div>
                 </div>
             </div>
