@@ -617,6 +617,13 @@ footer div a:hover {
 /* Ende Kategorie */
 
 
+/* Epoche */
+#epoche_kachel{
+    font-size: xx-large;
+}
+/* Ende Epoche */
+
+
 /* Unsichtbar */
 #unsichtbar{
     color: dimgray;
